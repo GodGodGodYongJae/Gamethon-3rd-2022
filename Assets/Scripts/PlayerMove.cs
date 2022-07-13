@@ -14,5 +14,6 @@ public class PlayerMove : MonoBehaviour
     public void MoveMent(Vector3 dir,Transform target)
     {
         transform.RotateAround(target.transform.position, dir, speed * Time.deltaTime);
+        //Camera.main.transform.RotateAround(target.transform.position, dir, speed * Time.deltaTime);
     }
 }
