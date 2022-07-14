@@ -35,7 +35,7 @@ public class PlayerMove : MonoBehaviour
 
         while (t <= 1)
         {
-            t += Time.fixedDeltaTime / MoveSpeed;
+            t += Time.deltaTime * MoveSpeed;
             rb.MovePosition(Vector3.Lerp(start, target, t));
 
             yield return null;
@@ -81,8 +81,8 @@ public class PlayerMove : MonoBehaviour
             //rb.MovePosition(transform.position - transform.forward *  MoveSpeed);
           
         }
-        //RayCastTest(tr);
-        StartCoroutine("MoveToPosition", tr);
+        RayCastTest(tr);
+        //StartCoroutine("MoveToPosition", tr);
 
 
     }
