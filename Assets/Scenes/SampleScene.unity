@@ -779,12 +779,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19ccc642f01229c4a954a684178ba11d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  events:
+  MoveEvents:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1803846714}
         m_TargetAssemblyTypeName: PlayerMove, Assembly-CSharp
-        m_MethodName: MoveMent
+        m_MethodName: Movement
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -807,6 +807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c994da4faad7c714898e2c310f92af30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoveSpeed: 15
   orbitSpeed: 50
   curSpeed: 0
 --- !u!54 &1803846715

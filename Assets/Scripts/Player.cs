@@ -6,16 +6,19 @@ using UnityEngine.Events;
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    UnityEvent<Vector3,Transform> events;
+    UnityEvent<bitFlags.PlayerMoveDirection,Transform> MoveEvents;
     [SerializeField]
     GameObject target;
     float speed = 30f;
     Rigidbody rb;
 
-    bool isFront;
+
+    bitFlags.PlayerMoveDirection PlayerDirection;
+    
     // Start is called before the first frame update
     void Start()
     {
+        PlayerDirection = bitFlags.PlayerMoveDirection.None;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -25,45 +28,56 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        if(isFront)
+        //if(PlayerDirection.HasFlag(bitFlags.PlayerMoveDirection.Left))
+        //  {
+        //      PlayerDirection &= ~bitFlags.PlayerMoveDirection.Left;
+        //      Debug.Log("Left!");
+        //  }
+        //switch (PlayerDirection)
+        //{
+        //    case bitFlags.PlayerMoveDirection.Left:
+        //        movement(Vector3.up, target.transform);
+        //        PlayerDirection &= ~bitFlags.PlayerMoveDirection.Left;
+        //        break;
+        //    case bitFlags.PlayerMoveDirection.Right:
+        //        movement(Vector3.down, target.transform);
+        //        PlayerDirection &= ~bitFlags.PlayerMoveDirection.Right;
+        //        break;
+        //    case bitFlags.PlayerMoveDirection.Front:
+        //        PlayerDirection &= ~bitFlags.PlayerMoveDirection.Front;
+        //        break;
+        //    case bitFlags.PlayerMoveDirection.Back:
+        //        PlayerDirection &= ~bitFlags.PlayerMoveDirection.Back;
+        //        break;
+        //    default:
+        //        break;
+        //}
+        if (PlayerDirection != bitFlags.PlayerMoveDirection.None)
         {
-            rb.MovePosition(transform.position + transform.forward * Time.deltaTime * speed);
-            isFront = false; 
-               
+            movement(PlayerDirection, target.transform);
+            PlayerDirection = bitFlags.PlayerMoveDirection.None;
         }
             
     }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.D))
-            movement(Vector3.down, target.transform);
+            PlayerDirection = bitFlags.PlayerMoveDirection.Right;
+        //movement(Vector3.down, target.transform);
         else if (Input.GetKeyDown(KeyCode.A))
-            movement(Vector3.up, target.transform);
+            PlayerDirection = bitFlags.PlayerMoveDirection.Left;
+        //movement(Vector3.up, target.transform);
         else if (Input.GetKeyDown(KeyCode.W))
-            isFront = true;
-        //    movement(Vector3.right, target.transform,true);
-
+            PlayerDirection = bitFlags.PlayerMoveDirection.Front;
+            //    movement(Vector3.right, target.transform,true);
+        else if (Input.GetKeyDown(KeyCode.S))
+            PlayerDirection = bitFlags.PlayerMoveDirection.Back;
         transform.LookAt(target.transform);
     }
 
-    private void playerDir()
+    public void movement(bitFlags.PlayerMoveDirection pd, Transform target)
     {
 
-        Vector3 TargetPos = new Vector3(
-   transform.position.x + 0,
-    transform.position.y + 3.14f,
-   transform.position.z + -7
-    );
-
- 
-
-        Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, TargetPos, Time.deltaTime * speed);
-        Camera.main.transform.rotation = transform.rotation;
-
+        MoveEvents?.Invoke(pd,target);
     }
-    public void movement(Vector3 dir,Transform target)
-    {
-   
-            events?.Invoke(dir,target);
-    }    
 }

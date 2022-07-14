@@ -54,8 +54,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Player.cs" />
-    <Compile Include="Assets\Scripts\PlayerMove.cs" />
     <Compile Include="Assets\Scripts\followCamera.cs" />
+    <Compile Include="Assets\Scripts\PlayerMove.cs" />
+    <Compile Include="Assets\Scripts\bitTest.cs" />
+    <Compile Include="Assets\Scripts\bitFlags.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Kevin Iglesias\3DCharacterDummy\Readme.txt" />
