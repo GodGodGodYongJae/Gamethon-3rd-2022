@@ -9,17 +9,16 @@ public class Player : MonoBehaviour
     UnityEvent<bitFlags.PlayerMoveDirection,Transform> MoveEvents;
     [SerializeField]
     GameObject target;
-    float speed = 30f;
-    Rigidbody rb;
 
 
     bitFlags.PlayerMoveDirection PlayerDirection;
-    
+    Animator anim;
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         PlayerDirection = bitFlags.PlayerMoveDirection.None;
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
     }
 
 
@@ -37,15 +36,19 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.D))
-            PlayerDirection = bitFlags.PlayerMoveDirection.Right;
-        else if (Input.GetKeyDown(KeyCode.A))
-            PlayerDirection = bitFlags.PlayerMoveDirection.Left;
-        else if (Input.GetKeyDown(KeyCode.W))
-            PlayerDirection = bitFlags.PlayerMoveDirection.Front;
-        else if (Input.GetKeyDown(KeyCode.S))
-            PlayerDirection = bitFlags.PlayerMoveDirection.Back;
-        transform.LookAt(target.transform);
+        if(anim.GetInteger("Movement") == 0)
+        {
+            if (Input.GetKeyDown(KeyCode.D))
+                PlayerDirection = bitFlags.PlayerMoveDirection.Right;
+            else if (Input.GetKeyDown(KeyCode.A))
+                PlayerDirection = bitFlags.PlayerMoveDirection.Left;
+            else if (Input.GetKeyDown(KeyCode.W))
+                PlayerDirection = bitFlags.PlayerMoveDirection.Front;
+            else if (Input.GetKeyDown(KeyCode.S))
+                PlayerDirection = bitFlags.PlayerMoveDirection.Back;
+            transform.LookAt(target.transform);
+        }
+        
     }
 
     public void movement(bitFlags.PlayerMoveDirection pd, Transform target)

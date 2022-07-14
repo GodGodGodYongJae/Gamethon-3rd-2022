@@ -26,9 +26,26 @@ public class PlayerMove : MonoBehaviour
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
     }
+
+    private IEnumerator MoveToPosition(Vector3 target)
+    {
+        //Debug.Log("MoveToPosition");
+        float t = 0;
+        Vector3 start = transform.position;
+
+        while (t <= 1)
+        {
+            t += Time.fixedDeltaTime / MoveSpeed;
+            rb.MovePosition(Vector3.Lerp(start, target, t));
+
+            yield return null;
+        }
+    }
+
     public void Movement(bitFlags.PlayerMoveDirection pd,Transform target)
     {
-        if(pd.HasFlag(bitFlags.PlayerMoveDirection.Left) || pd.HasFlag(bitFlags.PlayerMoveDirection.Right))
+        Vector3 tr = Vector3.zero;
+        if (pd.HasFlag(bitFlags.PlayerMoveDirection.Left) || pd.HasFlag(bitFlags.PlayerMoveDirection.Right))
         {
             Vector3 dir = Vector3.zero;
             if (pd == bitFlags.PlayerMoveDirection.Left)
@@ -40,16 +57,21 @@ public class PlayerMove : MonoBehaviour
             curSpeed = orbitSpeed / Mathf.Sqrt(distance);
 
             Quaternion q = Quaternion.AngleAxis(curSpeed, dir);
-            rb.MovePosition(q * (rb.transform.position - target.position) + target.position);
+             tr = q * (rb.transform.position - target.position) + target.position;
+            //rb.MovePosition(q * (rb.transform.position - target.position) + target.position);
         }
         else if(pd.HasFlag(bitFlags.PlayerMoveDirection.Front) || pd.HasFlag(bitFlags.PlayerMoveDirection.Back))
         {
             if (pd == bitFlags.PlayerMoveDirection.Front)
-             rb.MovePosition(transform.position + transform.forward * Time.deltaTime * MoveSpeed);
+                tr = transform.position + transform.forward * MoveSpeed;
+             //rb.MovePosition(transform.position + transform.forward *  MoveSpeed);
             else if (pd == bitFlags.PlayerMoveDirection.Back)
-            rb.MovePosition(transform.position - transform.forward * Time.deltaTime * MoveSpeed);
+                tr = transform.position - transform.forward * MoveSpeed;
+            //rb.MovePosition(transform.position - transform.forward *  MoveSpeed);
+          
         }
-        
+        StartCoroutine("MoveToPosition", tr);
+
 
     }
 
