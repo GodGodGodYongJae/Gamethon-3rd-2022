@@ -9,13 +9,16 @@ public class Player : MonoBehaviour
     UnityEvent<Vector3,Transform> events;
     [SerializeField]
     GameObject target;
-
     float speed = 15.0f;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
+
+
+
 
     // Update is called once per frame
     void Update()
@@ -26,8 +29,8 @@ public class Player : MonoBehaviour
             movement(Vector3.up, target.transform);
         //else if (Input.GetKeyDown(KeyCode.W))
         //    movement(Vector3.right, target.transform,true);
-       
 
+        transform.LookAt(target.transform);
     }
 
     private void playerDir()
