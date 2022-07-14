@@ -20,10 +20,13 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.D))
-        movement(Vector3.down,target.transform);
-        else if(Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.D))
+            movement(Vector3.down, target.transform);
+        else if (Input.GetKeyDown(KeyCode.A))
             movement(Vector3.up, target.transform);
+        //else if (Input.GetKeyDown(KeyCode.W))
+        //    movement(Vector3.right, target.transform,true);
+       
 
     }
 
