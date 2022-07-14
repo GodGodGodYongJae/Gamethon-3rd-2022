@@ -16,6 +16,7 @@ public class PlayerMove : MonoBehaviour
         transform = GetComponent<Transform>();
         rb = GetComponent<Rigidbody>();
     }
+
     private void Update()
     {
         rb.velocity = Vector3.zero;

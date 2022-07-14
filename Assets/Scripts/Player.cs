@@ -9,25 +9,38 @@ public class Player : MonoBehaviour
     UnityEvent<Vector3,Transform> events;
     [SerializeField]
     GameObject target;
-    float speed = 15.0f;
+    float speed = 30f;
+    Rigidbody rb;
 
+    bool isFront;
     // Start is called before the first frame update
     void Start()
     {
-       
+        rb = GetComponent<Rigidbody>();
     }
 
 
 
 
     // Update is called once per frame
+    private void FixedUpdate()
+    {
+        if(isFront)
+        {
+            rb.MovePosition(transform.position + transform.forward * Time.deltaTime * speed);
+            isFront = false; 
+               
+        }
+            
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.D))
             movement(Vector3.down, target.transform);
         else if (Input.GetKeyDown(KeyCode.A))
             movement(Vector3.up, target.transform);
-        //else if (Input.GetKeyDown(KeyCode.W))
+        else if (Input.GetKeyDown(KeyCode.W))
+            isFront = true;
         //    movement(Vector3.right, target.transform,true);
 
         transform.LookAt(target.transform);
