@@ -42,6 +42,17 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    private void RayCastTest(Vector3 prevPos)
+    {
+        Vector3 currentPosition = transform.position;
+        Vector3 direction = prevPos - currentPosition;
+        Ray ray = new Ray(currentPosition, direction);
+        RaycastHit hit;
+        if (!Physics.Raycast(ray, out hit, direction.magnitude))
+            StartCoroutine("MoveToPosition", prevPos);
+        else
+            StartCoroutine("MoveToPosition", hit.point);
+    }
     public void Movement(bitFlags.PlayerMoveDirection pd,Transform target)
     {
         Vector3 tr = Vector3.zero;
@@ -70,7 +81,8 @@ public class PlayerMove : MonoBehaviour
             //rb.MovePosition(transform.position - transform.forward *  MoveSpeed);
           
         }
-        StartCoroutine("MoveToPosition", tr);
+        RayCastTest(tr);
+        //StartCoroutine("MoveToPosition", tr);
 
 
     }
