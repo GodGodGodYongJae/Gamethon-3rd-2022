@@ -28,30 +28,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        //if(PlayerDirection.HasFlag(bitFlags.PlayerMoveDirection.Left))
-        //  {
-        //      PlayerDirection &= ~bitFlags.PlayerMoveDirection.Left;
-        //      Debug.Log("Left!");
-        //  }
-        //switch (PlayerDirection)
-        //{
-        //    case bitFlags.PlayerMoveDirection.Left:
-        //        movement(Vector3.up, target.transform);
-        //        PlayerDirection &= ~bitFlags.PlayerMoveDirection.Left;
-        //        break;
-        //    case bitFlags.PlayerMoveDirection.Right:
-        //        movement(Vector3.down, target.transform);
-        //        PlayerDirection &= ~bitFlags.PlayerMoveDirection.Right;
-        //        break;
-        //    case bitFlags.PlayerMoveDirection.Front:
-        //        PlayerDirection &= ~bitFlags.PlayerMoveDirection.Front;
-        //        break;
-        //    case bitFlags.PlayerMoveDirection.Back:
-        //        PlayerDirection &= ~bitFlags.PlayerMoveDirection.Back;
-        //        break;
-        //    default:
-        //        break;
-        //}
         if (PlayerDirection != bitFlags.PlayerMoveDirection.None)
         {
             movement(PlayerDirection, target.transform);
@@ -63,13 +39,10 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.D))
             PlayerDirection = bitFlags.PlayerMoveDirection.Right;
-        //movement(Vector3.down, target.transform);
         else if (Input.GetKeyDown(KeyCode.A))
             PlayerDirection = bitFlags.PlayerMoveDirection.Left;
-        //movement(Vector3.up, target.transform);
         else if (Input.GetKeyDown(KeyCode.W))
             PlayerDirection = bitFlags.PlayerMoveDirection.Front;
-            //    movement(Vector3.right, target.transform,true);
         else if (Input.GetKeyDown(KeyCode.S))
             PlayerDirection = bitFlags.PlayerMoveDirection.Back;
         transform.LookAt(target.transform);
