@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     UnityEvent<bitFlags.PlayerMoveDirection,Transform> MoveEvents;
     [SerializeField]
     GameObject target;
-
+    
 
     bitFlags.PlayerMoveDirection PlayerDirection;
     Animator anim;

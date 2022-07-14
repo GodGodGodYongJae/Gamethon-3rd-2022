@@ -81,8 +81,8 @@ public class PlayerMove : MonoBehaviour
             //rb.MovePosition(transform.position - transform.forward *  MoveSpeed);
           
         }
-        RayCastTest(tr);
-        //StartCoroutine("MoveToPosition", tr);
+        //RayCastTest(tr);
+        StartCoroutine("MoveToPosition", tr);
 
 
     }
