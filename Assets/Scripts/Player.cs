@@ -56,4 +56,10 @@ public class Player : MonoBehaviour
 
         MoveEvents?.Invoke(pd,target);
     }
+
+    public void OnTouchEvent(bitFlags.PlayerMoveDirection pd)
+    {
+        if (anim.GetInteger("Movement") == 0)
+            PlayerDirection = pd;
+    }
 }
