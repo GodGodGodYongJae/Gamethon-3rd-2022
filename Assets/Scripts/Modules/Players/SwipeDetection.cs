@@ -8,18 +8,21 @@ public class SwipeDetection : MonoBehaviour
     private Vector2 startPos;
     public int pixelDistToDetect = 50;
     private bool fingerDown;
+    private bool endTouch;
     public UnityEvent<bitFlags.PlayerMoveDirection> TouchEvent;
 
     public void OnTouchEvent(bitFlags.PlayerMoveDirection pd)
     {
         TouchEvent?.Invoke(pd);
     }
+
     private void Update()
     {
-        if(fingerDown == false && Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began)
+        if(endTouch&&fingerDown == false && Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Moved)
         {
             startPos = Input.touches[0].position;
             fingerDown = true;
+            endTouch = false;
         }
         if(fingerDown)
         {
@@ -47,10 +50,16 @@ public class SwipeDetection : MonoBehaviour
                 Debug.Log("Swipe Right");
                 OnTouchEvent(bitFlags.PlayerMoveDirection.Right);
             }
+       
+        }
+        if(endTouch&&!fingerDown && Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began)
+        {
+            OnTouchEvent(bitFlags.PlayerMoveDirection.Attack);
         }
         if(fingerDown && Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Ended)
         {
             fingerDown = false;
+            endTouch = true;
         }
 
         //Testing For Pc

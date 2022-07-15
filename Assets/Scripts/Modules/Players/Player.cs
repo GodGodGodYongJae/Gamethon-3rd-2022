@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         PlayerDirection = bitFlags.PlayerMoveDirection.None;
+        movement(bitFlags.PlayerMoveDirection.None, target.transform);
         //rb = GetComponent<Rigidbody>();
     }
 
@@ -62,4 +63,6 @@ public class Player : MonoBehaviour
         if (anim.GetInteger("Movement") == 0)
             PlayerDirection = pd;
     }
+
+
 }

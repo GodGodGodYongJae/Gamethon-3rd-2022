@@ -55,20 +55,23 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Modules\Players\Player.cs" />
     <Compile Include="Assets\Scripts\Modules\Players\SwipeDetection.cs" />
+    <Compile Include="Assets\Scripts\Modules\3DText\Damage3DText.cs" />
     <Compile Include="Assets\Scripts\Modules\Camera\followCamera.cs" />
+    <Compile Include="Assets\ScriptalbeObject\MonsterType1.cs" />
+    <Compile Include="Assets\Scripts\Modules\ObjectPool\ObjectPoolFreeByLifeTime.cs" />
     <Compile Include="Assets\Scripts\Modules\Players\PlayerMove.cs" />
     <Compile Include="Assets\Scripts\bitFlags.cs" />
     <Compile Include="Assets\PlayerAnimationOnExit.cs" />
-    <Compile Include="Assets\Scripts\Modules\Players\PlayerAnimationController.cs" />
-    <Compile Include="Assets\Scripts\Interfaces\IDamageable.cs" />
+    <Compile Include="Assets\Scripts\Modules\ObjectPool\ObjectPoolManager.cs" />
     <Compile Include="Assets\Scripts\Monster\DummyMonster.cs" />
-    <Compile Include="Assets\ScriptalbeObject\MonsterType1.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\IDamageable.cs" />
+    <Compile Include="Assets\Scripts\Modules\ObjectPool\ObjectPool.cs" />
+    <Compile Include="Assets\Scripts\Modules\Players\PlayerAnimationController.cs" />
     <Compile Include="Assets\Scripts\Modules\Utility\SerializableDictionary.cs" />
     <Compile Include="Assets\Scripts\Template\Singleton.cs" />
-    <Compile Include="Assets\Scripts\Modules\ObjectPool\ObjectPoolManager.cs" />
-    <Compile Include="Assets\Scripts\Modules\ObjectPool\ObjectPool.cs" />
-    <Compile Include="Assets\Scripts\Modules\ObjectPool\ObjectPoolFreeByLifeTime.cs" />
-    <Compile Include="Assets\Scripts\Modules\3DText\Damage3DText.cs" />
+    <Compile Include="Assets\Scripts\Modules\Players\PlayerAttack.cs" />
+    <Compile Include="Assets\Scripts\Modules\Players\PlayerData.cs" />
+    <Compile Include="Assets\Scripts\Monster\Enemy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Kevin Iglesias\3DCharacterDummy\Readme.txt" />
@@ -640,17 +643,23 @@
     <Reference Include="Cinemachine">
       <HintPath>Library\ScriptAssemblies\Cinemachine.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VSCode.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="com.unity.cinemachine.editor">
       <HintPath>Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VSCode.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Sysroot.Linux_x86_64">
+      <HintPath>Library\ScriptAssemblies\Unity.Sysroot.Linux_x86_64.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Toolchain.Win-x86_64-Linux-x86_64">
+      <HintPath>Library\ScriptAssemblies\Unity.Toolchain.Win-x86_64-Linux-x86_64.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
@@ -675,12 +684,6 @@
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Sysroot.Linux_x86_64">
-      <HintPath>Library\ScriptAssemblies\Unity.Sysroot.Linux_x86_64.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Toolchain.Win-x86_64-Linux-x86_64">
-      <HintPath>Library\ScriptAssemblies\Unity.Toolchain.Win-x86_64-Linux-x86_64.dll</HintPath>
     </Reference>
     <Reference Include="Unity.SysrootPackage.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.SysrootPackage.Editor.dll</HintPath>
