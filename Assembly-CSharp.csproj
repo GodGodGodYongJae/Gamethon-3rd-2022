@@ -60,18 +60,21 @@
     <Compile Include="Assets\ScriptalbeObject\MonsterType1.cs" />
     <Compile Include="Assets\Scripts\Modules\ObjectPool\ObjectPoolFreeByLifeTime.cs" />
     <Compile Include="Assets\Scripts\Modules\Players\PlayerMove.cs" />
+    <Compile Include="Assets\Scripts\Modules\Players\PlayerAttack.cs" />
     <Compile Include="Assets\Scripts\bitFlags.cs" />
     <Compile Include="Assets\PlayerAnimationOnExit.cs" />
     <Compile Include="Assets\Scripts\Modules\ObjectPool\ObjectPoolManager.cs" />
-    <Compile Include="Assets\Scripts\Monster\DummyMonster.cs" />
+    <Compile Include="Assets\Scripts\Modules\Monster\DummyMonster.cs" />
+    <Compile Include="Assets\Scripts\Modules\Monster\Enemy.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IDamageable.cs" />
+    <Compile Include="Assets\Scripts\Modules\Players\PlayerData.cs" />
     <Compile Include="Assets\Scripts\Modules\ObjectPool\ObjectPool.cs" />
     <Compile Include="Assets\Scripts\Modules\Players\PlayerAnimationController.cs" />
     <Compile Include="Assets\Scripts\Modules\Utility\SerializableDictionary.cs" />
     <Compile Include="Assets\Scripts\Template\Singleton.cs" />
-    <Compile Include="Assets\Scripts\Modules\Players\PlayerAttack.cs" />
-    <Compile Include="Assets\Scripts\Modules\Players\PlayerData.cs" />
-    <Compile Include="Assets\Scripts\Monster\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Modules\Monster\EnemyGenerator.cs" />
+    <Compile Include="Assets\Scripts\Modules\Monster\MonsterGeneratorPatten\PattenGenerator.cs" />
+    <Compile Include="Assets\Scripts\Modules\Monster\EnemyFactoryMethod.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Kevin Iglesias\3DCharacterDummy\Readme.txt" />
