@@ -14,7 +14,15 @@ public class bitFlags
         Right = 1 << 1,
         Front = 1 << 2,
         Back = 1 << 3,
-        Attack = 1 << 4
+        Dash = 1 << 4,
+        Attack = 1 << 5,
+
     }
+
+    public enum Weapon { 
+    None = 0,
+    OneHandSword = 1
+    }
+
 
 }

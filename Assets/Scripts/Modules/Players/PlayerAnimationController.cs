@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAnimationController : MonoBehaviour
 {
     Animator anim;
-
+    int combo;
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -28,8 +28,22 @@ public class PlayerAnimationController : MonoBehaviour
                 //anim.Play("RollBackward", -1, 0f);
                 anim.SetInteger("Movement", 4);
                 break;
+            case bitFlags.PlayerMoveDirection.Dash:
+                anim.SetInteger("Movement", 5);
+                break;
             default:
                 break;
         }
+    }
+    public void Attack(Transform target)
+    {
+        anim.SetTrigger("OnCloseAttackCombo");
+        //if(anim.GetInteger("Attack") < 3)
+        //{
+        //    if((anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.6f && anim.GetInteger("Attack") > 0) || anim.GetInteger("Attack") == 0)
+        //    anim.SetInteger("Attack", anim.GetInteger("Attack") + 1);
+           
+        //}
+        
     }
 }

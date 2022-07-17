@@ -5,30 +5,27 @@ using UnityEngine.Events;
 
 public class PlayerMove : MonoBehaviour
 {
-    Transform transform;
+    new Transform transform;
     Rigidbody rb;
     Transform target;
-    public UnityEvent<Transform> AttackEvents;
+   
     //전진 백 스피드
     public float MoveSpeed;
     //사이드 스피드
     public float orbitSpeed;
     public float curSpeed;
-    public float attackDistance;
     public float distance;
     //private float radius;
+
+    //파티클 매니저 생기기전까진 임시적으로 Move 에서 관리
+    private IEnumerator corutine;
 
     //이동 Late
     public float rollSpeed = 10f;
 
-    public void OnAttackEvents()
-    {
- 
-        AttackEvents?.Invoke(this.target);
-    }
+
     private void Start()
     {
-
         transform = GetComponent<Transform>();
         rb = GetComponent<Rigidbody>();
     }
@@ -63,16 +60,19 @@ public class PlayerMove : MonoBehaviour
         Ray ray = new Ray(currentPosition, direction);
         RaycastHit hit;
         if (!Physics.Raycast(ray, out hit, direction.magnitude))
-            StartCoroutine("MoveToPosition", prevPos);
+            corutine = MoveToPosition(prevPos);
+        //StartCoroutine("MoveToPosition", prevPos);
         else
-            StartCoroutine("MoveToPosition", hit.point);
+            corutine = MoveToPosition(hit.point);
+        //StartCoroutine("MoveToPosition", hit.point);
+        StartCoroutine(corutine);
     }
     public void Movement(bitFlags.PlayerMoveDirection pd,Transform target)
     {
         Vector3 tr = Vector3.zero;
         this.target = target;
         //float distance = Vector3.Distance(transform.position, target.position);
-     
+        if (corutine != null) StopCoroutine(corutine);
 
         if (pd.HasFlag(bitFlags.PlayerMoveDirection.Left) || pd.HasFlag(bitFlags.PlayerMoveDirection.Right))
         {
@@ -98,18 +98,9 @@ public class PlayerMove : MonoBehaviour
             //rb.MovePosition(transform.position - transform.forward *  MoveSpeed);
 
         }
-        else if(pd.HasFlag(bitFlags.PlayerMoveDirection.Attack))
+        else if(pd.HasFlag(bitFlags.PlayerMoveDirection.Dash))
         {
-            if(attackDistance < distance)
-            {
-                // 대쉬
-                tr = transform.position + transform.forward * (MoveSpeed + 1.5f);
-            }
-            else
-            {
-                OnAttackEvents();
-                return;
-            }
+             tr = transform.position + transform.forward * (MoveSpeed + 1.5f);
         }
 
         if(pd != bitFlags.PlayerMoveDirection.None)

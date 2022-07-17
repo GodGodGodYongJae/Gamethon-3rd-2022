@@ -54,7 +54,8 @@ public class SwipeDetection : MonoBehaviour
         }
         if(endTouch&&!fingerDown && Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began)
         {
-            OnTouchEvent(bitFlags.PlayerMoveDirection.Attack);
+            //Debug.Log("Swipe T");
+            OnTouchEvent(bitFlags.PlayerMoveDirection.Dash);
         }
         if(fingerDown && Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Ended)
         {

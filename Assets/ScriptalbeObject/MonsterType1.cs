@@ -4,7 +4,7 @@ using UnityEngine;
 public class MonsterType1 : ScriptableObject
 {
     [SerializeField]
-    private string name;
+    private new string name;
     public string Name { get { return name; } }
     [SerializeField]
     private int hp;

@@ -12,7 +12,6 @@ public class PlayerAttack : MonoBehaviour
     }
     public void OnAttackEvent(Transform target)
     {
-        Debug.Log("d"+target);
         IDamageable damge = target.GetComponent<IDamageable>();
         damge.Damage(playerData.RandAtk);
     }

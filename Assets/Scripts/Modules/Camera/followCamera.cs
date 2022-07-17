@@ -7,15 +7,14 @@ public class followCamera : MonoBehaviour
 {
     [SerializeField]
      Transform target;           // target 
-    [SerializeField]
-    Transform target2;           // target 
+
     public float dist = 10.0f;           // 거리
     public float height = 5.0f;         // 높이
     public float dampRotate = 5.0f;  //회전 속도
 
     private Transform tr;             // 카메라 
     private Vector3 velocity = Vector3.zero;
-    public float smoothTime = 0.3F;
+    public float smoothTime = 1.3F;
     private void Start()
     {
         tr = GetComponent<Transform>();
@@ -36,6 +35,6 @@ public class followCamera : MonoBehaviour
         //tr.position = target.position - (rot * Vector3.forward * dist) + (Vector3.up * height);
         //타겟 위치 - 카메라위치 = 카메라가 타겟 뒤로 가야 타겟이 보이겠죠?
 
-        tr.LookAt(target2);
+        tr.LookAt(EnemyFactoryMethod.Instance?.target);
     }
 }

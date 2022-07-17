@@ -19,6 +19,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     {
         Init();
     }
+
     protected virtual void Init()
     {
         damageCooldown = 0.5f;
@@ -32,6 +33,8 @@ public abstract class Enemy : MonoBehaviour, IDamageable
             canTakeDamage = Time.time + damageCooldown;
             Health -= damage;
             DamageTextSettings(damage);
+            if (Health <= 0)
+                EnemyFactoryMethod.Instance?.DeleteEnemy(this.gameObject);
         }
     }
     private void DamageTextSettings(int dmg)

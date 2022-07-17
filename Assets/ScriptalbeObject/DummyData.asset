@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: DummyData
   m_EditorClassIdentifier: 
   name: Dummy1
-  hp: 100
+  hp: 500

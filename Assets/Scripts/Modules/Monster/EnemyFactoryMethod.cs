@@ -1,43 +1,83 @@
+
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyFactoryMethod : MonoBehaviour
+public class EnemyFactoryMethod : Singleton<EnemyFactoryMethod>
 {
+    [System.Serializable]
+    public class EnemiesList : SerializableDictionary<string, GameObject> { };
 
-    public SerializableDictionary<string, GameObject> monsterList;
-    public List<Enemy> enermy;
-    private void Start()
+    public EnemiesList e_enemyPrefabDictionary = new EnemiesList();
+    public List<GameObject> MonsterList = new List<GameObject>();
+
+    public Transform target;
+
+    protected override void Awake()
     {
-        monsterList.OnBeforeSerialize();
-    
+        base.Awake();
+        e_enemyPrefabDictionary.OnBeforeSerialize();
 
     }
+    private void Start()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            CreateEnemy("Dummy", new Vector3(3 * i, 0, 3 * i),Quaternion.identity);
+        }
+        
 
-    // 이거 어차피 Serialzlied로 빼서 패턴을 컴포넌트화 시켜보자.
-    //EnemyGenerator[] enemyGenerators = null;
+    }
+  
+    public void CreateEnemy(string keyName,Vector3 pos, Quaternion quaternion)
+    {
+        if (!e_enemyPrefabDictionary.ContainsKey(keyName))
+        {
+            Debug.LogError("[EnemyFactoryMethod] 해당 오브젝트 풀을 찾을 수 없습니다. " + keyName);
+            return;
+        }
+        else
+        {
+            GameObject obj = e_enemyPrefabDictionary[keyName];
+            MonsterList.Add(Instantiate(obj,pos, quaternion));
+            //MonsterList.Add(obj.transform);
+        }
+        if (target == null)
+        {
+            target = MonsterList[0].transform;
+        }
+    }
+    IEnumerator RateTarget()
+    {
+       yield return new WaitForSeconds(0.5f);
+        target = MonsterList[0].transform;
+    }
+    public void DeleteEnemy(GameObject obj)
+    {
+        if(target == obj.transform)
+        {
+            if (MonsterList.Count - 1 > 0)
+            {
+                MonsterList.Remove(obj);
+                StartCoroutine("RateTarget");
+                //target = MonsterList[0].transform;
+            }
+            else
+            {
+                MonsterList.Remove(obj);
+                GameObject empty = e_enemyPrefabDictionary["Dummy"];
+                MonsterList.Add(Instantiate(empty));
+                StartCoroutine("RateTarget");
+            }
+            Destroy(obj);
+            return;
 
-    //private void Start()
-    //{
-    //    enemyGenerators = new EnemyGenerator[2];
-    //    enemyGenerators[0] = new PattenGenerator_A();
-    //    enemyGenerators[1] = new PattenGenerator_B();
-    //}
+        }
+        Destroy(obj);
+        MonsterList.Remove(obj);
+    }
 
-    //public void DoMakeTypeA()
-    //{
-    //    enemyGenerators[0].CreateEnemy();
-    //    List<Enemy> enemies = enemyGenerators[0].GetEnemies();
-    //    foreach (Enemy enemy in enemies)
-    //    {
 
-    //    }
-    //}
-
-    //public void DoMakeTypeB()
-    //{
-    //    enemyGenerators[1].CreateEnemy();
-    //    List<Enemy> enemies = enemyGenerators[1].GetEnemies();
-
-    //}
 }
