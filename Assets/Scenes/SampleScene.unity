@@ -655,7 +655,7 @@ MonoBehaviour:
   dist: 10
   height: 5
   dampRotate: 5
-  smoothTime: 0.1
+  smoothTime: 0.05
 --- !u!1001 &1473801050
 PrefabInstance:
   m_ObjectHideFlags: 0

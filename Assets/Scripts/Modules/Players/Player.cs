@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
         {
             if (PlayerDirection == bitFlags.PlayerMoveDirection.Attack)
                 OnAttackEvents();
-            else if(anim.GetBool("isAttack") == false)
+            else //if(anim.GetBool("isAttack") == false)
                 movement(PlayerDirection, target);
 
             PlayerDirection = bitFlags.PlayerMoveDirection.None;
@@ -46,8 +46,6 @@ public class Player : MonoBehaviour
         if(target != EnemyFactoryMethod.Instance?.target)
         {
             anim.SetBool("isEnemyLoss", true);
-            //anim.ResetTrigger("OnCloseAttackCombo");
-            //anim.SetInteger("Movement",0);
             target = EnemyFactoryMethod.Instance?.target;
         }
         if(target != null)
