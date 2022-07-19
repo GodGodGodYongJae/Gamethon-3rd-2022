@@ -49,7 +49,12 @@ public class Player : MonoBehaviour
             target = EnemyFactoryMethod.Instance?.target;
         }
         if(target != null)
-            transform.LookAt(target);
+        {
+
+            Vector3 targetPos = new Vector3(target.transform.position.x,transform.position.y,target.transform.position.z);
+            transform.LookAt(targetPos);
+        }
+            
 
         #region KeyBoard
         //if (anim.GetInteger("Movement") == 0)
