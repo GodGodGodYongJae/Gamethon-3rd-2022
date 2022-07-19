@@ -12,8 +12,9 @@ public class Player : MonoBehaviour
     Transform target;
     
 
-    bitFlags.PlayerMoveDirection PlayerDirection;
-    Animator anim;
+    public bitFlags.PlayerMoveDirection PlayerDirection;
+   
+    public Animator anim;
     public float attackdistance;
     // Start is called before the first frame update
     void Start()
