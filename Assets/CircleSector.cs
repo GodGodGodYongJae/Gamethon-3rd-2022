@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 public class CircleSector : MonoBehaviour
 {
     public Transform target;
@@ -68,6 +69,8 @@ public class CircleSector : MonoBehaviour
             }
         
     }
+
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         
@@ -78,4 +81,5 @@ public class CircleSector : MonoBehaviour
 
       
     }
+#endif
 }

@@ -55,6 +55,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _ShadowTex:
+        m_Texture: {fileID: 2800000, guid: bd9b5459a64727a479a0f77732006b54, type: 3}
+        m_Scale: {x: 3, y: 3}
+        m_Offset: {x: 3, y: 3}
     m_Floats:
     - PixelSnap: 0
     - _Angle: 152
