@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
     {
         if(target != EnemyFactoryMethod.Instance?.target)
         {
-            anim.SetBool("isEnemyLoss", true);
+            //anim.SetBool("isEnemyLoss", true);
             target = EnemyFactoryMethod.Instance?.target;
         }
         if(target != null)
