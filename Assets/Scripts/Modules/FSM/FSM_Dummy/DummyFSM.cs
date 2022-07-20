@@ -6,11 +6,12 @@ using UnityEngine;
 public class DummyFSM : MonoBehaviour
 {
 
-    public enum State { IDLE,Walk,Die,Attack,Damage,End}
+    public enum State { IDLE,Walk,Back,Die,Attack,Damage,End}
     public FSM_HeadMachine<DummyFSM> m_state;
     public FSM_State<DummyFSM>[] m_arrState = new FSM_State<DummyFSM>[(int)State.End];
 
     public Transform m_TransTarget;
+
 
     public State m_eCurState;
     public State m_ePrevState;
@@ -18,6 +19,9 @@ public class DummyFSM : MonoBehaviour
     public float m_fFindRange;
     public float m_fAttackRange;
     public Animator m_Animator;
+
+    public GameObject indicator;
+    public RangeCircle indicatorRangeCircle;
 
     public DummyFSM()
     {
@@ -27,9 +31,9 @@ public class DummyFSM : MonoBehaviour
     public void init()
     {
         m_state = new FSM_HeadMachine<DummyFSM>();
-
         m_arrState[(int)State.IDLE] = new Dummy_Idle(this);
         m_arrState[(int)State.Walk] = new Dummy_Walk(this);
+        m_arrState[(int)State.Attack] = new Dummy_Attack(this);
 
         m_state.SetState(m_arrState[(int)State.IDLE], this);
     }
@@ -62,6 +66,7 @@ public class DummyFSM : MonoBehaviour
     private void Start()
     {
         Begin();
+        indicatorRangeCircle = new RangeCircle(this.transform, 41.5f, 1.04f);
     }
     private void Update()
     {

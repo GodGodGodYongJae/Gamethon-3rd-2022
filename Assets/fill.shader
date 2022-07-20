@@ -107,6 +107,9 @@ Shader "Custom/fill"
 					if (atanAngle >= startAngle && atanAngle <= endAngle) discard;
 					if (atanAngle <= offset360) discard;
 					if (atanAngle >= offset0) discard;
+					//if (atanAngle <= startAngle && atanAngle >= endAngle) discard;
+					//if (atanAngle <= offset360) discard;
+					//if (atanAngle >= offset0) discard;
 
 					return c;
 				}

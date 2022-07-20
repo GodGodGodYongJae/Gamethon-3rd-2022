@@ -23,7 +23,7 @@ public class EnemyFactoryMethod : Singleton<EnemyFactoryMethod>
     }
     private void Start()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 1; i++)
         {
             CreateEnemy("Dummy", new Vector3(3 * i, 0, 3 * i),Quaternion.identity);
         }

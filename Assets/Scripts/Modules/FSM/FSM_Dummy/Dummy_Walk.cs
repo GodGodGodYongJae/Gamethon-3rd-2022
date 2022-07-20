@@ -31,8 +31,15 @@ public class Dummy_Walk : FSM_State<DummyFSM>
         }
         if (m_Owner.m_TransTarget != null)
             GotoTarget();
-        if(m_Owner.m_TransTarget !=null && m_Owner.m_fAttackRange >= Vector3.Distance(m_Owner.transform.position,m_Owner.m_TransTarget.position))
+        Vector3 targetDir = (m_Owner.m_TransTarget.position - m_Owner.transform.position).normalized;
+        float dot = Vector3.Dot(m_Owner.transform.forward,targetDir);
+
+        float theta = Mathf.Acos(dot) * Mathf.Rad2Deg;
+        if (m_Owner.m_TransTarget !=null 
+            && m_Owner.m_fAttackRange >= Vector3.Distance(m_Owner.transform.position,m_Owner.m_TransTarget.position)
+             && theta <= 7)
         {
+            //Debug.Log(theta);
             //Debug.Log("АјАн!");
             m_Owner.ChangeFSM(DummyFSM.State.Attack);
         }
