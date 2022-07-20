@@ -16,9 +16,12 @@ public class Player : MonoBehaviour
    
     public Animator anim;
     public float attackdistance;
+
+    Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
+        //rb = GetComponent<Rigidbody>();
         //Time.timeScale = 0.3f;
         anim = GetComponent<Animator>();
         PlayerDirection = bitFlags.PlayerMoveDirection.None;
@@ -44,7 +47,9 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        if(target != EnemyFactoryMethod.Instance?.target)
+
+        //rb.velocity = Vector3.zero;
+        if (target != EnemyFactoryMethod.Instance?.target)
         {
             //anim.SetBool("isEnemyLoss", true);
             target = EnemyFactoryMethod.Instance?.target;
@@ -87,7 +92,7 @@ public class Player : MonoBehaviour
     {
         if (target == null)
             return;
-        Debug.Log(Vector3.Distance(transform.position, target.position));
+        //Debug.Log(Vector3.Distance(transform.position, target.position));
         if(pd.HasFlag(bitFlags.PlayerMoveDirection.Dash))
         {
             float distance = Vector3.Distance(transform.position, target.position);

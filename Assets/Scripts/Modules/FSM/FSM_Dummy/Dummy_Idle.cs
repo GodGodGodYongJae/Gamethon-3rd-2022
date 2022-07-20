@@ -13,19 +13,46 @@ public class Dummy_Idle : FSM_State<DummyFSM>
     }
     public override void Begin()
     {
-        Debug.Log("idle Begin Log");
+        //Debug.Log("idle Begin Log");
         m_Owner.m_eCurState = DummyFSM.State.IDLE;
     }
     public override void Run()
     {
+
+      
+
         if (FindTarget())
-            m_Owner.ChangeFSM(DummyFSM.State.Walk);
+        {
+            Vector3 targetDir = (m_Owner.m_TransTarget.position - m_Owner.transform.position).normalized;
+            float dot = Vector3.Dot(m_Owner.transform.forward, targetDir);
+            float theta = Mathf.Acos(dot) * Mathf.Rad2Deg;
+
+
+            if (m_Owner.isDealy == false && m_Owner.istargetMove == false)
+                m_Owner.ChangeFSM(DummyFSM.State.Walk);
+            else if (m_Owner.isDealy == true && m_Owner.istargetMove == true)
+            {
+                if (theta <= 7)
+                {
+                    m_Owner.istargetMove = false;
+                    m_Owner.ChangeFSM(DummyFSM.State.Walk);
+                }
+                else
+                {
+                    m_Owner.ChangeFSM(DummyFSM.State.Attack);
+                }
+               
+            }
+               
+        }
+           
         else
             m_Owner.m_TransTarget = null;
     }
     public override void Exit()
     {
-        Debug.Log("idle Exit");
+        //Debug.Log("idle Exit");
+ 
         m_Owner.m_ePrevState = DummyFSM.State.IDLE;
     }
 

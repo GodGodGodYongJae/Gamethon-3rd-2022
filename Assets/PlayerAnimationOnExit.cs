@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerAnimationOnExit : StateMachineBehaviour
 {
     public new string name;
+    public bool isbool = false;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
@@ -20,6 +21,9 @@ public class PlayerAnimationOnExit : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if(isbool)
+        animator.SetBool(name, true);
+        else
         animator.SetInteger(name, 0);
     }
 

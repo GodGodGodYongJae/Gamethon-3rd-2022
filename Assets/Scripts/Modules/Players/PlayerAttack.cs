@@ -14,6 +14,8 @@ public class PlayerAttack : MonoBehaviour
     }
     public void OnAttackEvent(Transform target)
     {
+        if (target == null)
+            return;
         if(player.anim.GetInteger("Movement") == 0)
         {
             IDamageable damge = target.GetComponent<IDamageable>();

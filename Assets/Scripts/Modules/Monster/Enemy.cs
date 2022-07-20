@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class Enemy : MonoBehaviour, IDamageable
 {
@@ -15,6 +16,10 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
     private float canTakeDamage;
     private float damageCooldown;
+
+    public UnityEvent<int> getDamageEvent;
+    public float DestoryTime;
+
     protected void Start()
     {
         Init();
@@ -32,9 +37,10 @@ public abstract class Enemy : MonoBehaviour, IDamageable
         {
             canTakeDamage = Time.time + damageCooldown;
             Health -= damage;
+            OnDamageEvent();
             DamageTextSettings(damage);
-            if (Health <= 0)
-                EnemyFactoryMethod.Instance?.DeleteEnemy(this.gameObject);
+            //if (Health <= 0)
+            //    EnemyFactoryMethod.Instance?.DeleteEnemy(this.gameObject);
         }
     }
     private void DamageTextSettings(int dmg)
@@ -45,5 +51,17 @@ public abstract class Enemy : MonoBehaviour, IDamageable
         text.Damage(dmg);
     }
 
+    public void OnDamageEvent()
+    {
+        getDamageEvent?.Invoke(Health);
+    }
+
+    public IEnumerator OnRateDestory()
+    {
+        Destroy(this.gameObject.GetComponent<CapsuleCollider>());
+        yield return new WaitForSeconds(DestoryTime);
+        Destroy(this.gameObject);
+      
+    }
     public int Health { get { return health; } set { health = value; } }
 }

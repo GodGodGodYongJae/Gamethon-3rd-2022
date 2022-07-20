@@ -15,6 +15,7 @@ public class EnemyFactoryMethod : Singleton<EnemyFactoryMethod>
 
     public Transform target;
 
+
     protected override void Awake()
     {
         base.Awake();
@@ -56,6 +57,7 @@ public class EnemyFactoryMethod : Singleton<EnemyFactoryMethod>
     }
     public void DeleteEnemy(GameObject obj)
     {
+        Enemy ObjEnemy = obj.GetComponent<Enemy>();
         if(target == obj.transform)
         {
             if (MonsterList.Count - 1 > 0)
@@ -67,15 +69,19 @@ public class EnemyFactoryMethod : Singleton<EnemyFactoryMethod>
             else
             {
                 MonsterList.Remove(obj);
+                // 0개가 되면 우선 임시적으로 다시 생성해주고 있음.
                 GameObject empty = e_enemyPrefabDictionary["Dummy"];
                 MonsterList.Add(Instantiate(empty));
                 StartCoroutine("RateTarget");
             }
-            Destroy(obj);
+
+            ObjEnemy.StartCoroutine(ObjEnemy.OnRateDestory());
+            //Destroy(obj);
             return;
 
         }
-        Destroy(obj);
+        ObjEnemy.StartCoroutine(ObjEnemy.OnRateDestory());
+        //Destroy(obj);
         MonsterList.Remove(obj);
     }
 

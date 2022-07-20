@@ -41,15 +41,20 @@ public class PlayerMove : MonoBehaviour
     private IEnumerator MoveToPosition(Vector3 target)
     {
         //Debug.Log("MoveToPosition");
+ 
         float t = 0;
         Vector3 start = transform.position;
 
-        while (t <= 1)
+        // Unit이 서로 낑겼을 때 Nan이 나오므로 예외처리 
+        if (!float.IsNaN(target.x) && !float.IsNaN(target.y) && !float.IsNaN(target.z))
         {
-            t += Time.deltaTime * rollSpeed;
-            rb.MovePosition(Vector3.Lerp(start, target, t));
+            while (t <= 1)
+            {
+                t += Time.deltaTime * rollSpeed;
+                rb.MovePosition(Vector3.Lerp(start, target, t));
 
-            yield return null;
+                yield return null;
+            }
         }
     }
 

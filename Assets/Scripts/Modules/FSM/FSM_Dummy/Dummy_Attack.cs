@@ -12,24 +12,26 @@ public class Dummy_Attack : FSM_State<DummyFSM>
     public Dummy_Attack(DummyFSM _owner)
     {
         m_Owner = _owner;
-        AttackWaitTime = 3.0f;
+        AttackWaitTime = 1.2f;
         AttackWaittingTime = 0.0f;
     }
 
     public override void Begin()
     {
-        Debug.Log("Attack Begin");
+        //Debug.Log("Attack Begin");
         m_Owner.m_eCurState = DummyFSM.State.Attack;
     }
 
     public override void Exit()
     {
-        Debug.Log("Attack Exit");
+        m_Owner.indicator.SetActive(false);
+        //Debug.Log("Attack Exit");
         m_Owner.m_ePrevState = DummyFSM.State.Attack;
     }
 
     public override void Run()
     {
+
         m_Owner.indicator.SetActive(true);
         AttackWaittingTime += Time.deltaTime;
         if (AttackWaittingTime > AttackWaitTime)
@@ -41,8 +43,11 @@ public class Dummy_Attack : FSM_State<DummyFSM>
             {
                 Debug.Log("¸ÂÀ½");
             }
+           
             m_Owner.indicator.SetActive(false);
             m_Owner.ChangeFSM(DummyFSM.State.IDLE);
+            m_Owner.isDealy = false;
+            m_Owner.istargetMove = false;
         }
 
     }

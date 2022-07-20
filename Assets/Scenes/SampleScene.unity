@@ -6218,6 +6218,10 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5200164802443894505, guid: fe5214d519fd1b74c908570120805134, type: 3}
+      propertyPath: getDamageEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 9162053130312698464, guid: fe5214d519fd1b74c908570120805134, type: 3}
       propertyPath: m_RootOrder
       value: 5
