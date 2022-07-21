@@ -50,11 +50,11 @@ public class EnemyFactoryMethod : Singleton<EnemyFactoryMethod>
             target = MonsterList[0].transform;
         }
     }
-    IEnumerator RateTarget()
-    {
-       yield return new WaitForSeconds(0.5f);
-        target = MonsterList[0].transform;
-    }
+    //IEnumerator RateTarget()
+    //{
+    //   //yield return new WaitForSeconds(0.5f);
+    //   // target = MonsterList[0].transform;
+    //}
     public void DeleteEnemy(GameObject obj)
     {
         Enemy ObjEnemy = obj.GetComponent<Enemy>();
@@ -63,8 +63,8 @@ public class EnemyFactoryMethod : Singleton<EnemyFactoryMethod>
             if (MonsterList.Count - 1 > 0)
             {
                 MonsterList.Remove(obj);
-                StartCoroutine("RateTarget");
-                //target = MonsterList[0].transform;
+                //StartCoroutine("RateTarget");
+                target = MonsterList[0].transform;
             }
             else
             {
@@ -72,7 +72,8 @@ public class EnemyFactoryMethod : Singleton<EnemyFactoryMethod>
                 // 0개가 되면 우선 임시적으로 다시 생성해주고 있음.
                 GameObject empty = e_enemyPrefabDictionary["Dummy"];
                 MonsterList.Add(Instantiate(empty));
-                StartCoroutine("RateTarget");
+                //StartCoroutine("RateTarget");
+                target = MonsterList[0].transform;
             }
 
             ObjEnemy.StartCoroutine(ObjEnemy.OnRateDestory());

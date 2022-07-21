@@ -29,25 +29,25 @@ public class SwipeDetection : MonoBehaviour
             if(Input.touches[0].position.y >= startPos.y + pixelDistToDetect)
             {
                 fingerDown = false;
-                Debug.Log("Swipe Up");
+               // Debug.Log("Swipe Up");
                 OnTouchEvent(bitFlags.PlayerMoveDirection.Front);
             }
             else if (Input.touches[0].position.y <= startPos.y - pixelDistToDetect)
             {
                 fingerDown = false;
-                Debug.Log("Swipe Down");
+               // Debug.Log("Swipe Down");
                 OnTouchEvent(bitFlags.PlayerMoveDirection.Back);
             }
             else if(Input.touches[0].position.x <= startPos.x - pixelDistToDetect)
             {
                 fingerDown = false;
-                Debug.Log("Swipe Left");
+               // Debug.Log("Swipe Left");
                 OnTouchEvent(bitFlags.PlayerMoveDirection.Left);
             }
             else if (Input.touches[0].position.x >= startPos.x + pixelDistToDetect )
             {
                 fingerDown = false;
-                Debug.Log("Swipe Right");
+               // Debug.Log("Swipe Right");
                 OnTouchEvent(bitFlags.PlayerMoveDirection.Right);
             }
        
@@ -75,7 +75,7 @@ public class SwipeDetection : MonoBehaviour
             if (Input.mousePosition.y >= startPos.y + pixelDistToDetect)
             {
                 fingerDown = false;
-                Debug.Log("Swipe Up");
+               // Debug.Log("Swipe Up");
             }
 
         }

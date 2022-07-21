@@ -16,6 +16,11 @@ public class PlayerAttack : MonoBehaviour
     {
         if (target == null)
             return;
+
+        //Enemy te = target.GetComponent<Enemy>();
+        //if (te.isDeath)
+        //    return;
+
         if(player.anim.GetInteger("Movement") == 0)
         {
             IDamageable damge = target.GetComponent<IDamageable>();

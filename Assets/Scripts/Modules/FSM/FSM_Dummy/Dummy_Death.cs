@@ -22,15 +22,13 @@ public class Dummy_Death : FSM_State<DummyFSM>
 
     public override void Run()
     {
-        if (EndAnimationDone())
-        {
-            EnemyFactoryMethod.Instance?.DeleteEnemy(m_Owner.gameObject);
-        }
+        EnemyFactoryMethod.Instance?.DeleteEnemy(m_Owner.gameObject);
+       
     }
 
-    bool EndAnimationDone()
-    {
-        return m_Owner.m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Death") &&
-            m_Owner.m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.90f;
-    }
+    //bool EndAnimationDone()
+    //{
+    //    return m_Owner.m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Death") &&
+    //        m_Owner.m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.90f;
+    //}
 }

@@ -72,7 +72,7 @@ public class DummyFSM : MonoBehaviour
 
     public void OnGetDamageEvent(int Health)
     {
-        Debug.Log("FS"+Health);
+       
         if (Health <= 0)
             ChangeFSM(State.Death);
         else

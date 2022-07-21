@@ -41,7 +41,8 @@ public class Dummy_Attack : FSM_State<DummyFSM>
             m_Owner.indicator.SetActive(false);
             if (m_Owner.indicatorRangeCircle.isCollisition(hitColliders[0].transform))
             {
-                Debug.Log("¸ÂÀ½");
+                IDamageable damage = hitColliders[0].GetComponent<IDamageable>();
+                damage.Damage(10);
             }
            
             m_Owner.indicator.SetActive(false);

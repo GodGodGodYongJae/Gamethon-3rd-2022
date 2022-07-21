@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamageable
 {
     [SerializeField]
     UnityEvent<bitFlags.PlayerMoveDirection,Transform> MoveEvents;
@@ -18,11 +18,16 @@ public class Player : MonoBehaviour
     public float attackdistance;
 
     Rigidbody rb;
+
+    private int health;
+    public int Health { get { return health; } set { health = value; }  }
+
     // Start is called before the first frame update
     void Start()
     {
         //rb = GetComponent<Rigidbody>();
-        //Time.timeScale = 0.3f;
+        //Time.timeScale = 0.5f;
+        Health = 100;
         anim = GetComponent<Animator>();
         PlayerDirection = bitFlags.PlayerMoveDirection.None;
 
@@ -97,7 +102,11 @@ public class Player : MonoBehaviour
         {
             float distance = Vector3.Distance(transform.position, target.position);
             if (distance > attackdistance)
-                PlayerDirection = bitFlags.PlayerMoveDirection.Dash;
+            {
+                if (anim.GetInteger("Movement") == 0)
+                    PlayerDirection = bitFlags.PlayerMoveDirection.Dash;
+            }    
+
             else
                 PlayerDirection = bitFlags.PlayerMoveDirection.Attack;
         }
@@ -108,7 +117,15 @@ public class Player : MonoBehaviour
 
     }
 
-
+    public void Damage(int damage)
+    {
+        Health -= damage;
+        Debug.Log(Health);
+        if(Health <= 0)
+        {
+            Debug.Log("Á×À½");
+        }
+    }
 }
 
 

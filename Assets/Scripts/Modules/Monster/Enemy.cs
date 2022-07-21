@@ -19,6 +19,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
     public UnityEvent<int> getDamageEvent;
     public float DestoryTime;
+    public bool isDeath;
 
     protected void Start()
     {
@@ -33,7 +34,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
     public void Damage(int damage)
     {
-        if (Time.time >= canTakeDamage)
+        if (Time.time >= canTakeDamage && isDeath.Equals(false))
         {
             canTakeDamage = Time.time + damageCooldown;
             Health -= damage;
@@ -58,6 +59,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
     public IEnumerator OnRateDestory()
     {
+        isDeath = true;
         Destroy(this.gameObject.GetComponent<CapsuleCollider>());
         yield return new WaitForSeconds(DestoryTime);
         Destroy(this.gameObject);
