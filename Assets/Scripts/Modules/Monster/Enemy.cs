@@ -13,7 +13,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     [SerializeField]
     protected MonsterType1 type;
 
-
+    public MonsterType1 Type { get { return type; } }
     private float canTakeDamage;
     private float damageCooldown;
 
@@ -32,10 +32,11 @@ public abstract class Enemy : MonoBehaviour, IDamageable
            health = type.Hp;
     }
 
-    public void Damage(int damage)
+    public void Damage(int _damage)
     {
         if (Time.time >= canTakeDamage && isDeath.Equals(false))
         {
+            int damage = Mathf.FloorToInt(type.AttackPoint * (1 - (type.DefencePoint / 100)));
             canTakeDamage = Time.time + damageCooldown;
             Health -= damage;
             OnDamageEvent();

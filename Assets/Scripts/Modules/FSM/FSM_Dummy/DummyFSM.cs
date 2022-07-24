@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 
 public class DummyFSM : MonoBehaviour
 {
@@ -12,7 +12,7 @@ public class DummyFSM : MonoBehaviour
 
     public Transform m_TransTarget;
 
-
+    public float AttackWaitTime;
     public State m_eCurState;
     public State m_ePrevState;
 
@@ -21,6 +21,7 @@ public class DummyFSM : MonoBehaviour
 
     public float attackDleay;
     private float currentAtkDealy;
+
     public bool isDealy;
     public bool istargetMove;
     public Animator m_Animator;
@@ -28,7 +29,12 @@ public class DummyFSM : MonoBehaviour
     public GameObject indicator;
     public RangeCircle indicatorRangeCircle;
 
+    public float attackRange;
+    public float attackDistance;
     private Enemy enemy;
+    public bool isDebug;
+
+    private NavMeshAgent agent; 
     public DummyFSM()
     {
         init();
@@ -63,7 +69,7 @@ public class DummyFSM : MonoBehaviour
     private void currentAttackDealy()
     {
         currentAtkDealy += Time.deltaTime;
-        if (currentAtkDealy > attackDleay)
+        if (currentAtkDealy > attackDleay && isDealy == false)
         {
             isDealy = true;
             currentAtkDealy = 0;
@@ -101,15 +107,33 @@ public class DummyFSM : MonoBehaviour
     {
         m_state.Exit();
     }
+
+    private void mappingStatus()
+    {
+        Enemy e = GetComponent<Enemy>();
+        //AttackWaitTime = e.Type.AttackDelay;
+        m_fFindRange = e.Type.FindRange;
+        m_fAttackRange = e.Type.AttackFindRange;
+        attackDleay = e.Type.AttackDelay;
+        attackRange = e.Type.AttackRange;
+        attackDistance = e.Type.AttackDistance;
+        agent.speed = e.Type.MoveSpeed;
+        agent.stoppingDistance = e.Type.StopDistance;
+
+    }
     private void Awake()
     {
+        agent = this.GetComponent<NavMeshAgent>();
         m_Animator = this.GetComponent<Animator>();
     }
     private void Start()
     {
+        if (!isDebug)
+            mappingStatus();
+
         Begin();
-        enemy = GetComponent<Enemy>();
-        indicatorRangeCircle = new RangeCircle(this.transform, 41.5f, 1.04f);
+        enemy = GetComponent<Enemy>(); 
+        indicatorRangeCircle = new RangeCircle(this.transform, attackRange, attackDistance);
     }
     private void Update()
     {

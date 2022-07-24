@@ -6,13 +6,12 @@ public class Dummy_Attack : FSM_State<DummyFSM>
 {
 
     private DummyFSM m_Owner;
-    private float AttackWaitTime;
+    //private float AttackWaitTime;
     private float AttackWaittingTime;
  
     public Dummy_Attack(DummyFSM _owner)
     {
         m_Owner = _owner;
-        AttackWaitTime = 1.2f;
         AttackWaittingTime = 0.0f;
     }
 
@@ -34,7 +33,7 @@ public class Dummy_Attack : FSM_State<DummyFSM>
 
         m_Owner.indicator.SetActive(true);
         AttackWaittingTime += Time.deltaTime;
-        if (AttackWaittingTime > AttackWaitTime)
+        if (AttackWaittingTime > m_Owner.AttackWaitTime)
         {
             Collider[] hitColliders = Physics.OverlapSphere(m_Owner.transform.position, m_Owner.m_fFindRange*3, (1 << LayerMask.NameToLayer("Player")));
             AttackWaittingTime = 0f;

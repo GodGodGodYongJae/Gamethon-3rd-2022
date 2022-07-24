@@ -27,8 +27,7 @@ public class Dummy_Idle : FSM_State<DummyFSM>
             float dot = Vector3.Dot(m_Owner.transform.forward, targetDir);
             float theta = Mathf.Acos(dot) * Mathf.Rad2Deg;
 
-
-            if (m_Owner.isDealy == false && m_Owner.istargetMove == false)
+            if ( m_Owner.istargetMove == false)
                 m_Owner.ChangeFSM(DummyFSM.State.Walk);
             else if (m_Owner.isDealy == true && m_Owner.istargetMove == true)
             {
@@ -46,8 +45,8 @@ public class Dummy_Idle : FSM_State<DummyFSM>
                
         }
            
-        else
-            m_Owner.m_TransTarget = null;
+        //else
+        //    m_Owner.m_TransTarget = null;
     }
     public override void Exit()
     {
@@ -60,7 +59,7 @@ public class Dummy_Idle : FSM_State<DummyFSM>
     private bool FindTarget()
     {
         Collider[] hitColliders = Physics.OverlapSphere(m_Owner.transform.position, m_Owner.m_fFindRange, (1 << LayerMask.NameToLayer("Player")));
-        if(hitColliders.Length != 0)
+        if(hitColliders.Length != 0 || m_Owner.m_TransTarget != null)
         {
             for (int i = 0; i < hitColliders.Length; i++)
             {
@@ -68,11 +67,12 @@ public class Dummy_Idle : FSM_State<DummyFSM>
                 {
                     m_Owner.m_TransTarget = hitColliders[i].transform;
                 }
-                if (m_Owner.m_TransTarget == null)
-                    m_Owner.m_TransTarget = hitColliders[0].transform;
-
-                return true;
+            
             }
+            if (m_Owner.m_TransTarget == null)
+                m_Owner.m_TransTarget = hitColliders[0].transform;
+
+            return true;
         }
         return false;
     }

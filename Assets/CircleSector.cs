@@ -8,7 +8,7 @@ public class CircleSector : MonoBehaviour
 {
     public Transform target;
 
-    public float angleRange = 45f;
+    public float angleRange = 160f;
     public float distance = 2f;
     public bool isCollistion = false;
 

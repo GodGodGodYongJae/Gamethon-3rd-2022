@@ -4,13 +4,14 @@ using UnityEngine;
 
 abstract class EnemyGenerator
 {   
-   public class EnermyDesign
+   public struct EnermyDesign
     {
-        public Enemy Enemy;
+        public string EnemyName;
         public Vector3 pos;
         public Vector3 Rotate;
     }
-    List<EnermyDesign> enermies = new List<EnermyDesign>();
+
+    protected List<EnermyDesign> enermies = new List<EnermyDesign>();
 
     List<EnermyDesign> Get()
     {

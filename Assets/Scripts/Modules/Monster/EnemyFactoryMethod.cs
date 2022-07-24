@@ -26,9 +26,12 @@ public class EnemyFactoryMethod : Singleton<EnemyFactoryMethod>
     {
         for (int i = 0; i < 1; i++)
         {
-            CreateEnemy("Dummy", new Vector3(3 * i, 0, 3 * i),Quaternion.identity);
+            CreateEnemy("Golem", new Vector3(3 * 2, 0, 3 * 2), Quaternion.identity);
+            CreateEnemy("Golem", new Vector3(3 * i, 0, 3 * i),Quaternion.identity);
+            
+            //Dummy
         }
-        
+
 
     }
   
