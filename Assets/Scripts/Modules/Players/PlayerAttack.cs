@@ -24,7 +24,7 @@ public class PlayerAttack : MonoBehaviour
         if(player.anim.GetInteger("Movement") == 0)
         {
             IDamageable damge = target.GetComponent<IDamageable>();
-            damge.Damage(playerData.RandAtk);
+            damge.Damage(playerData.RandAtk,this.gameObject);
         }
        
     }

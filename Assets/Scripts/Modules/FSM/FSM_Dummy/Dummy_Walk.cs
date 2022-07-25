@@ -91,7 +91,23 @@ public class Dummy_Walk : FSM_State<DummyFSM>
 
     private void GotoTarget()
     {
-        agent.SetDestination(m_Owner.m_TransTarget.position);
+        float distance = Vector3.Distance(m_Owner.m_TransTarget.position,m_Owner.transform.position);
+        Vector3 point = Vector3.zero;
+        NavMeshPath path = new NavMeshPath();
+        //if(distance < 3)
+        //{
+        //    point = m_Owner.transform.position * -5;//EnemyFactoryMethod.Instance.target.position;
+        //}
+        //else
+        //{
+        //point = m_Owner.m_TransTarget.position;
+        //}
+        point = m_Owner.m_TransTarget.position;
+        agent.ResetPath();
+        agent.CalculatePath(point, path);
+        agent.SetPath(path);
+        //https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=gudska4237&logNo=221454275833 응답지연문제 
+
     }
 
 }

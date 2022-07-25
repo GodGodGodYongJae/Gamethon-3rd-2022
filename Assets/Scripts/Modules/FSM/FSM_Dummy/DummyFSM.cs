@@ -99,6 +99,7 @@ public class DummyFSM : MonoBehaviour
     }
     public void Run()
     {
+        if(m_TransTarget == null || m_TransTarget.GetComponent<Player>().isDeath == false)
         m_state.Run();
         if(!isDealy)
         currentAttackDealy();

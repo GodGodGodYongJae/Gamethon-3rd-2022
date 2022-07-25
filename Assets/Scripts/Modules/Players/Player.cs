@@ -20,14 +20,15 @@ public class Player : MonoBehaviour, IDamageable
     Rigidbody rb;
 
     private int health;
+    public bool isDeath;
     public int Health { get { return health; } set { health = value; }  }
 
     // Start is called before the first frame update
     void Start()
     {
         //rb = GetComponent<Rigidbody>();
-        //Time.timeScale = 0.5f;
-        Health = 100;
+        //Time.timeScale = 0.3f;
+        Health = 10;
         anim = GetComponent<Animator>();
         PlayerDirection = bitFlags.PlayerMoveDirection.None;
 
@@ -63,6 +64,7 @@ public class Player : MonoBehaviour, IDamageable
         {
 
             Vector3 targetPos = new Vector3(target.transform.position.x,transform.position.y,target.transform.position.z);
+            if(!isDeath)
             transform.LookAt(targetPos);
         }
             
@@ -117,13 +119,17 @@ public class Player : MonoBehaviour, IDamageable
 
     }
 
-    public void Damage(int damage)
+    public void Damage(int damage,GameObject tr)
     {
         Health -= damage;
         Debug.Log(Health);
         if(Health <= 0)
         {
-            Debug.Log("Á×À½");
+            CutSceneManager.Instance.OnDeathScene(true);
+            isDeath = true;
+            transform.LookAt(tr.transform);
+            Time.timeScale = 0.35f;
+            anim.SetBool("isDeath", true);
         }
     }
 }

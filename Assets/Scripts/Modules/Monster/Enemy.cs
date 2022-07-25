@@ -32,7 +32,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
            health = type.Hp;
     }
 
-    public void Damage(int _damage)
+    public void Damage(int _damage,GameObject tr)
     {
         if (Time.time >= canTakeDamage && isDeath.Equals(false))
         {

@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6489381109519658737}
   - component: {fileID: -7444776838641168667}
+  - component: {fileID: 9148134323694369411}
   m_Layer: 0
-  m_Name: '@Managers'
+  m_Name: '@GameManagers'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,3 +48,15 @@ MonoBehaviour:
   defalutAmount: 10
   poolList: []
   poolAmount: 
+--- !u!114 &9148134323694369411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574110902973667327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fb1cad80f861f4419e4a5f86f83d313, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

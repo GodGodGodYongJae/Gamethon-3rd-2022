@@ -15,6 +15,9 @@ public class EnemyFactoryMethod : Singleton<EnemyFactoryMethod>
 
     public Transform target;
 
+    [SerializeField]
+    private GameObject Objects;
+
 
     protected override void Awake()
     {
@@ -45,7 +48,9 @@ public class EnemyFactoryMethod : Singleton<EnemyFactoryMethod>
         else
         {
             GameObject obj = e_enemyPrefabDictionary[keyName];
-            MonsterList.Add(Instantiate(obj,pos, quaternion));
+            obj = Instantiate(obj, pos, quaternion);
+            obj.transform.parent = Objects.transform;
+            MonsterList.Add(obj);
             //MonsterList.Add(obj.transform);
         }
         if (target == null)

@@ -5,5 +5,7 @@ using UnityEngine;
 public interface IDamageable
 {
    int Health { get; set; }
-    void Damage(int damage);
+
+    // 데미지와 공격자
+    void Damage(int damage,GameObject attacker);
 }
