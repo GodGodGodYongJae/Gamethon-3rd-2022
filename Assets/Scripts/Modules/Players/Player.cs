@@ -28,7 +28,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         //rb = GetComponent<Rigidbody>();
         //Time.timeScale = 0.3f;
-        Health = 10;
+        Health = 30;
         anim = GetComponent<Animator>();
         PlayerDirection = bitFlags.PlayerMoveDirection.None;
 
@@ -68,10 +68,6 @@ public class Player : MonoBehaviour, IDamageable
             transform.LookAt(targetPos);
         }
         
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            CutSceneManager.Instance.OnScene(true, CutSceneManager.Events.SwordSkill,true);
-        }
 
         #region KeyBoard
         //if (anim.GetInteger("Movement") == 0)
@@ -90,6 +86,10 @@ public class Player : MonoBehaviour, IDamageable
 
     }
 
+    public void OnSwordSkilBtn()
+    {
+        CutSceneManager.Instance.OnScene(true, CutSceneManager.Events.SwordSkill, true);
+    }
     public void movement(bitFlags.PlayerMoveDirection pd, Transform target)
     {
             MoveEvents?.Invoke(pd,target);

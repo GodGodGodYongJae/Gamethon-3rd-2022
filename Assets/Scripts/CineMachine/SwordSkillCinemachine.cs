@@ -25,12 +25,20 @@ public class SwordSkillCinemachine : MonoBehaviour
     [SerializeField]
     bool isDamage;
     private GameObject go;
+
+    bool isStart;
     // Start is called before the first frame update
-    void Start()
+    void Update()
     {
+        if (!isStart)
+            Run();
+    }
+
+    private void Run()
+    {
+        isStart = true;
         Director = GetComponent<PlayableDirector>();
-        name = "Golem";//EnemyFactoryMethod.Instance.GetTargetName();
-        Debug.Log(name);
+        name = EnemyFactoryMethod.Instance.GetTargetName();
 
         go = Instantiate(e_enermy[name]);
         CinemachineUnit unit = go.GetComponent<CinemachineUnit>();
@@ -50,20 +58,19 @@ public class SwordSkillCinemachine : MonoBehaviour
         {
             if (track.name == TrackName)
             {
-               
+
                 Director.SetGenericBinding(track, anim);
                 // var animPlayableAsset = (AnimationPlayableAsset)track.GetClips();
                 //animPlayableAsset.position = pos;
                 //animPlayableAsset.rotation = rotate;
             }
-   
+
         }
         //var animPlayableAsset = (AnimationPlayableAsset)asset.CreateClip(myClip).asset;
         //Director.SetGenericBinding(TrackName, anim);
         //Director.Play();
         StartCoroutine(PlayTimelineRoutine(Director));
     }
-
 
 
     private IEnumerator PlayTimelineRoutine(PlayableDirector playableDirector)
@@ -81,8 +88,9 @@ public class SwordSkillCinemachine : MonoBehaviour
         if (isDamage)
         {
             IDamageable damageable = EnemyFactoryMethod.Instance.target.GetComponent<IDamageable>();
-            damageable.Damage(200,this.gameObject);
+            damageable.Damage(450,this.gameObject);
         }
+        isStart = false;
            
     }
 }

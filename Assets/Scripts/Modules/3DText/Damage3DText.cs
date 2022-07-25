@@ -15,6 +15,7 @@ public class Damage3DText : MonoBehaviour
     void Update()
     {
         //transform.LookAt(Camera.main.transform);
+        if(Camera.main != null)
         this.transform.LookAt(this.transform.position + Camera.main.transform.rotation * Vector3.forward, Camera.main.transform.rotation * Vector3.up);
     }
     public void Damage(int dmg)

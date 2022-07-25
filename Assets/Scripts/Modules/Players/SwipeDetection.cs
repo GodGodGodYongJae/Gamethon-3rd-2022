@@ -24,7 +24,7 @@ public class SwipeDetection : MonoBehaviour
             fingerDown = true;
             endTouch = false;
         }
-        if(fingerDown)
+        if(fingerDown && Input.touches.Length > 0)
         {
             if(Input.touches[0].position.y >= startPos.y + pixelDistToDetect)
             {

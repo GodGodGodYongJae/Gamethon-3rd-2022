@@ -36,7 +36,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     {
         if (Time.time >= canTakeDamage && isDeath.Equals(false))
         {
-            int damage = Mathf.FloorToInt(type.AttackPoint * (1 - (type.DefencePoint / 100)));
+            int damage = Mathf.FloorToInt(_damage * (1 - (type.DefencePoint / 100)));
             canTakeDamage = Time.time + damageCooldown;
             Health -= damage;
             OnDamageEvent();
