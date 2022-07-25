@@ -67,7 +67,11 @@ public class Player : MonoBehaviour, IDamageable
             if(!isDeath)
             transform.LookAt(targetPos);
         }
-            
+        
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            CutSceneManager.Instance.OnScene(true, CutSceneManager.Events.SwordSkill,true);
+        }
 
         #region KeyBoard
         //if (anim.GetInteger("Movement") == 0)
@@ -125,7 +129,7 @@ public class Player : MonoBehaviour, IDamageable
         Debug.Log(Health);
         if(Health <= 0)
         {
-            CutSceneManager.Instance.OnDeathScene(true);
+            CutSceneManager.Instance.OnScene(true,CutSceneManager.Events.Death);
             isDeath = true;
             transform.LookAt(tr.transform);
             Time.timeScale = 0.35f;

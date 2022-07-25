@@ -4,10 +4,23 @@ using UnityEngine;
 
 public class CutSceneManager : Singleton<CutSceneManager>
 {
-    [SerializeField]
-     GameObject DeathScene;
-  public void OnDeathScene(bool stat)
-    {
-        DeathScene.SetActive(stat);
+    public enum Events {
+    Death,
+    SwordSkill
     }
+
+    [SerializeField]
+    GameObject ObjManager;
+    [SerializeField]
+    List<GameObject>SceneEvents;
+  public void OnScene(bool stat,Events even, bool Objfalse = false)
+    {
+        if (Objfalse)
+        {
+            ObjManager.SetActive(!stat);
+        }
+           
+        SceneEvents[(int)even].SetActive(stat);
+    }
+   
 }

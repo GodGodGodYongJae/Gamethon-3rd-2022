@@ -63,6 +63,11 @@ public class EnemyFactoryMethod : Singleton<EnemyFactoryMethod>
     //   //yield return new WaitForSeconds(0.5f);
     //   // target = MonsterList[0].transform;
     //}
+    public string GetTargetName()
+    {
+        Enemy ObjEnemy = target.GetComponent<Enemy>();
+        return ObjEnemy.Type.name;
+    }
     public void DeleteEnemy(GameObject obj)
     {
         Enemy ObjEnemy = obj.GetComponent<Enemy>();
