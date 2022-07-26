@@ -8,6 +8,7 @@ public class Dummy_Walk : FSM_State<DummyFSM>
 
     private DummyFSM m_Owner;
     private NavMeshAgent agent;
+    bool isFallBack;
     //private float currentAtkDealy;
     //private bool isDealy;
     public Dummy_Walk(DummyFSM _owner)
@@ -94,18 +95,37 @@ public class Dummy_Walk : FSM_State<DummyFSM>
         float distance = Vector3.Distance(m_Owner.m_TransTarget.position,m_Owner.transform.position);
         Vector3 point = Vector3.zero;
         NavMeshPath path = new NavMeshPath();
-        //if(distance < 3)
-        //{
-        //    point = m_Owner.transform.position * -5;//EnemyFactoryMethod.Instance.target.position;
-        //}
-        //else
-        //{
-        //point = m_Owner.m_TransTarget.position;
-        //}
-        point = m_Owner.m_TransTarget.position;
+        if(isFallBack)
+        {
+            if (agent.remainingDistance < 1)
+                isFallBack = false;
+
+        }
+        else
+        {
+            point = m_Owner.m_TransTarget.position;
+        }
+
+        if (m_Owner.isDealy == false)
+        {
+            if(distance < 2)
+            {
+                if(isFallBack == false)
+                    isFallBack = true;
+
+                point = m_Owner.m_TransTarget.position * -5;
+
+            }
+        }
+        else
+        {
+            isFallBack = false;
+        }
+  
         agent.ResetPath();
         agent.CalculatePath(point, path);
         agent.SetPath(path);
+        Debug.Log(agent.pathEndPosition);
         //https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=gudska4237&logNo=221454275833 응답지연문제 
 
     }

@@ -26,8 +26,8 @@ public class Dummy_Idle : FSM_State<DummyFSM>
             Vector3 targetDir = (m_Owner.m_TransTarget.position - m_Owner.transform.position).normalized;
             float dot = Vector3.Dot(m_Owner.transform.forward, targetDir);
             float theta = Mathf.Acos(dot) * Mathf.Rad2Deg;
-
-            if ( m_Owner.istargetMove == false)
+            float distance = Vector3.Distance(m_Owner.m_TransTarget.position, m_Owner.transform.position);
+            if ( m_Owner.istargetMove == false || (m_Owner.isDealy == false&&distance < 2))
                 m_Owner.ChangeFSM(DummyFSM.State.Walk);
             else if (m_Owner.isDealy == true && m_Owner.istargetMove == true)
             {
