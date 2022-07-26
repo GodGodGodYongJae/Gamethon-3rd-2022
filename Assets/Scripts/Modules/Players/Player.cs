@@ -28,7 +28,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         //rb = GetComponent<Rigidbody>();
         //Time.timeScale = 0.3f;
-        Health = 30;
+        Health = 100;
         anim = GetComponent<Animator>();
         PlayerDirection = bitFlags.PlayerMoveDirection.None;
 

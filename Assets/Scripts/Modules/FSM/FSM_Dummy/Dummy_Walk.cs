@@ -19,7 +19,7 @@ public class Dummy_Walk : FSM_State<DummyFSM>
     {
         //Debug.Log("Walk Begin");
 
-        agent = m_Owner.GetComponent<NavMeshAgent>();
+        agent = m_Owner.agent;
         agent.isStopped = false;
         m_Owner.m_eCurState = DummyFSM.State.Walk;
 
@@ -97,27 +97,33 @@ public class Dummy_Walk : FSM_State<DummyFSM>
         NavMeshPath path = new NavMeshPath();
         if(isFallBack)
         {
-            if (agent.remainingDistance < 1)
+
+            if (agent.remainingDistance < 0.8)
+            {
                 isFallBack = false;
+                Debug.Log(agent.remainingDistance);
+            }
+                
 
         }
         else
         {
+            //agent.speed = m_Owner.enemy.Type.MoveSpeed;
             point = m_Owner.m_TransTarget.position;
         }
 
         if (m_Owner.isDealy == false)
         {
-            if(distance < 2)
+            if(distance < 3)
             {
                 if(isFallBack == false)
                     isFallBack = true;
-
-                point = m_Owner.m_TransTarget.position * -5;
+                //agent.speed = m_Owner.enemy.Type.MoveSpeed * 2;
+                point = m_Owner.m_TransTarget.forward * 5f;//m_Owner.m_TransTarget.position * -5;
 
             }
         }
-        else
+        else if(m_Owner.isDealy == true)
         {
             isFallBack = false;
         }
@@ -125,7 +131,7 @@ public class Dummy_Walk : FSM_State<DummyFSM>
         agent.ResetPath();
         agent.CalculatePath(point, path);
         agent.SetPath(path);
-        Debug.Log(agent.pathEndPosition);
+        //Debug.Log(agent.pathEndPosition);
         //https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=gudska4237&logNo=221454275833 응답지연문제 
 
     }

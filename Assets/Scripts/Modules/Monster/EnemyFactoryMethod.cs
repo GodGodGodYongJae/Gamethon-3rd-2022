@@ -27,14 +27,13 @@ public class EnemyFactoryMethod : Singleton<EnemyFactoryMethod>
     }
     private void Start()
     {
-        for (int i = 0; i < 1; i++)
-        {
-            CreateEnemy("Golem", new Vector3(3 * 2, 0, 3 * 2), Quaternion.identity);
-            CreateEnemy("Golem", new Vector3(3 * i, 0, 3 * i),Quaternion.identity);
-            
-            //Dummy
-        }
-
+        //for (int i = 0; i < 1; i++)
+        //{
+        //    CreateEnemy("CrabHydra", new Vector3(3 * 2, 0, 3 * 2), Quaternion.identity);
+        //    CreateEnemy("Golem", new Vector3(3 * i, 0, 3 * i),Quaternion.identity);
+        //    //Dummy
+        //}
+        PattenGenerator pa = new PattenGenerator(1, 1,1);
 
     }
   

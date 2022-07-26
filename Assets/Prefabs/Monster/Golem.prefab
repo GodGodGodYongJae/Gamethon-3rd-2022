@@ -193,7 +193,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  DestoryTime: 0
+  DestoryTime: 10
   isDeath: 0
 --- !u!114 &243774974187367993
 MonoBehaviour:

@@ -479,7 +479,7 @@ PlayableDirector:
   - key: {fileID: -9104650978835739024, guid: 986d738ff30a9844eb1767244a19c655, type: 2}
     value: {fileID: 0}
   - key: {fileID: 1349011935854694500, guid: 986d738ff30a9844eb1767244a19c655, type: 2}
-    value: {fileID: 1878794021}
+    value: {fileID: 0}
   - key: {fileID: -6623836349061273510, guid: 986d738ff30a9844eb1767244a19c655, type: 2}
     value: {fileID: 0}
   - key: {fileID: 2470859960362407673, guid: 986d738ff30a9844eb1767244a19c655, type: 2}
@@ -493,6 +493,8 @@ PlayableDirector:
   - key: {fileID: -4251046135757622422, guid: 986d738ff30a9844eb1767244a19c655, type: 2}
     value: {fileID: 0}
   - key: {fileID: -2799596751681779673, guid: 986d738ff30a9844eb1767244a19c655, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 9009407229385782069, guid: 986d738ff30a9844eb1767244a19c655, type: 2}
     value: {fileID: 0}
   m_ExposedReferences:
     m_References:
@@ -594,13 +596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c5dabbfe2a64a42a19e69ee70d2d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  e_enermy:
-    keys:
-    - Golem
-    values:
-    - {fileID: 5526202190248676051, guid: 8f8eae0aa5549f644b9c88be8d7d4163, type: 3}
   Director: {fileID: 0}
-  TrackName: Golem
   anim: {fileID: 0}
   isDamage: 1
 --- !u!1 &308268094
@@ -1059,7 +1055,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1329,7 +1325,7 @@ Transform:
   - {fileID: 1191321447}
   - {fileID: 890472457}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &565199562
 GameObject:
@@ -7017,7 +7013,7 @@ Transform:
   - {fileID: 1743330345}
   - {fileID: 831933526}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1067234298 stripped
 GameObject:
@@ -10110,14 +10106,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1803846711}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6fc985de75fb0946a2c404664d2f0c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   angleRange: 47.3
-  distance: 1.04
+  distance: 3.2
   isCollistion: 0
   numSegments: 128
 --- !u!114 &1803846721
@@ -10144,11 +10140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b055f80ee23a89440bfa58555d71e6ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &1878794021 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 157849886179112641, guid: c59460838c0603c4fbca8d8dc88841c4, type: 3}
-  m_PrefabInstance: {fileID: 243774975131871285}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1911816877
 GameObject:
   m_ObjectHideFlags: 0
@@ -11886,12 +11877,26 @@ MonoBehaviour:
     keys:
     - Dummy
     - Golem
+    - CrabHydra
     values:
     - {fileID: 9162053130312800128, guid: fe5214d519fd1b74c908570120805134, type: 3}
     - {fileID: 243716965394760169, guid: c59460838c0603c4fbca8d8dc88841c4, type: 3}
+    - {fileID: 5978480333071649275, guid: 690c36c6a0b761e4fb7dec4466921964, type: 3}
   MonsterList: []
   target: {fileID: 0}
   Objects: {fileID: 1757675442}
+--- !u!114 &1994632066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994632064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d38eb69ece787c24497860a996ce7f3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1995002880
 GameObject:
   m_ObjectHideFlags: 0
@@ -18311,67 +18316,6 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 5141207986941286543, guid: 8f8eae0aa5549f644b9c88be8d7d4163, type: 3}
   m_PrefabInstance: {fileID: 5751335133927858847}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &243774975131871285
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 243716965394760169, guid: c59460838c0603c4fbca8d8dc88841c4, type: 3}
-      propertyPath: m_Name
-      value: Golem
-      objectReference: {fileID: 0}
-    - target: {fileID: 243716965394760169, guid: c59460838c0603c4fbca8d8dc88841c4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 247057372007249931, guid: c59460838c0603c4fbca8d8dc88841c4, type: 3}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 247057372007249931, guid: c59460838c0603c4fbca8d8dc88841c4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 247057372007249931, guid: c59460838c0603c4fbca8d8dc88841c4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 247057372007249931, guid: c59460838c0603c4fbca8d8dc88841c4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 247057372007249931, guid: c59460838c0603c4fbca8d8dc88841c4, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 247057372007249931, guid: c59460838c0603c4fbca8d8dc88841c4, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 247057372007249931, guid: c59460838c0603c4fbca8d8dc88841c4, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 247057372007249931, guid: c59460838c0603c4fbca8d8dc88841c4, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 247057372007249931, guid: c59460838c0603c4fbca8d8dc88841c4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 247057372007249931, guid: c59460838c0603c4fbca8d8dc88841c4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 247057372007249931, guid: c59460838c0603c4fbca8d8dc88841c4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c59460838c0603c4fbca8d8dc88841c4, type: 3}
 --- !u!4 &247057371955270062 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5529683171260986161, guid: 8f8eae0aa5549f644b9c88be8d7d4163, type: 3}

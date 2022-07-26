@@ -31,10 +31,9 @@ public class DummyFSM : MonoBehaviour
 
     public float attackRange;
     public float attackDistance;
-    private Enemy enemy;
-    public bool isDebug;
+    public Enemy enemy;
 
-    private NavMeshAgent agent; 
+    public NavMeshAgent agent; 
     public DummyFSM()
     {
         init();
@@ -111,15 +110,15 @@ public class DummyFSM : MonoBehaviour
 
     private void mappingStatus()
     {
-        Enemy e = GetComponent<Enemy>();
+        enemy = GetComponent<Enemy>();
         //AttackWaitTime = e.Type.AttackDelay;
-        m_fFindRange = e.Type.FindRange;
-        m_fAttackRange = e.Type.AttackFindRange;
-        attackDleay = e.Type.AttackDelay;
-        attackRange = e.Type.AttackRange;
-        attackDistance = e.Type.AttackDistance;
-        agent.speed = e.Type.MoveSpeed;
-        agent.stoppingDistance = e.Type.StopDistance;
+        m_fFindRange = enemy.Type.FindRange;
+        m_fAttackRange = enemy.Type.AttackFindRange;
+        attackDleay = enemy.Type.AttackDelay;
+        attackRange = enemy.Type.AttackRange;
+        attackDistance = enemy.Type.AttackDistance;
+        agent.speed = enemy.Type.MoveSpeed;
+        agent.stoppingDistance = enemy.Type.StopDistance;
 
     }
     private void Awake()
@@ -129,10 +128,7 @@ public class DummyFSM : MonoBehaviour
     }
     private void Start()
     {
-        if (!isDebug)
-            mappingStatus();
-
-        Begin();
+        mappingStatus();
         enemy = GetComponent<Enemy>(); 
         indicatorRangeCircle = new RangeCircle(this.transform, attackRange, attackDistance);
     }

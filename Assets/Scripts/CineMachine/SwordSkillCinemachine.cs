@@ -7,19 +7,21 @@ using UnityEngine.Timeline;
 
 public class SwordSkillCinemachine : MonoBehaviour
 {
-    [System.Serializable]
-    public class EnemiesList : SerializableDictionary<string, GameObject> { };
-    // 1번째는 피격 2번째는 죽음
+    //[System.Serializable]
+    //public class EnemiesList : SerializableDictionary<string, GameObject> { };
+    //// 1번째는 피격 2번째는 죽음
 
-    public EnemiesList e_enermy = new EnemiesList();
+    //public EnemiesList e_enermy = new EnemiesList();
 
+
+    private Dictionary<string, GameObject> e_enermy = new Dictionary<string, GameObject>();
 
     [SerializeField]
     PlayableDirector Director;
     //[SerializeField]
     private string name;
-    [SerializeField]
-    private string TrackName;
+    //[SerializeField]
+    //private string TrackName;
     [SerializeField]
     Animator anim;
     [SerializeField]
@@ -28,6 +30,10 @@ public class SwordSkillCinemachine : MonoBehaviour
 
     bool isStart;
     // Start is called before the first frame update
+    private void Start()
+    {
+        e_enermy = EnemyFactoryMethod.Instance.e_enemyPrefabDictionary;
+    }
     void Update()
     {
         if (!isStart)
@@ -56,7 +62,7 @@ public class SwordSkillCinemachine : MonoBehaviour
         //clip.duration = clip.duration / clip.timeScale;
         foreach (TrackAsset track in asset.GetOutputTracks())
         {
-            if (track.name == TrackName)
+            if (track.name == name)
             {
 
                 Director.SetGenericBinding(track, anim);
