@@ -13,21 +13,27 @@ public class PattenGenerator
         this.ChaptperNum = ChapterNum + wave;
         this.StageNum = StageNum;
         GeneratorInit();
-        CreateUnit();
+       this.isNotWave = CreateUnit();
     }
 
     private float ChaptperNum;
     private int StageNum;
+    public bool isNotWave;
 
     // 챕터.웨이브 / 스테이지넘버 / 클래스
     Dictionary<float,Tuple<int,WavePatten>> GeneratorDic = new Dictionary<float, Tuple<int, WavePatten>>();
-    private void CreateUnit()
+    private bool CreateUnit()
     {
         foreach (var item in GeneratorDic)
         {
             if (item.Key == ChaptperNum && item.Value.Item1 == StageNum)
+            {
                 item.Value.Item2.CreateUnit();
+                return false;
+            }
+               
         }
+        return true;
     }
 
     private void GeneratorInit()

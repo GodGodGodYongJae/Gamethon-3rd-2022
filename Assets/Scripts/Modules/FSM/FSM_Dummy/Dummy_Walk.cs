@@ -101,10 +101,8 @@ public class Dummy_Walk : FSM_State<DummyFSM>
             if (agent.remainingDistance < 0.8)
             {
                 isFallBack = false;
-                Debug.Log(agent.remainingDistance);
             }
                 
-
         }
         else
         {

@@ -18,11 +18,13 @@ public class EnemyFactoryMethod : Singleton<EnemyFactoryMethod>
     [SerializeField]
     private GameObject Objects;
 
+    private StageController stageController;
 
     protected override void Awake()
     {
         base.Awake();
         e_enemyPrefabDictionary.OnBeforeSerialize();
+        stageController = GetComponent<StageController>();
 
     }
     private void Start()
@@ -33,7 +35,7 @@ public class EnemyFactoryMethod : Singleton<EnemyFactoryMethod>
         //    CreateEnemy("Golem", new Vector3(3 * i, 0, 3 * i),Quaternion.identity);
         //    //Dummy
         //}
-        PattenGenerator pa = new PattenGenerator(1, 1,1);
+      
 
     }
   
@@ -82,10 +84,11 @@ public class EnemyFactoryMethod : Singleton<EnemyFactoryMethod>
             {
                 MonsterList.Remove(obj);
                 // 0개가 되면 우선 임시적으로 다시 생성해주고 있음.
-                GameObject empty = e_enemyPrefabDictionary["Dummy"];
-                MonsterList.Add(Instantiate(empty));
-                //StartCoroutine("RateTarget");
-                target = MonsterList[0].transform;
+                //GameObject empty = e_enemyPrefabDictionary["Dummy"];
+                //MonsterList.Add(Instantiate(empty));
+                // // StartCoroutine("RateTarget");
+                //target = MonsterList[0].transform;
+                stageController.NextWave();
             }
 
             ObjEnemy.StartCoroutine(ObjEnemy.OnRateDestory());

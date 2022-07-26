@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Golem
   hp: 500
   attackPoint: 80
-  attackDelay: 1.5
+  attackDelay: 4
   defencePoint: 30
   moveSpeed: 1
   findRange: 3
