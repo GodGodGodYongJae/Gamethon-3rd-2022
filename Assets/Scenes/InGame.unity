@@ -13468,7 +13468,7 @@ MonoBehaviour:
   target: {fileID: 0}
   PlayerDirection: 0
   anim: {fileID: 0}
-  attackdistance: 1
+  attackdistance: 2
   isDeath: 0
 --- !u!114 &1803846714
 MonoBehaviour:
