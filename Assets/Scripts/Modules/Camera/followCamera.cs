@@ -15,6 +15,10 @@ public class followCamera : MonoBehaviour
     private Transform tr;             // Ä«¸Þ¶ó 
     private Vector3 velocity = Vector3.zero;
     public float smoothTime = 1.3F;
+    private void Awake()
+    {
+        Application.targetFrameRate = 60;
+    }
     private void Start()
     {
         tr = GetComponent<Transform>();
