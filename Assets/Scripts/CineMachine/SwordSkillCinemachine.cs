@@ -44,7 +44,7 @@ public class SwordSkillCinemachine : MonoBehaviour
     {
         isStart = true;
         Director = GetComponent<PlayableDirector>();
-        name = EnemyFactoryMethod.Instance.GetTargetName();
+        name = EnemyFactoryMethod.Instance.GetTargetName(EnemyFactoryMethod.Instance.target);
 
         go = Instantiate(e_enermy[name]);
         CinemachineUnit unit = go.GetComponent<CinemachineUnit>();
@@ -88,7 +88,6 @@ public class SwordSkillCinemachine : MonoBehaviour
     }
     private void onComplete()
     {
-        Debug.Log("³¡");
         Destroy(go);
         CutSceneManager.Instance.OnScene(false, CutSceneManager.Events.SwordSkill,true);
         if (isDamage)

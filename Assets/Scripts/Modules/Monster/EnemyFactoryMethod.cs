@@ -14,11 +14,13 @@ public class EnemyFactoryMethod : Singleton<EnemyFactoryMethod>
     public List<GameObject> MonsterList = new List<GameObject>();
 
     public Transform target;
-
+    public Transform LastTarget;
     [SerializeField]
     private GameObject Objects;
+    [SerializeField]
+    private GameObject DeathObjs;
 
-    private StageController stageController;
+    public StageController stageController;
 
     protected override void Awake()
     {
@@ -38,6 +40,8 @@ public class EnemyFactoryMethod : Singleton<EnemyFactoryMethod>
       
 
     }
+
+  
   
     public void CreateEnemy(string keyName,Vector3 pos, Quaternion quaternion)
     {
@@ -64,9 +68,9 @@ public class EnemyFactoryMethod : Singleton<EnemyFactoryMethod>
     //   //yield return new WaitForSeconds(0.5f);
     //   // target = MonsterList[0].transform;
     //}
-    public string GetTargetName()
+    public string GetTargetName(Transform _target)
     {
-        Enemy ObjEnemy = target.GetComponent<Enemy>();
+        Enemy ObjEnemy = _target.GetComponent<Enemy>();
         return ObjEnemy.Type.name;
     }
     public void DeleteEnemy(GameObject obj)
@@ -82,21 +86,24 @@ public class EnemyFactoryMethod : Singleton<EnemyFactoryMethod>
             }
             else
             {
+                LastTarget = target;
                 MonsterList.Remove(obj);
                 // 0개가 되면 우선 임시적으로 다시 생성해주고 있음.
                 //GameObject empty = e_enemyPrefabDictionary["Dummy"];
                 //MonsterList.Add(Instantiate(empty));
                 // // StartCoroutine("RateTarget");
                 //target = MonsterList[0].transform;
+                ObjEnemy.StartCoroutine(ObjEnemy.OnRateDestory(DeathObjs));
                 stageController.NextWave();
+                return;
             }
 
-            ObjEnemy.StartCoroutine(ObjEnemy.OnRateDestory());
+            ObjEnemy.StartCoroutine(ObjEnemy.OnRateDestory(DeathObjs));
             //Destroy(obj);
             return;
 
         }
-        ObjEnemy.StartCoroutine(ObjEnemy.OnRateDestory());
+        ObjEnemy.StartCoroutine(ObjEnemy.OnRateDestory(DeathObjs));
         //Destroy(obj);
         MonsterList.Remove(obj);
     }

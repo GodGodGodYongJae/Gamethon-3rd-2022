@@ -1,45 +1,88 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 
 public class PattenGenerator
 {
 
-    public PattenGenerator(float ChapterNum,int StageNum,short WaveNum)
+    public PattenGenerator(sbyte ChapterNum, sbyte StageNum, sbyte WaveNum)
     {
-        float wave = WaveNum * 0.1f;
-        this.ChaptperNum = ChapterNum + wave;
-        this.StageNum = StageNum;
+        //float wave = WaveNum * 0.01f;
+        //float stage = StageNum * 0.1f;
+        //float DecConvert = (ChapterNum + stage + wave)*100f;
+        //this.GeneratorKey = DecConvert + (DecConvert / 10) * 6;
+        string C = ChapterNum.ToString("X");
+        string S = StageNum.ToString("X");
+        string W = WaveNum.ToString("X");
+        string A = C + S + W;
+        GeneratorKey = Convert.ToInt32(A, 16);
+        string SN = (StageNum + 1).ToString("X");
+        string NW = 1.ToString("X");
+        string NA = C + SN + NW;
+        NextGeneratorKey = Convert.ToInt32(NA, 16);
+       
         GeneratorInit();
-       this.isNotWave = CreateUnit();
+        CreateUnit();
+        isNextStage = FindNextStage();
+       
+
     }
 
-    private float ChaptperNum;
-    private int StageNum;
-    public bool isNotWave;
+    private int GeneratorKey;
+    public sbyte currentMaxWave;
+
+    private int NextGeneratorKey;
+
+    public bool isNextStage;
 
     // 챕터.웨이브 / 스테이지넘버 / 클래스
-    Dictionary<float,Tuple<int,WavePatten>> GeneratorDic = new Dictionary<float, Tuple<int, WavePatten>>();
-    private bool CreateUnit()
+    Dictionary<int,WavePatten> GeneratorDic = new Dictionary<int,  WavePatten>();
+    private void CreateUnit()
     {
         foreach (var item in GeneratorDic)
         {
-            if (item.Key == ChaptperNum && item.Value.Item1 == StageNum)
+            if (item.Key == GeneratorKey)
             {
-                item.Value.Item2.CreateUnit();
-                return false;
+                item.Value.CreateUnit();
+                 currentMaxWave = item.Value.maxWave;
+
+
             }
                
         }
-        return true;
+       
+    }
+
+    private bool FindNextStage()
+    {
+
+        foreach (var item in GeneratorDic)
+        {
+        
+            if (item.Key == NextGeneratorKey)
+            {
+               
+                return true;
+
+            }
+
+        }
+        return false;
     }
 
     private void GeneratorInit()
     {
-        GeneratorDic.Add(1.1f, new Tuple<int, WavePatten>(1 ,new Chapter1_Stage1(1)));
-        GeneratorDic.Add(1.2f, new Tuple<int, WavePatten>(1, new Chapter1_Stage1(2)));
+        //GeneratorDic.Add(1.11f, new Tuple<int, WavePatten>(1, new Chapter1_Stage1(1)));
+        GeneratorDic.Add(0x0111,  new Chapter1_Stage1(1));
+        GeneratorDic.Add(0x0112,  new Chapter1_Stage1(2));
+        GeneratorDic.Add(0x0121,  new Chapter01_02(1));
+        GeneratorDic.Add(0x0122, new Chapter01_02(2));
     }
+
+
+
 }
 

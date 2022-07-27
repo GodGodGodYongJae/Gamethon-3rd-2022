@@ -5,8 +5,9 @@ using UnityEngine;
 
 public abstract class WavePatten
 {
-  
 
+
+    public sbyte maxWave;
     protected Tuple<string, Vector3, Quaternion> monsterInfo;
     public List<Tuple<string, Vector3, Quaternion>> monsterList = new List<Tuple<string, Vector3, Quaternion>>();
 

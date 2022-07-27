@@ -58,12 +58,14 @@ public abstract class Enemy : MonoBehaviour, IDamageable
         getDamageEvent?.Invoke(Health);
     }
 
-    public IEnumerator OnRateDestory()
+    public IEnumerator OnRateDestory(GameObject deathObj )
     {
         isDeath = true;
         Destroy(this.gameObject.GetComponent<CapsuleCollider>());
         yield return new WaitForSeconds(DestoryTime);
-        Destroy(this.gameObject);
+        this.gameObject.transform.parent = deathObj.transform;
+        //this.gameObject.SetActive(false);
+        //Destroy(this.gameObject);
       
     }
     public int Health { get { return health; } set { health = value; } }

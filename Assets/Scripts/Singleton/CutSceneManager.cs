@@ -6,7 +6,8 @@ public class CutSceneManager : Singleton<CutSceneManager>
 {
     public enum Events {
     Death,
-    SwordSkill
+    SwordSkill,
+    StageClear
     }
 
     [SerializeField]
