@@ -21,7 +21,6 @@ public class StageClearCinemachine : MonoBehaviour
     bool isDamage;
     private GameObject go;
 
-    bool isStart;
     // Start is called before the first frame update
     private void Start()
     {
@@ -29,16 +28,15 @@ public class StageClearCinemachine : MonoBehaviour
     }
     void Update()
     {
-        if (!isStart)
+        if (CutSceneManager.Instance.CineMachineStart)
             Run();
     }
 
     private void Run()
     {
-        isStart = true;
+        CutSceneManager.Instance.CineMachineStart = false;
         Director = GetComponent<PlayableDirector>();
         name = EnemyFactoryMethod.Instance.GetTargetName(EnemyFactoryMethod.Instance.LastTarget);
-
         go = Instantiate(e_enermy[name]);
         CinemachineUnit unit = go.GetComponent<CinemachineUnit>();
         anim = go.GetComponent<Animator>();
@@ -53,8 +51,19 @@ public class StageClearCinemachine : MonoBehaviour
             }
 
         }
-       
-    }
+        StartCoroutine(PlayTimelineRoutine(Director));
 
+    }
+    private IEnumerator PlayTimelineRoutine(PlayableDirector playableDirector)
+    {
+        playableDirector.Play();
+        yield return new WaitForSeconds((float)playableDirector.duration);
+        onComplete();
+
+    }
+    private void onComplete()
+    {
+        Destroy(go);
+    }
 
 }

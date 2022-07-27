@@ -6,7 +6,7 @@ public class Chapter01_02 : WavePatten
 {
     public Chapter01_02(short WaveNum)
     {
-        maxWave = 2;
+        maxWave = 3;
         WaveCreate(WaveNum);
     }
 
@@ -24,6 +24,6 @@ public class Chapter01_02 : WavePatten
 
     protected override void Wave3()
     {
-
+        monsterList.Add(CreateEnemy("Golem", new Vector3(3, 0, 3), Quaternion.identity));
     }
 }

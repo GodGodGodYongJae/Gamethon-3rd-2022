@@ -62,10 +62,9 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     {
         isDeath = true;
         Destroy(this.gameObject.GetComponent<CapsuleCollider>());
-        yield return new WaitForSeconds(DestoryTime);
         this.gameObject.transform.parent = deathObj.transform;
-        //this.gameObject.SetActive(false);
-        //Destroy(this.gameObject);
+        yield return new WaitForSeconds(DestoryTime);
+        this.gameObject.SetActive(false);
       
     }
     public int Health { get { return health; } set { health = value; } }

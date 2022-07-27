@@ -14,13 +14,16 @@ public class StageController : MonoBehaviour
     {
         ChapterNum = 1;
         StageNum = 1;
-        WaveNum = 1;
-        PattenGenerator generator = new PattenGenerator(ChapterNum, StageNum, WaveNum);
-        MaxWave = generator.currentMaxWave;
+        WaveNum = 0;
+        //PattenGenerator generator = new PattenGenerator(ChapterNum, StageNum, WaveNum);
+        //MaxWave = generator.currentMaxWave;
+        MaxWave = 10;
+        NextWave();
     }
 
     public void NextWave()
     {
+
         WaveNum++;
         if (WaveNum <= MaxWave)
         {
@@ -30,7 +33,6 @@ public class StageController : MonoBehaviour
         else
         {
             WaveNum = 0;
-            Debug.Log(generator.isNextStage + "-" + StageNum);
             if (generator.isNextStage)
             {
                 StageNum++;
@@ -57,7 +59,7 @@ public class StageController : MonoBehaviour
             // 5. 다음 스테이지 유닛을 생성한다.
 
         }
-       
+
         //if(generator.isNotWave)
         //{
         //    WaveNum = 1;
@@ -70,5 +72,6 @@ public class StageController : MonoBehaviour
         //        //Debug.Log("더이상 다음 Stage가 없습니다.");
         //    }
         //}
+       
     }
 }

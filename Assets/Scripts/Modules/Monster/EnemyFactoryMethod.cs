@@ -68,6 +68,24 @@ public class EnemyFactoryMethod : Singleton<EnemyFactoryMethod>
     //   //yield return new WaitForSeconds(0.5f);
     //   // target = MonsterList[0].transform;
     //}
+
+    public void ShowDeathEnemy()
+    {
+        for (int i = 0; i < DeathObjs.transform.childCount; i++)
+        {
+            DeathObjs.transform.GetChild(i).gameObject.SetActive(true);
+        }
+        
+    }
+
+    public void EmptyDeathEnemy()
+    {
+        for (int i = 0; i < DeathObjs.transform.childCount; i++)
+        {
+            Destroy(DeathObjs.transform.GetChild(i).gameObject);
+        }
+    }
+
     public string GetTargetName(Transform _target)
     {
         Enemy ObjEnemy = _target.GetComponent<Enemy>();
@@ -93,6 +111,7 @@ public class EnemyFactoryMethod : Singleton<EnemyFactoryMethod>
                 //MonsterList.Add(Instantiate(empty));
                 // // StartCoroutine("RateTarget");
                 //target = MonsterList[0].transform;
+                target = null;
                 ObjEnemy.StartCoroutine(ObjEnemy.OnRateDestory(DeathObjs));
                 stageController.NextWave();
                 return;

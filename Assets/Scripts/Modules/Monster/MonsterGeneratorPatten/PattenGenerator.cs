@@ -80,6 +80,7 @@ public class PattenGenerator
         GeneratorDic.Add(0x0112,  new Chapter1_Stage1(2));
         GeneratorDic.Add(0x0121,  new Chapter01_02(1));
         GeneratorDic.Add(0x0122, new Chapter01_02(2));
+        GeneratorDic.Add(0x0123, new Chapter01_02(3));
     }
 
 

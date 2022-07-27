@@ -5,6 +5,7 @@ using UnityEngine;
 public class Dummy_Death : FSM_State<DummyFSM>
 {
     private DummyFSM m_Owner;
+    bool isDeath;
     public Dummy_Death(DummyFSM _owner)
     {
         m_Owner = _owner;
@@ -12,6 +13,7 @@ public class Dummy_Death : FSM_State<DummyFSM>
     public override void Begin()
     {
         m_Owner.m_eCurState = DummyFSM.State.Death;
+        isDeath = true;
     }
 
     public override void Exit()
@@ -22,7 +24,12 @@ public class Dummy_Death : FSM_State<DummyFSM>
 
     public override void Run()
     {
-        EnemyFactoryMethod.Instance?.DeleteEnemy(m_Owner.gameObject);
+        if(isDeath)
+        {
+            EnemyFactoryMethod.Instance?.DeleteEnemy(m_Owner.gameObject);
+            isDeath = false;
+        }
+        
        
     }
 

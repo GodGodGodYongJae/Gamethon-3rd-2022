@@ -14,8 +14,11 @@ public class CutSceneManager : Singleton<CutSceneManager>
     GameObject ObjManager;
     [SerializeField]
     List<GameObject>SceneEvents;
+
+    public bool CineMachineStart;
   public void OnScene(bool stat,Events even, bool Objfalse = false)
     {
+        CineMachineStart = stat;
         if (Objfalse)
         {
             ObjManager.SetActive(!stat);

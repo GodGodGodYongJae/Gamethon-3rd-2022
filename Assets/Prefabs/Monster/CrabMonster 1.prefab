@@ -4226,7 +4226,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  DestoryTime: 10
+  DestoryTime: 3
   isDeath: 0
 --- !u!114 &6042155885688887102
 MonoBehaviour:
@@ -4253,7 +4253,8 @@ MonoBehaviour:
   indicator: {fileID: 2130192579120781743}
   attackRange: 0
   attackDistance: 0
-  isDebug: 0
+  enemy: {fileID: 0}
+  agent: {fileID: 0}
 --- !u!195 &-4103792543787823590
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4643,11 +4644,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3101457938266178975, guid: 5ae3ff34ad5ed424aba8cb0ea688e39f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 3101457938266178975, guid: 5ae3ff34ad5ed424aba8cb0ea688e39f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3101457938266178975, guid: 5ae3ff34ad5ed424aba8cb0ea688e39f, type: 3}
       propertyPath: m_LocalRotation.w

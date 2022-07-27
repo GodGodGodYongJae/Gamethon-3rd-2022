@@ -21,7 +21,7 @@ public class Chapter1_Stage1 : WavePatten
     protected override void Wave2()
     {
         monsterList.Add(CreateEnemy("CrabHydra", new Vector3(3, 0, 3), Quaternion.identity));
-        monsterList.Add(CreateEnemy("Golem", new Vector3(9, 0, 9), Quaternion.identity));
+      
     }
 
     protected override void Wave3()

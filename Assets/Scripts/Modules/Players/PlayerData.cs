@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-    private int minAtk = 1000;
-    private int maxAtk = 1000;
+    private int minAtk = 80;
+    private int maxAtk = 100;
 
     public int RandAtk { get { return Random.Range(minAtk, maxAtk); } }
 
