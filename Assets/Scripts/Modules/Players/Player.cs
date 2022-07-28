@@ -24,6 +24,10 @@ public class Player : MonoBehaviour, IDamageable
     public int Health { get { return health; } set { health = value; }  }
 
     // Start is called before the first frame update
+    private void Awake()
+    {
+        EnemyFactoryMethod.Instance.player = this;
+    }
     void Start()
     {
         //rb = GetComponent<Rigidbody>();

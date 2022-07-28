@@ -22,6 +22,7 @@ public class EnemyFactoryMethod : Singleton<EnemyFactoryMethod>
 
     public StageController stageController;
 
+    public Player player;
     protected override void Awake()
     {
         base.Awake();
