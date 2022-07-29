@@ -47,7 +47,7 @@ public class Dummy_Walk : FSM_State<DummyFSM>
         }
             GotoTarget();
 
-        Debug.Log(Vector3.Distance(m_Owner.transform.position, m_Owner.m_TransTarget.position));
+        //Debug.Log(Vector3.Distance(m_Owner.transform.position, m_Owner.m_TransTarget.position));
         if (m_Owner.m_TransTarget !=null 
             && m_Owner.m_fAttackRange >= Vector3.Distance(m_Owner.transform.position,m_Owner.m_TransTarget.position)
              && theta <= 7)

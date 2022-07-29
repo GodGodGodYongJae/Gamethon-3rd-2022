@@ -58,6 +58,7 @@ public class Player : MonoBehaviour, IDamageable
     void Update()
     {
 
+        Debug.Log(transform.TransformDirection(Vector3.forward));
         //rb.velocity = Vector3.zero;
         if (target != EnemyFactoryMethod.Instance?.target)
         {
