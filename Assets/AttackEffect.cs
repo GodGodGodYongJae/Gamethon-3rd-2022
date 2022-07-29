@@ -7,12 +7,12 @@ public class AttackEffect : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Vector3 pos = EnemyFactoryMethod.Instance.player.transform.position + EnemyFactoryMethod.Instance.player.transform.forward * 1.0f;
-        Debug.Log(pos);
+        //Vector3 pos = EnemyFactoryMethod.Instance.player.transform.position + EnemyFactoryMethod.Instance.player.transform.forward * 1.0f;
+        //Debug.Log(pos);
         //pos += new Vector3(0.051f, 0.314f, 0.381f);
         //Vector3 rot = new Vector3(220.250f, 55.7f, -59);
 
-        //GameObject TextGameObj = ObjectPoolManager.Instance?.Get("test", pos, Quaternion.Euler());
+        GameObject TextGameObj = ObjectPoolManager.Instance?.Get("test");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
