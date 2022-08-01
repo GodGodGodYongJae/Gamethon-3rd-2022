@@ -47,7 +47,7 @@ public class StageController : MonoBehaviour
             string string_stageNum;
             if (StageNum < 10) string_stageNum = "0" + StageNum;
             else string_stageNum = StageNum.ToString();
-            UIManager.Instance.TextChange(1, ChapterNum + "-" + string_stageNum);
+            UIManager.Instance.TextChange(UIManager.UI.StageNum, ChapterNum + "-" + string_stageNum);
             CutSceneManager.Instance.OnScene(true,CutSceneManager.Events.StageClear,true);
             // 1-1. 컷씬에 필요한 Unit을 가져온다.
             // [ 해당 내용은 LastMonster 자체를 EnemyFactory에서 들고있어야 할 것 같다.]

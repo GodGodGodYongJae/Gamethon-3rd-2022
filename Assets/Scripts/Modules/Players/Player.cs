@@ -19,9 +19,14 @@ public class Player : MonoBehaviour, IDamageable
 
     Rigidbody rb;
 
+    private int maxHealth;
     private int health;
+    private int exp;
+    private int level;
     public bool isDeath;
     public int Health { get { return health; } set { health = value; }  }
+    public int Exp { get { return exp; } set { exp = value; } }
+    public int Level { get { return level; }set { level = value; } }
     public GameObject effectParent;
     // Start is called before the first frame update
     private void Awake()
@@ -30,11 +35,17 @@ public class Player : MonoBehaviour, IDamageable
     }
     void Start()
     {
+
         //rb = GetComponent<Rigidbody>();
         //Time.timeScale = 0.3f;
+        exp = 0;
+        level = 0;
         Health = 100;
+        maxHealth = health;
         anim = GetComponent<Animator>();
         PlayerDirection = bitFlags.PlayerMoveDirection.None;
+        string Hptext = Health + "/" + maxHealth;
+        UIManager.Instance.TextChange(UIManager.UI.HPText, Hptext);
 
     }
 
@@ -130,7 +141,11 @@ public class Player : MonoBehaviour, IDamageable
 
     public void Damage(int damage,GameObject tr)
     {
+
         Health -= damage;
+        UIManager.Instance.ChangeHpBar(UIManager.UI.HpBar, Health, maxHealth);
+        string Hptext = Health + "/" + maxHealth;
+        UIManager.Instance.TextChange(UIManager.UI.HPText, Hptext);
         Debug.Log(Health);
         if(Health <= 0)
         {
