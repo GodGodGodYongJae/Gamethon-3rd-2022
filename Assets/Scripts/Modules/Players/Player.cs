@@ -146,7 +146,6 @@ public class Player : MonoBehaviour, IDamageable
         UIManager.Instance.ChangeHpBar(UIManager.UI.HpBar, Health, maxHealth);
         string Hptext = Health + "/" + maxHealth;
         UIManager.Instance.TextChange(UIManager.UI.HPText, Hptext);
-        Debug.Log(Health);
         if(Health <= 0)
         {
             CutSceneManager.Instance.OnScene(true,CutSceneManager.Events.Death);

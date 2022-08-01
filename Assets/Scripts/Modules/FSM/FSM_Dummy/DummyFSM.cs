@@ -33,7 +33,9 @@ public class DummyFSM : MonoBehaviour
     public float attackDistance;
     public Enemy enemy;
 
-    public NavMeshAgent agent; 
+    public NavMeshAgent agent;
+
+    public Transform backpos;
     public DummyFSM()
     {
         init();

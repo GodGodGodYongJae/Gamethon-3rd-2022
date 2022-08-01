@@ -96,16 +96,18 @@ public class Dummy_Walk : FSM_State<DummyFSM>
         float distance = Vector3.Distance(m_Owner.m_TransTarget.position,m_Owner.transform.position);
         Vector3 point = Vector3.zero;
         NavMeshPath path = new NavMeshPath();
-        if(isFallBack)
+        if (isFallBack)
         {
+          
+            point = m_Owner.backpos.position;
+            //if (agent.remainingDistance < 0.8)
+            //{
+            //    isFallBack = false;
+            //}
+            //Debug.Log(point);
 
-            if (agent.remainingDistance < 0.8)
-            {
-                isFallBack = false;
-            }
-                
         }
-        else
+        else if(isFallBack == false)
         {
             //agent.speed = m_Owner.enemy.Type.MoveSpeed;
             point = m_Owner.m_TransTarget.position;
@@ -113,12 +115,12 @@ public class Dummy_Walk : FSM_State<DummyFSM>
 
         if (m_Owner.isDealy == false)
         {
-            if(distance < m_Owner.m_fAttackRange * 10)
+            if(distance < m_Owner.m_fAttackRange )
             {
-                if(isFallBack == false)
+                //if(isFallBack == false)
                     isFallBack = true;
                 //agent.speed = m_Owner.enemy.Type.MoveSpeed * 2;
-                point = m_Owner.m_TransTarget.forward * 5f;//m_Owner.m_TransTarget.position * -5;
+               // point = m_Owner.m_TransTarget.forward * 5f;//m_Owner.m_TransTarget.position * -5;
 
             }
         }

@@ -8,22 +8,27 @@ public class AttackEffect : StateMachineBehaviour
     public Vector3 pos;
     public Vector3 rotate;
     public string EffectName;
+
+    private bool isCreate;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    //Vector3 pos = EnemyFactoryMethod.Instance.player.transform.position + EnemyFactoryMethod.Instance.player.transform.forward * 1.0f;
-    //    //Debug.Log(pos);
-    //    //pos += new Vector3(0.051f, 0.314f, 0.381f);
-    //    //Vector3 rot = new Vector3(220.250f, 55.7f, -59);
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        //Vector3 pos = EnemyFactoryMethod.Instance.player.transform.position + EnemyFactoryMethod.Instance.player.transform.forward * 1.0f;
+        //Debug.Log(pos);
+        //pos += new Vector3(0.051f, 0.314f, 0.381f);
+        //Vector3 rot = new Vector3(220.250f, 55.7f, -59);
+        isCreate = false;
 
 
-    //}
+    }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= effectStartTime)
+        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= effectStartTime && isCreate.Equals(false) )
         {
+
+            isCreate = true;
             EnemyFactoryMethod.Instance.player.effectParent.transform.localPosition = pos;
             EnemyFactoryMethod.Instance.player.effectParent.transform.localRotation = Quaternion.Euler(rotate);
             GameObject TextGameObj = ObjectPoolManager.Instance?.Get(EffectName);

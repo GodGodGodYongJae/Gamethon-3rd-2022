@@ -51,7 +51,7 @@ public class UIManager : Singleton<UIManager>
             //Debug.Log(maxHp * (i * 0.1f));
             if(curhp < maxHp * (i*0.1f) && curhp != maxHp * (i * 0.1f))
             {
-                Debug.Log(curhp + "," + maxHp * (i * 0.1f));
+                //Debug.Log(curhp + "," + maxHp * (i * 0.1f));
                 UIList[(int)UiState].transform.GetChild(i).GetComponent<Image>().sprite = playerHpSprite[0]; 
             }
             else if(curhp >= maxHp * (i  * 0.1f))

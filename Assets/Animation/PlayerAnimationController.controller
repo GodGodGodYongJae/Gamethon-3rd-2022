@@ -184,8 +184,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 701c333d528d4bc488028b40c45b9163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectStartTime: 0.3
-  pos: {x: 0, y: 0.35, z: 0}
+  effectStartTime: 0.65
+  pos: {x: 0, y: 1, z: 0}
   rotate: {x: 0, y: 0, z: 0}
   EffectName: SwordEffect2
 --- !u!1101 &-7759241057127774646
@@ -1042,7 +1042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 701c333d528d4bc488028b40c45b9163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectStartTime: 0.3
+  effectStartTime: 0.85
   pos: {x: 0, y: 0.22, z: 0}
   rotate: {x: 0, y: 270, z: 0}
   EffectName: SwordEffect3
