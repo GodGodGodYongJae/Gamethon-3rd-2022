@@ -12,6 +12,8 @@ public class AttackEffect : StateMachineBehaviour
         //pos += new Vector3(0.051f, 0.314f, 0.381f);
         //Vector3 rot = new Vector3(220.250f, 55.7f, -59);
 
+        EnemyFactoryMethod.Instance.player.effectParent.transform.localPosition = new Vector3(0.39f, 1.36f,  1.33f);
+        EnemyFactoryMethod.Instance.player.effectParent.transform.localRotation = Quaternion.Euler(new Vector3(-53f, -88f, 81f));
         GameObject TextGameObj = ObjectPoolManager.Instance?.Get("test");
     }
 

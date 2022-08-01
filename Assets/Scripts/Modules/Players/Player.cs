@@ -22,7 +22,7 @@ public class Player : MonoBehaviour, IDamageable
     private int health;
     public bool isDeath;
     public int Health { get { return health; } set { health = value; }  }
-
+    public GameObject effectParent;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -58,7 +58,7 @@ public class Player : MonoBehaviour, IDamageable
     void Update()
     {
 
-        Debug.Log(transform.TransformDirection(Vector3.forward));
+        //Debug.Log(transform.TransformDirection(Vector3.forward));
         //rb.velocity = Vector3.zero;
         if (target != EnemyFactoryMethod.Instance?.target)
         {
