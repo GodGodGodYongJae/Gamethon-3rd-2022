@@ -75,7 +75,7 @@ public class DummyFSM : MonoBehaviour
         }
     }
 
-    public void OnGetDamageEvent(int Health)
+    public void OnGetDamageEvent(int Health,int maxHelath)
     {
        
         if (Health <= 0)

@@ -17,7 +17,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     private float canTakeDamage;
     private float damageCooldown;
 
-    public UnityEvent<int> getDamageEvent;
+    public UnityEvent<int,int> getDamageEvent;
     public float DestoryTime;
     public bool isDeath;
 
@@ -55,7 +55,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
     public void OnDamageEvent()
     {
-        getDamageEvent?.Invoke(Health);
+        getDamageEvent?.Invoke(Health, type.Hp);
     }
 
     public IEnumerator OnRateDestory(GameObject deathObj )

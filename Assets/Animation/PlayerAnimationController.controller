@@ -172,6 +172,22 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &-7915294261471817394
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 701c333d528d4bc488028b40c45b9163, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectStartTime: 0.3
+  pos: {x: 0, y: 0.35, z: 0}
+  rotate: {x: 0, y: 0, z: 0}
+  EffectName: SwordEffect2
 --- !u!1101 &-7759241057127774646
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -278,6 +294,7 @@ AnimatorState:
   - {fileID: -8685253954363029790}
   m_StateMachineBehaviours:
   - {fileID: -46392004951709099}
+  - {fileID: -7915294261471817394}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -333,6 +350,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 701c333d528d4bc488028b40c45b9163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectStartTime: 0.3
+  pos: {x: 0.39, y: 1.36, z: 1.33}
+  rotate: {x: -53, y: -88, z: 81}
+  EffectName: SwordEffect1
 --- !u!114 &-4816773023356477744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -635,6 +656,7 @@ AnimatorState:
   - {fileID: -8013137769727221420}
   m_StateMachineBehaviours:
   - {fileID: 3749965930411120216}
+  - {fileID: 3131850395615911790}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1008,6 +1030,22 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &3131850395615911790
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 701c333d528d4bc488028b40c45b9163, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectStartTime: 0.3
+  pos: {x: 0, y: 0.22, z: 0}
+  rotate: {x: 0, y: 270, z: 0}
+  EffectName: SwordEffect3
 --- !u!1107 &3202642105685230540
 AnimatorStateMachine:
   serializedVersion: 6

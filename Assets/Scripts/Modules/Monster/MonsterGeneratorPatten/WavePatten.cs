@@ -8,6 +8,7 @@ public abstract class WavePatten
 
 
     public sbyte maxWave;
+    public sbyte StageMaxUnit;
     protected Tuple<string, Vector3, Quaternion> monsterInfo;
     public List<Tuple<string, Vector3, Quaternion>> monsterList = new List<Tuple<string, Vector3, Quaternion>>();
 

@@ -14655,7 +14655,7 @@ GameObject:
   - component: {fileID: 7772846848517707366}
   - component: {fileID: -6628551107386089208}
   m_Layer: 0
-  m_Name: test
+  m_Name: SwordEffect1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

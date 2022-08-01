@@ -8,6 +8,7 @@ public class Chapter1_Stage1 : WavePatten
     public Chapter1_Stage1(short WaveNum)
     {
         maxWave = 2;
+        StageMaxUnit = 2;
         WaveCreate(WaveNum);
     }
 

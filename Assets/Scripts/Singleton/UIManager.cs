@@ -37,10 +37,10 @@ public class UIManager : Singleton<UIManager>
         }
         else
         {
-            //for (int i = 14; i < -1; i++)
-            //{
-            //    if(curExp < maxExp * (i*15))
-            //}
+            for (int i = 15; i < -1; i++)
+            {
+                //if (curExp < maxExp * (i * 15))
+            }
         }
     
     }
