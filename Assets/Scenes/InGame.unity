@@ -18405,6 +18405,65 @@ MonoBehaviour:
   WaveNum: 0
   MaxWave: 0
   isLast: 0
+--- !u!114 &1994632067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994632064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b2ad2ffc2a07f3498b3f52f80b86102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cha:
+    keys: 0100000002000000
+    values:
+    - keys: 01000000
+      values:
+      - keys: 0100000002000000
+        values:
+        - name:
+          - StoneMonster
+          pos:
+          - {x: 0, y: 0, z: 0}
+          rot:
+          - {x: 0, y: 180, z: 0}
+        - name:
+          - StoneMonster
+          - StoneMonster
+          - Golem
+          pos:
+          - {x: 3, y: 0, z: 3}
+          - {x: 0, y: 0, z: 0}
+          - {x: -3, y: 0, z: -3}
+          rot:
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+    - keys: 01000000
+      values:
+      - keys: 0100000002000000
+        values:
+        - name:
+          - StoneMonster
+          pos:
+          - {x: 0, y: 0, z: 0}
+          rot:
+          - {x: 0, y: 180, z: 0}
+        - name:
+          - StoneMonster
+          - StoneMonster
+          - Golem
+          pos:
+          - {x: 3, y: 0, z: 3}
+          - {x: 0, y: 0, z: 0}
+          - {x: -3, y: 0, z: -3}
+          rot:
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
 --- !u!1 &2026407212
 GameObject:
   m_ObjectHideFlags: 3
