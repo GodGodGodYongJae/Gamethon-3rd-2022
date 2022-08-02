@@ -15,7 +15,7 @@ MonoBehaviour:
   name: StoneMonster
   hp: 100
   attackPoint: 30
-  attackDelay: 1
+  attackDelay: 4
   defencePoint: 5
   moveSpeed: 2
   findRange: 4
