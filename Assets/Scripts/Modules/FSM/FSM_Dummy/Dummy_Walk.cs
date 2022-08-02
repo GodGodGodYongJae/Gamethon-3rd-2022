@@ -3,20 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Dummy_Walk : FSM_State<DummyFSM>
+public class Dummy_Walk : MonoBehaviour,FSM_State<DummyFSM>
 {
 
     private DummyFSM m_Owner;
     private NavMeshAgent agent;
-    bool isFallBack;
     Vector3 point;
     //private float currentAtkDealy;
     //private bool isDealy;
-    public Dummy_Walk(DummyFSM _owner)
-    {
-        m_Owner = _owner;
-    }
-    public override void Begin()
+    public DummyFSM Owner { get { return m_Owner; } set { m_Owner = value; } }
+    public  void Begin()
     {
         //Debug.Log("Walk Begin");
         point = Vector3.zero;
@@ -26,7 +22,7 @@ public class Dummy_Walk : FSM_State<DummyFSM>
 
     }
 
-    public override void Run()
+    public  void Run()
     {
         if(m_Owner.m_TransTarget == null)
         {
@@ -64,7 +60,7 @@ public class Dummy_Walk : FSM_State<DummyFSM>
         }
     }
 
-    public override void Exit()
+    public  void Exit()
     {
         //Debug.Log("WAlk EXit");
         agent.isStopped = true;

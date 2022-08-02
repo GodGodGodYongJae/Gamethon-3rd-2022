@@ -6,7 +6,9 @@ using UnityEngine.AI;
 public class DummyFSM : MonoBehaviour
 {
 
-    public enum State { IDLE,Walk,Back,Death,Attack,Hit,End}
+    public enum State { IDLE,Walk,Back,Death,Attack,Hit, End }
+
+
     public FSM_HeadMachine<DummyFSM> m_state;
     public FSM_State<DummyFSM>[] m_arrState = new FSM_State<DummyFSM>[(int)State.End];
 
@@ -36,19 +38,32 @@ public class DummyFSM : MonoBehaviour
     public NavMeshAgent agent;
 
     public Transform backpos;
-    public DummyFSM()
-    {
-        init();
-    }
+
+
+    [System.Serializable]
+    public class FSMLIST : SerializableDictionary<State, MonoBehaviour> { };
+
+    public FSMLIST e_FsmList = new FSMLIST();
+    //public DummyFSM()
+    //{
+    //    init();
+    //}
 
     public void init()
     {
         m_state = new FSM_HeadMachine<DummyFSM>();
-        m_arrState[(int)State.IDLE] = new Dummy_Idle(this);
-        m_arrState[(int)State.Walk] = new Dummy_Walk(this);
-        m_arrState[(int)State.Hit] = new Dummy_Hit(this);
-        m_arrState[(int)State.Death] = new Dummy_Death(this);
-        m_arrState[(int)State.Attack] = new Dummy_Attack(this);
+        foreach (var item in e_FsmList)
+        {
+            FSM_State<DummyFSM> fSM_State = item.Value as FSM_State<DummyFSM>;
+            fSM_State.Owner = this;
+            m_arrState[(int)item.Key] = fSM_State;
+            //m_arrState[(int)item.Key].Owner = this;
+        }
+        //m_arrState[(int)State.IDLE] = new Dummy_Idle(this);
+        //m_arrState[(int)State.Walk] = new Dummy_Walk(this);
+        //m_arrState[(int)State.Hit] = new Dummy_Hit(this);
+        //m_arrState[(int)State.Death] = new Dummy_Death(this);
+        //m_arrState[(int)State.Attack] = new Dummy_Attack(this);
 
         m_state.SetState(m_arrState[(int)State.IDLE], this);
     }
@@ -96,8 +111,8 @@ public class DummyFSM : MonoBehaviour
     public void Begin()
     {
         m_state.Begin();
-  
     }
+
     public void Run()
     {
         if (enemy.isDeath)
@@ -136,6 +151,7 @@ public class DummyFSM : MonoBehaviour
         mappingStatus();
         enemy = GetComponent<Enemy>(); 
         indicatorRangeCircle = new RangeCircle(this.transform, attackRange, attackDistance);
+        init();
     }
     private void Update()
     {

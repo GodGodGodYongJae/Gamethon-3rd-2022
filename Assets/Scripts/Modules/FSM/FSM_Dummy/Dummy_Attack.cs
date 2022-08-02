@@ -2,33 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dummy_Attack : FSM_State<DummyFSM>
+public class Dummy_Attack : MonoBehaviour,FSM_State<DummyFSM>
 {
 
-    private DummyFSM m_Owner;
+    public DummyFSM m_Owner;
     //private float AttackWaitTime;
     private float AttackWaittingTime;
- 
-    public Dummy_Attack(DummyFSM _owner)
+
+    private void Start()
     {
-        m_Owner = _owner;
         AttackWaittingTime = 0.0f;
     }
 
-    public override void Begin()
+    public DummyFSM Owner { get { return m_Owner; } set { m_Owner = value; } }
+
+    public  void Begin()
     {
         //Debug.Log("Attack Begin");
         m_Owner.m_eCurState = DummyFSM.State.Attack;
     }
 
-    public override void Exit()
+    public  void Exit()
     {
         m_Owner.indicator.SetActive(false);
         //Debug.Log("Attack Exit");
         m_Owner.m_ePrevState = DummyFSM.State.Attack;
     }
 
-    public override void Run()
+    public  void Run()
     {
 
         m_Owner.indicator.SetActive(true);
@@ -41,7 +42,7 @@ public class Dummy_Attack : FSM_State<DummyFSM>
             if (m_Owner.indicatorRangeCircle.isCollisition(hitColliders[0].transform))
             {
                 IDamageable damage = hitColliders[0].GetComponent<IDamageable>();
-                damage.Damage(10,m_Owner.gameObject);
+                damage.Damage(m_Owner.enemy.Type.AttackPoint,m_Owner.gameObject);
             }
            
             m_Owner.indicator.SetActive(false);

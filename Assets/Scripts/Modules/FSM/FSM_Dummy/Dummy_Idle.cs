@@ -2,24 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dummy_Idle : FSM_State<DummyFSM>
+public class Dummy_Idle : MonoBehaviour, FSM_State<DummyFSM>
 {
 
     private DummyFSM m_Owner;
 
-    public Dummy_Idle(DummyFSM _owner)
+
+    public DummyFSM Owner { get { return m_Owner; } set { m_Owner = value; } }
+    public void Begin()
     {
-        m_Owner = _owner;
-    }
-    public override void Begin()
-    {
-        //Debug.Log("idle Begin Log");
         m_Owner.m_eCurState = DummyFSM.State.IDLE;
     }
-    public override void Run()
+    public void Run()
     {
 
-      
 
         if (FindTarget())
         {
@@ -47,7 +43,7 @@ public class Dummy_Idle : FSM_State<DummyFSM>
         }
 
     }
-    public override void Exit()
+    public void Exit()
     {
 
         m_Owner.m_ePrevState = DummyFSM.State.IDLE;

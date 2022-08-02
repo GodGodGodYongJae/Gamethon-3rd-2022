@@ -2,27 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dummy_Hit : FSM_State<DummyFSM>
+public class Dummy_Hit : MonoBehaviour,FSM_State<DummyFSM>
 {
 
     private DummyFSM m_Owner;
 
-    public Dummy_Hit(DummyFSM _owner)
-    {
-        m_Owner = _owner;
-    }
-    public override void Begin()
+    public DummyFSM Owner { get { return m_Owner; } set { m_Owner = value; } }
+    public  void Begin()
     {
         m_Owner.m_eCurState = DummyFSM.State.Hit;
     }
 
-    public override void Exit()
+    public  void Exit()
     {
         m_Owner.m_Animator.SetBool("isAnimHitEnd", false);
         m_Owner.m_ePrevState = DummyFSM.State.Hit;
     }
 
-    public override void Run()
+    public  void Run()
     {
         if (m_Owner.m_Animator.GetBool("isAnimHitEnd"))
         {

@@ -14,7 +14,7 @@ public class Chapter1_Stage1 : WavePatten
 
     protected override void Wave1()
     {
-        monsterList.Add(CreateEnemy("CrabHydra", new Vector3(-4.5f,0,-6), Quaternion.Euler(0, 45.9f, 0)));
+        monsterList.Add(CreateEnemy("StoneMonster", new Vector3(-4.5f,0,-6), Quaternion.Euler(0, 45.9f, 0)));
         //monsterList.Add(CreateEnemy("Golem", new Vector3(6, 0, 6), Quaternion.identity));
         //monsterList.Add(CreateEnemy("CrabHydra", new Vector3(9, 0, 9), Quaternion.identity));
     }

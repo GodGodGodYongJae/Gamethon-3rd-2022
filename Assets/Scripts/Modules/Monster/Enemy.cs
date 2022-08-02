@@ -12,7 +12,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     protected float speed;
     [SerializeField]
     protected MonsterType1 type;
-
+    public GameObject effectObj;
     public MonsterType1 Type { get { return type; } }
     private float canTakeDamage;
     private float damageCooldown;
@@ -61,7 +61,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     public IEnumerator OnRateDestory(GameObject deathObj )
     {
         isDeath = true;
-        Destroy(this.gameObject.GetComponent<CapsuleCollider>());
+        Destroy(this.gameObject.GetComponent<Collider>());
         this.gameObject.transform.parent = deathObj.transform;
         yield return new WaitForSeconds(DestoryTime);
         this.gameObject.SetActive(false);

@@ -4152,6 +4152,11 @@ GameObject:
   - component: {fileID: 6042155885688887102}
   - component: {fileID: -4103792543787823590}
   - component: {fileID: -3906195049436500503}
+  - component: {fileID: 253879219057493657}
+  - component: {fileID: 7732343285526144477}
+  - component: {fileID: 7205759832996083665}
+  - component: {fileID: 5598160865689868570}
+  - component: {fileID: 5050529970109472211}
   m_Layer: 0
   m_Name: CrabMonster 1
   m_TagString: Untagged
@@ -4255,7 +4260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TransTarget: {fileID: 0}
-  AttackWaitTime: 1
+  AttackWaitTime: 1.4
   m_eCurState: 0
   m_ePrevState: 0
   m_fFindRange: 0
@@ -4270,6 +4275,14 @@ MonoBehaviour:
   enemy: {fileID: 0}
   agent: {fileID: 0}
   backpos: {fileID: 4532384225494966998}
+  e_FsmList:
+    keys: 0000000001000000030000000400000005000000
+    values:
+    - {fileID: 7732343285526144477}
+    - {fileID: 253879219057493657}
+    - {fileID: 7205759832996083665}
+    - {fileID: 5050529970109472211}
+    - {fileID: 5598160865689868570}
 --- !u!195 &-4103792543787823590
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4306,6 +4319,66 @@ CapsuleCollider:
   m_Height: 4.582739
   m_Direction: 1
   m_Center: {x: 0.02, y: 1.73, z: 0.15}
+--- !u!114 &253879219057493657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5978480333071649275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a68b1c3519ab11440be6fa82cb5c5db2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7732343285526144477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5978480333071649275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c75b35fe7c3f6bf4991e07de1644a772, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7205759832996083665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5978480333071649275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deb5ee9e498890c44a76ac88df2da419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5598160865689868570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5978480333071649275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ab3d8ea31060244aaca0854ffc05d46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5050529970109472211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5978480333071649275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac6c5568f56934c498f1304d4006d448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5978484547685187001
 GameObject:
   m_ObjectHideFlags: 0
@@ -4665,13 +4738,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6015988680415224310}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5980333325795277949}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1001 &3928653234457091151
 PrefabInstance:
   m_ObjectHideFlags: 0
