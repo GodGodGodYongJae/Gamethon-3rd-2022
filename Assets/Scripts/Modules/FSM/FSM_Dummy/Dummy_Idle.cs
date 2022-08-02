@@ -27,31 +27,29 @@ public class Dummy_Idle : FSM_State<DummyFSM>
             float dot = Vector3.Dot(m_Owner.transform.forward, targetDir);
             float theta = Mathf.Acos(dot) * Mathf.Rad2Deg;
             float distance = Vector3.Distance(m_Owner.m_TransTarget.position, m_Owner.transform.position);
-            if ( m_Owner.istargetMove == false || (m_Owner.isDealy == false&&distance < 2))
+            //m_Owner.istargetMove == false || 
+            if ((m_Owner.isDealy == false && distance < m_Owner.m_fAttackRange))
                 m_Owner.ChangeFSM(DummyFSM.State.Walk);
-            else if (m_Owner.isDealy == true && m_Owner.istargetMove == true)
+            //&& m_Owner.istargetMove == true
+            else if (m_Owner.isDealy == true )
             {
-                if (theta <= 7)
+                if (theta > 7 && distance > m_Owner.m_fAttackRange)
                 {
-                    m_Owner.istargetMove = false;
+                    //m_Owner.istargetMove = false;
                     m_Owner.ChangeFSM(DummyFSM.State.Walk);
                 }
-                else
+                else if (distance <= m_Owner.m_fAttackRange)
                 {
                     m_Owner.ChangeFSM(DummyFSM.State.Attack);
                 }
-               
             }
                
         }
-           
-        //else
-        //    m_Owner.m_TransTarget = null;
+
     }
     public override void Exit()
     {
-        //Debug.Log("idle Exit");
- 
+
         m_Owner.m_ePrevState = DummyFSM.State.IDLE;
     }
 

@@ -9,6 +9,7 @@ public class Dummy_Walk : FSM_State<DummyFSM>
     private DummyFSM m_Owner;
     private NavMeshAgent agent;
     bool isFallBack;
+    Vector3 point;
     //private float currentAtkDealy;
     //private bool isDealy;
     public Dummy_Walk(DummyFSM _owner)
@@ -18,7 +19,7 @@ public class Dummy_Walk : FSM_State<DummyFSM>
     public override void Begin()
     {
         //Debug.Log("Walk Begin");
-
+        point = Vector3.zero;
         agent = m_Owner.agent;
         agent.isStopped = false;
         m_Owner.m_eCurState = DummyFSM.State.Walk;
@@ -33,15 +34,14 @@ public class Dummy_Walk : FSM_State<DummyFSM>
         }
         Vector3 targetDir = (m_Owner.m_TransTarget.position - m_Owner.transform.position).normalized;
         float dot = Vector3.Dot(m_Owner.transform.forward, targetDir);
-
         float theta = Mathf.Acos(dot) * Mathf.Rad2Deg;
 
         if (m_Owner.m_TransTarget != null && dot <= 1)
         {
 
-                Vector3 lookPos = m_Owner.m_TransTarget.position - m_Owner.transform.position;
-                lookPos.y = 0;
-                Quaternion rotation = Quaternion.LookRotation(lookPos);
+            Vector3 lookPos = m_Owner.m_TransTarget.position - m_Owner.transform.position;
+            lookPos.y = 0;
+            Quaternion rotation = Quaternion.LookRotation(lookPos);
             m_Owner.transform.rotation = Quaternion.Slerp(m_Owner.transform.rotation, rotation, 3.0f);
             
         }
@@ -57,7 +57,7 @@ public class Dummy_Walk : FSM_State<DummyFSM>
                 m_Owner.ChangeFSM(DummyFSM.State.Attack);
             else
             {
-                m_Owner.ChangeFSM(DummyFSM.State.IDLE);
+                //m_Owner.ChangeFSM(DummyFSM.State.IDLE);
                 m_Owner.istargetMove = true;
             }
                
@@ -94,42 +94,21 @@ public class Dummy_Walk : FSM_State<DummyFSM>
     private void GotoTarget()
     {
         float distance = Vector3.Distance(m_Owner.m_TransTarget.position,m_Owner.transform.position);
-        Vector3 point = Vector3.zero;
         NavMeshPath path = new NavMeshPath();
-        if (isFallBack)
-        {
-          
-            point = m_Owner.backpos.position;
-            //if (agent.remainingDistance < 0.8)
-            //{
-            //    isFallBack = false;
-            //}
-            //Debug.Log(point);
 
-        }
-        else if(isFallBack == false)
+        if (m_Owner.isDealy.Equals(false) && distance < m_Owner.m_fAttackRange)
         {
-            //agent.speed = m_Owner.enemy.Type.MoveSpeed;
+            point = m_Owner.backpos.position;
+        }
+        else if(m_Owner.isDealy.Equals(true))
+        {
             point = m_Owner.m_TransTarget.position;
         }
-
-        if (m_Owner.isDealy == false)
+        if(agent.remainingDistance < 0.8)
         {
-            if(distance < m_Owner.m_fAttackRange )
-            {
-                //if(isFallBack == false)
-                    isFallBack = true;
-                //agent.speed = m_Owner.enemy.Type.MoveSpeed * 2;
-               // point = m_Owner.m_TransTarget.forward * 5f;//m_Owner.m_TransTarget.position * -5;
-
-            }
+            m_Owner.ChangeFSM(DummyFSM.State.IDLE);
         }
-        else if(m_Owner.isDealy == true)
-        {
-            isFallBack = false;
-        }
-  
-        agent.ResetPath();
+         agent.ResetPath();
         agent.CalculatePath(point, path);
         agent.SetPath(path);
         //Debug.Log(agent.pathEndPosition);
@@ -138,3 +117,40 @@ public class Dummy_Walk : FSM_State<DummyFSM>
     }
 
 }
+
+
+//float distance = Vector3.Distance(m_Owner.m_TransTarget.position, m_Owner.transform.position);
+//Vector3 point = Vector3.zero;
+//NavMeshPath path = new NavMeshPath();
+//if (isFallBack)
+//{
+
+//    point = m_Owner.backpos.position;
+//    //if (agent.remainingDistance < 0.8)
+//    //{
+//    //    isFallBack = false;
+//    //}
+//    //Debug.Log(point);
+
+//}
+//else if (isFallBack == false)
+//{
+//    //agent.speed = m_Owner.enemy.Type.MoveSpeed;
+//    point = m_Owner.m_TransTarget.position;
+//}
+
+//if (m_Owner.isDealy == false)
+//{
+//    if (distance < m_Owner.m_fAttackRange)
+//    {
+//        //if(isFallBack == false)
+//        isFallBack = true;
+//        //agent.speed = m_Owner.enemy.Type.MoveSpeed * 2;
+//        // point = m_Owner.m_TransTarget.forward * 5f;//m_Owner.m_TransTarget.position * -5;
+
+//    }
+//}
+//else if (m_Owner.isDealy == true)
+//{
+//    isFallBack = false;
+//}
