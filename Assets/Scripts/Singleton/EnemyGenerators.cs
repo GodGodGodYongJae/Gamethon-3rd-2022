@@ -3,15 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyGenerators : MonoBehaviour
+public class EnemyGenerators : Singleton<EnemyGenerators>
 {
-    [Serializable]
-    public class monData
-    {
-        public string name;
-        [SerializeReference]public Vector3 pos;
-        [SerializeReference]public Vector3 rot;
-    }
+    //[Serializable]
+    //public class monData
+    //{
+    //    public string name;
+    //    [SerializeReference]public Vector3 pos;
+    //    [SerializeReference]public Vector3 rot;
+    //}
     [Serializable]
     public class Mondata2
     {
@@ -32,11 +32,30 @@ public class EnemyGenerators : MonoBehaviour
     public class wave : SerializableDictionary<int, Mondata2> { };
 
 
-
+    public sbyte CurrentMaxWave;
     private void Start()
     {
-        CreateUnit(1, 1, 2);
+        //CreateUnit(1, 1, 2);
     }
+
+    public bool FindNextStage(int ChapterNum,int StageNum)
+    {
+        foreach (var item in Cha)
+        {
+            if (item.Key.Equals(ChapterNum))
+            {
+                foreach (var item2 in item.Value)
+                {
+                    if (item.Key.Equals(StageNum+1))
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+
+     }
 
     public void CreateUnit(int ChapterNum,int StageNum,int WaveNum)
     {
@@ -50,11 +69,12 @@ public class EnemyGenerators : MonoBehaviour
                     {
                         foreach (var item3 in item2.Value)
                         {
-                            if(item3.Key.Equals(ChapterNum))
+                            if(item3.Key.Equals(WaveNum))
                             {
                                 Debug.Log(item3.Value.name.Count);
                                 for(int j = 0; j < item3.Value.name.Count ;j++)
                                 {
+                                    CurrentMaxWave = (sbyte)item2.Value.Count;
                                     Spawn(item3.Value.name[j], item3.Value.pos[j], item3.Value.rot[j]);
                                 }
                              
@@ -68,7 +88,10 @@ public class EnemyGenerators : MonoBehaviour
 
     public void Spawn(string _name,Vector3 _pos,Vector3 _rot)
     {
-        Debug.Log(_name + "ÀÌ°¡" + _pos + "¿¡" + _rot);
+        EnemyFactoryMethod.Instance.CreateEnemy(
+              _name,
+              _pos,
+              Quaternion.Euler(_rot));
 
     }
 

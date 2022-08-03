@@ -12,16 +12,47 @@ public class StageController : MonoBehaviour
     PattenGenerator generator;
     public void Start()
     {
+        //ChapterNum = 1;
+        //StageNum = 1;
+        //WaveNum = 0;
+        //MaxWave = 10;
+
         ChapterNum = 1;
         StageNum = 1;
         WaveNum = 0;
-        //PattenGenerator generator = new PattenGenerator(ChapterNum, StageNum, WaveNum);
-        //MaxWave = generator.currentMaxWave;
-        MaxWave = 10;
+        MaxWave = 99;
         NextWave();
     }
 
+
     public void NextWave()
+    {
+        WaveNum++;
+        if(WaveNum <= MaxWave)
+        {
+            EnemyGenerators.Instance.CreateUnit(ChapterNum, StageNum, WaveNum);
+            MaxWave = EnemyGenerators.Instance.CurrentMaxWave;
+        }
+        else
+        {
+            WaveNum = 0;
+            if(EnemyGenerators.Instance.FindNextStage(ChapterNum, StageNum))
+            {
+                StageNum++;
+            }
+            else
+            {
+                isLast = true;
+            }
+
+            string string_stageNum;
+            if (StageNum < 10) string_stageNum = "0" + StageNum;
+            else string_stageNum = StageNum.ToString();
+            UIManager.Instance.TextChange(UIManager.UI.StageNum, ChapterNum + "-" + string_stageNum);
+            CutSceneManager.Instance.OnScene(true, CutSceneManager.Events.StageClear, true);
+        }
+    }
+    public void Old_NextWave()
     {
 
         WaveNum++;
@@ -64,18 +95,7 @@ public class StageController : MonoBehaviour
 
         }
 
-        //if(generator.isNotWave)
-        //{
-        //    WaveNum = 1;
-        //    StageNum++;
-        //    generator = null;
-        //    generator = new PattenGenerator(ChapterNum, StageNum, WaveNum);
-        //    //Debug.Log(ChapterNum +""+ StageNum +""+ WaveNum);
-        //    if(generator.isNotWave)
-        //    {
-        //        //Debug.Log("더이상 다음 Stage가 없습니다.");
-        //    }
-        //}
+
        
     }
 }
