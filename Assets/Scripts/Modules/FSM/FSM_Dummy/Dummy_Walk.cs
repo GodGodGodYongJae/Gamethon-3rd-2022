@@ -53,7 +53,7 @@ public class Dummy_Walk : MonoBehaviour,FSM_State<DummyFSM>
                 m_Owner.ChangeFSM(DummyFSM.State.Attack);
             else
             {
-                //m_Owner.ChangeFSM(DummyFSM.State.IDLE);
+                m_Owner.ChangeFSM(DummyFSM.State.IDLE);
                 m_Owner.istargetMove = true;
             }
                
@@ -100,10 +100,10 @@ public class Dummy_Walk : MonoBehaviour,FSM_State<DummyFSM>
         {
             point = m_Owner.m_TransTarget.position;
         }
-        if(agent.remainingDistance < 0.8)
-        {
-            m_Owner.ChangeFSM(DummyFSM.State.IDLE);
-        }
+        //if(agent.remainingDistance < 1)
+        //{
+        //    m_Owner.ChangeFSM(DummyFSM.State.IDLE);
+        //}
          agent.ResetPath();
         agent.CalculatePath(point, path);
         agent.SetPath(path);
