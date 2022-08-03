@@ -18,4 +18,21 @@ public class BtnEvents : MonoBehaviour
 
         }
     }
+
+    public void OnGiveUpButton()
+    {
+        ScenesManager.Instance.OnTitleScene();
+    }
+
+    public void OnPauseButton(GameObject OpenUI)
+    {
+        OpenUI.SetActive(true);
+        Time.timeScale = 0.0f;
+    }
+
+    public void OnExitPause()
+    {
+        this.gameObject.SetActive(false);
+        Time.timeScale = 1.0f;
+    }
 }
