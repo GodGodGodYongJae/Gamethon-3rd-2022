@@ -17,7 +17,6 @@ public class RushAttack_Attack : MonoBehaviour,FSM_State<DummyFSM>
 
     public void Begin()
     {
-        
         timer = 0;
         agent = m_Owner.agent;
         m_Owner.m_eCurState = DummyFSM.State.Attack;
@@ -33,8 +32,8 @@ public class RushAttack_Attack : MonoBehaviour,FSM_State<DummyFSM>
 
     public void Run()
     {
-       // m_Owner.indicator.SetActive(true);
-        //m_Owner.indicator.transform.parent = null;
+      
+        
         timer += Time.deltaTime;
         if (timer > AttackWaittingTime)
         {
@@ -42,14 +41,9 @@ public class RushAttack_Attack : MonoBehaviour,FSM_State<DummyFSM>
             bool isEnd = Move();
             if(isEnd.Equals(false))
             {
-                //m_Owner.indicator.transform.position = new Vector3(m_Owner.transform.position.x,
-                //    m_Owner.transform.position.y + 0.32f,
-                //    m_Owner.transform.position.z + 3.82f);
-                //m_Owner.indicator.transform.rotation = m_Owner.transform.rotation;
-                //m_Owner.indicator.transform.localRotation = Quaternion.Euler(new Vector3(-90, 0, 0));
-                //m_Owner.indicator.SetActive(false);
                 m_Owner.isDealy = false;
                 m_Owner.istargetMove = false;
+                Debug.Log("¤·¤·");
                 m_Owner.ChangeFSM(DummyFSM.State.IDLE);
 
             }
@@ -58,7 +52,8 @@ public class RushAttack_Attack : MonoBehaviour,FSM_State<DummyFSM>
     }
     private void Point()
     {
-        point = m_Owner.transform.forward * 3f;
+        point = m_Owner.m_TransTarget.position;//m_Owner.transform.forward * 3f;
+        Debug.Log(point);
         isPoint = false;
     }
     private bool Move()
