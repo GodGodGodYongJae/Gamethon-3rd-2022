@@ -18737,11 +18737,13 @@ MonoBehaviour:
     - Golem
     - CrabHydra
     - StoneMonster
+    - Wizard
     values:
     - {fileID: 9162053130312800128, guid: fe5214d519fd1b74c908570120805134, type: 3}
     - {fileID: 243716965394760169, guid: c59460838c0603c4fbca8d8dc88841c4, type: 3}
     - {fileID: 5978480333071649275, guid: 690c36c6a0b761e4fb7dec4466921964, type: 3}
     - {fileID: 5655189471300221325, guid: db080c77840ce8146bbc078a3ab934fe, type: 3}
+    - {fileID: 8881896916524851434, guid: 56c69ca6f523e3a48b9c3af4e313a097, type: 3}
   MonsterList: []
   target: {fileID: 0}
   LastTarget: {fileID: 0}
@@ -18787,7 +18789,7 @@ MonoBehaviour:
       - keys: 0100000002000000
         values:
         - name:
-          - StoneMonster
+          - Wizard
           pos:
           - {x: 0, y: 0, z: 0}
           rot:

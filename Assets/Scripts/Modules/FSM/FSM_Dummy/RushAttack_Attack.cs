@@ -52,7 +52,7 @@ public class RushAttack_Attack : MonoBehaviour,FSM_State<DummyFSM>
     }
     private void Point()
     {
-        point = m_Owner.m_TransTarget.position;//m_Owner.transform.forward * 3f;
+        point = transform.position + transform.forward * 8f;//m_Owner.transform.forward * 3f;
         Debug.Log(point);
         isPoint = false;
     }
