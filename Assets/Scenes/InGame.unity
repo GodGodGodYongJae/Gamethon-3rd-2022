@@ -25425,7 +25425,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7444776838641168667, guid: b8fb7592092810a4eb846832e7d9c35a, type: 3}
       propertyPath: poolList.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -7444776838641168667, guid: b8fb7592092810a4eb846832e7d9c35a, type: 3}
       propertyPath: poolList.Array.data[0]
@@ -25447,6 +25447,10 @@ PrefabInstance:
       propertyPath: poolList.Array.data[4]
       value: 
       objectReference: {fileID: 3982311964897034717, guid: 82a3729a6344b564abffe89809aa2a9e, type: 3}
+    - target: {fileID: -7444776838641168667, guid: b8fb7592092810a4eb846832e7d9c35a, type: 3}
+      propertyPath: poolList.Array.data[5]
+      value: 
+      objectReference: {fileID: 2678336713947275843, guid: 6a1198fdd262ccc4487274b967cff814, type: 3}
     - target: {fileID: 1574110902973667327, guid: b8fb7592092810a4eb846832e7d9c35a, type: 3}
       propertyPath: m_Name
       value: '@GameManagers'

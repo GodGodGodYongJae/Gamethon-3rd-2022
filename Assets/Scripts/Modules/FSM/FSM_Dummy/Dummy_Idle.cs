@@ -11,6 +11,7 @@ public class Dummy_Idle : MonoBehaviour, FSM_State<DummyFSM>
     public DummyFSM Owner { get { return m_Owner; } set { m_Owner = value; } }
     public void Begin()
     {
+
         m_Owner.m_eCurState = DummyFSM.State.IDLE;
     }
     public void Run()
@@ -29,12 +30,12 @@ public class Dummy_Idle : MonoBehaviour, FSM_State<DummyFSM>
             //&& m_Owner.istargetMove == true
             else if (m_Owner.isDealy == true )
             {
-                if (theta > 7 && distance > m_Owner.m_fAttackRange)
+                if (theta >= 7 && distance > m_Owner.m_fAttackRange)
                 {
                     //m_Owner.istargetMove = false;
                     m_Owner.ChangeFSM(DummyFSM.State.Walk);
                 }
-                else if (distance <= m_Owner.m_fAttackRange)
+                else if (theta < 7 && distance <= m_Owner.m_fAttackRange)
                 {
                     m_Owner.ChangeFSM(DummyFSM.State.Attack);
                 }

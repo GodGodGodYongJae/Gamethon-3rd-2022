@@ -17,13 +17,22 @@ public class ParticleCollisionInstance : MonoBehaviour
     private List<ParticleCollisionEvent> collisionEvents = new List<ParticleCollisionEvent>();
     private ParticleSystem ps;
 
+    public bool isInGame;
+
     void Start()
     {
         part = GetComponent<ParticleSystem>();
     }
+    private void Update()
+    {
+        if(isInGame && part.isPlaying.Equals(false))
+        {
+            ObjectPoolManager.Instance?.Free(gameObject);
+        }
+    }
     void OnParticleCollision(GameObject other)
-    {      
-        int numCollisionEvents = part.GetCollisionEvents(other, collisionEvents);     
+    {
+        int numCollisionEvents = part.GetCollisionEvents(other, collisionEvents);
         for (int i = 0; i < numCollisionEvents; i++)
         {
             foreach (var effect in EffectsOnCollision)
@@ -40,9 +49,20 @@ public class ParticleCollisionInstance : MonoBehaviour
                 Destroy(instance, DestroyTimeDelay);
             }
         }
-        if (DestoyMainEffect == true)
-        {
+
+        if (isInGame)
+            ObjectPoolManager.Instance?.Free(gameObject);
+        else
             Destroy(gameObject, DestroyTimeDelay + 0.5f);
-        }
+
+
+    }
+
+    void DeleteObj()
+    {
+        if (isInGame)
+            ObjectPoolManager.Instance?.Free(gameObject);
+        else
+            Destroy(gameObject, DestroyTimeDelay + 0.5f);
     }
 }

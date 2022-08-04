@@ -53,11 +53,12 @@ public class Dummy_Walk : MonoBehaviour,FSM_State<DummyFSM>
                 m_Owner.ChangeFSM(DummyFSM.State.Attack);
             else
             {
-                m_Owner.ChangeFSM(DummyFSM.State.IDLE);
+               // m_Owner.ChangeFSM(DummyFSM.State.IDLE);
                 m_Owner.istargetMove = true;
             }
                
         }
+        //Debug.Log(dot + "," + theta);
     }
 
     public  void Exit()

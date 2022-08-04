@@ -185,6 +185,7 @@ MonoBehaviour:
   health: 0
   speed: 0
   type: {fileID: 11400000, guid: 6e2e236fdb1b41947b38e50b001e814d, type: 2}
+  effectObj: {fileID: 0}
   getDamageEvent:
     m_PersistentCalls:
       m_Calls:

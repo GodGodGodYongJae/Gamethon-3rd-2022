@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class DummyFSM : MonoBehaviour
 {
 
-    public enum State { IDLE,Walk,Back,Death,Attack,Hit, End }
+    public enum State { IDLE,Walk,empty,Death,Attack,Hit,Summon, Attack2,End}
 
 
     public FSM_HeadMachine<DummyFSM> m_state;
@@ -68,17 +68,22 @@ public class DummyFSM : MonoBehaviour
         m_state.SetState(m_arrState[(int)State.IDLE], this);
     }
 
-    public void ChangeFSM(State st)
+    public void ChangeFSM(State st, bool ChangeState = true)
     {
-        for (int i = 0; i < (int)State.End; ++i)
+
+        //Debug.Log(st);
+        for (int i = 0; i < (int)State.End ; ++i)
         {
             if (i == (int)st)
             {
+               // Debug.Log(m_arrState[(int)st]);
                 m_state.Change(m_arrState[(int)st]);
+                if(ChangeState.Equals(true))
                 m_Animator.SetInteger("State", (int)st);
             }
                 
         }
+      
     }
 
 
