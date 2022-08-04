@@ -18784,9 +18784,9 @@ MonoBehaviour:
   Cha:
     keys: 0100000002000000
     values:
-    - keys: 01000000
+    - keys: 0100000002000000
       values:
-      - keys: 0100000002000000
+      - keys: 01000000
         values:
         - name:
           - Wizard
@@ -18794,17 +18794,13 @@ MonoBehaviour:
           - {x: 0, y: 0, z: 0}
           rot:
           - {x: 0, y: 180, z: 0}
+      - keys: 01000000
+        values:
         - name:
-          - StoneMonster
-          - StoneMonster
-          - Golem
+          - Wizard
           pos:
-          - {x: 3, y: 0, z: 3}
           - {x: 0, y: 0, z: 0}
-          - {x: -3, y: 0, z: -3}
           rot:
-          - {x: 0, y: 180, z: 0}
-          - {x: 0, y: 180, z: 0}
           - {x: 0, y: 180, z: 0}
     - keys: 01000000
       values:

@@ -23,6 +23,8 @@ public class Dummy_Hit : MonoBehaviour,FSM_State<DummyFSM>
     {
         if (m_Owner.m_Animator.GetBool("isAnimHitEnd"))
         {
+
+            m_Owner.isDealy = false;
             m_Owner.ChangeFSM(DummyFSM.State.IDLE);
         }
     }

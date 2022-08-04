@@ -46,7 +46,7 @@ public class EnemyGenerators : Singleton<EnemyGenerators>
             {
                 foreach (var item2 in item.Value)
                 {
-                    if (item.Key.Equals(StageNum+1))
+                    if (item2.Key.Equals(StageNum+1))
                     {
                         return true;
                     }
@@ -59,13 +59,14 @@ public class EnemyGenerators : Singleton<EnemyGenerators>
 
     public void CreateUnit(int ChapterNum,int StageNum,int WaveNum)
     {
+        Debug.Log(ChapterNum + "" + StageNum + "" + WaveNum + "" );
         foreach(var item in Cha)
         {
             if(item.Key.Equals(ChapterNum))
             {
                 foreach (var item2 in item.Value)
                 {
-                    if(item.Key.Equals(StageNum))
+                    if(item2.Key.Equals(StageNum))
                     {
                         foreach (var item3 in item2.Value)
                         {
