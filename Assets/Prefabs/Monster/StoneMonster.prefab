@@ -1009,6 +1009,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7480581760298127859, guid: 699946f1884c46b4db32d448a549ded2, type: 3}
+      propertyPath: m_Text
+      value: StoneMonster
+      objectReference: {fileID: 0}
     - target: {fileID: 8208092269009449475, guid: 699946f1884c46b4db32d448a549ded2, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
