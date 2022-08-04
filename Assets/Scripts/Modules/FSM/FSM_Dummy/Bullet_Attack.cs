@@ -49,6 +49,7 @@ public class Bullet_Attack : MonoBehaviour, FSM_State<DummyFSM>
     private void CreateBullet()
     {
         bullet = ObjectPoolManager.Instance.Get("FireBullet", BulletCreatePos, transform.rotation);
+        bullet.GetComponent<ParticleCollisionInstance>().Damage = m_Owner.enemy.Type.AttackPoint;
     }
  
 }

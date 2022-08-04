@@ -5,13 +5,12 @@ using UnityEngine;
 public class Wizard_ReadyAttack : MonoBehaviour, FSM_State<DummyFSM>
 {
     private DummyFSM m_Owner;
-    private bool isSpawn;
+    public List<GameObject> Summon = new List<GameObject>();
     public DummyFSM Owner { get { return m_Owner; } set { m_Owner = value; } }
 
     public void Begin()
     {
         //Bullet 먼저 소환해봐야 해서
-        isSpawn = true;
         m_Owner.m_eCurState = DummyFSM.State.Attack;
     }
 
@@ -26,10 +25,9 @@ public class Wizard_ReadyAttack : MonoBehaviour, FSM_State<DummyFSM>
         if(m_Owner.m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") &&
             m_Owner.m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f)
         {
-            if (isSpawn.Equals(false))
+            if (Summon.Count.Equals(0))
             {
-                isSpawn = true;
-                m_Owner.ChangeFSM(DummyFSM.State.Summon);
+                m_Owner.ChangeFSM(DummyFSM.State.Summon, false);
             }
             else
             {

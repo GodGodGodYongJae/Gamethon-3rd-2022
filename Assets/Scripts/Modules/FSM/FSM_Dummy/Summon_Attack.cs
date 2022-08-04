@@ -8,9 +8,23 @@ public class Summon_Attack : MonoBehaviour, FSM_State<DummyFSM>
     private DummyFSM m_Owner;
     public DummyFSM Owner { get { return m_Owner; } set { m_Owner = value; } }
 
+    Wizard_ReadyAttack wr;
+
+    private void Start()
+    {
+        wr = GetComponent<Wizard_ReadyAttack>();
+    }
+
     public void Begin()
     {
         m_Owner.m_eCurState = DummyFSM.State.Summon;
+        Vector3 SpawnPoint = transform.right * 1f;
+        wr.Summon.Add(EnemyFactoryMethod.Instance.CreateEnemy("StoneMonster", SpawnPoint, transform.rotation));
+         SpawnPoint = transform.right * -1f;
+        wr.Summon.Add(EnemyFactoryMethod.Instance.CreateEnemy("StoneMonster", SpawnPoint, transform.rotation));
+        m_Owner.isDealy = false;
+        m_Owner.istargetMove = false;
+        m_Owner.ChangeFSM(DummyFSM.State.IDLE);
     }
 
     public void Exit()
@@ -20,7 +34,7 @@ public class Summon_Attack : MonoBehaviour, FSM_State<DummyFSM>
 
     public void Run()
     {
-        m_Owner.ChangeFSM(DummyFSM.State.IDLE);
+        //m_Owner.ChangeFSM(DummyFSM.State.IDLE);
     }
 
 

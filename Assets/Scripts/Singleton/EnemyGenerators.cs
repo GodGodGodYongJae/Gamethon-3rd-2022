@@ -59,7 +59,6 @@ public class EnemyGenerators : Singleton<EnemyGenerators>
 
     public void CreateUnit(int ChapterNum,int StageNum,int WaveNum)
     {
-        Debug.Log(ChapterNum + "" + StageNum + "" + WaveNum + "" );
         foreach(var item in Cha)
         {
             if(item.Key.Equals(ChapterNum))
@@ -72,7 +71,6 @@ public class EnemyGenerators : Singleton<EnemyGenerators>
                         {
                             if(item3.Key.Equals(WaveNum))
                             {
-                                Debug.Log(item3.Value.name.Count);
                                 for(int j = 0; j < item3.Value.name.Count ;j++)
                                 {
                                     CurrentMaxWave = (sbyte)item2.Value.Count;

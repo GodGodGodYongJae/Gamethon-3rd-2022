@@ -17,6 +17,7 @@ public class ParticleCollisionInstance : MonoBehaviour
     private List<ParticleCollisionEvent> collisionEvents = new List<ParticleCollisionEvent>();
     private ParticleSystem ps;
 
+    public int Damage;
     public bool isInGame;
 
     void Start()
@@ -51,7 +52,11 @@ public class ParticleCollisionInstance : MonoBehaviour
         }
 
         if (isInGame)
+        {
+            IDamageable damageable = other.GetComponent<IDamageable>();
+            damageable.Damage(Damage, this.gameObject);
             ObjectPoolManager.Instance?.Free(gameObject);
+        }
         else
             Destroy(gameObject, DestroyTimeDelay + 0.5f);
 

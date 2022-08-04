@@ -44,25 +44,28 @@ public class EnemyFactoryMethod : Singleton<EnemyFactoryMethod>
 
   
   
-    public void CreateEnemy(string keyName,Vector3 pos, Quaternion quaternion)
+    public GameObject CreateEnemy(string keyName,Vector3 pos, Quaternion quaternion)
     {
+        GameObject obj;
         if (!e_enemyPrefabDictionary.ContainsKey(keyName))
         {
             Debug.LogError("[EnemyFactoryMethod] 해당 오브젝트 풀을 찾을 수 없습니다. " + keyName);
-            return;
+            return null;
         }
         else
         {
-            GameObject obj = e_enemyPrefabDictionary[keyName];
+            obj = e_enemyPrefabDictionary[keyName];
             obj = Instantiate(obj, pos, quaternion);
             obj.transform.parent = Objects.transform;
             MonsterList.Add(obj);
             //MonsterList.Add(obj.transform);
+
         }
         if (target == null)
         {
             target = MonsterList[0].transform;
         }
+        return obj;
     }
     //IEnumerator RateTarget()
     //{
