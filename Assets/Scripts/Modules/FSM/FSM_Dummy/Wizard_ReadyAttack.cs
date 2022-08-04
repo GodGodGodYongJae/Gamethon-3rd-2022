@@ -21,6 +21,20 @@ public class Wizard_ReadyAttack : MonoBehaviour, FSM_State<DummyFSM>
 
     public void Run()
     {
+        for (int i = 0; i < Summon.Count; i++)
+        {
+            if(Summon[i].GetComponent<Enemy>().isDeath)
+            {
+                Summon.RemoveAt(i);
+            }
+            //if(item.GetComponent<Enemy>().isDeath.Equals(true))
+            //{
+            //    int idx = Summon.IndexOf(item);
+            //    Summon.RemoveAt(idx);
+            //}
+        }
+
+
         //Debug.Log(m_Owner.m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
         if(m_Owner.m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") &&
             m_Owner.m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f)

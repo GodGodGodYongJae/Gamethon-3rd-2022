@@ -43,8 +43,8 @@ public class EnemyFactoryMethod : Singleton<EnemyFactoryMethod>
     }
 
   
-  
-    public GameObject CreateEnemy(string keyName,Vector3 pos, Quaternion quaternion)
+
+    public GameObject CreateEnemy(string keyName,Vector3 pos, Quaternion quaternion,bool first = false)
     {
         GameObject obj;
         if (!e_enemyPrefabDictionary.ContainsKey(keyName))
@@ -57,6 +57,13 @@ public class EnemyFactoryMethod : Singleton<EnemyFactoryMethod>
             obj = e_enemyPrefabDictionary[keyName];
             obj = Instantiate(obj, pos, quaternion);
             obj.transform.parent = Objects.transform;
+            if(first)
+            {
+                MonsterList.Insert(0, obj);
+                target = MonsterList[0].transform;
+            }
+           
+            else
             MonsterList.Add(obj);
             //MonsterList.Add(obj.transform);
 
