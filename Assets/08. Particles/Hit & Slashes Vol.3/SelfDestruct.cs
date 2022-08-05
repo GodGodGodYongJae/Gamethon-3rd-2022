@@ -12,21 +12,39 @@ public class SelfDestruct : MonoBehaviour {
 	ParticleSystem particleSystem;
 
 	public Transform parent;
-	void Start () {
-		if(iseffect)
-        {
-			parentConstraint = GetComponent<ParentConstraint>();
-			 source = new ConstraintSource();
-			source.sourceTransform = parent;/* EnemyFactoryMethod.Instance.player.effectParent.transform;*/
-			source.weight = 1;
-			parentConstraint.AddSource(source);
+
+    private void Awake()
+    {
+		parentConstraint = GetComponent<ParentConstraint>();
+		source = new ConstraintSource();
+	}
+    void Start () {
+		//if(iseffect)
+  //      {
+			
+		//	source.sourceTransform = parent;/* EnemyFactoryMethod.Instance.player.effectParent.transform;*/
+		//	source.weight = 1;
+		//	parentConstraint.AddSource(source);
 			 
-		}
+		//}
 		
 		if ( selfdestruct_in != 0){ 
 			Destroy (gameObject, selfdestruct_in);
 		}
 	}
+
+	public void ChangeParent(Transform parent)
+    {
+		source.sourceTransform = parent;
+		source.weight = 1;
+        if (parentConstraint.sourceCount > 0)
+        {
+			parentConstraint.RemoveSource(0);
+        }
+	
+		parentConstraint.AddSource(source);
+	}
+
     private void OnEnable()
     {
 		particleSystem = GetComponent<ParticleSystem>();

@@ -50,7 +50,7 @@ public class AttackEffect : StateMachineBehaviour
             GameObject TextGameObj = ObjectPoolManager.Instance?.Get(EffectName);
             if(Scale != Vector3.zero)
             TextGameObj.transform.localScale = Scale;
-            TextGameObj.transform.GetComponent<SelfDestruct>().parent = parent;
+            TextGameObj.transform.GetComponent<SelfDestruct>().ChangeParent(parent);
         }
 
     }
