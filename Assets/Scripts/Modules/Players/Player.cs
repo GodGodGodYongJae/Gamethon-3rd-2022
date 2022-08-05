@@ -29,6 +29,9 @@ public class Player : MonoBehaviour, IDamageable
     public int Level { get { return level; }set { level = value; } }
     public GameObject effectParent;
     // Start is called before the first frame update
+
+    [SerializeField]
+    private GameObject bloodWindow;
     private void Awake()
     {
         EnemyFactoryMethod.Instance.player = this;
@@ -146,6 +149,7 @@ public class Player : MonoBehaviour, IDamageable
         UIManager.Instance.ChangeHpBar(UIManager.UI.HpBar, Health, maxHealth);
         string Hptext = Health + "/" + maxHealth;
         UIManager.Instance.TextChange(UIManager.UI.HPText, Hptext);
+        StartCoroutine(Damages());
         if(Health <= 0)
         {
             CutSceneManager.Instance.OnScene(true,CutSceneManager.Events.Death);
@@ -154,6 +158,16 @@ public class Player : MonoBehaviour, IDamageable
             Time.timeScale = 0.35f;
             anim.SetBool("isDeath", true);
         }
+    }
+
+    //차후 수정해야함
+    private IEnumerator Damages()
+    {
+        CameraShake shake = Camera.main.gameObject.GetComponent<CameraShake>();
+        shake.Shake();
+        bloodWindow.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        bloodWindow.SetActive(false);
     }
 }
 

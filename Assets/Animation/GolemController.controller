@@ -79,6 +79,24 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &-5559036094980029385
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 701c333d528d4bc488028b40c45b9163, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectStartTime: 0.5
+  pos: {x: 0, y: 0, z: 0}
+  rotate: {x: 0, y: 0, z: 0}
+  Scale: {x: 2, y: 2, z: 2}
+  EffectName: Flash 18
+  isEnemy: 1
 --- !u!1102 &-5064415518002914350
 AnimatorState:
   serializedVersion: 6
@@ -169,19 +187,19 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isAnimDeathEnd
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isAnimHitEnd
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -383,6 +401,7 @@ AnimatorState:
   - {fileID: 8584234258977149888}
   m_StateMachineBehaviours:
   - {fileID: 2549622659044460}
+  - {fileID: -5559036094980029385}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
