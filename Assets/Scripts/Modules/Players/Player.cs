@@ -58,7 +58,7 @@ public class Player : MonoBehaviour, IDamageable
     // Update is called once per frame
     private void FixedUpdate()
     {
-        if (PlayerDirection != bitFlags.PlayerMoveDirection.None)
+        if (PlayerDirection != bitFlags.PlayerMoveDirection.None && isDeath.Equals(false))
         {
             if (PlayerDirection == bitFlags.PlayerMoveDirection.Attack)
                 OnAttackEvents();
