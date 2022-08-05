@@ -25,12 +25,14 @@ public class Dummy_Idle : MonoBehaviour, FSM_State<DummyFSM>
             float theta = Mathf.Acos(dot) * Mathf.Rad2Deg;
             float distance = Vector3.Distance(m_Owner.m_TransTarget.position, m_Owner.transform.position);
             //m_Owner.istargetMove == false || 
+            Debug.Log(distance);
             if ((m_Owner.isDealy == false && distance < m_Owner.m_fAttackRange))
                 m_Owner.ChangeFSM(DummyFSM.State.Walk);
             //&& m_Owner.istargetMove == true
             else if (m_Owner.isDealy == true )
             {
-                if (theta >= 7 && distance > m_Owner.m_fAttackRange)
+                //theta >= 7 &&
+                if ( distance > m_Owner.m_fAttackRange)
                 {
                     //m_Owner.istargetMove = false;
                     m_Owner.ChangeFSM(DummyFSM.State.Walk);

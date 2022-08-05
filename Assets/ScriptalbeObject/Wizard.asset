@@ -18,7 +18,7 @@ MonoBehaviour:
   attackDelay: 5
   defencePoint: 8
   moveSpeed: 1
-  findRange: 6
+  findRange: 10
   attackFindRange: 7
   attackRange: 0
   attackDistance: 0
