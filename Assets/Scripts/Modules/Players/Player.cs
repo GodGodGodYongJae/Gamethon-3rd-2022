@@ -107,6 +107,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void OnSwordSkilBtn()
     {
+        if(isDeath.Equals(false))
         CutSceneManager.Instance.OnScene(true, CutSceneManager.Events.SwordSkill, true);
     }
     public void movement(bitFlags.PlayerMoveDirection pd, Transform target)

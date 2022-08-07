@@ -187,7 +187,9 @@ MonoBehaviour:
   effectStartTime: 0.65
   pos: {x: 0, y: 1, z: 0}
   rotate: {x: 0, y: 0, z: 0}
+  Scale: {x: 0, y: 0, z: 0}
   EffectName: SwordEffect2
+  isEnemy: 0
 --- !u!1101 &-7759241057127774646
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -353,7 +355,9 @@ MonoBehaviour:
   effectStartTime: 0.3
   pos: {x: 0.39, y: 1.36, z: 1.33}
   rotate: {x: -53, y: -88, z: 81}
+  Scale: {x: 0, y: 0, z: 0}
   EffectName: SwordEffect1
+  isEnemy: 0
 --- !u!114 &-4816773023356477744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1045,7 +1049,9 @@ MonoBehaviour:
   effectStartTime: 0.85
   pos: {x: 0, y: 0.22, z: 0}
   rotate: {x: 0, y: 270, z: 0}
+  Scale: {x: 0, y: 0, z: 0}
   EffectName: SwordEffect3
+  isEnemy: 0
 --- !u!1107 &3202642105685230540
 AnimatorStateMachine:
   serializedVersion: 6
