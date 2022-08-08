@@ -16166,7 +16166,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6487f3b48fc84842b5e81fbf57e9d34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pixelDistToDetect: 20
   TouchEvent:
     m_PersistentCalls:
       m_Calls:
@@ -16182,6 +16181,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  swipeSensitivity: 10
 --- !u!114 &1803846720
 MonoBehaviour:
   m_ObjectHideFlags: 0
