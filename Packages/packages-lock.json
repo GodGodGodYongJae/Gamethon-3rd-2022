@@ -127,7 +127,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.services.mediation": {
-      "version": "file:C:/Users/q/Desktop/98231542a8b0e65db4a115744545fdbf17d77371.tgz",
+      "version": "file:../98231542a8b0e65db4a115744545fdbf17d77371.tgz",
       "depth": 0,
       "source": "local-tarball",
       "dependencies": {
