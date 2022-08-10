@@ -13031,7 +13031,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1455030439}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1455030441}
+        m_TargetAssemblyTypeName: BtnEvents, Assembly-CSharp
+        m_MethodName: OnGiveUpButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1455030439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13079,7 +13091,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1455030436}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9094db9ad6dacf24d92dc4422777403d, type: 3}
+  m_Script: {fileID: 11500000, guid: f87be850dca20314ca1347373133b249, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1457407233
@@ -16166,7 +16178,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6487f3b48fc84842b5e81fbf57e9d34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pixelDistToDetect: 20
   TouchEvent:
     m_PersistentCalls:
       m_Calls:
@@ -16182,6 +16193,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  swipeSensitivity: 0
 --- !u!114 &1803846720
 MonoBehaviour:
   m_ObjectHideFlags: 0

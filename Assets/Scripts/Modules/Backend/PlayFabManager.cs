@@ -5,12 +5,13 @@ using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine.UI;
 using GooglePlayGames;
-
+using TMPro;
 
 public class PlayFabManager : MonoBehaviour
 {
-    public Text LogText;
-
+    public TextMeshProUGUI LogText;
+    public GameObject AcountInfo;
+    private bool isLogin;
 
     void Awake()
     {
@@ -24,8 +25,9 @@ public class PlayFabManager : MonoBehaviour
     {
         Social.localUser.Authenticate((success) =>
         {
-            if (success) { LogText.text = "구글 로그인 성공"; PlayFabLogin(); }
-            else LogText.text = "구글 로그인 실패";
+            if (success) { LogText.text = "Push To Start!"; PlayFabLogin(); isLogin = true; }
+            else { LogText.text = "Faild Login!"; isLogin = true; AcountInfo.SetActive(true); OnTouchStart(); }
+            
         });
     }
 
@@ -37,12 +39,18 @@ public class PlayFabManager : MonoBehaviour
     public void PlayFabLogin()
     {
         var request = new LoginWithEmailAddressRequest { Email = Social.localUser.id + "@rand.com", Password = Social.localUser.id };
-        PlayFabClientAPI.LoginWithEmailAddress(request, (result) => LogText.text = "플레이팹 로그인 성공\n" + Social.localUser.userName, (error) => PlayFabRegister());
+        PlayFabClientAPI.LoginWithEmailAddress(request, (result) => LogText.text = "Wait Please." + Social.localUser.userName, (error) => PlayFabRegister());
     }
 
     public void PlayFabRegister()
     {
         var request = new RegisterPlayFabUserRequest { Email = Social.localUser.id + "@rand.com", Password = Social.localUser.id, Username = Social.localUser.userName };
-        PlayFabClientAPI.RegisterPlayFabUser(request, (result) => { LogText.text = "플레이팹 회원가입 성공"; PlayFabLogin(); }, (error) => LogText.text = "플레이팹 회원가입 실패");
+        PlayFabClientAPI.RegisterPlayFabUser(request, (result) => { LogText.text = "Wait Please.."; PlayFabLogin(); }, (error) => LogText.text = "Push To Start!");
+    }
+
+    public void OnTouchStart()
+    {
+        if(isLogin)
+        ScenesManager.Instance.OnLobbyScene();
     }
 }

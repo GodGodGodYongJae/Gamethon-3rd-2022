@@ -8,6 +8,10 @@ public class ScenesManager : Singleton<ScenesManager>
     {
         LoadingSceneController.LoadSene("InGame");
     }
+    public void OnLobbyScene()
+    {
+        LoadingSceneController.LoadSene("Lobby");
+    }
     public void OnTitleScene()
     {
         LoadingSceneController.LoadSene("Title");

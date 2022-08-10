@@ -8,7 +8,7 @@ public class BtnEvents : MonoBehaviour
     {
         if (EnemyFactoryMethod.Instance.stageController.isLast)
         {
-            ScenesManager.Instance.OnTitleScene();
+            ScenesManager.Instance.OnLobbyScene();
         }
         else
         {
@@ -19,9 +19,14 @@ public class BtnEvents : MonoBehaviour
         }
     }
 
+    public void OnStartGame()
+    {
+        ScenesManager.Instance.OnGameStartScene();
+    }
+
     public void OnGiveUpButton()
     {
-        ScenesManager.Instance.OnTitleScene();
+        ScenesManager.Instance.OnLobbyScene();
     }
 
     public void OnPauseButton(GameObject OpenUI)
