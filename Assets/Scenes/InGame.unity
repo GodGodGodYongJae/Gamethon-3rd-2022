@@ -16193,7 +16193,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  swipeSensitivity: 0
+  swipeSensitivity: 50
 --- !u!114 &1803846720
 MonoBehaviour:
   m_ObjectHideFlags: 0

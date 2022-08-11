@@ -16,6 +16,7 @@ public class PlayfabStemina : MonoBehaviour
     const string VC_Gas = "ST";
     private int AddGas;
     private int CurrentGas;
+    bool isStart;
     // Update is called once per frame
     void Update()
     {
@@ -39,15 +40,17 @@ public class PlayfabStemina : MonoBehaviour
 
     public void OnGameStart()
     {
-        if(CurrentGas > 0)
+        if(CurrentGas > 0 && isStart.Equals(false))
         {
+            isStart = true;
             PlayFabClientAPI.ExecuteCloudScript(new ExecuteCloudScriptRequest()
             {
                 FunctionName = "SubVirtualCurrency",
                 FunctionParameter = new { Amount = 1, type = VC_Gas },
                 GeneratePlayStreamEvent = true
+                
             },
-        cloudResult => { ScenesManager.Instance.OnTitleScene(); },
+        cloudResult => { ScenesManager.Instance.OnGameStartScene(); },
         error => { });
           
         }

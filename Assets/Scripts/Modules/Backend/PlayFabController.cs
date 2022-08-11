@@ -26,7 +26,9 @@ public class PlayFabController : MonoBehaviour
         PlayFabAuthService.Instance.InfoRequestParams = InfoRequestParams;
         PlayFabAuthService.OnLoginSuccess += PlayFabLogin_OnLoginSuccess;
         PlayFabAuthService.Instance.Authenticate(auth);
-        ScenesManager.Instance.OnLobbyScene();
+
+
+
     }
 
     // Update is called once per frame
@@ -42,6 +44,8 @@ public class PlayFabController : MonoBehaviour
         GetUserData();
         //PlayerName = result.InfoResultPayload.UserData["name"].Value;
         Debug.Log("Login Success" + myPlayFabId);
+
+        ScenesManager.Instance.OnLobbyScene();
     }
 
     private void OnDisable()

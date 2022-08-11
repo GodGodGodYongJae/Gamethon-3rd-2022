@@ -150,7 +150,6 @@ public class PlayFabAuthService
     public void Authenticate()
     {
         var authType = AuthType;
-        Debug.Log(authType);
         switch (authType)
         {
             case Authtypes.None:

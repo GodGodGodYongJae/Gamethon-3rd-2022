@@ -56,6 +56,7 @@ public class SwipeDetection : MonoBehaviour
                     {
                         OnTouchEvent(bitFlags.PlayerMoveDirection.Left);
                     }
+
                 }
                 //��ġ.
                 else

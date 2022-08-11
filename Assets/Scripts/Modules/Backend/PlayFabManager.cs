@@ -6,7 +6,7 @@ using PlayFab.ClientModels;
 using UnityEngine.UI;
 using GooglePlayGames;
 using TMPro;
-using PlayFab.PfEditor.Json;
+
 
 public class PlayFabManager : Singleton<PlayFabManager>
 {
@@ -141,9 +141,9 @@ public class PlayFabManager : Singleton<PlayFabManager>
 
     private static void OnCloudUpdate(ExecuteCloudScriptResult result)
     {
-        JsonObject jsonResult = (JsonObject)result.FunctionResult;
-        jsonResult.TryGetValue("messageValue", out object messageValue);
-        Debug.Log((string)messageValue);
+        //JsonObject jsonResult = (JsonObject)result.FunctionResult;
+        //jsonResult.TryGetValue("messageValue", out object messageValue);
+        //Debug.Log((string)messageValue);
     }
     private static void OnErrorShared(PlayFabError error)
     {
