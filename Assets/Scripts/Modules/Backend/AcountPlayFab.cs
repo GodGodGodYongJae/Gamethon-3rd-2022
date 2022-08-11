@@ -21,6 +21,8 @@ public class AcountPlayFab : MonoBehaviour
 
     void OnLoginSuccess(LoginResult result)
     {
+        //PlayFabManager.Instance.GetStats();
+        ScenesManager.Instance.OnLobbyScene();
         print("로그인 성공");
     }
 
