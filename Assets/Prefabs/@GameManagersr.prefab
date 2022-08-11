@@ -1,0 +1,650 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2061539802585977231
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6001815874832132225}
+  - component: {fileID: 1290990380851595413}
+  - component: {fileID: 8624641446655016179}
+  - component: {fileID: 2565559904867717920}
+  - component: {fileID: 2565559904867717923}
+  - component: {fileID: 2565559904867717922}
+  m_Layer: 0
+  m_Name: '@GameManagersr'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6001815874832132225
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061539802585977231}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1290990380851595413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061539802585977231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7da8c545abc01f4d979e5f22a518407, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDontDestroy: 0
+  defalutAmount: 10
+  poolList:
+  - {fileID: 7830163447916375330, guid: 7e191d3303f33f549a3104a405a88a68, type: 3}
+  - {fileID: 7772846848517707357, guid: 1fffbee0152e73d47afdf425d75aafcf, type: 3}
+  - {fileID: 5463339075236604282, guid: 7e7c9e5d43112a74ba49b00d8f9d51ae, type: 3}
+  - {fileID: 4865117441345035628, guid: fb320c8b0effbcd4598c290a6da727fe, type: 3}
+  - {fileID: 3982311964897034717, guid: 82a3729a6344b564abffe89809aa2a9e, type: 3}
+  - {fileID: 2678336713947275843, guid: 6a1198fdd262ccc4487274b967cff814, type: 3}
+  - {fileID: 1438542530079480, guid: 21710859533a00746ad2bdd323061a2d, type: 3}
+  - {fileID: 1920765516895132, guid: df8bef245b1373047a1e1320f5ed6ac2, type: 3}
+  poolAmount: 
+--- !u!114 &8624641446655016179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061539802585977231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fb1cad80f861f4419e4a5f86f83d313, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDontDestroy: 0
+  ObjManager: {fileID: 0}
+  SceneEvents:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  CineMachineStart: 0
+--- !u!114 &2565559904867717920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061539802585977231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b057da68bf106243a888cb0db98f2ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDontDestroy: 0
+  e_enemyPrefabDictionary:
+    keys:
+    - Dummy
+    - Golem
+    - CrabHydra
+    - StoneMonster
+    - Wizard
+    values:
+    - {fileID: 9162053130312800128, guid: fe5214d519fd1b74c908570120805134, type: 3}
+    - {fileID: 243716965394760169, guid: c59460838c0603c4fbca8d8dc88841c4, type: 3}
+    - {fileID: 5978480333071649275, guid: 690c36c6a0b761e4fb7dec4466921964, type: 3}
+    - {fileID: 5655189471300221325, guid: db080c77840ce8146bbc078a3ab934fe, type: 3}
+    - {fileID: 8881896916524851434, guid: 56c69ca6f523e3a48b9c3af4e313a097, type: 3}
+  MonsterList: []
+  target: {fileID: 0}
+  LastTarget: {fileID: 0}
+  Objects: {fileID: 0}
+  DeathObjs: {fileID: 0}
+  stageController: {fileID: 0}
+  player: {fileID: 0}
+--- !u!114 &2565559904867717923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061539802585977231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d38eb69ece787c24497860a996ce7f3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChapterNum: 0
+  StageNum: 0
+  WaveNum: 0
+  MaxWave: 0
+  isLast: 0
+--- !u!114 &2565559904867717922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061539802585977231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b2ad2ffc2a07f3498b3f52f80b86102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDontDestroy: 0
+  Cha:
+    keys: 01000000
+    values:
+    - keys: 010000000200000003000000040000000500000006000000070000000800000009000000
+      values:
+      - keys: 010000000200000003000000
+        values:
+        - name:
+          - Golem
+          pos:
+          - {x: 0, y: 0, z: 2}
+          rot:
+          - {x: 0, y: 180, z: 0}
+        - name:
+          - StoneMonster
+          - StoneMonster
+          - Golem
+          pos:
+          - {x: 0, y: 0, z: 3}
+          - {x: 3, y: 0, z: 5}
+          - {x: -3, y: 3, z: 3}
+          rot:
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+        - name:
+          - StoneMonster
+          - StoneMonster
+          - StoneMonster
+          - Golem
+          pos:
+          - {x: -3, y: 0, z: 3}
+          - {x: 3, y: 0, z: 3}
+          - {x: -3, y: 0, z: -3}
+          - {x: 3, y: 0, z: -3}
+          rot:
+          - {x: 0, y: 135, z: 0}
+          - {x: 0, y: 225, z: 0}
+          - {x: 0, y: 45, z: 0}
+          - {x: 0, y: 315, z: 0}
+      - keys: 010000000200000003000000
+        values:
+        - name:
+          - StoneMonster
+          - StoneMonster
+          - CrabHydra
+          pos:
+          - {x: -2, y: 0, z: 3}
+          - {x: 2, y: 0, z: 3}
+          - {x: 0, y: 0, z: 7}
+          rot:
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+        - name:
+          - StoneMonster
+          - StoneMonster
+          - StoneMonster
+          - Golem
+          - Golem
+          pos:
+          - {x: 0, y: 0, z: -2}
+          - {x: -6, y: 0, z: -8.5}
+          - {x: 6, y: 0, z: 8.5}
+          - {x: 6, y: 0, z: -8.5}
+          - {x: -6, y: 0, z: 8.5}
+          rot:
+          - {x: 0, y: 0, z: 0}
+          - {x: 0, y: 0, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 0, z: 0}
+          - {x: 0, y: 180, z: 0}
+        - name:
+          - StoneMonster
+          - Golem
+          - Golem
+          - Golem
+          pos:
+          - {x: -3, y: 0, z: 3}
+          - {x: 3, y: 0, z: 3}
+          - {x: -3, y: 0, z: -3}
+          - {x: 3, y: 0, z: -3}
+          rot:
+          - {x: 0, y: 135, z: 0}
+          - {x: 0, y: 225, z: 0}
+          - {x: 0, y: 45, z: 0}
+          - {x: 0, y: 315, z: 0}
+      - keys: 010000000200000003000000
+        values:
+        - name:
+          - StoneMonster
+          - StoneMonster
+          - StoneMonster
+          - Golem
+          - Golem
+          - Golem
+          pos:
+          - {x: -2, y: 0, z: 3.5}
+          - {x: 2, y: 0, z: 3.5}
+          - {x: 4, y: 0, z: 1.5}
+          - {x: -4, y: 0, z: 1.5}
+          - {x: 0, y: 0, z: 7.5}
+          - {x: 0, y: 0, z: -5}
+          rot:
+          - {x: 0, y: 150, z: 0}
+          - {x: 0, y: 220, z: 0}
+          - {x: 0, y: 250, z: 0}
+          - {x: 0, y: 110, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 0, z: 0}
+        - name:
+          - StoneMonster
+          - StoneMonster
+          - StoneMonster
+          - StoneMonster
+          - Golem
+          - Golem
+          - Golem
+          - Golem
+          pos:
+          - {x: -4.5, y: 0, z: 5}
+          - {x: 4.5, y: 0, z: 5}
+          - {x: 4.5, y: 0, z: 5}
+          - {x: -4.5, y: 0, z: -5}
+          - {x: 0, y: 0, z: 7.5}
+          - {x: 0, y: 0, z: 7.5}
+          - {x: -7.5, y: 0, z: 0}
+          - {x: 7.5, y: 0, z: 0}
+          rot:
+          - {x: 0, y: 150, z: 0}
+          - {x: 0, y: 220, z: 0}
+          - {x: 0, y: 250, z: 0}
+          - {x: 0, y: 110, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 0, z: 0}
+          - {x: 0, y: 90, z: 0}
+          - {x: 0, y: 270, z: 0}
+        - name:
+          - StoneMonster
+          - StoneMonster
+          - StoneMonster
+          - Golem
+          - Golem
+          - CrabHydra
+          pos:
+          - {x: -3, y: 0, z: 5}
+          - {x: 3, y: 0, z: 5}
+          - {x: 0, y: 0, z: 7}
+          - {x: 3, y: 0, z: -5}
+          - {x: -3, y: 0, z: -5}
+          - {x: 0, y: 0, z: -7}
+          rot:
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 0, z: 0}
+          - {x: 0, y: 0, z: 0}
+          - {x: 0, y: 0, z: 0}
+      - keys: 010000000200000003000000
+        values:
+        - name:
+          - Golem
+          - Golem
+          - Golem
+          - Golem
+          - CrabHydra
+          pos:
+          - {x: -4, y: 0, z: 5}
+          - {x: -2, y: 0, z: 5}
+          - {x: 2, y: 0, z: 5}
+          - {x: 4, y: 0, z: 5}
+          - {x: 0, y: 0, z: 7}
+          rot:
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+        - name:
+          - Golem
+          - Golem
+          - Golem
+          - Golem
+          - CrabHydra
+          - CrabHydra
+          pos:
+          - {x: 2, y: 0, z: 3}
+          - {x: -2, y: 0, z: 3}
+          - {x: 2, y: 0, z: -3}
+          - {x: -2, y: 0, z: -3}
+          - {x: 0, y: 0, z: 7}
+          - {x: 0, y: 0, z: -7}
+          rot:
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 0, z: 0}
+          - {x: 0, y: 0, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 0, z: 0}
+        - name:
+          - Golem
+          - CrabHydra
+          - CrabHydra
+          - CrabHydra
+          pos:
+          - {x: 0, y: 0, z: 2}
+          - {x: 2.5, y: 0, z: 3}
+          - {x: -2.5, y: 0, z: 3}
+          - {x: 0, y: 0, z: 7}
+          rot:
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+      - keys: 010000000200000003000000
+        values:
+        - name:
+          - Golem
+          - Wizard
+          pos:
+          - {x: 0, y: 0, z: 2}
+          - {x: 0, y: 0, z: 7}
+          rot:
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+        - name:
+          - StoneMonster
+          - StoneMonster
+          - StoneMonster
+          - Wizard
+          pos:
+          - {x: 2, y: 0, z: 2}
+          - {x: 0, y: 0, z: 2}
+          - {x: -2, y: 0, z: 2}
+          - {x: 0, y: 0, z: -5}
+          rot:
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 0, z: 0}
+        - name:
+          - Wizard
+          - Wizard
+          pos:
+          - {x: 0, y: 0, z: 5}
+          - {x: 0, y: 0, z: -5}
+          rot:
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 0, z: 0}
+      - keys: 010000000200000003000000
+        values:
+        - name:
+          - Golem
+          - CrabHydra
+          - Wizard
+          pos:
+          - {x: 0, y: 0, z: 3}
+          - {x: -3, y: 0, z: -3}
+          - {x: 3, y: 0, z: -3}
+          rot:
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 0, z: 0}
+          - {x: 0, y: 0, z: 0}
+        - name:
+          - CrabHydra
+          - CrabHydra
+          - Wizard
+          pos:
+          - {x: 4, y: 0, z: 5}
+          - {x: -4, y: 0, z: 5}
+          - {x: 0, y: 0, z: -5}
+          rot:
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 0, z: 0}
+        - name:
+          - CrabHydra
+          - CrabHydra
+          - Wizard
+          - Wizard
+          pos:
+          - {x: 5, y: 0, z: 0}
+          - {x: -5, y: 0, z: 0}
+          - {x: 0, y: 0, z: 5}
+          - {x: 0, y: 0, z: -5}
+          rot:
+          - {x: 0, y: 270, z: 0}
+          - {x: 0, y: 90, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 0, z: 0}
+      - keys: 010000000200000003000000
+        values:
+        - name:
+          - CrabHydra
+          - CrabHydra
+          - CrabHydra
+          - CrabHydra
+          - CrabHydra
+          - CrabHydra
+          pos:
+          - {x: 3, y: 0, z: 4}
+          - {x: 5, y: 0, z: 0}
+          - {x: 3, y: 0, z: -4}
+          - {x: -3, y: 0, z: -4}
+          - {x: -3, y: 0, z: 4}
+          - {x: -5, y: 0, z: 0}
+          rot:
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+        - name:
+          - StoneMonster
+          - StoneMonster
+          - CrabHydra
+          - CrabHydra
+          - Wizard
+          - Wizard
+          pos:
+          - {x: 2, y: 0, z: 2}
+          - {x: -2, y: 0, z: 2}
+          - {x: 4, y: 0, z: 2}
+          - {x: -4, y: 0, z: 2}
+          - {x: 2, y: 0, z: 6}
+          - {x: -2, y: 0, z: 6}
+          rot:
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+        - name:
+          - Golem
+          - Golem
+          - Golem
+          - Golem
+          - CrabHydra
+          - CrabHydra
+          - Wizard
+          - Wizard
+          pos:
+          - {x: -5, y: 0, z: 0}
+          - {x: 5, y: 0, z: 0}
+          - {x: -3, y: 0, z: 3}
+          - {x: 3, y: 0, z: 3}
+          - {x: 5, y: 0, z: 5}
+          - {x: -5, y: 0, z: 5}
+          - {x: -3, y: 0, z: 5}
+          - {x: 3, y: 0, z: 5}
+          rot:
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+      - keys: 010000000200000003000000
+        values:
+        - name:
+          - StoneMonster
+          - StoneMonster
+          - Golem
+          - Golem
+          - Wizard
+          - Wizard
+          - Wizard
+          pos:
+          - {x: -4, y: 0, z: 4}
+          - {x: -2, y: 0, z: 4}
+          - {x: 2, y: 0, z: 4}
+          - {x: 4, y: 0, z: 4}
+          - {x: -3, y: 0, z: 6}
+          - {x: 0, y: 0, z: 6}
+          - {x: 3, y: 0, z: 6}
+          rot:
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+        - name:
+          - StoneMonster
+          - CrabHydra
+          - CrabHydra
+          - Wizard
+          - Wizard
+          - Wizard
+          pos:
+          - {x: 0, y: 0, z: 2}
+          - {x: 1, y: 0, z: 3}
+          - {x: -1, y: 0, z: 3}
+          - {x: 4, y: 0, z: 5}
+          - {x: 0, y: 0, z: 5}
+          - {x: -4, y: 0, z: 5}
+          rot:
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+        - name:
+          - CrabHydra
+          - CrabHydra
+          - CrabHydra
+          - CrabHydra
+          - CrabHydra
+          - Wizard
+          - Wizard
+          - Wizard
+          pos:
+          - {x: -8, y: 0, z: 4}
+          - {x: -4, y: 0, z: 4}
+          - {x: 0, y: 0, z: 4}
+          - {x: 4, y: 0, z: 4}
+          - {x: 8, y: 0, z: 4}
+          - {x: 4, y: 0, z: -4}
+          - {x: 0, y: 0, z: -4}
+          - {x: -4, y: 0, z: -4}
+          rot:
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 0, z: 0}
+          - {x: 0, y: 0, z: 0}
+          - {x: 0, y: 0, z: 0}
+      - keys: 010000000200000003000000
+        values:
+        - name:
+          - Wizard
+          - Wizard
+          - Wizard
+          - Wizard
+          pos:
+          - {x: 4, y: 0, z: 4}
+          - {x: -4, y: 0, z: 4}
+          - {x: -4, y: 0, z: -4}
+          - {x: 4, y: 0, z: -4}
+          rot:
+          - {x: 0, y: 225, z: 0}
+          - {x: 0, y: 135, z: 0}
+          - {x: 0, y: 45, z: 0}
+          - {x: 0, y: 315, z: 0}
+        - name:
+          - Golem
+          - Golem
+          - Golem
+          - Golem
+          - Wizard
+          - Wizard
+          - Wizard
+          - Wizard
+          pos:
+          - {x: 4, y: 0, z: 4}
+          - {x: 8, y: 0, z: 4}
+          - {x: -4, y: 0, z: 4}
+          - {x: -8, y: 0, z: 4}
+          - {x: 4, y: 0, z: 8}
+          - {x: 8, y: 0, z: 8}
+          - {x: -4, y: 0, z: 8}
+          - {x: -8, y: 0, z: 8}
+          rot:
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 180, z: 0}
+        - name:
+          - Golem
+          - Golem
+          - CrabHydra
+          - CrabHydra
+          - Wizard
+          - Wizard
+          - Wizard
+          - Wizard
+          pos:
+          - {x: 0, y: 0, z: 2}
+          - {x: 2, y: 0, z: 0}
+          - {x: -2, y: 0, z: 0}
+          - {x: 0, y: 0, z: -2}
+          - {x: 4, y: 0, z: 4}
+          - {x: -4, y: 0, z: 4}
+          - {x: -4, y: 0, z: -4}
+          - {x: 4, y: 0, z: -4}
+          rot:
+          - {x: 0, y: 180, z: 0}
+          - {x: 0, y: 270, z: 0}
+          - {x: 0, y: 90, z: 0}
+          - {x: 0, y: 0, z: 0}
+          - {x: 0, y: 225, z: 0}
+          - {x: 0, y: 135, z: 0}
+          - {x: 0, y: 45, z: 0}
+          - {x: 0, y: 315, z: 0}
+  CurrentMaxWave: 0
