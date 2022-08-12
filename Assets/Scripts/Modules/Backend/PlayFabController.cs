@@ -63,7 +63,7 @@ public class PlayFabController : MonoBehaviour
         }, result => {
             Debug.Log("Got user data:");
             if (result.Data == null || !result.Data.ContainsKey("hp")) SetUserData();
-            else Debug.Log("hp: " + result.Data["hp"].Value);
+            //else Debug.Log("hp: " + result.Data["hp"].Value);
         }, (error) => {
             Debug.Log("Got error retrieving user data:");
             Debug.Log(error.GenerateErrorReport());
@@ -79,6 +79,7 @@ public class PlayFabController : MonoBehaviour
             {"hp", "100"},
             {"atk", "10"},
             {"def", "10"},
+            {"LastStage","0"},
 
 
         }

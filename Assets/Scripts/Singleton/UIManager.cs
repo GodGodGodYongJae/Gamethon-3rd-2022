@@ -61,4 +61,48 @@ public class UIManager : Singleton<UIManager>
         }
         //UIList[(int)UiState].
     }
+
+
+    #region Tutorial UI
+    [SerializeField]
+    private GameObject TutorialObj;
+    [SerializeField]
+    private GameObject[] t_button;
+    [SerializeField]
+    private Sprite[] TutorialSprite;
+    private short t_currentPage;
+    public void StartTutorial()
+    {
+        // Game Stop
+        Time.timeScale = 0;
+        t_currentPage = 0;
+        TutorialObj.SetActive(true);
+       TutorialObj.GetComponent<Image>().sprite = TutorialSprite[t_currentPage];
+        t_button[0].SetActive(true);
+    }
+    public void OnNextTutorial()
+    {
+        t_currentPage++;
+        TutorialObj.GetComponent<Image>().sprite = TutorialSprite[t_currentPage];
+        Debug.Log((t_currentPage + 1) + "," + TutorialSprite.Length);
+        if(t_currentPage+1 >= TutorialSprite.Length)
+        {
+            t_button[0].SetActive(false);
+            t_button[1].SetActive(true);
+        }
+    }
+
+    public void OnComplateTutorial()
+    {
+        Time.timeScale = 1;
+        t_currentPage = 0;
+        TutorialObj.SetActive(false);
+        foreach (var item in t_button)
+        {
+            item.SetActive(false);
+        }
+        PlayfabPlayerData.instance.SetUserLastStageUpdate(111);
+    }
+
+    #endregion
 }
