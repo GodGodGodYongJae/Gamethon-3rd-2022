@@ -1697,6 +1697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDontDestroy: 0
+  player: {fileID: 1803846713}
 --- !u!4 &385103408
 Transform:
   m_ObjectHideFlags: 0
@@ -13717,7 +13718,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 21461ad060a184248b190d1bd610b431, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9fb2de753b424fc449f1c8ed5f2bd894, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

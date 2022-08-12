@@ -47,7 +47,7 @@ public class Player : MonoBehaviour, IDamageable
         //Time.timeScale = 0.3f;
         exp = 0;
         level = 0;
-        Health = 100;
+        Health = 1;
         maxHealth = Health;
         anim = GetComponent<Animator>();
         PlayerDirection = bitFlags.PlayerMoveDirection.None;
@@ -57,6 +57,13 @@ public class Player : MonoBehaviour, IDamageable
     }
 
 
+    public void RequestPlayerData(int hp)
+    {
+        Health = hp;
+        maxHealth = hp;
+        string Hptext = Health + "/" + maxHealth;
+        UIManager.Instance.TextChange(UIManager.UI.HPText, Hptext);
+    }
 
 
     // Update is called once per frame

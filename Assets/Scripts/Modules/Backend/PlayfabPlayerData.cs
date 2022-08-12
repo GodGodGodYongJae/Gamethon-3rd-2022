@@ -8,10 +8,16 @@ public class PlayfabPlayerData : Singleton<PlayfabPlayerData>
 {
     string MyPlayfabID;
     int serverStage;
+    int PlayerHP;
+
+    [SerializeField]
+    Player player;
+
     protected override void Awake()
     {
         base.Awake();
         GetAccountInfo();
+        Time.timeScale = 0;
     }
 
     void GetAccountInfo()
@@ -44,9 +50,12 @@ public class PlayfabPlayerData : Singleton<PlayfabPlayerData>
             Keys = null
         }, result => {
             Debug.Log("Got user data:");
+            PlayerHP = int.Parse(result.Data["hp"].Value);
             if (result.Data.ContainsKey("LastStage"))
             {
                 serverStage = int.Parse(result.Data["LastStage"].Value);
+               
+                Time.timeScale = 1;
                 if(serverStage == 0)
                 {
                     UIManager.Instance.StartTutorial();
@@ -54,6 +63,7 @@ public class PlayfabPlayerData : Singleton<PlayfabPlayerData>
 
                 }
             }
+            player.RequestPlayerData(PlayerHP);
                 
         }, (error) => {
             Debug.Log("Got error retrieving user data:");
