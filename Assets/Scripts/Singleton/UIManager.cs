@@ -14,6 +14,8 @@ public class UIManager : Singleton<UIManager>
     LevelText
     }
 
+
+    #region hp
     [SerializeField]
     private Sprite[] playerHpSprite;
     [SerializeField]
@@ -61,7 +63,9 @@ public class UIManager : Singleton<UIManager>
         }
         //UIList[(int)UiState].
     }
+    #endregion
 
+    #region respawn
     [SerializeField]
     GameObject RespawnButton;
 
@@ -80,6 +84,7 @@ public class UIManager : Singleton<UIManager>
         RespawnObj.SetActive(false);
         Player.Respawn();
     }
+    #endregion
 
     #region Tutorial UI
     [SerializeField]
@@ -123,4 +128,12 @@ public class UIManager : Singleton<UIManager>
     }
 
     #endregion
+
+    [SerializeField]
+    Image SkillCoolDownImage;
+    public void SkilCoolDown(float amount)
+    {
+        SkillCoolDownImage.fillAmount = amount;
+    }
+
 }

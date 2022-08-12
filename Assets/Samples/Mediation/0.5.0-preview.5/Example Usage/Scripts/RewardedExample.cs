@@ -21,6 +21,8 @@ namespace Unity.Services.Mediation.Samples
         private bool isLife;
 
 
+
+
         async void Start()
         {
             try

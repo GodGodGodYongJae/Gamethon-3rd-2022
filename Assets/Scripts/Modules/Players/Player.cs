@@ -30,12 +30,16 @@ public class Player : MonoBehaviour, IDamageable
     public GameObject effectParent;
     // Start is called before the first frame update
 
+    private bool skillCoolDown;
+    public float coolDownTime;
+    private Coroutine skilcorutine;
     [SerializeField]
     private GameObject bloodWindow;
     private void Awake()
     {
         EnemyFactoryMethod.Instance.player = this;
     }
+
     void Start()
     {
 
@@ -49,7 +53,7 @@ public class Player : MonoBehaviour, IDamageable
         PlayerDirection = bitFlags.PlayerMoveDirection.None;
         string Hptext = Health + "/" + maxHealth;
         UIManager.Instance.TextChange(UIManager.UI.HPText, Hptext);
-
+        //skilcorutine = StartCoroutine(CoolTime(coolDownTime));
     }
 
 
@@ -86,7 +90,9 @@ public class Player : MonoBehaviour, IDamageable
             if(!isDeath)
             transform.LookAt(targetPos);
         }
-        
+
+        if (skilcorutine == null)
+            skilcorutine = StartCoroutine(CoolTime(coolDownTime));
 
         #region KeyBoard
         //if (anim.GetInteger("Movement") == 0)
@@ -102,13 +108,31 @@ public class Player : MonoBehaviour, IDamageable
 
         //}
         #endregion
+    
 
     }
+    IEnumerator CoolTime(float cool) {
 
+        while (cool > 1.0f) 
+        {
+            cool -= Time.deltaTime;
+            UIManager.Instance.SkilCoolDown(1.0f / cool);
+            yield return new WaitForFixedUpdate();
+        }
+        skillCoolDown = true;
+    }
+   
+   
     public void OnSwordSkilBtn()
     {
-        if (isDeath.Equals(false))
-           CutSceneManager.Instance.OnScene(true, CutSceneManager.Events.SwordSkill, true);
+        if (isDeath.Equals(false) && skillCoolDown.Equals(true))
+        {
+            CutSceneManager.Instance.OnScene(true, CutSceneManager.Events.SwordSkill, true);
+            skilcorutine = null;
+            skillCoolDown = false;
+            UIManager.Instance.SkilCoolDown(0);
+        }
+    
     }
     public void movement(bitFlags.PlayerMoveDirection pd, Transform target)
     {
@@ -168,6 +192,8 @@ public class Player : MonoBehaviour, IDamageable
         isDeath = false;
         anim.SetBool("isDeath", false);
         UIManager.Instance.ChangeHpBar(UIManager.UI.HpBar, Health, maxHealth);
+        string Hptext = Health + "/" + maxHealth;
+        UIManager.Instance.TextChange(UIManager.UI.HPText, Hptext);
     }
 
     //차후 수정해야함
