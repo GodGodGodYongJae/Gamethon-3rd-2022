@@ -62,6 +62,24 @@ public class UIManager : Singleton<UIManager>
         //UIList[(int)UiState].
     }
 
+    [SerializeField]
+    GameObject RespawnButton;
+
+    [SerializeField]
+    GameObject RespawnObj;
+
+    [SerializeField]
+    GameObject DeathCinemachine;
+
+    [SerializeField]
+    Player Player;
+    public void CharaterRespwan()
+    {
+        DeathCinemachine.SetActive(false);
+        RespawnButton.SetActive(false);
+        RespawnObj.SetActive(false);
+        Player.Respawn();
+    }
 
     #region Tutorial UI
     [SerializeField]

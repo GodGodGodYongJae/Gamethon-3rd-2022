@@ -17,6 +17,10 @@ namespace Unity.Services.Mediation.Samples
 
         IRewardedAd m_RewardedAd;
 
+        [SerializeField]
+        private bool isLife;
+
+
         async void Start()
         {
             try
@@ -148,11 +152,13 @@ namespace Unity.Services.Mediation.Samples
 
         void UserRewarded(object sender, RewardEventArgs e)
         {
+          
             Debug.Log($"User Rewarded! Type: {e.Type} Amount: {e.Amount}");
         }
 
         void AdClosed(object sender, EventArgs args)
-        {
+        {  //TOdo
+            if (isLife) UIManager.Instance.CharaterRespwan();
             Debug.Log("Rewarded Closed! Loading Ad...");
         }
         

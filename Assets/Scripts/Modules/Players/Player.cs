@@ -44,7 +44,7 @@ public class Player : MonoBehaviour, IDamageable
         exp = 0;
         level = 0;
         Health = 100;
-        maxHealth = health;
+        maxHealth = Health;
         anim = GetComponent<Animator>();
         PlayerDirection = bitFlags.PlayerMoveDirection.None;
         string Hptext = Health + "/" + maxHealth;
@@ -107,7 +107,8 @@ public class Player : MonoBehaviour, IDamageable
 
     public void OnSwordSkilBtn()
     {
-        CutSceneManager.Instance.OnScene(true, CutSceneManager.Events.SwordSkill, true);
+        if (isDeath.Equals(false))
+           CutSceneManager.Instance.OnScene(true, CutSceneManager.Events.SwordSkill, true);
     }
     public void movement(bitFlags.PlayerMoveDirection pd, Transform target)
     {
@@ -158,6 +159,15 @@ public class Player : MonoBehaviour, IDamageable
             Time.timeScale = 0.35f;
             anim.SetBool("isDeath", true);
         }
+    }
+
+    public void Respawn()
+    {
+        Time.timeScale = 1;
+        Health = maxHealth;
+        isDeath = false;
+        anim.SetBool("isDeath", false);
+        UIManager.Instance.ChangeHpBar(UIManager.UI.HpBar, Health, maxHealth);
     }
 
     //차후 수정해야함
