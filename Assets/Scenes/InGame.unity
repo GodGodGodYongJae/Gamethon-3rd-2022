@@ -8924,8 +8924,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1803846712}
-  dist: 4
-  height: 2
+  dist: 6
+  height: 3.5
   dampRotate: 5
   smoothTime: 0.05
 --- !u!114 &963194230
@@ -17019,6 +17019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dec6785f1cc17441a3c07e1e21b65c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Target: {fileID: 0}
 --- !u!114 &1803846722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25939,7 +25940,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2565559904867717922, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
       propertyPath: Cha.values.Array.data[0].values.Array.data[0].values.Array.data[0].name.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2565559904867717922, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
       propertyPath: Cha.values.Array.data[0].values.Array.data[0].values.Array.data[0].name.Array.data[0]

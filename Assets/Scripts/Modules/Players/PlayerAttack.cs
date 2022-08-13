@@ -7,7 +7,7 @@ public class PlayerAttack : MonoBehaviour
 
     PlayerData playerData;
     Player player;
-
+    public Transform Target;
     private void Start()
     {
         player = GetComponent<Player>();
@@ -18,16 +18,17 @@ public class PlayerAttack : MonoBehaviour
         if (target == null)
             return;
 
-        //Enemy te = target.GetComponent<Enemy>();
-        //if (te.isDeath)
-        //    return;
+        Target = target;
 
-        if(player.anim.GetInteger("Movement") == 0)
+    }
+
+    public void AttackAnimationSync()
+    {
+        if (player.anim.GetInteger("Movement") == 0)
         {
 
-            IDamageable damge = target.GetComponent<IDamageable>();
-            damge.Damage(playerData.RandAtk,this.gameObject);
+            IDamageable damge = Target.GetComponent<IDamageable>();
+            damge.Damage(playerData.RandAtk, this.gameObject);
         }
-       
     }
 }

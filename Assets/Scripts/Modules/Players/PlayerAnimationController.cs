@@ -38,12 +38,6 @@ public class PlayerAnimationController : MonoBehaviour
     public void Attack(Transform target)
     {
         anim.SetTrigger("OnCloseAttackCombo");
-        //if(anim.GetInteger("Attack") < 3)
-        //{
-        //    if((anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.6f && anim.GetInteger("Attack") > 0) || anim.GetInteger("Attack") == 0)
-        //    anim.SetInteger("Attack", anim.GetInteger("Attack") + 1);
-           
-        //}
         
     }
 }

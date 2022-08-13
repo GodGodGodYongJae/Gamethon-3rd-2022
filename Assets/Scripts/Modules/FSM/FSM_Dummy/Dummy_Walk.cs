@@ -46,7 +46,7 @@ public class Dummy_Walk : MonoBehaviour,FSM_State<DummyFSM>
         }
             GotoTarget();
         //Debug.Log(Vector3.Distance(m_Owner.transform.position, m_Owner.m_TransTarget.position));
-        Debug.Log(dot);
+        //Debug.Log(dot);
         if (m_Owner.m_TransTarget !=null 
             && m_Owner.m_fAttackRange >= Vector3.Distance(m_Owner.transform.position,m_Owner.m_TransTarget.position)
              && dot >= dotDis)
@@ -54,7 +54,7 @@ public class Dummy_Walk : MonoBehaviour,FSM_State<DummyFSM>
             if(m_Owner.isDealy)
             {
                 m_Owner.ChangeFSM(DummyFSM.State.Attack);
-                Debug.Log("ooo" + dot);
+                //Debug.Log("ooo" + dot);
             }
                 
             else

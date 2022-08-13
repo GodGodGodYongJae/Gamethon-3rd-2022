@@ -21,6 +21,8 @@ public class Player : MonoBehaviour, IDamageable
 
     private int maxHealth;
     private int health;
+
+
     private int exp;
     private int level;
     public bool isDeath;
@@ -29,6 +31,9 @@ public class Player : MonoBehaviour, IDamageable
     public int Level { get { return level; }set { level = value; } }
     public GameObject effectParent;
     // Start is called before the first frame update
+
+    [HideInInspector]
+    public float atkSpeed;
 
     private bool skillCoolDown;
     public float coolDownTime;
@@ -47,6 +52,7 @@ public class Player : MonoBehaviour, IDamageable
         //Time.timeScale = 0.3f;
         exp = 0;
         level = 0;
+        atkSpeed = 1f;
         Health = 1;
         maxHealth = Health;
         anim = GetComponent<Animator>();

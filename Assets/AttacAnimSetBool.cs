@@ -4,22 +4,35 @@ using UnityEngine;
 
 public class AttacAnimSetBool : StateMachineBehaviour
 {
+
+    public float AttackStartTime;
+    bool isAttack;
     // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+
+        animator.SetFloat("multiplier", animator.transform.GetComponent<Player>().atkSpeed); 
         animator.SetBool("isAttack", true);
+        Debug.Log(AttackStartTime);
+        isAttack = false;
     }
 
     // OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= AttackStartTime && isAttack.Equals(false))
+        {
+            Debug.Log(animator.GetCurrentAnimatorStateInfo(0).normalizedTime+"," + AttackStartTime);
+            PlayerAttack pa = animator.transform.GetComponent<PlayerAttack>();
+            pa.AttackAnimationSync();
+            isAttack = true;
+        }
+    }
 
     // OnStateExit is called before OnStateExit is called on any state inside this state machine
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
-    //    
+    //    animator.speed = speed;
     //}
 
     // OnStateMove is called before OnStateMove is called on any state inside this state machine
@@ -43,6 +56,6 @@ public class AttacAnimSetBool : StateMachineBehaviour
     // OnStateMachineExit is called when exiting a state machine via its Exit Node
     //override public void OnStateMachineExit(Animator animator, int stateMachinePathHash)
     //{
-    //    
+    //    animator.speed = speed;
     //}
 }
