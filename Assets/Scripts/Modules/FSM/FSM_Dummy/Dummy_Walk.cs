@@ -9,6 +9,9 @@ public class Dummy_Walk : MonoBehaviour,FSM_State<DummyFSM>
     private DummyFSM m_Owner;
     private NavMeshAgent agent;
     Vector3 point;
+
+    [SerializeField]
+    private float dotDis = 0.99f;
     //private float currentAtkDealy;
     //private bool isDealy;
     public DummyFSM Owner { get { return m_Owner; } set { m_Owner = value; } }
@@ -30,27 +33,30 @@ public class Dummy_Walk : MonoBehaviour,FSM_State<DummyFSM>
         }
         Vector3 targetDir = (m_Owner.m_TransTarget.position - m_Owner.transform.position).normalized;
         float dot = Vector3.Dot(m_Owner.transform.forward, targetDir);
-        float theta = Mathf.Acos(dot) * Mathf.Rad2Deg;
+        //float theta = Mathf.Acos(dot) * Mathf.Rad2Deg;
 
         if (m_Owner.m_TransTarget != null && dot <= 1)
         {
-
+            agent.updateRotation = false;
             Vector3 lookPos = m_Owner.m_TransTarget.position - m_Owner.transform.position;
             lookPos.y = 0;
             Quaternion rotation = Quaternion.LookRotation(lookPos);
-            m_Owner.transform.rotation = Quaternion.Slerp(m_Owner.transform.rotation, rotation, 3.0f);
+            m_Owner.transform.rotation = Quaternion.Slerp(m_Owner.transform.rotation, rotation, Time.deltaTime*2f);
             
         }
             GotoTarget();
-
         //Debug.Log(Vector3.Distance(m_Owner.transform.position, m_Owner.m_TransTarget.position));
+        Debug.Log(dot);
         if (m_Owner.m_TransTarget !=null 
             && m_Owner.m_fAttackRange >= Vector3.Distance(m_Owner.transform.position,m_Owner.m_TransTarget.position)
-             && theta <= 7)
+             && dot >= dotDis)
         {
             if(m_Owner.isDealy)
-
+            {
                 m_Owner.ChangeFSM(DummyFSM.State.Attack);
+                Debug.Log("ooo" + dot);
+            }
+                
             else
             {
                // m_Owner.ChangeFSM(DummyFSM.State.IDLE);

@@ -18,7 +18,7 @@ public class Bullet_Attack : MonoBehaviour, FSM_State<DummyFSM>
         //m_Owner.m_Animator.SetInteger("State", (int)DummyFSM.State.Attack);
         m_Owner.m_eCurState = DummyFSM.State.Attack2;
         TargetPos = m_Owner.m_TransTarget.position;
-        BulletCreatePos = new Vector3(transform.position.x, TargetPos.y, transform.position.z);
+        BulletCreatePos = new Vector3(transform.position.x, TargetPos.y+0.3f, transform.position.z);
         //BulletCreatePos += transform.forward;
         //BulletCreatePos += transform.forward;
         CreateBullet();

@@ -8,6 +8,7 @@ public class Wizard_ReadyAttack : MonoBehaviour, FSM_State<DummyFSM>
     public List<GameObject> Summon = new List<GameObject>();
     public DummyFSM Owner { get { return m_Owner; } set { m_Owner = value; } }
 
+    private short coolDownSummon;
     public void Begin()
     {
         //Bullet 먼저 소환해봐야 해서
@@ -41,7 +42,17 @@ public class Wizard_ReadyAttack : MonoBehaviour, FSM_State<DummyFSM>
         {
             if (Summon.Count.Equals(0))
             {
-                m_Owner.ChangeFSM(DummyFSM.State.Summon, false);
+                if(coolDownSummon.Equals(0))
+                {
+                    coolDownSummon = 2;
+                    m_Owner.ChangeFSM(DummyFSM.State.Summon, false);
+                }
+                  
+                else
+                {
+                    coolDownSummon--;
+                    m_Owner.ChangeFSM(DummyFSM.State.Attack2, false);
+                }
             }
             else
             {

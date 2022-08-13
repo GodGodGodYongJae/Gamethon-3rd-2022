@@ -107,7 +107,7 @@ NavMeshSettings:
     serializedVersion: 2
     agentTypeID: 0
     agentRadius: 0.1
-    agentHeight: 10
+    agentHeight: 1
     agentSlope: 60
     agentClimb: 0
     ledgeDropHeight: 0
@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 1f3e00c741afac94fa3be2f2815fe6dd, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: af268cd93409d1644b574fd61406a077, type: 2}
 --- !u!1 &1695666
 GameObject:
   m_ObjectHideFlags: 0
@@ -25929,6 +25929,46 @@ PrefabInstance:
       propertyPath: DeathObjs
       value: 
       objectReference: {fileID: 407481235}
+    - target: {fileID: 2565559904867717922, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
+      propertyPath: Cha.values.Array.data[0].values.Array.data[0].values.Array.data[0].pos.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2565559904867717922, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
+      propertyPath: Cha.values.Array.data[0].values.Array.data[0].values.Array.data[0].rot.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2565559904867717922, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
+      propertyPath: Cha.values.Array.data[0].values.Array.data[0].values.Array.data[0].name.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2565559904867717922, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
+      propertyPath: Cha.values.Array.data[0].values.Array.data[0].values.Array.data[0].name.Array.data[0]
+      value: Golem
+      objectReference: {fileID: 0}
+    - target: {fileID: 2565559904867717922, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
+      propertyPath: Cha.values.Array.data[0].values.Array.data[0].values.Array.data[0].name.Array.data[1]
+      value: Golem
+      objectReference: {fileID: 0}
+    - target: {fileID: 2565559904867717922, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
+      propertyPath: Cha.values.Array.data[0].values.Array.data[0].values.Array.data[0].name.Array.data[2]
+      value: Golem
+      objectReference: {fileID: 0}
+    - target: {fileID: 2565559904867717922, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
+      propertyPath: Cha.values.Array.data[0].values.Array.data[0].values.Array.data[0].pos.Array.data[1].z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2565559904867717922, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
+      propertyPath: Cha.values.Array.data[0].values.Array.data[0].values.Array.data[0].pos.Array.data[2].z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2565559904867717922, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
+      propertyPath: Cha.values.Array.data[0].values.Array.data[0].values.Array.data[0].rot.Array.data[1].y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2565559904867717922, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
+      propertyPath: Cha.values.Array.data[0].values.Array.data[0].values.Array.data[0].rot.Array.data[2].y
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 6001815874832132225, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
       propertyPath: m_RootOrder
       value: 7
