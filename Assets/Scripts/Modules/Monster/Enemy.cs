@@ -21,6 +21,8 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     public float DestoryTime;
     public bool isDeath;
 
+    [HideInInspector]
+    public int DamageNum;
     protected void Start()
     {
         Init();
@@ -36,11 +38,15 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     {
         if (Time.time >= canTakeDamage && isDeath.Equals(false))
         {
-            int damage = Mathf.FloorToInt(_damage * (1 - (type.DefencePoint / 100)));
-            canTakeDamage = Time.time + damageCooldown;
-            Health -= damage;
-            OnDamageEvent();
-            DamageTextSettings(damage);
+            for (int i = 0; i < DamageNum; i++)
+            {
+                int damage = Mathf.FloorToInt(_damage * (1 - (type.DefencePoint / 100)));
+                canTakeDamage = Time.time + damageCooldown;
+                Health -= damage;
+                OnDamageEvent();
+                DamageTextSettings(damage);
+            }
+            DamageNum = 1;
             //if (Health <= 0)
             //    EnemyFactoryMethod.Instance?.DeleteEnemy(this.gameObject);
         }

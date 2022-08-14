@@ -6,11 +6,11 @@ public class PlayerAttack : MonoBehaviour
 {
 
     PlayerData playerData;
-    Player player;
+   // Player player;
     public Transform Target;
     private void Start()
     {
-        player = GetComponent<Player>();
+       // player = GetComponent<Player>();
         playerData = GetComponent<PlayerData>();
     }
     public void OnAttackEvent(Transform target)
@@ -24,11 +24,11 @@ public class PlayerAttack : MonoBehaviour
 
     public void AttackAnimationSync()
     {
-        if (player.anim.GetInteger("Movement") == 0)
-        {
+        //if (player.anim.GetInteger("Movement") == 0)
+        //{
 
             IDamageable damge = Target.GetComponent<IDamageable>();
             damge.Damage(playerData.RandAtk, this.gameObject);
-        }
+        //}
     }
 }

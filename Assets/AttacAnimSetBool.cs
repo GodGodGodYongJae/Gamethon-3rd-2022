@@ -7,13 +7,13 @@ public class AttacAnimSetBool : StateMachineBehaviour
 
     public float AttackStartTime;
     bool isAttack;
+    public bool isDoubleAttack;
     // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
         animator.SetFloat("multiplier", animator.transform.GetComponent<Player>().atkSpeed); 
         animator.SetBool("isAttack", true);
-        Debug.Log(AttackStartTime);
         isAttack = false;
     }
 
@@ -22,12 +22,14 @@ public class AttacAnimSetBool : StateMachineBehaviour
     {
         if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= AttackStartTime && isAttack.Equals(false))
         {
-            Debug.Log(animator.GetCurrentAnimatorStateInfo(0).normalizedTime+"," + AttackStartTime);
+            //Debug.Log(animator.GetCurrentAnimatorStateInfo(0).normalizedTime+"," + AttackStartTime);
             PlayerAttack pa = animator.transform.GetComponent<PlayerAttack>();
             pa.AttackAnimationSync();
             isAttack = true;
         }
     }
+
+
 
     // OnStateExit is called before OnStateExit is called on any state inside this state machine
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

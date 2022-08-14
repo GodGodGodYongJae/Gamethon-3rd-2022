@@ -4,21 +4,41 @@ using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
+    public enum SkilList { DoubleAttack,AttackSpeed,End}
+    [System.Serializable]
+    public class SkilListDic : SerializableDictionary<SkilList, MonoBehaviour> { };
 
-    // Start is called before the first frame update
-    void Start()
+    public SkilListDic e_SkilList = new SkilListDic();
+
+    public List<ISkil> ShowSkilList()
     {
-        AddSkill();
+        List<ISkil> my_skilList = new List<ISkil>();
+        foreach (var item in e_SkilList)
+        {
+            ISkil iskil = item.Value as ISkil;
+            if (iskil.limitSelect.Equals(false))
+                my_skilList.Add(iskil);
+        }
+        return my_skilList;
+
+    }
+    public void SelectSkil(SkilList skill)
+    {
+        foreach (var item in e_SkilList)
+        {
+            if (item.Key == skill)
+            {
+                AddSkil(item.Value as ISkil);
+            }
+        }
+       
     }
 
-    // Update is called once per frame
-    void Update()
+   void AddSkil(ISkil skil)
     {
-        
-    }
-
-    void AddSkill()
-    {
-        gameObject.AddComponent<P_Skill_AttackSpeed>();
+        if (skil.isInit.Equals(true))
+            skil.init();
+        else
+            skil.overlapSelect();
     }
 }

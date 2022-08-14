@@ -19,22 +19,24 @@ public class Player : MonoBehaviour, IDamageable
 
     Rigidbody rb;
 
-    private int maxHealth;
-    private int health;
-
-
     private int exp;
     private int level;
     public bool isDeath;
-    public int Health { get { return health; } set { health = value; }  }
+
     public int Exp { get { return exp; } set { exp = value; } }
     public int Level { get { return level; }set { level = value; } }
     public GameObject effectParent;
     // Start is called before the first frame update
 
+    #region 캐릭터 스텟 & 스킬에 필요한 데이터
     [HideInInspector]
-    public float atkSpeed;
+    public float atkSpeed; // 공격속도
+    private int maxHealth; // 최대 HP 
+    private int health; // 현재 체력
 
+    public int Health { get { return health; } set { health = value; } } // 프로퍼티
+
+    #endregion
     private bool skillCoolDown;
     public float coolDownTime;
     private Coroutine skilcorutine;
@@ -220,21 +222,3 @@ public class Player : MonoBehaviour, IDamageable
     }
 }
 
-
-//if (attackdistance < distance && anim.GetBool("OnCloseAttackCombo") == false)
-//{
-//    PlayerDirection = pd;
-//    return;
-//}
-//else if(pd == bitFlags.PlayerMoveDirection.Dash)
-//{
-//    if (distance < attackdistance)
-//        PlayerDirection = bitFlags.PlayerMoveDirection.Attack;
-//    else
-//        return;
-//}
-//else if(anim.GetBool("OnCloseAttackCombo") == false)
-//{
-//    PlayerDirection = pd;
-//    return;
-//}
