@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
-    public enum SkilList { DoubleAttack,AttackSpeed,End}
+    public enum SkilList { DoubleAttack,AttackSpeed,Heal,End}
     [System.Serializable]
     public class SkilListDic : SerializableDictionary<SkilList, MonoBehaviour> { };
 

@@ -4190,7 +4190,7 @@ GameObject:
   - component: {fileID: 1771239723707132929}
   m_Layer: 0
   m_Name: CrabMonster 1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4280,6 +4280,7 @@ MonoBehaviour:
         m_CallState: 2
   DestoryTime: 3
   isDeath: 0
+  DamageNum: 0
 --- !u!114 &6042155885688887102
 MonoBehaviour:
   m_ObjectHideFlags: 0

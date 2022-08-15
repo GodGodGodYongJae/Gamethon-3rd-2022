@@ -17266,6 +17266,7 @@ GameObject:
   - component: {fileID: 1722390308}
   - component: {fileID: 1722390310}
   - component: {fileID: 1722390309}
+  - component: {fileID: 1722390311}
   m_Layer: 0
   m_Name: '@SkilManager'
   m_TagString: Untagged
@@ -17300,10 +17301,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   e_SkilList:
-    keys: 0100000000000000
+    keys: 010000000000000002000000
     values:
     - {fileID: 1722390309}
     - {fileID: 1722390310}
+    - {fileID: 1722390311}
 --- !u!114 &1722390309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17331,6 +17333,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   e_skilImg: {fileID: 21300000, guid: 23204ec0baae17b4cbb10c67d6a33417, type: 3}
+--- !u!114 &1722390311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722390306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2df980b281ad594f83a5f59d433f90f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealPersent: 30
+  e_skilImg: {fileID: 21300000, guid: e0acc69098ded5341876f273cdb6a486, type: 3}
 --- !u!1 &1732867558
 GameObject:
   m_ObjectHideFlags: 0
@@ -17968,10 +17984,11 @@ MonoBehaviour:
   target: {fileID: 0}
   PlayerDirection: 0
   anim: {fileID: 0}
-  attackdistance: 2
+  attackdistance: 1.5
   isDeath: 0
   effectParent: {fileID: 1735578511}
   atkSpeed: 0
+  maxHealth: 0
   coolDownTime: 30
   bloodWindow: {fileID: 512663290}
 --- !u!114 &1803846714
@@ -27078,6 +27095,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1290990380851595413, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
+      propertyPath: poolList.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1290990380851595413, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
+      propertyPath: poolList.Array.data[8]
+      value: 
+      objectReference: {fileID: 1593574840045950, guid: 45ae8ce3527dfcf46933282f370e9275, type: 3}
     - target: {fileID: 2061539802585977231, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
       propertyPath: m_Name
       value: '@GameManagersr'

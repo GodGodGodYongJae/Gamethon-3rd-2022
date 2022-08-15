@@ -31,7 +31,8 @@ public class Player : MonoBehaviour, IDamageable
     #region 캐릭터 스텟 & 스킬에 필요한 데이터
     [HideInInspector]
     public float atkSpeed; // 공격속도
-    private int maxHealth; // 최대 HP 
+    [HideInInspector]
+    public int maxHealth; // 최대 HP 
     private int health; // 현재 체력
 
     public int Health { get { return health; } set { health = value; } } // 프로퍼티
@@ -55,7 +56,7 @@ public class Player : MonoBehaviour, IDamageable
         exp = 0;
         level = 0;
         atkSpeed = 1f;
-        Health = 1;
+        Health = 100;
         maxHealth = Health;
         anim = GetComponent<Animator>();
         PlayerDirection = bitFlags.PlayerMoveDirection.None;
@@ -123,6 +124,12 @@ public class Player : MonoBehaviour, IDamageable
 
         //}
         #endregion
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("ㅇㅇ");
+            ObjectPoolManager.Instance.Get("Meteor 2", target.position, Quaternion.identity);
+        }
     
 
     }
@@ -200,6 +207,16 @@ public class Player : MonoBehaviour, IDamageable
         }
     }
 
+    public void Heal(int heal)
+    {
+        Health += heal;
+        if (Health > maxHealth)
+            Health = maxHealth;
+
+        UIManager.Instance.ChangeHpBar(UIManager.UI.HpBar, Health, maxHealth);
+        string Hptext = Health + "/" + maxHealth;
+        UIManager.Instance.TextChange(UIManager.UI.HPText, Hptext);
+    }
     public void Respawn()
     {
         Time.timeScale = 1;

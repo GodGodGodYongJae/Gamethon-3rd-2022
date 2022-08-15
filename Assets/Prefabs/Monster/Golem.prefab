@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 79025251576931965}
   m_Layer: 0
   m_Name: Golem
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -203,6 +203,7 @@ MonoBehaviour:
         m_CallState: 2
   DestoryTime: 3
   isDeath: 0
+  DamageNum: 0
 --- !u!114 &243774974187367993
 MonoBehaviour:
   m_ObjectHideFlags: 0

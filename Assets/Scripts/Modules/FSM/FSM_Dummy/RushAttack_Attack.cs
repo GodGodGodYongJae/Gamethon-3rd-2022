@@ -43,7 +43,6 @@ public class RushAttack_Attack : MonoBehaviour,FSM_State<DummyFSM>
             {
                 m_Owner.isDealy = false;
                 m_Owner.istargetMove = false;
-                Debug.Log("¤·¤·");
                 m_Owner.ChangeFSM(DummyFSM.State.IDLE);
 
             }
@@ -53,7 +52,6 @@ public class RushAttack_Attack : MonoBehaviour,FSM_State<DummyFSM>
     private void Point()
     {
         point = transform.position + transform.forward * 8f;//m_Owner.transform.forward * 3f;
-        Debug.Log(point);
         isPoint = false;
     }
     private bool Move()

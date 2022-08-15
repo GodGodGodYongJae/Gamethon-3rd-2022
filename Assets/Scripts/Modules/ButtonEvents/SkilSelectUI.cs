@@ -28,9 +28,10 @@ public class SkilSelectUI : MonoBehaviour
                 if(ISkilList[RandSkil].skilImg !=  null)
                 skilBtn[i].image.sprite = ISkilList[RandSkil].skilImg;
                 skilBtn[i].transform.GetChild(0).GetComponent<Text>().text = ISkilList[RandSkil].skilname;
-               // ISkilList.RemoveAt(RandSkil);
+
                 skilDic.Add(skilBtn[i], ISkilList[RandSkil]);
-            }  
+            ISkilList.RemoveAt(RandSkil);
+        }  
         //}
  
     }

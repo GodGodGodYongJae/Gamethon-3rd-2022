@@ -19,6 +19,7 @@ public class ParticleCollisionInstance : MonoBehaviour
 
     public int Damage;
     public bool isInGame;
+    public bool isPlayerDamage = true;
 
     void Start()
     {
@@ -33,32 +34,39 @@ public class ParticleCollisionInstance : MonoBehaviour
     }
     void OnParticleCollision(GameObject other)
     {
-        int numCollisionEvents = part.GetCollisionEvents(other, collisionEvents);
-        for (int i = 0; i < numCollisionEvents; i++)
+        //Debug.Log(other.tag);
+        if((isPlayerDamage.Equals(false) && other.tag == "Enemy") ||
+            (isPlayerDamage.Equals(true) && other.tag == "Player"))
         {
-            foreach (var effect in EffectsOnCollision)
+            int numCollisionEvents = part.GetCollisionEvents(other, collisionEvents);
+            for (int i = 0; i < numCollisionEvents; i++)
             {
-                var instance = Instantiate(effect, collisionEvents[i].intersection + collisionEvents[i].normal * Offset, new Quaternion()) as GameObject;
-                if (!UseWorldSpacePosition) instance.transform.parent = transform;
-                if (UseFirePointRotation) { instance.transform.LookAt(transform.position); }
-                else if (rotationOffset != Vector3.zero && useOnlyRotationOffset) { instance.transform.rotation = Quaternion.Euler(rotationOffset); }
-                else
+                foreach (var effect in EffectsOnCollision)
                 {
-                    instance.transform.LookAt(collisionEvents[i].intersection + collisionEvents[i].normal);
-                    instance.transform.rotation *= Quaternion.Euler(rotationOffset);
+                    var instance = Instantiate(effect, collisionEvents[i].intersection + collisionEvents[i].normal * Offset, new Quaternion()) as GameObject;
+                    if (!UseWorldSpacePosition) instance.transform.parent = transform;
+                    if (UseFirePointRotation) { instance.transform.LookAt(transform.position); }
+                    else if (rotationOffset != Vector3.zero && useOnlyRotationOffset) { instance.transform.rotation = Quaternion.Euler(rotationOffset); }
+                    else
+                    {
+                        instance.transform.LookAt(collisionEvents[i].intersection + collisionEvents[i].normal);
+                        instance.transform.rotation *= Quaternion.Euler(rotationOffset);
+                    }
+                    Destroy(instance, DestroyTimeDelay);
                 }
-                Destroy(instance, DestroyTimeDelay);
             }
-        }
 
-        if (isInGame)
-        {
-            IDamageable damageable = other.GetComponent<IDamageable>();
-            damageable.Damage(Damage, this.gameObject);
-            ObjectPoolManager.Instance?.Free(gameObject);
+            if (isInGame)
+            {
+                IDamageable damageable = other.GetComponent<IDamageable>();
+                damageable.Damage(Damage, this.gameObject);
+                if (DestoyMainEffect.Equals(true))
+                    ObjectPoolManager.Instance?.Free(gameObject);
+            }
+            else
+                Destroy(gameObject, DestroyTimeDelay + 0.5f);
         }
-        else
-            Destroy(gameObject, DestroyTimeDelay + 0.5f);
+        
 
 
     }

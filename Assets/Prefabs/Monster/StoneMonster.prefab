@@ -345,9 +345,10 @@ GameObject:
   - component: {fileID: 298927364825410561}
   - component: {fileID: 7222902657960498987}
   - component: {fileID: 1904846981833154982}
+  - component: {fileID: 6694489483422540846}
   m_Layer: 0
   m_Name: StoneMonster
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -402,8 +403,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.69, y: 1.5232084, z: 0.76}
-  m_Center: {x: -0, y: 0.34660435, z: -0}
+  m_Size: {x: 0.96234363, y: 1.0805366, z: 0.76}
+  m_Center: {x: 0.05121699, y: 0.56794024, z: 0}
 --- !u!114 &7128325773235266875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,6 +450,7 @@ MonoBehaviour:
         m_CallState: 2
   DestoryTime: 3
   isDeath: 0
+  DamageNum: 0
 --- !u!114 &5060770774194577774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -531,6 +533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a68b1c3519ab11440be6fa82cb5c5db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dotDis: 0.99
 --- !u!114 &298927364825410561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -568,6 +571,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackWaittingTime: 0
+--- !u!54 &6694489483422540846
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5655189471300221325}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &5655228164043972669
 GameObject:
   m_ObjectHideFlags: 0
