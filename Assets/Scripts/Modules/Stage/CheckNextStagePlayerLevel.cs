@@ -13,7 +13,7 @@ public class CheckNextStagePlayerLevel : MonoBehaviour
         if (player.ChangeExp(EnemyGenerators.Instance.CurrentExp))
             ShowClearObj[0].SetActive(true);
         else
-            ShowClearObj[1].SetActive(false);
+            ShowClearObj[1].SetActive(true);
     }
 
     public void OnCheck()
