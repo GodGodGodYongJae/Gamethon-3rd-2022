@@ -33,27 +33,30 @@ public class EnemyGenerators : Singleton<EnemyGenerators>
 
     public sbyte CurrentMaxWave;
     monsterData mon = new monsterData();
-
-
-
-    private void Start()
-    {
-        //monsterData mon = new monsterData();
-        //Tuple<string, Vector3, Vector3> data = new Tuple<string, Vector3, Vector3>("Golem", Vector3.zero, Vector3.zero);
-        //mon.monData.Add(data);
-        //mon.monData.Add(data);
-        //StageInfo.Add(1,1,1, mon);
-        //StageInfo.Add(1, 1, 2, mon);
-        //StageInfo.Add(1, 2, 1, mon);
-    }
+    List<monsterData> listmon = new List<monsterData>();
 
     public void AddMonsterList(Tuple<string,Vector3,Vector3> data)
     {
         mon.monData.Add(data);
     }
+
+    public void AddMonsterList(Tuple<string, Vector3, Vector3> data,int reward,int exp)
+    {
+        mon.monData.Add(data);
+    }
+
     public void FinishList(int Chapter,int Stage, int wave)
     {
-        StageInfo.Add(Chapter, Stage, wave, mon);
+        monsterData ms = new monsterData();
+        for (int i = 0; i < mon.monData.Count; i++)
+        {
+            ms.monData.Add(mon.monData[i]);
+        }
+        listmon.Insert(0, ms);
+        print(listmon[0].monData.Count);
+        StageInfo.Add(Chapter, Stage, wave, listmon[0]);
+        mon.monData.Clear();
+        print(listmon[0].monData.Count);
     }
 
     public bool FindNextStage(int ChapterNum,int StageNum)
@@ -103,6 +106,7 @@ public class EnemyGenerators : Singleton<EnemyGenerators>
         //    }
         //}
         #endregion
+        print(WaveNum);
         foreach (var item in StageInfo)
         {
             if (item.Key.Equals(ChapterNum))
@@ -115,6 +119,8 @@ public class EnemyGenerators : Singleton<EnemyGenerators>
                         {
                             if (item3.Key.Equals(WaveNum))
                             {
+                                //Debug.Log("--re"+item3.Value.rewardMos);
+
                                 for (int j = 0; j < item3.Value.monData.Count; j++)
                                 {
                                     CurrentMaxWave = (sbyte)item2.Value.Count;
