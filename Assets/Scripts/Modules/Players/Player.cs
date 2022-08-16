@@ -63,7 +63,11 @@ public class Player : MonoBehaviour, IDamageable
        // UIManager.Instance.ChangeExpBar(ref exp,ref level);
     }
 
-
+    public bool ChangeExp(int exp)
+    {
+        this.exp += exp;
+        return UIManager.Instance.ChangeExpBar(ref exp, ref level);
+    }
     public void RequestPlayerData(int hp)
     {
         Health = hp;

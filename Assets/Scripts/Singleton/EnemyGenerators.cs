@@ -9,54 +9,60 @@ public class EnemyGenerators : Singleton<EnemyGenerators>
     public class monsterData
     {
         public List<Tuple<string, Vector3, Vector3>> monData = new List<Tuple<string, Vector3, Vector3>>();
-    }
-    [Serializable]
-    public class Mondata2
-    {
-        [SerializeReference] public List<string> name;
-        [SerializeReference] public List<Vector3> pos;
-        [SerializeReference] public List<Vector3> rot;
+        public int Gold;
+        public int Exp;
     }
 
-    [System.Serializable]
-    public class Chapter : SerializableDictionary<int, Stage> { };
-    public Chapter chapter = new Chapter();
-    
-    [System.Serializable]
-    public class Stage : SerializableDictionary<int,wave> { };
+
+    #region oldcode 
+    //[Serializable]
+    //public class Mondata2
+    //{
+    //    [SerializeReference] public List<string> name;
+    //    [SerializeReference] public List<Vector3> pos;
+    //    [SerializeReference] public List<Vector3> rot;
+    //}
+
+    //[System.Serializable]
+    //public class Chapter : SerializableDictionary<int, Stage> { };
+    //public Chapter chapter = new Chapter();
+
+    //[System.Serializable]
+    //public class Stage : SerializableDictionary<int,wave> { };
 
 
-    [System.Serializable]
-    public class wave : SerializableDictionary<int, Mondata2> { };
-
-   public MultiKeyDictionary<int,int, int, monsterData> StageInfo = new MultiKeyDictionary<int,int, int, monsterData>();
+    //[System.Serializable]
+    //public class wave : SerializableDictionary<int, Mondata2> { };
+    #endregion
+    public MultiKeyDictionary<int,int, int, monsterData> StageInfo = new MultiKeyDictionary<int,int, int, monsterData>();
 
     public sbyte CurrentMaxWave;
+    public int CurrentGold;
+    public int CurrentExp;
     monsterData mon = new monsterData();
     List<monsterData> listmon = new List<monsterData>();
 
-    public void AddMonsterList(Tuple<string,Vector3,Vector3> data)
+
+    public void AddMonsterList(Tuple<string,Vector3,Vector3> data,int gold,int exp)
     {
+        mon.Gold = gold;
+        mon.Exp = exp;
         mon.monData.Add(data);
     }
 
-    public void AddMonsterList(Tuple<string, Vector3, Vector3> data,int reward,int exp)
-    {
-        mon.monData.Add(data);
-    }
 
     public void FinishList(int Chapter,int Stage, int wave)
     {
         monsterData ms = new monsterData();
         for (int i = 0; i < mon.monData.Count; i++)
         {
+            ms.Gold = mon.Gold;
+            ms.Exp = mon.Exp;
             ms.monData.Add(mon.monData[i]);
         }
         listmon.Insert(0, ms);
-        print(listmon[0].monData.Count);
         StageInfo.Add(Chapter, Stage, wave, listmon[0]);
         mon.monData.Clear();
-        print(listmon[0].monData.Count);
     }
 
     public bool FindNextStage(int ChapterNum,int StageNum)
@@ -105,8 +111,7 @@ public class EnemyGenerators : Singleton<EnemyGenerators>
         //        }
         //    }
         //}
-        #endregion
-        print(WaveNum);
+        #endregion 
         foreach (var item in StageInfo)
         {
             if (item.Key.Equals(ChapterNum))
@@ -123,6 +128,10 @@ public class EnemyGenerators : Singleton<EnemyGenerators>
 
                                 for (int j = 0; j < item3.Value.monData.Count; j++)
                                 {
+                                    if (item3.Value.Exp != 0)
+                                        CurrentExp = item3.Value.Exp;
+
+                                    //Debug.Log("ex"+item3.Value.Gold + ""+item3.Value.Exp);
                                     CurrentMaxWave = (sbyte)item2.Value.Count;
                                     Spawn(item3.Value.monData[j].Item1, item3.Value.monData[j].Item2, item3.Value.monData[j].Item3);
                                 }

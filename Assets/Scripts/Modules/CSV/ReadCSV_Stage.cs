@@ -36,45 +36,34 @@ public class ReadCSV_Stage : MonoBehaviour
             //      );
             #endregion
             currentData = new Tuple<int, int, int>((int)data[i]["Chapter"], (int)data[i]["Stage"], (int)data[i]["Wave"]);
-           
+
+            int gold = (data[i]["MosStone"].ToString() != "") ?  (int)data[i]["MosStone"] : 0;
+            int exp = (data[i]["Exp"].ToString() != "") ? (int)data[i]["Exp"] : 0;
+
+
             if (LastData == null)
                 LastData = currentData;
-
 
             if (currentData.Item1.Equals(LastData.Item1) &&
                 currentData.Item2.Equals(LastData.Item2) &&
                 currentData.Item3.Equals(LastData.Item3))
             {
                 Tuple<string, Vector3, Vector3> datas = new Tuple<string, Vector3, Vector3>(data[i]["MonsterName"].ToString(), ConvertCSVtoVector3(data[i]["Position(x/y/z)"]), ConvertCSVtoVector3(data[i]["Rotation(x/y/z)"]));
-                print(data[i]["MosStone"].ToString());
-                if(data[i]["MosStone"].ToString() != "")
-                {
-                    EnemyGenerators.Instance.AddMonsterList(datas, (int)data[i]["MosStone"], (int)data[i]["Exp"]);
-                    print("¤·");
-                }
-                    
-                else
-                EnemyGenerators.Instance.AddMonsterList(datas);
+                EnemyGenerators.Instance.AddMonsterList(datas, gold, exp);
             }
 
             else
             {
-                //print("="+currentData.Item3 +""+LastData.Item3);
                 EnemyGenerators.Instance.FinishList(LastData.Item1, LastData.Item2, LastData.Item3);
                 LastData = new Tuple<int, int, int>((int)data[i]["Chapter"], (int)data[i]["Stage"], (int)data[i]["Wave"]);
                 Tuple<string, Vector3, Vector3> datas = new Tuple<string, Vector3, Vector3>(data[i]["MonsterName"].ToString(), ConvertCSVtoVector3(data[i]["Position(x/y/z)"]), ConvertCSVtoVector3(data[i]["Rotation(x/y/z)"]));
-                EnemyGenerators.Instance.AddMonsterList(datas);
+                EnemyGenerators.Instance.AddMonsterList(datas,gold,exp);
             }
             LastData = new Tuple<int, int, int>((int)data[i]["Chapter"], (int)data[i]["Stage"], (int)data[i]["Wave"]);
 
         }
        EnemyGenerators.Instance.FinishList(LastData.Item1, LastData.Item2, LastData.Item3);
     }
-
-    //private Tuple<string,Vector3,Vector3> Create()
-    //{
-    //    return;
-    //}
 
     private Vector3 ConvertCSVtoVector3(object _header)
     {

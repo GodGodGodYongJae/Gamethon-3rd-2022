@@ -12,6 +12,7 @@ public class followCamera : MonoBehaviour
     public float height = 5.0f;         // 높이
     public float dampRotate = 5.0f;  //회전 속도
 
+    public float test = 1.5f;
     private Transform tr;             // 카메라 
     private Vector3 velocity = Vector3.zero;
     public float smoothTime = 1.3F;
@@ -32,6 +33,7 @@ public class followCamera : MonoBehaviour
 
         Quaternion rot = Quaternion.Euler(0, cur_Y_Angle, 0);
 
+     
         tr.position = Vector3.SmoothDamp(transform.position, target.position - (rot * Vector3.forward * dist) + (Vector3.up * height), ref velocity, smoothTime);
 
 
