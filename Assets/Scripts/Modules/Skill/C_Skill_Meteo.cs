@@ -64,7 +64,6 @@ public class C_Skill_Meteo : MonoBehaviour,ISkil
             Vector3 randPos = new Vector3(Random.Range(-20,20), 0, Random.Range(-20,20));
             ObjectPoolManager.Instance.Get("Meteor 2",randPos,Quaternion.identity);   
         }
-        //Debug.Log("³ª ½ÇÇà´ï!");
 
     }
 

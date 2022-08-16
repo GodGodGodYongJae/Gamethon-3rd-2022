@@ -27,22 +27,31 @@ public class UIManager : Singleton<UIManager>
         int UINum = (int)UiState;
         UIList[UINum].GetComponent<Text>().text = text;
     }
-    public void ChangeExpBar(int curExp,int level)
+    public bool ChangeExpBar(ref int curExp, ref int level)
     {
         int maxExp = 150;
-        if(curExp >= 150)
+
+        if(curExp >= maxExp)
         {
-            foreach (Transform item in UIList[(int)UI.ExpBar].transform)
+            for (int i = 1; i < 16; i++)
             {
-                item.GetComponent<Image>().sprite = expSprite[0];
+                UIList[(int)UI.ExpBar].transform.GetChild(i-1).GetComponent<Image>().sprite = expSprite[0];
+               
             }
+            curExp = 0;
+            level++;
+            TextChange(UI.LevelText, level.ToString());
+            return true;
         }
         else
         {
-            for (int i = 15; i < -1; i++)
+            for (int i = 1; i < 16; i++)
             {
-                //if (curExp < maxExp * (i * 15))
+                Debug.Log(curExp + "," + i * 10);
+                if (curExp >= i * 10) UIList[(int)UI.ExpBar].transform.GetChild(i - 1).GetComponent<Image>().sprite = expSprite[1];
+                else break;
             }
+            return false;
         }
     
     }

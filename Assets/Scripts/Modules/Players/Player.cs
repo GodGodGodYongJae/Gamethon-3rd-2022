@@ -23,8 +23,6 @@ public class Player : MonoBehaviour, IDamageable
     private int level;
     public bool isDeath;
 
-    public int Exp { get { return exp; } set { exp = value; } }
-    public int Level { get { return level; }set { level = value; } }
     public GameObject effectParent;
     // Start is called before the first frame update
 
@@ -54,7 +52,7 @@ public class Player : MonoBehaviour, IDamageable
         //rb = GetComponent<Rigidbody>();
         //Time.timeScale = 0.3f;
         exp = 0;
-        level = 0;
+        level = 1;
         atkSpeed = 1f;
         Health = 100;
         maxHealth = Health;
@@ -62,7 +60,7 @@ public class Player : MonoBehaviour, IDamageable
         PlayerDirection = bitFlags.PlayerMoveDirection.None;
         string Hptext = Health + "/" + maxHealth;
         UIManager.Instance.TextChange(UIManager.UI.HPText, Hptext);
-        //skilcorutine = StartCoroutine(CoolTime(coolDownTime));
+       // UIManager.Instance.ChangeExpBar(ref exp,ref level);
     }
 
 
@@ -74,8 +72,6 @@ public class Player : MonoBehaviour, IDamageable
         UIManager.Instance.TextChange(UIManager.UI.HPText, Hptext);
     }
 
-
-    // Update is called once per frame
     private void FixedUpdate()
     {
         if (PlayerDirection != bitFlags.PlayerMoveDirection.None && isDeath.Equals(false))
@@ -125,11 +121,11 @@ public class Player : MonoBehaviour, IDamageable
         //}
         #endregion
 
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("しし");
-            ObjectPoolManager.Instance.Get("Meteor 2", target.position, Quaternion.identity);
-        }
+        //if(Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    Debug.Log("しし");
+        //    ObjectPoolManager.Instance.Get("Meteor 2", target.position, Quaternion.identity);
+        //}
     
 
     }
