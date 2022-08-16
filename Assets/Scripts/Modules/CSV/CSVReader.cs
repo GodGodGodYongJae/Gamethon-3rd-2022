@@ -10,10 +10,10 @@ public class CSVReader
     static string LINE_SPLIT_RE = @"\r\n|\n\r|\n|\r";
     static char[] TRIM_CHARS = { '\"' };
 
-    public static List<Dictionary<string, object>> Read(string file)
+    public static List<Dictionary<string, object>> Read(TextAsset file)
     {
         var list = new List<Dictionary<string, object>>();
-        TextAsset data = Resources.Load(file) as TextAsset;
+        TextAsset data = file;//Resources.Load(file) as TextAsset;
 
         var lines = Regex.Split(data.text, LINE_SPLIT_RE);
 
