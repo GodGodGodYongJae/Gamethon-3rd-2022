@@ -32,7 +32,7 @@ public class EnemyGenerators : Singleton<EnemyGenerators>
    public MultiKeyDictionary<int,int, int, monsterData> StageInfo = new MultiKeyDictionary<int,int, int, monsterData>();
 
     public sbyte CurrentMaxWave;
-    monsterData mon;
+    monsterData mon = new monsterData();
 
 
 
