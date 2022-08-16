@@ -42893,7 +42893,7 @@ ParticleSystem:
     m_EnergyLossOnCollision:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -42945,7 +42945,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minKillSpeed: 0
     maxKillSpeed: 10000
-    radiusScale: 0.0001
+    radiusScale: 2
     collidesWith:
       serializedVersion: 2
       m_Bits: 4294967295
@@ -44113,7 +44113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EffectsOnCollision:
-  - {fileID: 1714524745656972, guid: 2e33bbd89680b744a8f2b0727a31b0ca, type: 3}
+  - {fileID: 1312756255662086, guid: a7cb112e9339d01408d0002aede091cf, type: 3}
   DestroyTimeDelay: 1
   UseWorldSpacePosition: 1
   Offset: 0.1

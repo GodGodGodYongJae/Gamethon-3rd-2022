@@ -17267,6 +17267,7 @@ GameObject:
   - component: {fileID: 1722390310}
   - component: {fileID: 1722390309}
   - component: {fileID: 1722390311}
+  - component: {fileID: 1722390312}
   m_Layer: 0
   m_Name: '@SkilManager'
   m_TagString: Untagged
@@ -17301,11 +17302,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   e_SkilList:
-    keys: 010000000000000002000000
+    keys: 01000000000000000200000003000000
     values:
     - {fileID: 1722390309}
     - {fileID: 1722390310}
     - {fileID: 1722390311}
+    - {fileID: 1722390312}
 --- !u!114 &1722390309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17347,6 +17349,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealPersent: 30
   e_skilImg: {fileID: 21300000, guid: e0acc69098ded5341876f273cdb6a486, type: 3}
+--- !u!114 &1722390312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722390306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed7be8717d44804e9df7da244656356, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  e_skilImg: {fileID: 21300000, guid: 29dd2542a44eeea4ab6c534902562ecb, type: 3}
 --- !u!1 &1732867558
 GameObject:
   m_ObjectHideFlags: 0

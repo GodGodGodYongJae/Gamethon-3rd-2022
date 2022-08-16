@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class P_Skill_AttackSpeed : MonoBehaviour,ISkil
+public class C_Skill_Meteo : MonoBehaviour,ISkil
 {
-    [HideInInspector]
-    public float atkSpeed = 1.1f;
     Transform parent;
     Player player;
 
+    private int MeteoNum;
+
     private bool e_limitSelect;
     public bool limitSelect { get { return e_limitSelect; } set { e_limitSelect = value; } }
-    
+
     private bool e_isInit = false;
     public bool isInit { get { return e_isInit; } set { e_isInit = value; } }
 
@@ -26,37 +26,46 @@ public class P_Skill_AttackSpeed : MonoBehaviour,ISkil
 
     private void Awake()
     {
-
-        skilList = SkillManager.SkilList.AttackSpeed;
+        skilList = SkillManager.SkilList.Meteo;
         limitSelect = false;
-        skilname = "공격속도증가";
+        skilname = "메테오";
+        MeteoNum = 0;
         parent = this.transform.parent;
         player = parent.transform.GetComponent<Player>();
+        //InvokeRepeating("MeteoReapeat", 0, 5);
+        //InvokeRepeating("MeteoReapeat", 0, 2);
     }
-
-
     public void init()
     {
         isInit = true;
-        ChangeAtkSpeed();
+        CreateMeteor();
     }
 
-    void ChangeAtkSpeed()
+    void CreateMeteor()
     {
-        player.atkSpeed = atkSpeed;
+        MeteoNum++;
+        InvokeRepeating("MeteoReapeat", 3, 10);
     }
-
     public void overlapSelect()
     {
-        if(atkSpeed < 2.5f)
+        if(MeteoNum < 5)
         {
-            atkSpeed += 0.1f;
-            ChangeAtkSpeed();
-            if (atkSpeed > 2.5f)
+            CreateMeteor();
+            if (MeteoNum > 5)
                 limitSelect = true;
         }
-        //Debug.Log(atkSpeed);
+        
+    }
 
+     void MeteoReapeat()
+    {
+        if(player.isDeath.Equals(false))
+        {
+            Vector3 randPos = new Vector3(Random.Range(-20,20), 0, Random.Range(-20,20));
+            ObjectPoolManager.Instance.Get("Meteor 2",randPos,Quaternion.identity);   
+        }
+        //Debug.Log("나 실행댐!");
 
     }
+
 }
