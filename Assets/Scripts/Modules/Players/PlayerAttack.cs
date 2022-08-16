@@ -8,6 +8,7 @@ public class PlayerAttack : MonoBehaviour
     PlayerData playerData;
    // Player player;
     public Transform Target;
+    
     private void Start()
     {
        // player = GetComponent<Player>();
@@ -26,7 +27,6 @@ public class PlayerAttack : MonoBehaviour
     {
         //if (player.anim.GetInteger("Movement") == 0)
         //{
-
             IDamageable damge = Target.GetComponent<IDamageable>();
             damge.Damage(playerData.RandAtk, this.gameObject);
         //}

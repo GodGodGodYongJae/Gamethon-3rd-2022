@@ -49,7 +49,7 @@ public class Dummy_Walk : MonoBehaviour,FSM_State<DummyFSM>
         //Debug.Log(dot);
         if (m_Owner.m_TransTarget !=null 
             && m_Owner.m_fAttackRange >= Vector3.Distance(m_Owner.transform.position,m_Owner.m_TransTarget.position)
-             && dot >= dotDis)
+             )
         {
             if(m_Owner.isDealy)
             {

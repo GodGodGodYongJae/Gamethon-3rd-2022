@@ -31,7 +31,8 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     protected virtual void Init()
     {
         damageCooldown = 0.5f;
-           health = type.Hp;
+        DamageNum = 1;
+        health = type.Hp;
     }
 
     public void Damage(int _damage,GameObject tr)
