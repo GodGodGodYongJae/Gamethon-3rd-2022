@@ -21,8 +21,11 @@ public class LobbyController : MonoBehaviour
     #region server
     private void Awake()
     {
-        GetAccountInfo();
-        GetDR();
+        if (PlayFabClientAPI.IsClientLoggedIn())
+        {
+            GetAccountInfo();
+            GetDR();
+        }
     }
     #region daily Reward
     const string VC_DR = "DR";
@@ -30,17 +33,19 @@ public class LobbyController : MonoBehaviour
 
     public void OnReward(DailyRewardBtnEvent DR)
     {
+        print("1");
         if(DR.Daily == CurrentRward && DailyCoin > 0)
         {
+            print("2");
             PlayFabClientAPI.ExecuteCloudScript(new ExecuteCloudScriptRequest()
             {
                 FunctionName = "SubVirtualCurrency",
-                FunctionParameter = new { Amount = 1, type = DR },
+                FunctionParameter = new { Amount = 1, type = VC_DR },
                 GeneratePlayStreamEvent = true
 
             },
-            cloudResult => { SetUserDR(DR);  },
-            error => { });
+            cloudResult => { print("3"); SetUserDR(DR);  },
+            error => { Debug.Log(error.GenerateErrorReport()); });
         }
     }
     void GetDR()
@@ -74,7 +79,7 @@ public class LobbyController : MonoBehaviour
             if (DR.Gas > 0)
                 RewardAdd("ST", DR.Gas);
             if (DR.Ruby > 0)
-                RewardAdd("Ruby", DR.Ruby);
+                RewardAdd("RU", DR.Ruby);
         },
         error => {
             Debug.Log("Got error setting user data Ancestor to Arthur");

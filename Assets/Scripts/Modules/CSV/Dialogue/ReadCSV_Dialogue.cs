@@ -82,7 +82,7 @@ public class ReadCSV_Dialogue : MonoBehaviour
             int removecursor = ReadText.IndexOf('*', cursor, Maxcursor);
             Maxcursor = ReadText.IndexOf('*', cursor, Maxcursor) - cursor;
                 ReadText = ReadText.Remove(removecursor, 1).Insert(removecursor, "");
-                print(cursor + "," + Maxcursor + ","+ ReadText);
+                //print(cursor + "," + Maxcursor + ","+ ReadText);
                 
              }
 
@@ -90,7 +90,7 @@ public class ReadCSV_Dialogue : MonoBehaviour
         //DialogueText = DialogueText.Replace('*', ' ');
 
             cursor += Maxcursor;
-        print(cursor + "," + Maxcursor);
+        //print(cursor + "," + Maxcursor);
 
            textBox.text = DialogueText;
             if (PageNum != checkPage)
