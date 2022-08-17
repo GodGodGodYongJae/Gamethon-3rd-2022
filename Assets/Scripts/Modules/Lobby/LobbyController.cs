@@ -11,11 +11,92 @@ public class LobbyController : MonoBehaviour
     // Start is called before the first frame update
     string MyPlayfabID;
     int serverStage;
+
+    int DailyCoin;
+    int CurrentDaily;
+    int CurrentRward;
+
+    DailyRewardBtnEvent SelectDR;
+
     #region server
     private void Awake()
     {
         GetAccountInfo();
+        GetDR();
     }
+    #region daily Reward
+    const string VC_DR = "DR";
+
+
+    public void OnReward(DailyRewardBtnEvent DR)
+    {
+        if(DR.Daily == CurrentRward && DailyCoin > 0)
+        {
+            PlayFabClientAPI.ExecuteCloudScript(new ExecuteCloudScriptRequest()
+            {
+                FunctionName = "SubVirtualCurrency",
+                FunctionParameter = new { Amount = 1, type = DR },
+                GeneratePlayStreamEvent = true
+
+            },
+            cloudResult => { SetUserDR(DR);  },
+            error => { });
+        }
+    }
+    void GetDR()
+    {
+        PlayFabClientAPI.GetUserInventory(new GetUserInventoryRequest()
+        , (result) =>
+        {
+
+            result.VirtualCurrency.TryGetValue(VC_DR, out int _DailyReward);
+            DailyCoin = _DailyReward;
+
+        }, (error) =>
+        {
+            Debug.Log(error.GenerateErrorReport());
+        });
+ 
+    }
+
+    void SetUserDR(DailyRewardBtnEvent DR)
+    {
+        CurrentRward += 1;
+        PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest()
+        {
+            Data = new Dictionary<string, string>() {
+            {"dailyReward",CurrentRward.ToString() }
+        }
+        },
+        result => { Debug.Log("Successfully updated user data");
+            if (DR.Gold > 0)
+                RewardAdd("DM", DR.Gold);
+            if (DR.Gas > 0)
+                RewardAdd("ST", DR.Gas);
+            if (DR.Ruby > 0)
+                RewardAdd("Ruby", DR.Ruby);
+        },
+        error => {
+            Debug.Log("Got error setting user data Ancestor to Arthur");
+            Debug.Log(error.GenerateErrorReport());
+        });
+    }
+
+    public void RewardAdd(string Type,int ammount)
+    {
+        PlayFabClientAPI.ExecuteCloudScript(new ExecuteCloudScriptRequest()
+        {
+            FunctionName = "AddVirtualCurrency",
+            FunctionParameter = new { Amount = ammount, type = Type },
+            GeneratePlayStreamEvent = true
+        },
+        cloudResult => { Debug.Log("저장성공!"); },
+        error => { }
+        ); ; ;
+    }
+
+    #endregion
+
     void GetAccountInfo()
     {
         GetAccountInfoRequest request = new GetAccountInfoRequest();
@@ -47,6 +128,7 @@ public class LobbyController : MonoBehaviour
             Debug.Log("Got user data:");
             if (result.Data.ContainsKey("LastStage"))
             {
+                CurrentRward = int.Parse(result.Data["dailyReward"].Value);
                 serverStage = int.Parse(result.Data["LastStage"].Value);
                 if (serverStage == 0)
                 {
@@ -67,6 +149,6 @@ public class LobbyController : MonoBehaviour
     }
     #endregion
 
-
+ 
 
 }

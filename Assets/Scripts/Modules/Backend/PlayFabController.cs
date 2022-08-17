@@ -80,6 +80,7 @@ public class PlayFabController : MonoBehaviour
             {"atk", "10"},
             {"def", "10"},
             {"LastStage","0"},
+            {"dailyReward","1" }
 
 
         }
