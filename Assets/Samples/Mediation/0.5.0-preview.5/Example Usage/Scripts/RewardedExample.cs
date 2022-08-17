@@ -75,6 +75,7 @@ namespace Unity.Services.Mediation.Samples
                     Debug.LogWarning($"Rewarded failed to show: {e.Message}");
                 }
             }
+ 
         }
 
         public async void ShowRewardedWithOptions()

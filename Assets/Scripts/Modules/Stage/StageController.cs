@@ -19,7 +19,7 @@ public class StageController : MonoBehaviour
         NextWave();
     }
 
-
+    public GameObject DeathObj;
     public void NextWave()
     {
         WaveNum++;

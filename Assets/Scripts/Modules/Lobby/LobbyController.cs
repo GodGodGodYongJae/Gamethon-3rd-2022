@@ -3,8 +3,9 @@ using PlayFab.ClientModels;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class LobbyController : MonoBehaviour
+public class LobbyController : Singleton<LobbyController>
 {
     [SerializeField]
     GameObject[] LobbyObj;
@@ -13,14 +14,17 @@ public class LobbyController : MonoBehaviour
     int serverStage;
 
     int DailyCoin;
-    int CurrentDaily;
-    int CurrentRward;
+    public int CurrentDaily;
 
-    DailyRewardBtnEvent SelectDR;
 
-    #region server
-    private void Awake()
+    [SerializeField]
+    PlayFabDM DMController;
+    [SerializeField]
+    GameObject WaitPannel;
+
+    protected override void Awake()
     {
+        base.Awake();
         if (PlayFabClientAPI.IsClientLoggedIn())
         {
             GetAccountInfo();
@@ -33,10 +37,10 @@ public class LobbyController : MonoBehaviour
 
     public void OnReward(DailyRewardBtnEvent DR)
     {
-        print("1");
-        if(DR.Daily == CurrentRward && DailyCoin > 0)
+
+        if(DR.Daily == CurrentDaily && DailyCoin > 0)
         {
-            print("2");
+            WaitPannel.SetActive(true);
             PlayFabClientAPI.ExecuteCloudScript(new ExecuteCloudScriptRequest()
             {
                 FunctionName = "SubVirtualCurrency",
@@ -44,8 +48,12 @@ public class LobbyController : MonoBehaviour
                 GeneratePlayStreamEvent = true
 
             },
-            cloudResult => { print("3"); SetUserDR(DR);  },
+            cloudResult => {  SetUserDR(DR);  },
             error => { Debug.Log(error.GenerateErrorReport()); });
+        }
+        else
+        {
+            WaitPannel.SetActive(false);
         }
     }
     void GetDR()
@@ -66,11 +74,11 @@ public class LobbyController : MonoBehaviour
 
     void SetUserDR(DailyRewardBtnEvent DR)
     {
-        CurrentRward += 1;
+        CurrentDaily += 1;
         PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest()
         {
             Data = new Dictionary<string, string>() {
-            {"dailyReward",CurrentRward.ToString() }
+            {"dailyReward",CurrentDaily.ToString() }
         }
         },
         result => { Debug.Log("Successfully updated user data");
@@ -80,6 +88,9 @@ public class LobbyController : MonoBehaviour
                 RewardAdd("ST", DR.Gas);
             if (DR.Ruby > 0)
                 RewardAdd("RU", DR.Ruby);
+
+            DR.GetComponent<Image>().color = Color.yellow;
+            DailyCoin = 0;
         },
         error => {
             Debug.Log("Got error setting user data Ancestor to Arthur");
@@ -95,13 +106,14 @@ public class LobbyController : MonoBehaviour
             FunctionParameter = new { Amount = ammount, type = Type },
             GeneratePlayStreamEvent = true
         },
-        cloudResult => { Debug.Log("历厘己傍!"); },
+        cloudResult => { Debug.Log("历厘己傍!"); DMController.GetDR(); WaitPannel.SetActive(false); },
         error => { }
         ); ; ;
     }
 
     #endregion
 
+    #region GetData
     void GetAccountInfo()
     {
         GetAccountInfoRequest request = new GetAccountInfoRequest();
@@ -133,7 +145,7 @@ public class LobbyController : MonoBehaviour
             Debug.Log("Got user data:");
             if (result.Data.ContainsKey("LastStage"))
             {
-                CurrentRward = int.Parse(result.Data["dailyReward"].Value);
+                CurrentDaily = int.Parse(result.Data["dailyReward"].Value);
                 serverStage = int.Parse(result.Data["LastStage"].Value);
                 if (serverStage == 0)
                 {

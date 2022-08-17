@@ -54,7 +54,7 @@ public class Player : MonoBehaviour, IDamageable
         exp = 0;
         level = 1;
         atkSpeed = 1f;
-        Health = 100;
+        Health = 999;
         maxHealth = Health;
         anim = GetComponent<Animator>();
         PlayerDirection = bitFlags.PlayerMoveDirection.None;
@@ -63,9 +63,9 @@ public class Player : MonoBehaviour, IDamageable
        // UIManager.Instance.ChangeExpBar(ref exp,ref level);
     }
 
-    public bool ChangeExp(int exp)
+    public bool ChangeExp(int _exp)
     {
-        this.exp += exp;
+        exp += _exp;
         return UIManager.Instance.ChangeExpBar(ref exp, ref level);
     }
     public void RequestPlayerData(int hp)

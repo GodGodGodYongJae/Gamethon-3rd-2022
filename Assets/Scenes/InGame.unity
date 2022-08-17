@@ -16107,7 +16107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6883c52b29bcb64ca5b3b7da9f49c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asset: {fileID: 4900000, guid: 145ec355a0011f447a9e42f206236729, type: 3}
+  asset: {fileID: 4900000, guid: 6daa6fb9fc256524eb5e7a604e6b290f, type: 3}
 --- !u!1 &1573340528
 GameObject:
   m_ObjectHideFlags: 0
@@ -28389,6 +28389,10 @@ PrefabInstance:
       propertyPath: Cha.values.Array.data[0].values.Array.data[0].values.Array.data[0].rot.Array.data[2].y
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 2565559904867717923, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
+      propertyPath: DeathObj
+      value: 
+      objectReference: {fileID: 1523222329}
     - target: {fileID: 6001815874832132225, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
       propertyPath: m_RootOrder
       value: 7

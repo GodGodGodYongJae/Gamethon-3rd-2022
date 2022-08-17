@@ -15,7 +15,7 @@ public class BtnEvents : MonoBehaviour
             CutSceneManager.Instance.OnScene(false, CutSceneManager.Events.StageClear, true);
             EnemyFactoryMethod.Instance.stageController.NextWave();
             this.gameObject.SetActive(false);
-
+            EnemyFactoryMethod.Instance.stageController.DeathObj.SetActive(false);
         }
     }
 
