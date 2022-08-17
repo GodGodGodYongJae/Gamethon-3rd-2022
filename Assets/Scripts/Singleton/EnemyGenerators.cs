@@ -36,6 +36,9 @@ public class EnemyGenerators : Singleton<EnemyGenerators>
     #endregion
     public MultiKeyDictionary<int,int, int, monsterData> StageInfo = new MultiKeyDictionary<int,int, int, monsterData>();
 
+    public int CurrentChapter;
+    public int CurrentStage;
+
     public sbyte CurrentMaxWave;
     public int CurrentGold;
     public int CurrentExp;
@@ -112,6 +115,10 @@ public class EnemyGenerators : Singleton<EnemyGenerators>
         //    }
         //}
         #endregion 
+
+        CurrentChapter = ChapterNum;
+        CurrentStage = StageNum;
+
         foreach (var item in StageInfo)
         {
             if (item.Key.Equals(ChapterNum))

@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using Unity.Services.Core;
 using System.Threading.Tasks;
+using UnityEngine.Events;
 
 namespace Unity.Services.Mediation.Samples
 {
@@ -10,6 +11,11 @@ namespace Unity.Services.Mediation.Samples
     /// </summary>
     public class RewardedExample : MonoBehaviour
     {
+        public enum RewardState { 
+        Life,
+        Heal
+        }
+
         [Header("Ad Unit Ids"), Tooltip("Ad Unit Ids for each platform that represent Mediation waterfalls.")]
         public string androidAdUnitId;
         [Tooltip("Ad Unit Ids for each platform that represent Mediation waterfalls.")]
@@ -18,8 +24,10 @@ namespace Unity.Services.Mediation.Samples
         IRewardedAd m_RewardedAd;
 
         [SerializeField]
-        private bool isLife;
+        private RewardState State;
 
+
+        public UnityEvent ActionState; 
 
 
 
@@ -160,7 +168,8 @@ namespace Unity.Services.Mediation.Samples
 
         void AdClosed(object sender, EventArgs args)
         {  //TOdo
-            if (isLife) UIManager.Instance.CharaterRespwan();
+            if (State == RewardState.Life) UIManager.Instance.CharaterRespwan();
+            else if (State == RewardState.Heal) ActionState?.Invoke(); //TOdo;
             Debug.Log("Rewarded Closed! Loading Ad...");
         }
         

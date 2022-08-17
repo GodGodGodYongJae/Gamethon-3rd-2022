@@ -1,5 +1,5 @@
 Chapter,Stage,Wave,No.,MonsterName,Position(x/y/z),Rotation(x/y/z),MosStone,Exp,,,
-1,1,1,1,StoneMonster,0/0/2,0/180/0,10,5,,,
+1,1,1,1,StoneMonster,0/0/2,0/180/0,10,30,,,
 1,1,2,1,StoneMonster,0/0/3,0/180/0,,,,,
 1,1,2,2,StoneMonster,3/0/5,0/180/0,,,,,
 1,1,2,3,Golem,-3/3/3,0/180/0,,,,,
