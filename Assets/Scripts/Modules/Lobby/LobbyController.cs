@@ -9,28 +9,21 @@ public class LobbyController : Singleton<LobbyController>
 {
     [SerializeField]
     GameObject[] LobbyObj;
-    // Start is called before the first frame update
-    string MyPlayfabID;
-    int serverStage;
 
-    int DailyCoin;
-    public int CurrentDaily;
-
-
-    [SerializeField]
-    PlayFabDM DMController;
     [SerializeField]
     GameObject WaitPannel;
+
 
     protected override void Awake()
     {
         base.Awake();
-        if (PlayFabClientAPI.IsClientLoggedIn())
-        {
-            GetAccountInfo();
-            GetDR();
-        }
+        int Las = PlayFabData.instance.PlayerStatus[PlayFabData.Stat.LastStage];
+        if (Las == 0)
+            LobbyObj[0].SetActive(true);
+        else
+            LobbyObj[1].SetActive(true);
     }
+
     #region daily Reward
     const string VC_DR = "DR";
 
@@ -38,7 +31,8 @@ public class LobbyController : Singleton<LobbyController>
     public void OnReward(DailyRewardBtnEvent DR)
     {
 
-        if(DR.Daily == CurrentDaily && DailyCoin > 0)
+        if (DR.Daily == PlayFabData.instance.PlayerStatus[PlayFabData.Stat.dailyReward] 
+            && PlayFabData.instance.PlayerDailyCount > 0)
         {
             WaitPannel.SetActive(true);
             PlayFabClientAPI.ExecuteCloudScript(new ExecuteCloudScriptRequest()
@@ -48,7 +42,7 @@ public class LobbyController : Singleton<LobbyController>
                 GeneratePlayStreamEvent = true
 
             },
-            cloudResult => {  SetUserDR(DR);  },
+            cloudResult => { SetUserDR(DR); },
             error => { Debug.Log(error.GenerateErrorReport()); });
         }
         else
@@ -56,32 +50,20 @@ public class LobbyController : Singleton<LobbyController>
             WaitPannel.SetActive(false);
         }
     }
-    void GetDR()
-    {
-        PlayFabClientAPI.GetUserInventory(new GetUserInventoryRequest()
-        , (result) =>
-        {
-
-            result.VirtualCurrency.TryGetValue(VC_DR, out int _DailyReward);
-            DailyCoin = _DailyReward;
-
-        }, (error) =>
-        {
-            Debug.Log(error.GenerateErrorReport());
-        });
  
-    }
 
     void SetUserDR(DailyRewardBtnEvent DR)
     {
-        CurrentDaily += 1;
+        PlayFabData.instance.PlayerStatus[PlayFabData.Stat.dailyReward] += 1;
         PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest()
         {
             Data = new Dictionary<string, string>() {
-            {"dailyReward",CurrentDaily.ToString() }
+            {"dailyReward",PlayFabData.instance.PlayerStatus[PlayFabData.Stat.dailyReward].ToString() }
         }
         },
-        result => { Debug.Log("Successfully updated user data");
+        result =>
+        {
+            Debug.Log("Successfully updated user data");
             if (DR.Gold > 0)
                 RewardAdd("DM", DR.Gold);
             if (DR.Gas > 0)
@@ -90,82 +72,29 @@ public class LobbyController : Singleton<LobbyController>
                 RewardAdd("RU", DR.Ruby);
 
             DR.GetComponent<Image>().color = Color.yellow;
-            DailyCoin = 0;
+            PlayFabData.instance.PlayerDailyCount = 0;
         },
-        error => {
+        error =>
+        {
             Debug.Log("Got error setting user data Ancestor to Arthur");
             Debug.Log(error.GenerateErrorReport());
         });
     }
 
-    public void RewardAdd(string Type,int ammount)
+    public void RewardAdd(string Type, int ammount)
     {
         PlayFabClientAPI.ExecuteCloudScript(new ExecuteCloudScriptRequest()
         {
             FunctionName = "AddVirtualCurrency",
             FunctionParameter = new { Amount = ammount, type = Type },
             GeneratePlayStreamEvent = true
+            
         },
-        cloudResult => { Debug.Log("历厘己傍!"); DMController.GetDR(); WaitPannel.SetActive(false); },
+        cloudResult => { Debug.Log("历厘己傍!"); PlayFabData.instance.GetAccountData(); WaitPannel.SetActive(false); },
         error => { }
-        ); ; ;
-    }
-
-    #endregion
-
-    #region GetData
-    void GetAccountInfo()
-    {
-        GetAccountInfoRequest request = new GetAccountInfoRequest();
-        PlayFabClientAPI.GetAccountInfo(request, Successs, fail);
-    }
-
-    void Successs(GetAccountInfoResult result)
-    {
-
-        MyPlayfabID = result.AccountInfo.PlayFabId;
-        GetUserData();
-
-    }
-
-
-    void fail(PlayFabError error)
-    {
-
-        Debug.LogError(error.GenerateErrorReport());
-    }
-
-    void GetUserData()
-    {
-        PlayFabClientAPI.GetUserData(new GetUserDataRequest()
-        {
-            PlayFabId = MyPlayfabID,
-            Keys = null
-        }, result => {
-            Debug.Log("Got user data:");
-            if (result.Data.ContainsKey("LastStage"))
-            {
-                CurrentDaily = int.Parse(result.Data["dailyReward"].Value);
-                serverStage = int.Parse(result.Data["LastStage"].Value);
-                if (serverStage == 0)
-                {
-                    LobbyObj[0].SetActive(true);
-
-                    //First Start TODO
-
-                }
-                else
-                    LobbyObj[1].SetActive(true);
-            }
-
-        }, (error) => {
-            Debug.Log("Got error retrieving user data:");
-            Debug.Log(error.GenerateErrorReport());
-        });
+        );
 
     }
     #endregion
-
- 
-
 }
+

@@ -12,7 +12,7 @@ public class DailyRewardBtnEvent : MonoBehaviour
 
     private void Awake()
     {
-       if( LobbyController.Instance.CurrentDaily > Daily)
+       if(PlayFabData.Instance.PlayerStatus[PlayFabData.Stat.dailyReward] > Daily)
         {
             this.gameObject.GetComponent<Image>().color = Color.yellow;
         }
