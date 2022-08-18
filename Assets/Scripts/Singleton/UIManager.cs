@@ -40,7 +40,8 @@ public class UIManager : Singleton<UIManager>
             }
             curExp = 0;
             level++;
-            TextChange(UI.LevelText, level.ToString());
+            string leveltext = "LV :" + level.ToString();
+            TextChange(UI.LevelText, leveltext);
             return true;
         }
         else
@@ -109,13 +110,13 @@ public class UIManager : Singleton<UIManager>
         Time.timeScale = 0;
         t_currentPage = 0;
         TutorialObj.SetActive(true);
-       TutorialObj.GetComponent<Image>().sprite = TutorialSprite[t_currentPage];
+        TutorialObj.transform.GetChild(1).GetComponent<Image>().sprite = TutorialSprite[t_currentPage];
         t_button[0].SetActive(true);
     }
     public void OnNextTutorial()
     {
         t_currentPage++;
-        TutorialObj.GetComponent<Image>().sprite = TutorialSprite[t_currentPage];
+        TutorialObj.transform.GetChild(1).GetComponent<Image>().sprite = TutorialSprite[t_currentPage];
         Debug.Log((t_currentPage + 1) + "," + TutorialSprite.Length);
         if(t_currentPage+1 >= TutorialSprite.Length)
         {
