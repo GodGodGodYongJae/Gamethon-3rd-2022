@@ -85,7 +85,9 @@ public class PlayFabController : MonoBehaviour
             {"atk", "100"},
             {"def", "10"},
             {"LastStage","0"},
-            {"dailyReward","1" }
+            {"dailyReward","1" },
+            {"upgradeAtkLv","1"},
+             {"upgradeDefLv","1"}
 
 
         }

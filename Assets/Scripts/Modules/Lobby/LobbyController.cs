@@ -11,7 +11,7 @@ public class LobbyController : Singleton<LobbyController>
     GameObject[] LobbyObj;
 
     [SerializeField]
-    GameObject WaitPannel;
+    public GameObject WaitPannel;
 
 
     protected override void Awake()

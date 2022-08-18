@@ -9,7 +9,7 @@ using UnityEngine;
 public class PlayFabData : Singleton<PlayFabData>
 {
     // Start is called before the first frame update
-    public enum Stat {hp,atk,def,cri,dailyReward,LastStage,end };
+    public enum Stat {hp,atk,def,cri,dailyReward,LastStage,atklv,deflv,end };
 
     [HideInInspector]
    public string myPlayFabId;
@@ -32,7 +32,7 @@ public class PlayFabData : Singleton<PlayFabData>
     void SetStat(Stat stat, int num)
     {
         
-    PlayerStatus[stat] = num;
+        PlayerStatus[stat] = num;
         
     }
     public void GetUserData()
@@ -44,9 +44,11 @@ public class PlayFabData : Singleton<PlayFabData>
         }, result => {
             Debug.Log("Got user data:");
             SetStat(Stat.hp, int.Parse(result.Data["hp"].Value));
-            SetStat(Stat.atk, int.Parse(result.Data["hp"].Value));
-            SetStat(Stat.def, int.Parse(result.Data["hp"].Value));
-            SetStat(Stat.cri, int.Parse(result.Data["hp"].Value));
+            SetStat(Stat.atk, int.Parse(result.Data["atk"].Value));
+            SetStat(Stat.def, int.Parse(result.Data["def"].Value));
+            SetStat(Stat.cri, int.Parse(result.Data["cri"].Value));
+            SetStat(Stat.atklv, int.Parse(result.Data["upgradeAtkLv"].Value));
+            SetStat(Stat.deflv, int.Parse(result.Data["upgradeDefLv"].Value));
             SetStat(Stat.dailyReward, int.Parse(result.Data["dailyReward"].Value));
             SetStat(Stat.LastStage, int.Parse(result.Data["LastStage"].Value));
 
@@ -108,7 +110,6 @@ public class PlayFabData : Singleton<PlayFabData>
             });
     }
  
-
     public void AddAccountData(string ID, int num)
     {
         PlayFabClientAPI.ExecuteCloudScript(new ExecuteCloudScriptRequest()
@@ -122,5 +123,7 @@ public class PlayFabData : Singleton<PlayFabData>
        );
       
     }
+
+
 
 }
