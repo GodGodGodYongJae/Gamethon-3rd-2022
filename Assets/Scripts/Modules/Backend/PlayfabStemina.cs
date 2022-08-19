@@ -40,13 +40,13 @@ public class PlayfabStemina : MonoBehaviour
 
     public void OnGameStart()
     {
-        if(CurrentGas > 0 && isStart.Equals(false))
+        if(CurrentGas >= 5 && isStart.Equals(false))
         {
             isStart = true;
             PlayFabClientAPI.ExecuteCloudScript(new ExecuteCloudScriptRequest()
             {
                 FunctionName = "SubVirtualCurrency",
-                FunctionParameter = new { Amount = 1, type = VC_Gas },
+                FunctionParameter = new { Amount = 5, type = VC_Gas },
                 GeneratePlayStreamEvent = true
                 
             },
@@ -68,7 +68,7 @@ public class PlayfabStemina : MonoBehaviour
         error => { }
         ); ; ;
     }
-    void GetInventory()
+    public void GetInventory()
     {
         PlayFabClientAPI.GetUserInventory(new GetUserInventoryRequest()
         , (result) =>

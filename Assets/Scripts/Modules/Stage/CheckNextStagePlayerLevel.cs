@@ -22,6 +22,8 @@ public class CheckNextStagePlayerLevel : MonoBehaviour
     {
         thisObj = this.gameObject;
 
+        PlayFabData.Instance.AddAccountData("DM", EnemyGenerators.Instance.CurrentGold);
+
         if (EnemyGenerators.Instance.FindNextStage(EnemyGenerators.Instance.CurrentChapter, EnemyGenerators.Instance.CurrentStage))
         {
             if (player.ChangeExp(EnemyGenerators.Instance.CurrentExp).Equals(false))

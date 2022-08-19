@@ -5,14 +5,14 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
 
-    PlayerData playerData;
+    Player playerData;
    // Player player;
     public Transform Target;
     
     private void Start()
     {
        // player = GetComponent<Player>();
-        playerData = GetComponent<PlayerData>();
+        playerData = GetComponent<Player>();
     }
     public void OnAttackEvent(Transform target)
     {
