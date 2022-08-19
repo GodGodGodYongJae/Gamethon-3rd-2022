@@ -15,7 +15,7 @@ public class UpgradeShow : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI CostRUText;
     [SerializeField]
-    ReadCSV_Weapon ReadCsv;
+    ReadCSV_UPGRADE ReadCsv;
 
     [SerializeField]
     int[] NextIncrease = new int[2];
@@ -82,7 +82,7 @@ public class UpgradeShow : MonoBehaviour
                         upgradeDef = PlayFabData.Instance.PlayerStatus[PlayFabData.Stat.def];
                         upgradeHp = PlayFabData.Instance.PlayerStatus[PlayFabData.Stat.hp];
                         NextText[0].text = upgradeAtk.ToString();
-                        NextText[1].text = upgradeAtk.ToString();
+                        NextText[1].text = upgradeCri.ToString();
 
                 atkLv = PlayFabData.Instance.PlayerStatus[PlayFabData.Stat.atklv];
                 defLv = PlayFabData.Instance.PlayerStatus[PlayFabData.Stat.deflv];
@@ -152,13 +152,18 @@ public class UpgradeShow : MonoBehaviour
         },
        result => { Debug.Log("Successfully updated user data"); 
            PlayFabData.Instance.GetUserData();
-           if (levelstat == PlayFabData.Stat.atklv) AtkShowData();
-           else if (levelstat == PlayFabData.Stat.deflv) DefShowData();
-           LobbyController.Instance.WaitPannel.SetActive(false);
+           Invoke("InvokeData", 1.5f);
        },
        error => {
            Debug.Log("Got error setting user data Ancestor to Arthur");
            Debug.Log(error.GenerateErrorReport());
        });
+    }
+
+    void InvokeData()
+    {
+        if (levelstat == PlayFabData.Stat.atklv) AtkShowData();
+        else if (levelstat == PlayFabData.Stat.deflv) DefShowData();
+        LobbyController.Instance.WaitPannel.SetActive(false);
     }
 }

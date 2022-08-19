@@ -35,6 +35,10 @@ public class Player : MonoBehaviour, IDamageable
 
     public int Health { get { return health; } set { health = value; } } // 프로퍼티
 
+    int minAtk;
+    int maxAtk;
+    int def;
+
     #endregion
     private bool skillCoolDown;
     public float coolDownTime;
@@ -53,6 +57,9 @@ public class Player : MonoBehaviour, IDamageable
         //Time.timeScale = 0.3f;
         exp = 0;
         level = 1;
+        minAtk = PlayFabData.Instance.PlayerStatus[PlayFabData.Stat.atk];
+        maxAtk = minAtk + (minAtk /2);
+        def = PlayFabData.Instance.PlayerStatus[PlayFabData.Stat.def];
         atkSpeed = 1f;
         Health = 999;
         maxHealth = Health;
@@ -189,9 +196,9 @@ public class Player : MonoBehaviour, IDamageable
 
     }
 
-    public void Damage(int damage,GameObject tr)
+    public void Damage(int _damage,GameObject tr)
     {
-
+        int damage = Mathf.FloorToInt(_damage * (1 - (def / 100)));
         Health -= damage;
         UIManager.Instance.ChangeHpBar(UIManager.UI.HpBar, Health, maxHealth);
         string Hptext = Health + "/" + maxHealth;
@@ -217,6 +224,9 @@ public class Player : MonoBehaviour, IDamageable
         string Hptext = Health + "/" + maxHealth;
         UIManager.Instance.TextChange(UIManager.UI.HPText, Hptext);
     }
+
+    public int RandAtk { get { return Random.Range(minAtk, maxAtk); } }
+
     public void Respawn()
     {
         Time.timeScale = 1;
