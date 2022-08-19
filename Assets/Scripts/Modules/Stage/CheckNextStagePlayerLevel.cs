@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CheckNextStagePlayerLevel : MonoBehaviour
@@ -13,6 +14,9 @@ public class CheckNextStagePlayerLevel : MonoBehaviour
 
     BtnEvents btnEvents;
     private bool isHeal;
+
+    [SerializeField]
+    TextMeshProUGUI reward;
     private void Awake()
     {
         isHeal = false;
@@ -21,7 +25,7 @@ public class CheckNextStagePlayerLevel : MonoBehaviour
     private void OnEnable()
     {
         thisObj = this.gameObject;
-
+        reward.text = EnemyGenerators.Instance.CurrentGold.ToString();
         PlayFabData.Instance.AddAccountData("DM", EnemyGenerators.Instance.CurrentGold);
 
         if (EnemyGenerators.Instance.FindNextStage(EnemyGenerators.Instance.CurrentChapter, EnemyGenerators.Instance.CurrentStage))

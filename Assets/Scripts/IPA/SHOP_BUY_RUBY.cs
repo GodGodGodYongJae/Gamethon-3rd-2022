@@ -8,8 +8,7 @@ public class SHOP_BUY_RUBY : MonoBehaviour
 {
     public int RUBY;
     public int COSTDIA;
-    [SerializeField]
-    PlayfabStemina displaySt;
+
 
     public void OnBuyClick()
     {
@@ -44,7 +43,7 @@ public class SHOP_BUY_RUBY : MonoBehaviour
     void SyncData()
     {
         PlayFabData.Instance.GetAccountData();
-        displaySt.GetInventory();
+
         LobbyController.Instance.WaitPannel.SetActive(false);
     }
 

@@ -40,8 +40,8 @@ public class EnemyGenerators : Singleton<EnemyGenerators>
     public int CurrentStage;
 
     public sbyte CurrentMaxWave;
-    public int CurrentGold;
-    public int CurrentExp;
+    public int CurrentGold = 0;
+    public int CurrentExp = 0;
     monsterData mon = new monsterData();
     List<monsterData> listmon = new List<monsterData>();
 
@@ -137,6 +137,8 @@ public class EnemyGenerators : Singleton<EnemyGenerators>
                                 {
                                     if (item3.Value.Exp != 0)
                                         CurrentExp = item3.Value.Exp;
+                                    if (item3.Value.Gold != 0)
+                                        CurrentGold = item3.Value.Gold;
 
                                     //Debug.Log("ex"+item3.Value.Gold + ""+item3.Value.Exp);
                                     CurrentMaxWave = (sbyte)item2.Value.Count;

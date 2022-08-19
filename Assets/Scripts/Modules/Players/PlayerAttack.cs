@@ -27,7 +27,10 @@ public class PlayerAttack : MonoBehaviour
     {
         //if (player.anim.GetInteger("Movement") == 0)
         //{
-            IDamageable damge = Target.GetComponent<IDamageable>();
+        if (Target == null)
+            return;
+
+        IDamageable damge = Target.GetComponent<IDamageable>();
             damge.Damage(playerData.RandAtk, this.gameObject);
         //}
     }

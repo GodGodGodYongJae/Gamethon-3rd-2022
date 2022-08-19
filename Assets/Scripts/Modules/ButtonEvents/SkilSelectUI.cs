@@ -1,3 +1,5 @@
+using PlayFab;
+using PlayFab.ClientModels;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,25 +19,53 @@ public class SkilSelectUI : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable()
     {
-        ISkilList = skilManager.ShowSkilList();
-        skilDic.Clear();
+        RerollSkill();
 
         //if(skilBtn.Length <= SkilRange)
         //{
-            for (int i = 0; i < skilBtn.Length; i++)
-            {
-                int RandSkil = Random.Range(0, ISkilList.Count);
-                if(ISkilList[RandSkil].skilImg !=  null)
-                skilBtn[i].image.sprite = ISkilList[RandSkil].skilImg;
-                skilBtn[i].transform.GetChild(0).GetComponent<Text>().text = ISkilList[RandSkil].skilname;
-
-                skilDic.Add(skilBtn[i], ISkilList[RandSkil]);
-            ISkilList.RemoveAt(RandSkil);
-        }  
+            
         //}
  
     }
 
+    public void OnRerollSkill()
+    {
+        if(PlayFabData.Instance.PlayerDiamond >= 100)
+        {
+            PlayFabClientAPI.ExecuteCloudScript(new ExecuteCloudScriptRequest()
+            {
+                FunctionName = "SubVirtualCurrency",
+                FunctionParameter = new { Amount = 100, type = "DM" },
+                GeneratePlayStreamEvent = true
+
+            },
+           cloudResult =>
+           {
+               RerollSkill();
+
+           },
+           error =>
+           {
+               Debug.Log("Got error setting user data Ancestor to Arthur");
+               Debug.Log(error.GenerateErrorReport());
+           });
+        }
+    }
+     void RerollSkill()
+    {
+        ISkilList = skilManager.ShowSkilList();
+        skilDic.Clear();
+        for (int i = 0; i < skilBtn.Length; i++)
+        {
+            int RandSkil = Random.Range(0, ISkilList.Count);
+            if (ISkilList[RandSkil].skilImg != null)
+                skilBtn[i].image.sprite = ISkilList[RandSkil].skilImg;
+            skilBtn[i].transform.GetChild(0).GetComponent<Text>().text = ISkilList[RandSkil].skilname;
+
+            skilDic.Add(skilBtn[i], ISkilList[RandSkil]);
+            ISkilList.RemoveAt(RandSkil);
+        }
+    }
     public void OnSelectSkil(Button btn)
     {
         foreach (var item in skilDic)
