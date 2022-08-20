@@ -1,43 +1,57 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class CVersionCheckMrg : MonoBehaviour
 {
 
-    public string url;
-    // Start is called before the first frame update
+    public string URL = ""; // 버전체크를 위한 URL
+    public string CurVersion; // 현재 빌드버전
+    string latsetVersion; // 최신버전
+    public GameObject newVersionAvailable; // 버전확인 UI
 
-    public string _bundleIdentifier { 
-        get {
-            return url.Substring(url.IndexOf("details"), url.LastIndexOf("details") + 1); 
-        } 
-    }
     void Start()
     {
-        StartCoroutine(PlayStoreVersionCheck());
+        StartCoroutine(LoadTxtData(URL));
     }
 
-    private IEnumerator PlayStoreVersionCheck()
+    public void VersionCheck()
     {
-        WWW www = new WWW(url); 
-            yield return www;         //인터넷 연결 에러가 없다면,       
-        if (www.error == null)
+        if (CurVersion != latsetVersion)
         {
-            int index = www.text.IndexOf("softwareVersion");
-            Debug.Log(index);
-            string versionText = www.text.Substring(index, 30);
-            int softwareVersion = versionText.IndexOf(">"); 
-            string playStoreVersion = versionText.Substring(softwareVersion + 1, Application.version.Length + 1);
-            Debug.Log(playStoreVersion.Trim());
+            newVersionAvailable.SetActive(true);
         }
         else
         {
-            Debug.Log(www.error);
-            //https://genieker.tistory.com/149
-            // 지금은 낫파운드 뜸 
+            newVersionAvailable.SetActive(false);
         }
+        Debug.Log("Current Version" + CurVersion + "Lastest Version" + latsetVersion);
     }
 
-  
+
+    IEnumerator LoadTxtData(string url)
+    {
+        UnityWebRequest www = UnityWebRequest.Get(url);
+        yield return www.SendWebRequest(); // 페이지 요청
+
+        if (www.isNetworkError)
+        {
+            Debug.Log("error get page");
+        }
+        else
+        {
+            latsetVersion = www.downloadHandler.text; // 웹에 입력된 최신버전
+            print(latsetVersion);
+        }
+        VersionCheck();
+    }
+
+    public void OpenURL(string url) // 스토어 열기
+    {
+        Application.OpenURL(url);
+    }
+
+
+
 }

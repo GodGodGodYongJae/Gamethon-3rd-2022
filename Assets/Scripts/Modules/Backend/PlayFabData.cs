@@ -118,7 +118,7 @@ public class PlayFabData : Singleton<PlayFabData>
             FunctionParameter = new { Amount = num, type = ID },
             GeneratePlayStreamEvent = true
         },
-       cloudResult => { Debug.Log(num+"历厘己傍"); },
+       cloudResult => { Debug.Log(num+"历厘己傍"); GetAccountData(); },
        error => { }
        );
       

@@ -25,6 +25,7 @@ public class StageController : MonoBehaviour
         WaveNum++;
         if(WaveNum <= MaxWave)
         {
+            EnemyFactoryMethod.Instance.EmptyDeathEnemy();
             EnemyGenerators.Instance.CreateUnit(ChapterNum, StageNum, WaveNum);
             MaxWave = EnemyGenerators.Instance.CurrentMaxWave;
         }

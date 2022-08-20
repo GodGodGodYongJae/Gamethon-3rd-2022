@@ -8,9 +8,7 @@ public class EnemyGenerators : Singleton<EnemyGenerators>
     //[Serializable]
     public class monsterData
     {
-        public List<Tuple<string, Vector3, Vector3>> monData = new List<Tuple<string, Vector3, Vector3>>();
-        public int Gold;
-        public int Exp;
+        public List<Tuple<string, Vector3, Vector3,int,int>> monData = new List<Tuple<string, Vector3, Vector3, int, int>>();
     }
 
 
@@ -46,10 +44,8 @@ public class EnemyGenerators : Singleton<EnemyGenerators>
     List<monsterData> listmon = new List<monsterData>();
 
 
-    public void AddMonsterList(Tuple<string,Vector3,Vector3> data,int gold,int exp)
+    public void AddMonsterList(Tuple<string,Vector3,Vector3, int, int> data)
     {
-        mon.Gold = gold;
-        mon.Exp = exp;
         mon.monData.Add(data);
     }
 
@@ -59,8 +55,6 @@ public class EnemyGenerators : Singleton<EnemyGenerators>
         monsterData ms = new monsterData();
         for (int i = 0; i < mon.monData.Count; i++)
         {
-            ms.Gold = mon.Gold;
-            ms.Exp = mon.Exp;
             ms.monData.Add(mon.monData[i]);
         }
         listmon.Insert(0, ms);
@@ -135,12 +129,11 @@ public class EnemyGenerators : Singleton<EnemyGenerators>
 
                                 for (int j = 0; j < item3.Value.monData.Count; j++)
                                 {
-                                    if (item3.Value.Exp != 0)
-                                        CurrentExp = item3.Value.Exp;
-                                    if (item3.Value.Gold != 0)
-                                        CurrentGold = item3.Value.Gold;
-
-                                    //Debug.Log("ex"+item3.Value.Gold + ""+item3.Value.Exp);
+                                    if (item3.Value.monData[j].Item4 != 0)
+                                        CurrentGold = item3.Value.monData[j].Item4;
+                                    if (item3.Value.monData[j].Item5 != 0)
+                                        CurrentExp = item3.Value.monData[j].Item5;
+                                                                      
                                     CurrentMaxWave = (sbyte)item2.Value.Count;
                                     Spawn(item3.Value.monData[j].Item1, item3.Value.monData[j].Item2, item3.Value.monData[j].Item3);
                                 }

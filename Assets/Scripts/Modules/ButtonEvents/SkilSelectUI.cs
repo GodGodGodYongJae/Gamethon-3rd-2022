@@ -35,7 +35,7 @@ public class SkilSelectUI : MonoBehaviour
             PlayFabClientAPI.ExecuteCloudScript(new ExecuteCloudScriptRequest()
             {
                 FunctionName = "SubVirtualCurrency",
-                FunctionParameter = new { Amount = 100, type = "DM" },
+                FunctionParameter = new { Amount = 50, type = "DM" },
                 GeneratePlayStreamEvent = true
 
             },

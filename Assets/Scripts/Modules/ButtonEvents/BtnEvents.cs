@@ -6,17 +6,10 @@ public class BtnEvents : MonoBehaviour
 {
     public void OnStageClear()
     {
-        if (EnemyFactoryMethod.Instance.stageController.isLast)
-        {
-            ScenesManager.Instance.OnLobbyScene();
-        }
-        else
-        {
-            CutSceneManager.Instance.OnScene(false, CutSceneManager.Events.StageClear, true);
-            EnemyFactoryMethod.Instance.stageController.NextWave();
-            this.gameObject.SetActive(false);
-            EnemyFactoryMethod.Instance.stageController.DeathObj.SetActive(false);
-        }
+        CutSceneManager.Instance.OnScene(false, CutSceneManager.Events.StageClear, true);
+        EnemyFactoryMethod.Instance.stageController.NextWave();
+        this.gameObject.SetActive(false);
+        EnemyFactoryMethod.Instance.stageController.DeathObj.SetActive(false);
     }
 
     public void OnStartGame()

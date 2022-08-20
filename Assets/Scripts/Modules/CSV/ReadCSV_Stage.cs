@@ -48,16 +48,16 @@ public class ReadCSV_Stage : MonoBehaviour
                 currentData.Item2.Equals(LastData.Item2) &&
                 currentData.Item3.Equals(LastData.Item3))
             {
-                Tuple<string, Vector3, Vector3> datas = new Tuple<string, Vector3, Vector3>(data[i]["MonsterName"].ToString(), ConvertCSVtoVector3(data[i]["Position(x/y/z)"]), ConvertCSVtoVector3(data[i]["Rotation(x/y/z)"]));
-                EnemyGenerators.Instance.AddMonsterList(datas, gold, exp);
+                Tuple<string, Vector3, Vector3, int, int> datas = new Tuple<string, Vector3, Vector3,int,int>(data[i]["MonsterName"].ToString(), ConvertCSVtoVector3(data[i]["Position(x/y/z)"]), ConvertCSVtoVector3(data[i]["Rotation(x/y/z)"]),gold,exp);
+                EnemyGenerators.Instance.AddMonsterList(datas);
             }
 
             else
             {
                 EnemyGenerators.Instance.FinishList(LastData.Item1, LastData.Item2, LastData.Item3);
                 LastData = new Tuple<int, int, int>((int)data[i]["Chapter"], (int)data[i]["Stage"], (int)data[i]["Wave"]);
-                Tuple<string, Vector3, Vector3> datas = new Tuple<string, Vector3, Vector3>(data[i]["MonsterName"].ToString(), ConvertCSVtoVector3(data[i]["Position(x/y/z)"]), ConvertCSVtoVector3(data[i]["Rotation(x/y/z)"]));
-                EnemyGenerators.Instance.AddMonsterList(datas,gold,exp);
+                Tuple<string, Vector3, Vector3, int, int> datas = new Tuple<string, Vector3, Vector3, int, int>(data[i]["MonsterName"].ToString(), ConvertCSVtoVector3(data[i]["Position(x/y/z)"]), ConvertCSVtoVector3(data[i]["Rotation(x/y/z)"]), gold, exp);
+                EnemyGenerators.Instance.AddMonsterList(datas);
             }
             LastData = new Tuple<int, int, int>((int)data[i]["Chapter"], (int)data[i]["Stage"], (int)data[i]["Wave"]);
 

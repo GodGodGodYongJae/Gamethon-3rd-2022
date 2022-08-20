@@ -40,9 +40,6 @@ public class Player : MonoBehaviour, IDamageable
     int def;
 
     #endregion
-    private bool skillCoolDown;
-    public float coolDownTime;
-    private Coroutine skilcorutine;
     [SerializeField]
     private GameObject bloodWindow;
     private void Awake()
@@ -114,9 +111,6 @@ public class Player : MonoBehaviour, IDamageable
             transform.LookAt(targetPos);
         }
 
-        if (skilcorutine == null)
-            skilcorutine = StartCoroutine(CoolTime(coolDownTime));
-
         #region KeyBoard
         //if (anim.GetInteger("Movement") == 0)
         //{
@@ -132,37 +126,9 @@ public class Player : MonoBehaviour, IDamageable
         //}
         #endregion
 
-        //if(Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    Debug.Log("¤·¤·");
-        //    ObjectPoolManager.Instance.Get("Meteor 2", target.position, Quaternion.identity);
-        //}
-    
-
-    }
-    IEnumerator CoolTime(float cool) {
-
-        while (cool > 1.0f) 
-        {
-            cool -= Time.deltaTime;
-            UIManager.Instance.SkilCoolDown(1.0f / cool);
-            yield return new WaitForFixedUpdate();
-        }
-        skillCoolDown = true;
     }
    
-   
-    public void OnSwordSkilBtn()
-    {
-        if (isDeath.Equals(false) && skillCoolDown.Equals(true))
-        {
-            CutSceneManager.Instance.OnScene(true, CutSceneManager.Events.SwordSkill, true);
-            skilcorutine = null;
-            skillCoolDown = false;
-            UIManager.Instance.SkilCoolDown(0);
-        }
-    
-    }
+ 
     public void movement(bitFlags.PlayerMoveDirection pd, Transform target)
     {
             MoveEvents?.Invoke(pd,target);

@@ -8,9 +8,6 @@ public class DeathEvents : MonoBehaviour
     {
         EnemyFactoryMethod.Instance.ShowDeathEnemy();
     }
-    private void OnDisable()
-    {
-        EnemyFactoryMethod.Instance.EmptyDeathEnemy();
-    }
+
 
 }
