@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TransTarget: {fileID: 0}
-  AttackWaitTime: 2.5
+  AttackWaitTime: 2.15
   m_eCurState: 0
   m_ePrevState: 0
   m_fFindRange: 0

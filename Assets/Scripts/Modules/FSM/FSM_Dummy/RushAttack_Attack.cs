@@ -14,7 +14,7 @@ public class RushAttack_Attack : MonoBehaviour,FSM_State<DummyFSM>
     private bool StartColision;
     private bool isPoint;
     public DummyFSM Owner { get { return m_Owner; } set { m_Owner = value; } }
-
+    GameObject indicator;
     public void Begin()
     {
         timer = 0;
@@ -22,6 +22,7 @@ public class RushAttack_Attack : MonoBehaviour,FSM_State<DummyFSM>
         m_Owner.m_eCurState = DummyFSM.State.Attack;
         StartColision = true;
         isPoint = true;
+        indicator = ObjectPoolManager.Instance.Get("IndicatorLine", transform.position, Quaternion.Euler(new Vector3(-90, transform.rotation.eulerAngles.y, 0)));
     }
 
     public void Exit()
@@ -32,7 +33,7 @@ public class RushAttack_Attack : MonoBehaviour,FSM_State<DummyFSM>
 
     public void Run()
     {
-      
+
         
         timer += Time.deltaTime;
         if (timer > AttackWaittingTime)
@@ -44,7 +45,7 @@ public class RushAttack_Attack : MonoBehaviour,FSM_State<DummyFSM>
                 m_Owner.isDealy = false;
                 m_Owner.istargetMove = false;
                 m_Owner.ChangeFSM(DummyFSM.State.IDLE);
-
+                ObjectPoolManager.Instance.Free(indicator);
             }
         }
 

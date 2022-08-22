@@ -9,6 +9,7 @@ public class IPAScript : MonoBehaviour
     public int Gas = 0;
     public void Rewar()
     {
+
         PlayFabData.Instance.AddAccountData("DM", Dia);
         PlayFabData.Instance.AddAccountData("RU", Ruby);
         PlayFabData.Instance.AddAccountData("ST", Gas);

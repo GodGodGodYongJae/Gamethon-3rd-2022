@@ -28932,12 +28932,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1290990380851595413, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
       propertyPath: poolList.Array.size
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1290990380851595413, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
       propertyPath: poolList.Array.data[8]
       value: 
       objectReference: {fileID: 1593574840045950, guid: 45ae8ce3527dfcf46933282f370e9275, type: 3}
+    - target: {fileID: 1290990380851595413, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
+      propertyPath: poolList.Array.data[9]
+      value: 
+      objectReference: {fileID: 7707467224129454570, guid: 73e39712696b9c84c92febf94da3c05c, type: 3}
     - target: {fileID: 2061539802585977231, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
       propertyPath: m_Name
       value: '@GameManagersr'
