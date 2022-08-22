@@ -29,6 +29,7 @@ public class RushAttack_Attack : MonoBehaviour,FSM_State<DummyFSM>
     {
         m_Owner.indicator.SetActive(false);
         m_Owner.m_ePrevState = DummyFSM.State.Attack;
+        ObjectPoolManager.Instance.Free(indicator);
     }
 
     public void Run()
@@ -46,6 +47,7 @@ public class RushAttack_Attack : MonoBehaviour,FSM_State<DummyFSM>
                 m_Owner.istargetMove = false;
                 m_Owner.ChangeFSM(DummyFSM.State.IDLE);
                 ObjectPoolManager.Instance.Free(indicator);
+                StartColision = false;
             }
         }
 
