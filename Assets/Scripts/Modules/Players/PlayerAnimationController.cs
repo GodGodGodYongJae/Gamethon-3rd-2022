@@ -35,6 +35,10 @@ public class PlayerAnimationController : MonoBehaviour
                 break;
         }
     }
+    public void isDashAtk()
+    {
+        anim.SetTrigger("isDashAtk");
+    }
     public void Attack(Transform target)
     {
         anim.SetTrigger("OnCloseAttackCombo");

@@ -9,7 +9,7 @@ public class Player : MonoBehaviour, IDamageable
     UnityEvent<bitFlags.PlayerMoveDirection,Transform> MoveEvents;
     public UnityEvent<Transform> AttackEvents;
     [SerializeField]
-    Transform target;
+    public Transform target;
     
 
     public bitFlags.PlayerMoveDirection PlayerDirection;

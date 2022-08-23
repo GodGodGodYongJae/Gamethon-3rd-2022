@@ -5,14 +5,14 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
 
-    Player playerData;
+    Player player;
    // Player player;
     public Transform Target;
     
     private void Start()
     {
-       // player = GetComponent<Player>();
-        playerData = GetComponent<Player>();
+        // player = GetComponent<Player>();
+        player = GetComponent<Player>();
     }
     public void OnAttackEvent(Transform target)
     {
@@ -27,11 +27,12 @@ public class PlayerAttack : MonoBehaviour
     {
         //if (player.anim.GetInteger("Movement") == 0)
         //{
+        Target = player.target;
         if (Target == null)
             return;
 
         IDamageable damge = Target.GetComponent<IDamageable>();
-            damge.Damage(playerData.RandAtk, this.gameObject);
+            damge.Damage(player.RandAtk, this.gameObject);
         //}
     }
 }

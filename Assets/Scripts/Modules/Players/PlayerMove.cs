@@ -28,6 +28,7 @@ public class PlayerMove : MonoBehaviour
     {
         transform = GetComponent<Transform>();
         rb = GetComponent<Rigidbody>();
+        playerAnim  = GetComponent<PlayerAnimationController>();
     }
 
     private void Update()
@@ -52,12 +53,20 @@ public class PlayerMove : MonoBehaviour
             {
                 t += Time.deltaTime * rollSpeed;
                 rb.MovePosition(Vector3.Lerp(start, target, t));
-
+                
                 yield return null;
+            }
+            if(DashCheck == bitFlags.PlayerMoveDirection.Dash && isRayColision)
+            {
+                isRayColision = false;
+                DashCheck = bitFlags.PlayerMoveDirection.None;
+
             }
         }
     }
-
+    bitFlags.PlayerMoveDirection DashCheck;
+    bool isRayColision;
+    PlayerAnimationController playerAnim;
     private void RayCastTest(Vector3 prevPos)
     {
         Vector3 currentPosition = transform.position;
@@ -68,7 +77,11 @@ public class PlayerMove : MonoBehaviour
             corutine = MoveToPosition(prevPos);
         //StartCoroutine("MoveToPosition", prevPos);
         else
+        {
+            isRayColision = true;
             corutine = MoveToPosition(hit.point);
+            playerAnim.isDashAtk();
+        }
         //StartCoroutine("MoveToPosition", hit.point);
         StartCoroutine(corutine);
     }
@@ -106,6 +119,7 @@ public class PlayerMove : MonoBehaviour
         else if(pd.HasFlag(bitFlags.PlayerMoveDirection.Dash))
         {
              tr = transform.position + transform.forward * (MoveSpeed + 1.5f);
+            DashCheck = bitFlags.PlayerMoveDirection.Dash;
         }
 
         if(pd != bitFlags.PlayerMoveDirection.None)
