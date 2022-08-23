@@ -6232,7 +6232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9635893acb83c3f4ea68db4aac6f7828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asset: {fileID: 4900000, guid: 3f680f03ff482c5489db039d45a4b1c8, type: 3}
+  asset: {fileID: 4900000, guid: 1572f34ac998d304bb6d19190626df19, type: 3}
 --- !u!4 &716914606
 Transform:
   m_ObjectHideFlags: 0
@@ -6806,15 +6806,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4477222436138409334, guid: 2a15072fc923aa5449cc858334757c2c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.075
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4477222436138409334, guid: 2a15072fc923aa5449cc858334757c2c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.075
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4477222436138409334, guid: 2a15072fc923aa5449cc858334757c2c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.075
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4477222436138409334, guid: 2a15072fc923aa5449cc858334757c2c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6822,11 +6822,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4477222436138409334, guid: 2a15072fc923aa5449cc858334757c2c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1139.3273
+      value: -1170
       objectReference: {fileID: 0}
     - target: {fileID: 4477222436138409334, guid: 2a15072fc923aa5449cc858334757c2c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.125
+      value: -5.56
       objectReference: {fileID: 0}
     - target: {fileID: 4477222436138409334, guid: 2a15072fc923aa5449cc858334757c2c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -15053,7 +15053,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1829270889}
   - component: {fileID: 1829270888}
-  - component: {fileID: 1829270887}
   - component: {fileID: 1829270886}
   m_Layer: 0
   m_Name: Main Camera (1)
@@ -15095,14 +15094,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!81 &1829270887
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1829270885}
-  m_Enabled: 1
 --- !u!20 &1829270888
 Camera:
   m_ObjectHideFlags: 0

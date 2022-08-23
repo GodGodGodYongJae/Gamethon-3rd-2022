@@ -52,6 +52,7 @@ public class Player : MonoBehaviour, IDamageable
 
         //rb = GetComponent<Rigidbody>();
         //Time.timeScale = 0.3f;
+
         exp = 0;
         level = 1;
         minAtk = PlayFabData.Instance.PlayerStatus[PlayFabData.Stat.atk];
@@ -177,6 +178,7 @@ public class Player : MonoBehaviour, IDamageable
             transform.LookAt(tr.transform);
             Time.timeScale = 0.35f;
             anim.SetBool("isDeath", true);
+            SoundManager.Inst.PlayBGM("Death - Bass, Tension & Voices");
         }
     }
 
@@ -202,6 +204,7 @@ public class Player : MonoBehaviour, IDamageable
         UIManager.Instance.ChangeHpBar(UIManager.UI.HpBar, Health, maxHealth);
         string Hptext = Health + "/" + maxHealth;
         UIManager.Instance.TextChange(UIManager.UI.HPText, Hptext);
+        SoundManager.Inst.PlayBGM("Space Threat (Electronic Dramatic Version)");
     }
 
     //차후 수정해야함

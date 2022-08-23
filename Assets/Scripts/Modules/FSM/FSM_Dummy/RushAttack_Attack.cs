@@ -22,7 +22,8 @@ public class RushAttack_Attack : MonoBehaviour,FSM_State<DummyFSM>
         m_Owner.m_eCurState = DummyFSM.State.Attack;
         StartColision = true;
         isPoint = true;
-        indicator = ObjectPoolManager.Instance.Get("IndicatorLine", transform.position, Quaternion.Euler(new Vector3(-90, transform.rotation.eulerAngles.y, 0)));
+        Vector3 pos = new Vector3(transform.position.x, transform.position.y + 0.4f, transform.position.z);
+        indicator = ObjectPoolManager.Instance.Get("IndicatorLine", pos, Quaternion.Euler(new Vector3(-90, transform.rotation.eulerAngles.y, 0)));
     }
 
     public void Exit()
