@@ -11,7 +11,6 @@ public class Wizard_ReadyAttack : MonoBehaviour, FSM_State<DummyFSM>
     private short coolDownSummon;
     public void Begin()
     {
-        //Bullet 먼저 소환해봐야 해서
         m_Owner.m_eCurState = DummyFSM.State.Attack;
     }
 

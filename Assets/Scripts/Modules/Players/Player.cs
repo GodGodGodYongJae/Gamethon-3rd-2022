@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour, IDamageable
 {
+    public bool isTestMode;
     [SerializeField]
     UnityEvent<bitFlags.PlayerMoveDirection,Transform> MoveEvents;
     public UnityEvent<Transform> AttackEvents;
@@ -55,9 +56,9 @@ public class Player : MonoBehaviour, IDamageable
 
         exp = 0;
         level = 1;
-        minAtk = PlayFabData.Instance.PlayerStatus[PlayFabData.Stat.atk];
+        minAtk = (isTestMode.Equals(false))?PlayFabData.Instance.PlayerStatus[PlayFabData.Stat.atk]:100;
         maxAtk = minAtk + (minAtk /2);
-        def = PlayFabData.Instance.PlayerStatus[PlayFabData.Stat.def];
+        def = (isTestMode.Equals(false)) ? PlayFabData.Instance.PlayerStatus[PlayFabData.Stat.def] : 10;
         atkSpeed = 1f;
         Health = 999;
         maxHealth = Health;

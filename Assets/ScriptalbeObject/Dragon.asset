@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be7da9fc026062a4cb88ec668b552655, type: 3}
-  m_Name: Wizard
+  m_Name: Dragon
   m_EditorClassIdentifier: 
-  name: Wizard
-  hp: 250
-  attackPoint: 120
-  attackDelay: 5
-  defencePoint: 8
-  moveSpeed: 1
+  name: Dragon
+  hp: 4000
+  attackPoint: 150
+  attackDelay: 3
+  defencePoint: 20
+  moveSpeed: 2
   findRange: 10
-  attackFindRange: 7
+  attackFindRange: 3
   attackRange: 0
   attackDistance: 0
-  stopDistance: 3
+  stopDistance: 1

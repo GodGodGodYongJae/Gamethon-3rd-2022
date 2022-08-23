@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class DummyFSM : MonoBehaviour
 {
 
-    public enum State { IDLE,Walk,empty,Death,Attack,Hit,Summon, Attack2,End}
+    public enum State { IDLE,Walk,empty,Death,Attack,Hit,Summon, Attack2,Attack3,End}
 
 
     public FSM_HeadMachine<DummyFSM> m_state;

@@ -1,6 +1,6 @@
 Chapter,Stage,Wave,No.,MonsterName,Position(x/y/z),Rotation(x/y/z),MosStone,Exp
-1,1,1,1,StoneMonster,0/0/2,0/180/0,10,75
-1,2,1,1,StoneMonster,-2/0/3,0/180/0,20,80
+1,1,1,1,Dragon,0/0/2,0/180/0,10,75
+1,2,1,1,StoneMonster,#DIV/0!,0/180/0,20,80
 1,2,1,2,StoneMonster,2/0/3,0/180/0,,
-1,3,1,1,StoneMonster,-2/0/3.5,0/150/0,30,72
-1,4,1,1,Golem,-4/0/5,0/180/0,40,82
+1,3,1,1,StoneMonster,#DIV/0!,0/150/0,30,72
+1,4,1,1,Golem,#DIV/0!,0/180/0,40,82
