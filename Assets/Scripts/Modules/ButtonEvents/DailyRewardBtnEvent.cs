@@ -10,11 +10,13 @@ public class DailyRewardBtnEvent : MonoBehaviour
     public int Gas;
     public int Ruby;
 
+    [System.Obsolete]
     private void Awake()
     {
        if(PlayFabData.Instance.PlayerStatus[PlayFabData.Stat.dailyReward] > Daily)
         {
             this.gameObject.GetComponent<Image>().color = Color.yellow;
+            transform.FindChild("Complate").gameObject.SetActive(true);
         }
     }
 }

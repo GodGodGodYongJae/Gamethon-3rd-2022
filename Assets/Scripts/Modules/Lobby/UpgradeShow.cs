@@ -13,6 +13,8 @@ public class UpgradeShow : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI CostDMText;
     [SerializeField]
+    TextMeshProUGUI LevelText;
+    [SerializeField]
     TextMeshProUGUI CostRUText;
     [SerializeField]
     ReadCSV_UPGRADE ReadCsv;
@@ -61,6 +63,7 @@ public class UpgradeShow : MonoBehaviour
                 CostRuby = (int)item.Ruby;
                 CostDMText.text = CostDia.ToString();
                 CostRUText.text = CostRuby.ToString();
+                LevelText.text = item.Level.ToString();
                 break;
             }
         }
@@ -90,7 +93,8 @@ public class UpgradeShow : MonoBehaviour
                         CostRuby = (int)item.Ruby;
                         CostDMText.text = CostDia.ToString();
                         CostRUText.text = CostRuby.ToString();
-                    break;
+                LevelText.text = item.Level.ToString();
+                break;
                 }
             }
         

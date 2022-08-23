@@ -72,6 +72,7 @@ public class LobbyController : Singleton<LobbyController>
                 RewardAdd("RU", DR.Ruby);
 
             DR.GetComponent<Image>().color = Color.yellow;
+            DR.transform.FindChild("Complate").gameObject.SetActive(true);
             PlayFabData.instance.PlayerDailyCount = 0;
         },
         error =>
