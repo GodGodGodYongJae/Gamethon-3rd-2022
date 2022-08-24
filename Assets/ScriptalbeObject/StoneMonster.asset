@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StoneMonster
   m_EditorClassIdentifier: 
   name: StoneMonster
-  hp: 100
+  hp: 110
   attackPoint: 30
   attackDelay: 4
   defencePoint: 5

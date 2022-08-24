@@ -72,7 +72,7 @@ public class LobbyController : Singleton<LobbyController>
                 RewardAdd("RU", DR.Ruby);
 
             DR.GetComponent<Image>().color = Color.yellow;
-            DR.transform.FindChild("Complate").gameObject.SetActive(true);
+            DR.transform.Find("Complate").gameObject.SetActive(true);
             PlayFabData.instance.PlayerDailyCount = 0;
         },
         error =>
@@ -91,7 +91,7 @@ public class LobbyController : Singleton<LobbyController>
             GeneratePlayStreamEvent = true
             
         },
-        cloudResult => { Debug.Log("ÀúÀå¼º°ø!"); PlayFabData.instance.GetAccountData(); WaitPannel.SetActive(false); },
+        cloudResult => { Debug.Log("ï¿½ï¿½ï¿½å¼ºï¿½ï¿½!"); PlayFabData.instance.GetAccountData(); WaitPannel.SetActive(false); },
         error => { }
         );
 

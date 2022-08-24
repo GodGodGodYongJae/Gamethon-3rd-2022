@@ -8,6 +8,7 @@ public class PlayerMove : MonoBehaviour
     new Transform transform;
     Rigidbody rb;
     Transform target;
+
    
     //전진 백 스피드
     public float MoveSpeed;
@@ -62,6 +63,7 @@ public class PlayerMove : MonoBehaviour
                 DashCheck = bitFlags.PlayerMoveDirection.None;
 
             }
+          
         }
     }
     bitFlags.PlayerMoveDirection DashCheck;
@@ -84,6 +86,15 @@ public class PlayerMove : MonoBehaviour
         }
         //StartCoroutine("MoveToPosition", hit.point);
         StartCoroutine(corutine);
+    }
+
+    public void Jump()
+    {
+        //transform.position = new Vector3(transform.position.x, transform.position.y + 3, transform.position.z);
+        Vector3 tr = Vector3.zero;
+        tr = transform.position - transform.forward * 10;
+        tr += transform.up * 5;
+        RayCastTest(tr);
     }
     public void Movement(bitFlags.PlayerMoveDirection pd,Transform target)
     {

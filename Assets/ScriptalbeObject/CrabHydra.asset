@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: CrabHydra
   m_EditorClassIdentifier: 
   name: CrabHydra
-  hp: 350
-  attackPoint: 80
+  hp: 320
+  attackPoint: 130
   attackDelay: 4
   defencePoint: 5
   moveSpeed: 3

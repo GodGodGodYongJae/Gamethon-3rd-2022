@@ -7,14 +7,14 @@ public class Player : MonoBehaviour, IDamageable
 {
     public bool isTestMode;
     [SerializeField]
-    UnityEvent<bitFlags.PlayerMoveDirection,Transform> MoveEvents;
+    UnityEvent<bitFlags.PlayerMoveDirection, Transform> MoveEvents;
     public UnityEvent<Transform> AttackEvents;
     [SerializeField]
     public Transform target;
-    
+
 
     public bitFlags.PlayerMoveDirection PlayerDirection;
-   
+
     public Animator anim;
     public float attackdistance;
 
@@ -56,8 +56,8 @@ public class Player : MonoBehaviour, IDamageable
 
         exp = 0;
         level = 1;
-        minAtk = (isTestMode.Equals(false))?PlayFabData.Instance.PlayerStatus[PlayFabData.Stat.atk]:100;
-        maxAtk = minAtk + (minAtk /2);
+        minAtk = (isTestMode.Equals(false)) ? PlayFabData.Instance.PlayerStatus[PlayFabData.Stat.atk] : 100;
+        maxAtk = minAtk + (minAtk / 2);
         def = (isTestMode.Equals(false)) ? PlayFabData.Instance.PlayerStatus[PlayFabData.Stat.def] : 10;
         atkSpeed = 1f;
         Health = 999;
@@ -66,7 +66,7 @@ public class Player : MonoBehaviour, IDamageable
         PlayerDirection = bitFlags.PlayerMoveDirection.None;
         string Hptext = Health + "/" + maxHealth;
         UIManager.Instance.TextChange(UIManager.UI.HPText, Hptext);
-       // UIManager.Instance.ChangeExpBar(ref exp,ref level);
+        // UIManager.Instance.ChangeExpBar(ref exp,ref level);
     }
 
     public bool ChangeExp(int _exp)
@@ -93,7 +93,7 @@ public class Player : MonoBehaviour, IDamageable
 
             PlayerDirection = bitFlags.PlayerMoveDirection.None;
         }
-            
+
     }
     void Update()
     {
@@ -105,12 +105,12 @@ public class Player : MonoBehaviour, IDamageable
             //anim.SetBool("isEnemyLoss", true);
             target = EnemyFactoryMethod.Instance?.target;
         }
-        if(target != null)
+        if (target != null)
         {
 
-            Vector3 targetPos = new Vector3(target.transform.position.x,transform.position.y,target.transform.position.z);
-            if(!isDeath)
-            transform.LookAt(targetPos);
+            Vector3 targetPos = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
+            if (!isDeath)
+                transform.LookAt(targetPos);
         }
 
         #region KeyBoard
@@ -129,42 +129,43 @@ public class Player : MonoBehaviour, IDamageable
         #endregion
 
     }
-   
- 
+
+
     public void movement(bitFlags.PlayerMoveDirection pd, Transform target)
     {
-            MoveEvents?.Invoke(pd,target);
+        MoveEvents?.Invoke(pd, target);
     }
 
     public void OnAttackEvents()
     {
         AttackEvents?.Invoke(this.target);
     }
+    public bool isNotMove;
     public void OnTouchEvent(bitFlags.PlayerMoveDirection pd)
     {
-        if (target == null)
+        if (target == null || isNotMove.Equals(true))
             return;
         //Debug.Log(Vector3.Distance(transform.position, target.position));
-        if(pd.HasFlag(bitFlags.PlayerMoveDirection.Dash))
+        if (pd.HasFlag(bitFlags.PlayerMoveDirection.Dash))
         {
             float distance = Vector3.Distance(transform.position, target.position);
             if (distance > attackdistance)
             {
                 if (anim.GetInteger("Movement") == 0)
                     PlayerDirection = bitFlags.PlayerMoveDirection.Dash;
-            }    
+            }
 
             else
                 PlayerDirection = bitFlags.PlayerMoveDirection.Attack;
         }
-        else if (anim.GetInteger("Movement") == 0 )
+        else if (anim.GetInteger("Movement") == 0)
         {
-            PlayerDirection = pd;        
+            PlayerDirection = pd;
         }
 
     }
 
-    public void Damage(int _damage,GameObject tr)
+    public void Damage(int _damage, GameObject tr)
     {
         int damage = Mathf.FloorToInt(_damage * (1 - (def / 100)));
         Health -= damage;
@@ -172,9 +173,9 @@ public class Player : MonoBehaviour, IDamageable
         string Hptext = Health + "/" + maxHealth;
         UIManager.Instance.TextChange(UIManager.UI.HPText, Hptext);
         StartCoroutine(Damages());
-        if(Health <= 0)
+        if (Health <= 0)
         {
-            CutSceneManager.Instance.OnScene(true,CutSceneManager.Events.Death);
+            CutSceneManager.Instance.OnScene(true, CutSceneManager.Events.Death);
             isDeath = true;
             transform.LookAt(tr.transform);
             Time.timeScale = 0.35f;
@@ -216,6 +217,15 @@ public class Player : MonoBehaviour, IDamageable
         bloodWindow.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         bloodWindow.SetActive(false);
+    }
+
+
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.collider.gameObject.CompareTag("Ground"))
+        {
+            isNotMove = false;
+        }
     }
 }
 

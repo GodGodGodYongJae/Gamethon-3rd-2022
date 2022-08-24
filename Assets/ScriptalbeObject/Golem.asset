@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Golem
   m_EditorClassIdentifier: 
   name: Golem
-  hp: 500
+  hp: 525
   attackPoint: 80
   attackDelay: 4
-  defencePoint: 30
+  defencePoint: 10
   moveSpeed: 1
   findRange: 10
   attackFindRange: 2

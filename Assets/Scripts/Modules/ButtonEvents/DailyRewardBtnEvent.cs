@@ -16,7 +16,7 @@ public class DailyRewardBtnEvent : MonoBehaviour
        if(PlayFabData.Instance.PlayerStatus[PlayFabData.Stat.dailyReward] > Daily)
         {
             this.gameObject.GetComponent<Image>().color = Color.yellow;
-            transform.FindChild("Complate").gameObject.SetActive(true);
+            transform.Find("Complate").gameObject.SetActive(true);
         }
     }
 }

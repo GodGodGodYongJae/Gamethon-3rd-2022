@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Wizard
   m_EditorClassIdentifier: 
   name: Wizard
-  hp: 250
-  attackPoint: 120
+  hp: 220
+  attackPoint: 170
   attackDelay: 5
   defencePoint: 8
   moveSpeed: 1

@@ -61,8 +61,8 @@ public class C_Skill_Meteo : MonoBehaviour,ISkil
     {
         if(player.isDeath.Equals(false))
         {
-            Vector3 randPos = new Vector3(Random.Range(-20,20), 0, Random.Range(-20,20));
-            ObjectPoolManager.Instance.Get("Meteor 2",randPos,Quaternion.identity);   
+            //Vector3 randPos = new Vector3(Random.Range(-20,20), 0, Random.Range(-20,20));
+            ObjectPoolManager.Instance.Get("Meteor 2",player.target.position,Quaternion.identity);   
         }
 
     }
