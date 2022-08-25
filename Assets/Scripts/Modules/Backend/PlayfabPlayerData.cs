@@ -81,7 +81,7 @@ public class PlayfabPlayerData : Singleton<PlayfabPlayerData>
             {"LastStage",stage.ToString()},
         }
         },
-        result => { Debug.Log("Successfully updated user data"); GetUserData(); },
+        result => { Debug.Log("Successfully updated user data"); PlayFabData.instance.GetUserData(); },
         error => {
             Debug.Log("Got error setting user data Ancestor to Arthur");
             Debug.Log(error.GenerateErrorReport());

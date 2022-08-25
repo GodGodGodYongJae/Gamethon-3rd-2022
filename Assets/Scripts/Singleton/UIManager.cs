@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using PlayFab;
+using PlayFab.ClientModels;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -112,6 +114,7 @@ public class UIManager : Singleton<UIManager>
         TutorialObj.SetActive(true);
         TutorialObj.transform.GetChild(1).GetComponent<Image>().sprite = TutorialSprite[t_currentPage];
         t_button[0].SetActive(true);
+        PlayfabPlayerData.instance.SetUserLastStageUpdate(111);
     }
     public void OnNextTutorial()
     {
@@ -146,4 +149,30 @@ public class UIManager : Singleton<UIManager>
         SkillCoolDownImage.fillAmount = amount;
     }
 
+
+    #region 100다이아 부활
+    public void OnRespawnBtn()
+    {
+        if (PlayFabData.Instance.PlayerDiamond >= 100)
+        {
+            CharaterRespwan();
+            PlayFabClientAPI.ExecuteCloudScript(new ExecuteCloudScriptRequest()
+            {
+                FunctionName = "SubVirtualCurrency",
+                FunctionParameter = new { Amount = 100, type = "DM" },
+                GeneratePlayStreamEvent = true
+
+            },
+           cloudResult =>
+           {
+               PlayFabData.Instance.GetAccountData();
+           },
+           error =>
+           {
+               Debug.Log("Got error setting user data Ancestor to Arthur");
+               Debug.Log(error.GenerateErrorReport());
+           });
+        }
+    }
+    #endregion
 }

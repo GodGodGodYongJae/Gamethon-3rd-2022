@@ -10,7 +10,7 @@ public class Dragon_Walk : MonoBehaviour, FSM_State<DummyFSM>
     Vector3 point;
 
     [SerializeField]
-    private float dotDis = 0.99f;
+    private float dotDis = 0.90f;
     //private float currentAtkDealy;
     //private bool isDealy;
     public DummyFSM Owner { get { return m_Owner; } set { m_Owner = value; } }
@@ -96,7 +96,7 @@ public class Dragon_Walk : MonoBehaviour, FSM_State<DummyFSM>
         float distance = Vector3.Distance(m_Owner.m_TransTarget.position, m_Owner.transform.position);
         NavMeshPath path = new NavMeshPath();
 
-        if (m_Owner.isDealy.Equals(false) && distance < 1)
+        if (m_Owner.isDealy.Equals(false) && distance < 3)
         {
             point = m_Owner.backpos.position;
         }

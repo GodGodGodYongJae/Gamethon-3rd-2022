@@ -30,7 +30,7 @@ public class SkilSelectUI : MonoBehaviour
 
     public void OnRerollSkill()
     {
-        if(PlayFabData.Instance.PlayerDiamond >= 100)
+        if(PlayFabData.Instance.PlayerDiamond >= 50)
         {
             PlayFabClientAPI.ExecuteCloudScript(new ExecuteCloudScriptRequest()
             {

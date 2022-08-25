@@ -54,11 +54,12 @@ public class PlayerMove : MonoBehaviour
             {
                 t += Time.deltaTime * rollSpeed;
                 rb.MovePosition(Vector3.Lerp(start, target, t));
-                
                 yield return null;
             }
             if(DashCheck == bitFlags.PlayerMoveDirection.Dash && isRayColision)
             {
+                PlayerAttack pa = GetComponent<PlayerAttack>();
+                pa.OnAttackEvent(this.target);
                 isRayColision = false;
                 DashCheck = bitFlags.PlayerMoveDirection.None;
 

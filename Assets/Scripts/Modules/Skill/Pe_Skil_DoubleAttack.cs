@@ -35,7 +35,7 @@ public class Pe_Skil_DoubleAttack : MonoBehaviour,ISkil
         isInit = true;
         parent = this.transform.parent;
         player = parent.transform.GetComponent<Player>();
-        player.AttackEvents.AddListener(DubleAttackEvent);
+        //player.AttackEvents.AddListener(DubleAttackEvent);
     }
 
     private void DubleAttackEvent(Transform arg0)
@@ -44,7 +44,7 @@ public class Pe_Skil_DoubleAttack : MonoBehaviour,ISkil
         float xcount = Random.Range(0, 100);
         if (xcount <= persent)
         {
-            arg0.GetComponent<Enemy>().DamageNum = 2;
+            //arg0.GetComponent<Enemy>().DamageNum = 2;
         }
     }
 

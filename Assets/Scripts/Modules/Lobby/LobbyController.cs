@@ -91,7 +91,7 @@ public class LobbyController : Singleton<LobbyController>
             GeneratePlayStreamEvent = true
             
         },
-        cloudResult => { Debug.Log("���强��!"); PlayFabData.instance.GetAccountData(); WaitPannel.SetActive(false); },
+        cloudResult => {  PlayFabData.instance.GetAccountData(); WaitPannel.SetActive(false); },
         error => { }
         );
 

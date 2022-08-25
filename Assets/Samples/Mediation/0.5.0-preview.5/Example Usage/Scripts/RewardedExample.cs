@@ -46,8 +46,9 @@ namespace Unity.Services.Mediation.Samples
             }
         }
 
-        public async void ShowRewarded()
+        public async void ShowRewarded(int State)
         {
+            this.State = (RewardState)State;
             Debug.Log("In reward show method");
             Debug.Log("showad " + m_RewardedAd.AdState);
             //completeAdWatched = false;

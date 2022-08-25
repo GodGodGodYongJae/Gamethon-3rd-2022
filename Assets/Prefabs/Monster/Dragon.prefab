@@ -598,7 +598,7 @@ GameObject:
   - component: {fileID: 4066360348831560556}
   m_Layer: 0
   m_Name: Dragon
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -721,7 +721,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  DestoryTime: 1
+  DestoryTime: 0.1
   isDeath: 0
   DamageNum: 0
 --- !u!114 &3011085586127117732
@@ -737,7 +737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TransTarget: {fileID: 0}
-  AttackWaitTime: 1.4
+  AttackWaitTime: 0.5
   m_eCurState: 0
   m_ePrevState: 0
   m_fFindRange: 0
@@ -819,8 +819,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3, y: 3, z: 4.0287704}
-  m_Center: {x: 0, y: 1.5, z: -1.0143858}
+  m_Size: {x: 3, y: 3, z: 5.566989}
+  m_Center: {x: 0, y: 1.5, z: -0.24527645}
 --- !u!114 &4725097259440324774
 MonoBehaviour:
   m_ObjectHideFlags: 0

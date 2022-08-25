@@ -19,15 +19,19 @@ public class PlayerAttack : MonoBehaviour
         if (target == null)
             return;
 
-        Target = target;
+        float dist = Vector3.Distance(transform.position, target.position);
 
+        if (dist < 3)
+            Target = target;
+        else
+            Target = null;
     }
 
     public void AttackAnimationSync()
     {
         //if (player.anim.GetInteger("Movement") == 0)
         //{
-        Target = player.target;
+        //Target = player.target;
         if (Target == null)
             return;
 

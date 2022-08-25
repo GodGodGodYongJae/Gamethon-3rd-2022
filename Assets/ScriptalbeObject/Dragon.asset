@@ -15,11 +15,11 @@ MonoBehaviour:
   name: Dragon
   hp: 4000
   attackPoint: 150
-  attackDelay: 3
+  attackDelay: 1
   defencePoint: 20
   moveSpeed: 2.5
   findRange: 30
-  attackFindRange: 15
+  attackFindRange: 3
   attackRange: 0
   attackDistance: 0
   stopDistance: 1

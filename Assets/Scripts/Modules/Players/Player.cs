@@ -158,7 +158,7 @@ public class Player : MonoBehaviour, IDamageable
             else
                 PlayerDirection = bitFlags.PlayerMoveDirection.Attack;
         }
-        else if (anim.GetInteger("Movement") == 0)
+        else if (anim.GetInteger("Movement") == 0 || anim.GetInteger("Movement") == 5)
         {
             PlayerDirection = pd;
         }

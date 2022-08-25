@@ -63,13 +63,13 @@ public class Dragon_attack_ready : MonoBehaviour, FSM_State<DummyFSM>
     {
         m_Owner.m_Animator.SetInteger("attack", 3);
         yield return new WaitForSeconds(1.2f);
-        CameraShake shake = Camera.main.gameObject.GetComponent<CameraShake>();
-        shake.Shake();
+        //CameraShake shake = Camera.main.gameObject.GetComponent<CameraShake>();
+        //shake.Shake();
         m_Owner.m_Animator.SetInteger("attack", 0);
         m_Owner.m_TransTarget.GetComponent<Player>().isNotMove = true;
         m_Owner.m_TransTarget.GetComponent<PlayerMove>().Jump();
         m_Owner.ChangeFSM(DummyFSM.State.IDLE);
-        //m_Owner.isDealy = false;
+        m_Owner.isDealy = false;
         m_Owner.istargetMove = false;
     }
     
