@@ -9,7 +9,7 @@ using UnityEngine;
 public class PlayFabData : Singleton<PlayFabData>
 {
     // Start is called before the first frame update
-    public enum Stat {hp,atk,def,cri,dailyReward,LastStage,atklv,deflv,end };
+    public enum Stat {hp,atk,def,cri,dailyReward,LastStage,atklv,deflv,ClearChapter,end };
 
     [HideInInspector]
    public string myPlayFabId;
@@ -51,7 +51,13 @@ public class PlayFabData : Singleton<PlayFabData>
             SetStat(Stat.deflv, int.Parse(result.Data["upgradeDefLv"].Value));
             SetStat(Stat.dailyReward, int.Parse(result.Data["dailyReward"].Value));
             SetStat(Stat.LastStage, int.Parse(result.Data["LastStage"].Value));
-
+            if (!result.Data.ContainsKey("ClearChapter"))
+            {
+                SetUserData("ClearChapter", "1");
+            }
+               
+            else
+                SetStat(Stat.ClearChapter, int.Parse(result.Data["ClearChapter"].Value));
 
         }, (error) => {
             Debug.Log("Got error retrieving user data:");
@@ -108,6 +114,25 @@ public class PlayFabData : Singleton<PlayFabData>
             {
                 Debug.Log(error.GenerateErrorReport());
             });
+    }
+
+    public void SetUserData(string id,string value)
+    {
+            PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest()
+            {
+                Data = new Dictionary<string, string>() {
+                {id, value},
+                }
+            },
+           result => {
+               Debug.Log("Successfully updated user data");
+               GetUserData();
+           },
+           error => {
+               Debug.Log("Got error setting user data Ancestor to Arthur");
+               Debug.Log(error.GenerateErrorReport());
+           });
+
     }
  
     public void AddAccountData(string ID, int num)

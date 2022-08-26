@@ -2,6 +2,7 @@ using PlayFab;
 using PlayFab.ClientModels;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,7 @@ public class LobbyController : Singleton<LobbyController>
 {
     [SerializeField]
     GameObject[] LobbyObj;
+
 
     [SerializeField]
     public GameObject WaitPannel;
@@ -19,7 +21,10 @@ public class LobbyController : Singleton<LobbyController>
         base.Awake();
         int Las = PlayFabData.instance.PlayerStatus[PlayFabData.Stat.LastStage];
         if (Las == 0)
+        {
             LobbyObj[0].SetActive(true);
+        }
+           
         else
             LobbyObj[1].SetActive(true);
     }

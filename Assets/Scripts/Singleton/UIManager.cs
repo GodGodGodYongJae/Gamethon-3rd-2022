@@ -114,7 +114,7 @@ public class UIManager : Singleton<UIManager>
         TutorialObj.SetActive(true);
         TutorialObj.transform.GetChild(1).GetComponent<Image>().sprite = TutorialSprite[t_currentPage];
         t_button[0].SetActive(true);
-        PlayfabPlayerData.instance.SetUserLastStageUpdate(111);
+        PlayfabPlayerData.instance.SetUserLastStageUpdate(10101);
     }
     public void OnNextTutorial()
     {
@@ -137,7 +137,7 @@ public class UIManager : Singleton<UIManager>
         {
             item.SetActive(false);
         }
-        PlayfabPlayerData.instance.SetUserLastStageUpdate(111);
+        PlayfabPlayerData.instance.SetUserLastStageUpdate(10101);
     }
 
     #endregion

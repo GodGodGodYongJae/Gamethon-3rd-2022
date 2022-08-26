@@ -12,11 +12,12 @@ public class StageController : MonoBehaviour
     public bool isLast;
     public void Start()
     {
-        ChapterNum = 1;
+        ChapterNum = ScenesManager.Instance.StartChpater;
         StageNum = 1;
         WaveNum = 0;
         MaxWave = 99;
         NextWave();
+        ChangeStageText();
     }
 
     public GameObject DeathObj;
@@ -38,16 +39,32 @@ public class StageController : MonoBehaviour
             }
             else
             {
+                int saveChpater = ChapterNum + 1;
+                PlayFabData.Instance.SetUserData("ClearChapter", saveChpater.ToString());
                 isLast = true;
             }
 
-            string string_stageNum;
-            if (StageNum < 10) string_stageNum = "0" + StageNum;
-            else string_stageNum = StageNum.ToString();
-
-            UIManager.Instance.TextChange(UIManager.UI.StageNum, ChapterNum + "-" + string_stageNum);
+            ChangeStageText();
             CutSceneManager.Instance.OnScene(true, CutSceneManager.Events.StageClear, true);
         }
+        SaveLastStage();
+    }
+
+    void ChangeStageText()
+    {
+        string string_stageNum;
+        if (StageNum < 10) string_stageNum = "0" + StageNum;
+        else string_stageNum = StageNum.ToString();
+
+        UIManager.Instance.TextChange(UIManager.UI.StageNum, ChapterNum + "-" + string_stageNum);
+    }
+    void SaveLastStage()
+    {
+        sbyte saveChpater = (isLast) ? (sbyte)((int)ChapterNum+1) : ChapterNum;
+        int LastStageVal = (isLast) ? 
+            (saveChpater * 10000) + 100 + 1 :
+            (saveChpater * 10000) + (StageNum * 100) + WaveNum;
+        PlayFabData.Instance.SetUserData("LastStage", LastStageVal.ToString());    
     }
 
     #region oldcode

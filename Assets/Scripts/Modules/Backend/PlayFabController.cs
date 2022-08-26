@@ -62,9 +62,11 @@ public class PlayFabController : MonoBehaviour
             Keys = null
         }, result => {
             Debug.Log("Got user data:");
-            if (result.Data == null || !result.Data.ContainsKey("hp")) SetUserData();
+            if (result.Data == null || !result.Data.ContainsKey("hp")) 
+                SetUserData();
             else
-            { PlayFabData.Instance.GetUserData(); PlayFabData.Instance.GetAccountData(); }
+            { PlayFabData.Instance.GetUserData(); 
+                PlayFabData.Instance.GetAccountData(); }
          
         
         }, (error) => {

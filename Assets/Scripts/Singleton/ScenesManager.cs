@@ -5,6 +5,8 @@ using UnityEngine;
 public class ScenesManager : Singleton<ScenesManager>
 {
 
+    public sbyte StartChpater = 1;
+
     private void Start()
     {
         SoundManager.Inst.PlayBGM("Suspense - Percussion & Pads");

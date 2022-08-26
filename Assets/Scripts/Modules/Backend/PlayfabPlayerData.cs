@@ -62,6 +62,14 @@ public class PlayfabPlayerData : Singleton<PlayfabPlayerData>
                     //First Start TODO
 
                 }
+                else if(serverStage < 10000)
+                {
+                    // Stage가 1만 보다 낮으면 현재 App 버전이 22 버전 아래이므로 초기화 시켜줘야 한다.
+                    // Stage에서 현재 챕터, 01 현재 스테이지 01 현재 웨이브를 의미한다.
+                    // 차후 디바이스를 껐을 때 마지막 저장 웨이브로 이동하게끔 할 수 있을 것 같다.
+                    // 다만 Level 정보, 스킬 정보 등을 어떻게 저장하느냐도 문제가 될 것 같다.
+                    SetUserLastStageUpdate(10101);
+                }
             }
             player.RequestPlayerData(PlayerHP);
                 

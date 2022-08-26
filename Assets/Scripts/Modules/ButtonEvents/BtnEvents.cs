@@ -34,5 +34,10 @@ public class BtnEvents : MonoBehaviour
         Time.timeScale = 1.0f;
     }
 
+    public void OnChapterSelect(int chapter)
+    {
+        ScenesManager.Instance.StartChpater = (sbyte)chapter;
+    }
+
 
 }
