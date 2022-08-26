@@ -11989,6 +11989,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Ground
       objectReference: {fileID: 0}
+    - target: {fileID: 1000013568839284, guid: f73dfbb67cc6e494abdfa7a8f33806e8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4000013133735880, guid: f73dfbb67cc6e494abdfa7a8f33806e8, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -13391,6 +13395,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Ground
       objectReference: {fileID: 0}
+    - target: {fileID: 1000013561012388, guid: 25e8addd40ec7d945a010ba33d773ad3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4000011169941454, guid: 25e8addd40ec7d945a010ba33d773ad3, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -13441,7 +13449,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 218000012287066866, guid: 25e8addd40ec7d945a010ba33d773ad3, type: 3}
       propertyPath: m_DrawInstanced
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 218000012287066866, guid: 25e8addd40ec7d945a010ba33d773ad3, type: 3}
       propertyPath: m_HeightmapPixelError
