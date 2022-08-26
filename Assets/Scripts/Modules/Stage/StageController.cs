@@ -10,9 +10,12 @@ public class StageController : MonoBehaviour
     public sbyte MaxWave;
 
     public bool isLast;
+
+    [SerializeField]
+    bool testMode;
     public void Start()
     {
-        ChapterNum = ScenesManager.Instance.StartChpater;
+        ChapterNum = (testMode)?(sbyte)1:ScenesManager.Instance.StartChpater;
         StageNum = 1;
         WaveNum = 0;
         MaxWave = 99;
@@ -47,6 +50,7 @@ public class StageController : MonoBehaviour
             ChangeStageText();
             CutSceneManager.Instance.OnScene(true, CutSceneManager.Events.StageClear, true);
         }
+        if(testMode.Equals(false))
         SaveLastStage();
     }
 

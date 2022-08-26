@@ -60,7 +60,7 @@ public class Player : MonoBehaviour, IDamageable
         maxAtk = minAtk + (minAtk / 2);
         def = (isTestMode.Equals(false)) ? PlayFabData.Instance.PlayerStatus[PlayFabData.Stat.def] : 10;
         atkSpeed = 1f;
-        Health = 100;
+        Health = (isTestMode.Equals(false)) ? 100:999;
         maxHealth = Health;
         anim = GetComponent<Animator>();
         PlayerDirection = bitFlags.PlayerMoveDirection.None;

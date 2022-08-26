@@ -11207,7 +11207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1803846712}
-  dist: 7.5
+  dist: 10
   height: 4
   dampRotate: 5
   smoothTime: 0.05
@@ -11999,7 +11999,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013133735880, guid: f73dfbb67cc6e494abdfa7a8f33806e8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -106.9
+      value: -107
       objectReference: {fileID: 0}
     - target: {fileID: 4000013133735880, guid: f73dfbb67cc6e494abdfa7a8f33806e8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -29429,20 +29429,52 @@ PrefabInstance:
       objectReference: {fileID: 407481235}
     - target: {fileID: 2565559904867717920, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
       propertyPath: e_enemyPrefabDictionary.keys.Array.size
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2565559904867717920, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
       propertyPath: e_enemyPrefabDictionary.values.Array.size
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2565559904867717920, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
       propertyPath: e_enemyPrefabDictionary.keys.Array.data[5]
       value: Dragon
       objectReference: {fileID: 0}
     - target: {fileID: 2565559904867717920, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
+      propertyPath: e_enemyPrefabDictionary.keys.Array.data[6]
+      value: Mutant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2565559904867717920, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
+      propertyPath: e_enemyPrefabDictionary.keys.Array.data[7]
+      value: PoisonMutant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2565559904867717920, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
+      propertyPath: e_enemyPrefabDictionary.keys.Array.data[8]
+      value: Ghoul
+      objectReference: {fileID: 0}
+    - target: {fileID: 2565559904867717920, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
+      propertyPath: e_enemyPrefabDictionary.keys.Array.data[9]
+      value: Rino
+      objectReference: {fileID: 0}
+    - target: {fileID: 2565559904867717920, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
       propertyPath: e_enemyPrefabDictionary.values.Array.data[5]
       value: 
       objectReference: {fileID: 7108737478573449200, guid: 44032ae625e7cbb4ea6c6b15f5e91363, type: 3}
+    - target: {fileID: 2565559904867717920, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
+      propertyPath: e_enemyPrefabDictionary.values.Array.data[6]
+      value: 
+      objectReference: {fileID: 8953791471136859624, guid: 8f91c93f8edfe3845af318861fd662f0, type: 3}
+    - target: {fileID: 2565559904867717920, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
+      propertyPath: e_enemyPrefabDictionary.values.Array.data[7]
+      value: 
+      objectReference: {fileID: 8953791471136859624, guid: 906365d312a04c94f82d2636bec10930, type: 3}
+    - target: {fileID: 2565559904867717920, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
+      propertyPath: e_enemyPrefabDictionary.values.Array.data[8]
+      value: 
+      objectReference: {fileID: 2297593479949166479, guid: f2926a480e7ee974b945e50a710188d8, type: 3}
+    - target: {fileID: 2565559904867717920, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
+      propertyPath: e_enemyPrefabDictionary.values.Array.data[9]
+      value: 
+      objectReference: {fileID: 7854854517643280265, guid: 3673a3950338b2b49b86ca0d74310c7b, type: 3}
     - target: {fileID: 2565559904867717922, guid: c8a03fb0f820f9c41b78268ed4b9359b, type: 3}
       propertyPath: Cha.values.Array.data[0].values.Array.data[0].values.Array.data[0].pos.Array.size
       value: 3
