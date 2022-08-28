@@ -56,17 +56,15 @@ public class Dragon_Walk : MonoBehaviour, FSM_State<DummyFSM>
 
             else
             {
-                // m_Owner.ChangeFSM(DummyFSM.State.IDLE);
+                //m_Owner.ChangeFSM(DummyFSM.State.IDLE);
                 m_Owner.istargetMove = true;
             }
 
         }
-        //Debug.Log(dot + "," + theta);
     }
 
     public void Exit()
     {
-        //Debug.Log("WAlk EXit");
         agent.isStopped = true;
         m_Owner.m_ePrevState = DummyFSM.State.Walk;
     }
@@ -96,7 +94,7 @@ public class Dragon_Walk : MonoBehaviour, FSM_State<DummyFSM>
         float distance = Vector3.Distance(m_Owner.m_TransTarget.position, m_Owner.transform.position);
         NavMeshPath path = new NavMeshPath();
 
-        if (m_Owner.isDealy.Equals(false) && distance < 3)
+        if (m_Owner.isDealy.Equals(false))
         {
             point = m_Owner.backpos.position;
         }
@@ -104,6 +102,9 @@ public class Dragon_Walk : MonoBehaviour, FSM_State<DummyFSM>
         {
             point = m_Owner.m_TransTarget.position;
         }
+
+   
+
         //if(agent.remainingDistance < 1)
         //{
         //    m_Owner.ChangeFSM(DummyFSM.State.IDLE);

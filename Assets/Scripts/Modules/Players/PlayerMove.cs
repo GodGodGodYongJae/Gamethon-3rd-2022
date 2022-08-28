@@ -81,10 +81,16 @@ public class PlayerMove : MonoBehaviour
         //StartCoroutine("MoveToPosition", prevPos);
         else
         {
-            isRayColision = true;
+            if(hit.transform == EnemyFactoryMethod.Instance.target)
+            {
+                isRayColision = true;
+                playerAnim.isDashAtk();
+            }
+       
             corutine = MoveToPosition(hit.point);
-            playerAnim.isDashAtk();
+
         }
+
         //StartCoroutine("MoveToPosition", hit.point);
         StartCoroutine(corutine);
     }

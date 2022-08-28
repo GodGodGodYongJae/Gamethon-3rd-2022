@@ -22,6 +22,8 @@ public class UpgradeShow : MonoBehaviour
     [SerializeField]
     int[] NextIncrease = new int[2];
 
+
+
     // Start is called before the first frame update
 
     int CostDia = 0;
@@ -32,6 +34,12 @@ public class UpgradeShow : MonoBehaviour
     int upgradeCri = 0;
     int defLv = 0;
     int atkLv = 0;
+
+    //public delegate void SyncInvoke();
+    //private void Awake()
+    //{
+    //    SyncInvoke SyncData = new SyncInvoke(InvokeData);
+    //}
     private void OnEnable()
     {
         if (levelstat == PlayFabData.Stat.atklv)
@@ -100,8 +108,12 @@ public class UpgradeShow : MonoBehaviour
         
     }
 
+
+    bool IsCurrentUpgrading;
     public void OnUpgradeBtn()
     {
+        if (IsCurrentUpgrading.Equals(true)) return;
+
         LobbyController.Instance.WaitPannel.SetActive(true);
         if(CostDia <= PlayFabData.Instance.PlayerDiamond && 
             CostRuby <= PlayFabData.Instance.PlayerRuby)
@@ -110,6 +122,9 @@ public class UpgradeShow : MonoBehaviour
                 atkLv++;
             else if (levelstat == PlayFabData.Stat.deflv)
                 defLv++;
+
+
+            IsCurrentUpgrading = true;
 
             PlayFabClientAPI.ExecuteCloudScript(new ExecuteCloudScriptRequest()
             {
@@ -127,8 +142,7 @@ public class UpgradeShow : MonoBehaviour
 
                 },
                 cloudResult => {
-                    PlayFabData.Instance.GetAccountData();
-                    UpgradeSuccess();
+                    PlayFabData.Instance.GetAccountUpgradeSyncData(this);
 
                 },
                 error => { Debug.Log(error.GenerateErrorReport()); });
@@ -139,7 +153,7 @@ public class UpgradeShow : MonoBehaviour
         else LobbyController.Instance.WaitPannel.SetActive(false);
     }
 
-    void UpgradeSuccess()
+   public void UpgradeSuccess()
     {
         PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest()
         {
@@ -154,9 +168,8 @@ public class UpgradeShow : MonoBehaviour
 
         }
         },
-       result => { Debug.Log("Successfully updated user data"); 
-           PlayFabData.Instance.GetUserData();
-           Invoke("InvokeData", 1.5f);
+       result => { Debug.Log("Successfully updated user data");
+           PlayFabData.Instance.GetUserShowUpgaradeData(this);
        },
        error => {
            Debug.Log("Got error setting user data Ancestor to Arthur");
@@ -164,10 +177,11 @@ public class UpgradeShow : MonoBehaviour
        });
     }
 
-    void InvokeData()
+    public void InvokeData()
     {
         if (levelstat == PlayFabData.Stat.atklv) AtkShowData();
         else if (levelstat == PlayFabData.Stat.deflv) DefShowData();
         LobbyController.Instance.WaitPannel.SetActive(false);
+        IsCurrentUpgrading = false;
     }
 }

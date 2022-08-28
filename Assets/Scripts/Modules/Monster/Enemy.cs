@@ -25,9 +25,15 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     public int DamageNum;
     protected void Start()
     {
+        rigidbody = GetComponent<Rigidbody>();
         Init();
     }
 
+    private Rigidbody rigidbody;
+    private void Update()
+    {
+        rigidbody.velocity = Vector3.zero;
+    }
     protected virtual void Init()
     {
         damageCooldown = 0.5f;

@@ -49,6 +49,7 @@ public class Dummy_AttackUpDateVer : MonoBehaviour, FSM_State<DummyFSM>
 
     public void Exit()
     {
+        indicator.SetActive(false);
         m_Owner.m_ePrevState = DummyFSM.State.Attack;
     }
 }

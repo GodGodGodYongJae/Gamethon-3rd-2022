@@ -1,6 +1,5 @@
 Chapter,Stage,Wave,No.,MonsterName,Position(x/y/z),Rotation(x/y/z),MosStone,Exp
-1,1,1,1,Rino,0/0/2,0/180/0,10,75
-1,1,2,1,Ghoul,0/0/3,0/180/0,20,80
-1,1,3,1,PoisonMutant,0/0/4,0/180/0,,
+1,1,1,1,Dragon,0/0/2,0/180/0,10,75
+1,1,2,1,PoisonMutant,0/0/4,0/180/0,,
 1,2,1,1,Mutant,0/0/5,0/150/0,30,72
 1,3,1,1,Mutant,0/0/6,0/180/0,40,82

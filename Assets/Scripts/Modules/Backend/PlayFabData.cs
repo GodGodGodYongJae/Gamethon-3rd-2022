@@ -9,10 +9,10 @@ using UnityEngine;
 public class PlayFabData : Singleton<PlayFabData>
 {
     // Start is called before the first frame update
-    public enum Stat {hp,atk,def,cri,dailyReward,LastStage,atklv,deflv,ClearChapter,end };
+    public enum Stat { hp, atk, def, cri, dailyReward, LastStage, atklv, deflv, ClearChapter, end };
 
     [HideInInspector]
-   public string myPlayFabId;
+    public string myPlayFabId;
 
     public Dictionary<Stat, int> PlayerStatus = new Dictionary<Stat, int>();
     protected override void Awake()
@@ -31,10 +31,33 @@ public class PlayFabData : Singleton<PlayFabData>
     }
     void SetStat(Stat stat, int num)
     {
-        
+
         PlayerStatus[stat] = num;
-        
+
     }
+
+    public void GetUserShowUpgaradeData(UpgradeShow showUpgrade)
+    {
+        PlayFabClientAPI.GetUserData(new GetUserDataRequest()
+        {
+            PlayFabId = myPlayFabId,
+            Keys = null
+        }, result => {
+            Debug.Log("Got user data:");
+            SetStat(Stat.hp, int.Parse(result.Data["hp"].Value));
+            SetStat(Stat.atk, int.Parse(result.Data["atk"].Value));
+            SetStat(Stat.def, int.Parse(result.Data["def"].Value));
+            SetStat(Stat.cri, int.Parse(result.Data["cri"].Value));
+            SetStat(Stat.atklv, int.Parse(result.Data["upgradeAtkLv"].Value));
+            SetStat(Stat.deflv, int.Parse(result.Data["upgradeDefLv"].Value));
+            SetStat(Stat.dailyReward, int.Parse(result.Data["dailyReward"].Value));
+            showUpgrade.InvokeData();
+        }, (error) => {
+            Debug.Log("Got error retrieving user data:");
+            Debug.Log(error.GenerateErrorReport());
+        });
+    }
+
     public void GetUserData()
     {
         PlayFabClientAPI.GetUserData(new GetUserDataRequest()
@@ -98,6 +121,24 @@ public class PlayFabData : Singleton<PlayFabData>
         return r_val;
     }
 
+    public void GetAccountUpgradeSyncData(UpgradeShow showUpgrade)
+    {
+        PlayFabClientAPI.GetUserInventory(new GetUserInventoryRequest()
+           , (result) =>
+           {
+               result.VirtualCurrency.TryGetValue(VC_Diamond, out int Count);
+               PlayerDiamond = Count;
+               result.VirtualCurrency.TryGetValue(VC_Daily, out int Count2);
+               PlayerDailyCount = Count2;
+               result.VirtualCurrency.TryGetValue(VC_Ruby, out int Count3);
+               PlayerRuby = Count3;
+
+               showUpgrade.UpgradeSuccess();
+           }, (error) =>
+           {
+               Debug.Log(error.GenerateErrorReport());
+           });
+    }    
     public void GetAccountData()
     {
         PlayFabClientAPI.GetUserInventory(new GetUserInventoryRequest()
