@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbd3ffd1daed03b4397df31559efc4f8, type: 3}
+  m_Name: Quest_STONEGOLEMKILL
+  m_EditorClassIdentifier: 
+  category: {fileID: 11400000, guid: 3979761e99c3c4e45a6c636f91096d3b, type: 2}
+  icon: {fileID: 0}
+  codeName: STONEGOLEM_KILL
+  displayName: "\uBBF8\uB2C8\uACE8\uB818 5 \uB9C8\uB9AC\uCC98\uCE58!"
+  description: "\uBBF8\uB2C8\uACE8\uB818\uC744 5\uB9C8\uB9AC \uCC98\uCE58\uD558\uC790"
+  taskGroups:
+  - tasks:
+    - {fileID: 11400000, guid: 3e2c1b604f16292489de1b4fe9081c04, type: 2}
+  rewards: []
+  RewardMos: 110
+  RewardRuby: 0
+  useAutoComplete: 0
+  isCancelable: 0
+  isSaveable: 1
+  acceptionConditions: []
+  cancelConditions: []

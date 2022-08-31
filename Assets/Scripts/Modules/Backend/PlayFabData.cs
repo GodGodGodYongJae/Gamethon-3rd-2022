@@ -58,6 +58,10 @@ public class PlayFabData : Singleton<PlayFabData>
         });
     }
 
+    [HideInInspector]
+    public bool isQuestLoad;
+    [HideInInspector]
+    public string QuestJson;
     public void GetUserData()
     {
         PlayFabClientAPI.GetUserData(new GetUserDataRequest()
@@ -82,6 +86,12 @@ public class PlayFabData : Singleton<PlayFabData>
             else
                 SetStat(Stat.ClearChapter, int.Parse(result.Data["ClearChapter"].Value));
 
+            if (result.Data.ContainsKey("questSystem"))
+            {
+                QuestJson = result.Data["questSystem"].Value;
+                isQuestLoad = true;
+            }
+           
         }, (error) => {
             Debug.Log("Got error retrieving user data:");
             Debug.Log(error.GenerateErrorReport());

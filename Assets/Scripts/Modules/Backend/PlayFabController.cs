@@ -66,7 +66,9 @@ public class PlayFabController : MonoBehaviour
                 SetUserData();
             else
             { PlayFabData.Instance.GetUserData(); 
-                PlayFabData.Instance.GetAccountData(); }
+                PlayFabData.Instance.GetAccountData();
+             
+            }
          
         
         }, (error) => {

@@ -17318,7 +17318,7 @@ MonoBehaviour:
   LobbyObj:
   - {fileID: 1909021946}
   - {fileID: 1848503456}
-  WaitPannel: {fileID: 64697790}
+  WaitPannel: {fileID: 1174225762}
 --- !u!4 &1897788489
 Transform:
   m_ObjectHideFlags: 0

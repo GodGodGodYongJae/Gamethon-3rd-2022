@@ -2005,6 +2005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDontDestroy: 1
+  StartChpater: 1
 --- !u!114 &1440318994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2072,6 +2073,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsDontDestroy: 1
   myPlayFabId: 
+  isQuestLoad: 0
+  QuestJson: 
   PlayerRuby: 0
   PlayerDiamond: 0
   PlayerDailyCount: 0

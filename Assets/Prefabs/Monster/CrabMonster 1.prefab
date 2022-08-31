@@ -4187,7 +4187,7 @@ GameObject:
   - component: {fileID: 5598160865689868570}
   - component: {fileID: 5050529970109472211}
   - component: {fileID: 2424974561445229984}
-  - component: {fileID: 1771239723707132929}
+  - component: {fileID: 3910283672286780158}
   m_Layer: 0
   m_Name: CrabMonster 1
   m_TagString: Enemy
@@ -4417,7 +4417,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 48
   m_CollisionDetection: 0
---- !u!65 &1771239723707132929
+--- !u!65 &3910283672286780158
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4428,8 +4428,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3, y: 3.4581225, z: 1.8379138}
-  m_Center: {x: 0, y: 1.2709388, z: 0.22527099}
+  m_Size: {x: 2.2727644, y: 3, z: 1.8809505}
+  m_Center: {x: -0.20971215, y: 1.5, z: -0.11671996}
 --- !u!1 &5978484547685187001
 GameObject:
   m_ObjectHideFlags: 0
