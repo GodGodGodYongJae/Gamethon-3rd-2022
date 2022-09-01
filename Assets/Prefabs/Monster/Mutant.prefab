@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4348613696915449756}
   - component: {fileID: 5378900332527017158}
   m_Layer: 0
-  m_Name: PoisonMutant
+  m_Name: Mutant
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   speed: 0
-  type: {fileID: 11400000, guid: 1ae1a9a82f65236478947bd4ceb76e42, type: 2}
+  type: {fileID: 11400000, guid: 43302b6156a8fc14eb62dce42a3b679b, type: 2}
   effectObj: {fileID: 0}
   getDamageEvent:
     m_PersistentCalls:
@@ -595,7 +595,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: PoisonMutant
+  m_Text: Mutant
 --- !u!1 &3019324957506092170
 GameObject:
   m_ObjectHideFlags: 0
@@ -1587,22 +1587,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 13725806, guid: 1d96687606641d8448ec351d83deb5a3, type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 13725806, guid: 1d96687606641d8448ec351d83deb5a3, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 057fa3e6cd50ac64b87b133ce83d8a3f, type: 2}
-    - target: {fileID: 13725806, guid: 1d96687606641d8448ec351d83deb5a3, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 057fa3e6cd50ac64b87b133ce83d8a3f, type: 2}
-    - target: {fileID: 13750246, guid: 1d96687606641d8448ec351d83deb5a3, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 057fa3e6cd50ac64b87b133ce83d8a3f, type: 2}
     m_RemovedComponents:
     - {fileID: 9536062, guid: 1d96687606641d8448ec351d83deb5a3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1d96687606641d8448ec351d83deb5a3, type: 3}
