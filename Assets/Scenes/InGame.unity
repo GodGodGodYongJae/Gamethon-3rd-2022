@@ -986,6 +986,7 @@ GameObject:
   m_Component:
   - component: {fileID: 135979160}
   - component: {fileID: 135979159}
+  - component: {fileID: 135979161}
   m_Layer: 0
   m_Name: '@ADMOB'
   m_TagString: Untagged
@@ -1049,6 +1050,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &135979161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135979158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d84407a7a49ebf947af0710ca66e6750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTestMode: 0
 --- !u!1 &185781431
 GameObject:
   m_ObjectHideFlags: 0
@@ -11338,7 +11352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3272758271965455113, guid: 3627c4659a73a4c22beea0fd2139c23b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5592473107170946973, guid: 3627c4659a73a4c22beea0fd2139c23b, type: 3}
       propertyPath: m_TargetGraphic
@@ -12381,14 +12395,14 @@ PrefabInstance:
     - target: {fileID: 5592473107170946973, guid: 3627c4659a73a4c22beea0fd2139c23b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1150137075}
+      objectReference: {fileID: 135979161}
     - target: {fileID: 5592473107170946973, guid: 3627c4659a73a4c22beea0fd2139c23b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowRewarded
+      value: ShowRewardAd
       objectReference: {fileID: 0}
     - target: {fileID: 5592473107170946973, guid: 3627c4659a73a4c22beea0fd2139c23b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Unity.Services.Mediation.Samples.RewardedExample, Assembly-CSharp
+      value: AdmobManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5592473107170946973, guid: 3627c4659a73a4c22beea0fd2139c23b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -12504,7 +12518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8203569955212342132, guid: 3627c4659a73a4c22beea0fd2139c23b, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8203569955212342132, guid: 3627c4659a73a4c22beea0fd2139c23b, type: 3}
       propertyPath: androidAdUnitId
@@ -12574,23 +12588,56 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6012663066337608269, guid: 3627c4659a73a4c22beea0fd2139c23b, type: 3}
   m_PrefabInstance: {fileID: 1150137072}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1150137075}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1150137075 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8203569955212342132, guid: 3627c4659a73a4c22beea0fd2139c23b, type: 3}
+--- !u!1 &1150137075 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3272758271965455113, guid: 3627c4659a73a4c22beea0fd2139c23b, type: 3}
   m_PrefabInstance: {fileID: 1150137072}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+--- !u!114 &1150137076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150137075}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d900dad8c8f87471886fdf750e418664, type: 3}
+  m_Script: {fileID: 11500000, guid: 3474e9f113247114ab3a9b1afca7a4d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 15933610}
+        m_TargetAssemblyTypeName: CheckNextStagePlayerLevel, Assembly-CSharp
+        m_MethodName: OnCheck
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 15933610}
+        m_TargetAssemblyTypeName: CheckNextStagePlayerLevel, Assembly-CSharp
+        m_MethodName: OnPlayerHeal
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1152595620
 GameObject:
   m_ObjectHideFlags: 0
@@ -13594,15 +13641,15 @@ GameObject:
   - component: {fileID: 1294326814}
   - component: {fileID: 1294326816}
   - component: {fileID: 1294326815}
-  - component: {fileID: 1294326818}
   - component: {fileID: 1294326817}
+  - component: {fileID: 1294326818}
   m_Layer: 5
   m_Name: button_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1294326814
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13704,10 +13751,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1294326818}
-        m_TargetAssemblyTypeName: Unity.Services.Mediation.Samples.RewardedExample,
-          Assembly-CSharp
-        m_MethodName: ShowRewarded
+      - m_Target: {fileID: 135979161}
+        m_TargetAssemblyTypeName: AdmobManager, Assembly-CSharp
+        m_MethodName: ShowRewardAd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13726,15 +13772,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1294326813}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d900dad8c8f87471886fdf750e418664, type: 3}
+  m_Script: {fileID: 11500000, guid: 3474e9f113247114ab3a9b1afca7a4d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  androidAdUnitId: Rewarded_Android
-  iosAdUnitId: 
-  State: 0
-  ActionState:
+  Action:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1294326818}
+        m_TargetAssemblyTypeName: AdmobReward, Assembly-CSharp
+        m_MethodName: Respawn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1311663959 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1564421980168344, guid: 49c4f7c3ff489ac41bd6e80536ae23c5, type: 3}

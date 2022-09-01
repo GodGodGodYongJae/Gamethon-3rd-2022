@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "R3CR50BY52W",
         "name": "com.EvenEye.ManOfSpace",
-        "processId": 19794,
+        "processId": 27702,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -54,6 +54,18 @@
             "deviceId": "R3CR50BY52W",
             "name": "com.EvenEye.ManOfSpace",
             "processId": 19794,
+            "exited": false
+        },
+        {
+            "deviceId": "R3CR50BY52W",
+            "name": "com.EvenEye.ManOfSpace",
+            "processId": 19327,
+            "exited": false
+        },
+        {
+            "deviceId": "R3CR50BY52W",
+            "name": "com.EvenEye.ManOfSpace",
+            "processId": 27702,
             "exited": false
         }
     ],
