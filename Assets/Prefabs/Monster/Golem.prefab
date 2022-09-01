@@ -204,6 +204,8 @@ MonoBehaviour:
   DestoryTime: 3
   isDeath: 0
   DamageNum: 0
+  categorykill: {fileID: 11400000, guid: 3979761e99c3c4e45a6c636f91096d3b, type: 2}
+  taskTarget: {fileID: 11400000, guid: abe489825802fe94889db66db1d5d97c, type: 2}
 --- !u!114 &243774974187367993
 MonoBehaviour:
   m_ObjectHideFlags: 0

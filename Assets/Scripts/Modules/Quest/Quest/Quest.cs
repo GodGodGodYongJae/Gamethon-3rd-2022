@@ -108,7 +108,7 @@ public class Quest : ScriptableObject
         Debug.Assert(IsRegistered, "This quest has already been registered.");
         Debug.Assert(!IsCancel, "This quest has been canceled.");
 
-       Debug.Log("test");
+  
         if (IsComplete)
             return;
 
@@ -121,6 +121,8 @@ public class Quest : ScriptableObject
                 State = QuestState.WaitingForCompletion;
                 if (useAutoComplete)
                     Complete();
+
+                QuestSystem.Instance.Save();
             }
             else
             {
@@ -128,10 +130,14 @@ public class Quest : ScriptableObject
                 prevTasKGroup.End();
                 CurrentTaskGroup.Start();
                 onNewTaskGroup?.Invoke(this, CurrentTaskGroup, prevTasKGroup);
+
+                QuestSystem.Instance.Save();
             }
         }
         else
             State = QuestState.Running;
+
+       
     }
 
     public void Complete()

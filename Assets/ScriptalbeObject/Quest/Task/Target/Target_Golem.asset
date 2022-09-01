@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12cdfb797627f9042aafb319f19fa860, type: 3}
-  m_Name: MosStone_100
+  m_Script: {fileID: 11500000, guid: c332249006ac31b4ba6d81b46ea9a033, type: 3}
+  m_Name: Target_Golem
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
-  description: "MosStone\uC9C0\uAE09"
-  quantity: 0
+  value: {fileID: 11400000, guid: 6e2e236fdb1b41947b38e50b001e814d, type: 2}

@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dbd3ffd1daed03b4397df31559efc4f8, type: 3}
-  m_Name: Quest_STONEGOLEMKILL
+  m_Name: Quest_GolemKill
   m_EditorClassIdentifier: 
   category: {fileID: 11400000, guid: 3979761e99c3c4e45a6c636f91096d3b, type: 2}
   icon: {fileID: 0}
-  codeName: STONEGOLEM_KILL
-  displayName: "\uBBF8\uB2C8\uACE8\uB818 5 \uB9C8\uB9AC\uCC98\uCE58!"
-  description: "\uBBF8\uB2C8\uACE8\uB818\uC744 5\uB9C8\uB9AC \uCC98\uCE58\uD558\uC790"
+  codeName: GOLEMKILL
+  displayName: GOLEMKILL
+  description: "\uACE8\uB818 5\uB9C8\uB9AC\uB97C \uC7A1\uC544\uB77C!"
   taskGroups:
   - tasks:
-    - {fileID: 11400000, guid: 2fcdca28deb0ef24895d2b04ecf3a171, type: 2}
+    - {fileID: 11400000, guid: 65c04f3efa8f2044b99b2fd63c13da6c, type: 2}
   rewards:
   - {fileID: 11400000, guid: ef0560805932e7541ab48a046890e93c, type: 2}
   RewardMos: 110

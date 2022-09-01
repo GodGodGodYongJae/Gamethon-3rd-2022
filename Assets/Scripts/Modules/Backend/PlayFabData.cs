@@ -1,5 +1,6 @@
 using PlayFab;
 using PlayFab.ClientModels;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -167,23 +168,42 @@ public class PlayFabData : Singleton<PlayFabData>
             });
     }
 
+    Queue<Tuple<string,string>> SaveQueue = new Queue<Tuple<string, string>>();
     public void SetUserData(string id,string value)
     {
-            PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest()
-            {
-                Data = new Dictionary<string, string>() {
-                {id, value},
-                }
-            },
-           result => {
-               Debug.Log("Successfully updated user data");
-               GetUserData();
-           },
-           error => {
-               Debug.Log("Got error setting user data Ancestor to Arthur");
-               Debug.Log(error.GenerateErrorReport());
-           });
+        Tuple<string, string> tuple = new Tuple<string, string>(id, value);
+        SaveQueue.Enqueue(tuple);  
 
+    }
+    bool isSaveRun;
+    private void Update()
+    {
+        if(isSaveRun.Equals(false) && SaveQueue.Count > 0)
+        {
+            isSaveRun = true;
+            SaveRun(SaveQueue.Dequeue());
+        }
+    }
+    private void SaveRun(Tuple<string, string> tuple)
+    {
+        PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest()
+        {
+            Data = new Dictionary<string, string>() {
+                {tuple.Item1, tuple.Item2},
+                }
+        },
+          result => {
+              Debug.Log("Successfully updated user data");
+              if (SaveQueue.Count > 0)
+                  SaveRun(SaveQueue.Dequeue());
+              else
+                  isSaveRun = false;
+              GetUserData();
+          },
+          error => {
+              Debug.Log("Got error setting user data Ancestor to Arthur");
+              Debug.Log(error.GenerateErrorReport());
+          });
     }
  
     public void AddAccountData(string ID, int num)

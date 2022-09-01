@@ -114,6 +114,7 @@ public class Task : ScriptableObject
     {
         // 두 값을 더해서 Current Success에 넘겨준다. 
         CurrentSuccess = action.Run(this, CurrentSuccess, successCount);
+        QuestSystem.Instance.Save();
     }
 
     public void Complete()

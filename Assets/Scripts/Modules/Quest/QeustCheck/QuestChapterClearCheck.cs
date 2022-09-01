@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//[CreateAssetMenu(menuName ="Quest/Quest/SaveRegist",fileName ="QuestNo_")]
-public class QuestSystemSaveAndRegist : MonoBehaviour
+public class QuestChapterClearCheck : MonoBehaviour
 {
     [SerializeField]
     private Quest quest;
@@ -12,11 +11,10 @@ public class QuestSystemSaveAndRegist : MonoBehaviour
     [SerializeField]
     private TaskTarget target;
 
-
-    public void Start()
+    void Start()
     {
         var questSystem = QuestSystem.Instance;
-
+        int LastStage = PlayFabData.Instance.PlayerStatus[PlayFabData.Stat.LastStage];
 
         if (
             questSystem.ContainsInCompleteQuests(quest).Equals(false)
@@ -36,10 +34,16 @@ public class QuestSystemSaveAndRegist : MonoBehaviour
 
             };
         }
+
+        if (questSystem.ContainsInActiveQuests(quest).Equals(true))
+        {
+            string Values = target.Value as string;
+            if(int.Parse(Values) <= LastStage)
+            {
+                QuestSystem.Instance.ReceiveReport(category, target, 1);
+            }
+        }
     }
 
-    //public void RecevieReport()
-    //{
-    //    //QuestSystem.Instance.ReceiveReport(category, target, 1);
-    //}
+
 }

@@ -20,9 +20,9 @@ public class AdmobManager : MonoBehaviour
            .build();
 
         MobileAds.SetRequestConfiguration(requestConfiguration);
-        rewardAd = new RewardedAd(isTestMode ? rewardTestID : rewardID);
-        rewardAd.LoadAd(GetAdRequest());
-        //LoadRewardAd();
+        //rewardAd = new RewardedAd(isTestMode ? rewardTestID : rewardID);
+        //rewardAd.LoadAd(GetAdRequest());
+        LoadRewardAd();
     }
 
     void Update()
@@ -30,7 +30,8 @@ public class AdmobManager : MonoBehaviour
         //RewardAdsBtn.interactable = rewardAd.IsLoaded();
         if (Rewardsuccess.Equals(true))
         {
-            reward.Action?.Invoke();
+            if(reward != null)
+                reward.Action?.Invoke();
             Rewardsuccess = false;
         }
             
@@ -54,10 +55,7 @@ public class AdmobManager : MonoBehaviour
     bool Rewardsuccess;
     void LoadRewardAd()
     {
-        if (clickObj == null)
-        {
-            Debug.Log("Not Obj");
-            return; } 
+
 
         rewardAd = new RewardedAd(isTestMode ? rewardTestID : rewardID);
         rewardAd.LoadAd(GetAdRequest());

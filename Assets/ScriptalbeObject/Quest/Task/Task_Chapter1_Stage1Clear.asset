@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39692b6f63325244ebe5e9d6083ab3b6, type: 3}
-  m_Name: Task_Kill
+  m_Name: Task_Chapter1_Stage1Clear
   m_EditorClassIdentifier: 
-  category: {fileID: 11400000, guid: 3979761e99c3c4e45a6c636f91096d3b, type: 2}
-  codeName: KILL_THE_SLIME
-  description: you have to kill the slime
+  category: {fileID: 11400000, guid: 35446c93ff4a5e54b98ef2cef7e5e658, type: 2}
+  codeName: ClearStage
+  description: ClearStage
   targets:
-  - {fileID: 11400000, guid: 055569cf28a99e447a16a765e5c9fc38, type: 2}
+  - {fileID: 11400000, guid: 8bd5549c6e4f4c6479408bbaa03a43c6, type: 2}
   action: {fileID: 11400000, guid: 8550afa4eebebd54787a3c735066e01e, type: 2}
   initalSuccessValue: {fileID: 0}
-  needSuccessToComplete: 5
+  needSuccessToComplete: 1
   canReceiveReportsDuringCompletion: 0

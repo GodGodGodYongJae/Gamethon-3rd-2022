@@ -85,6 +85,11 @@ public class QuestSystem : MonoBehaviour
 
     }
 
+    //private void Update()
+    ////{
+    ////    if(SaveQeue.Count > 0)
+    ////        PlayFabData.Instance.SetUserData(kSaveRootPath, SaveQeue.Dequeue().ToString());
+    //}
     private void OnApplicationQuit()
     {
         isApplicationQuitting = true;
@@ -132,7 +137,7 @@ public class QuestSystem : MonoBehaviour
         foreach (var quest in quests.ToArray())
             quest.ReceiveReport(category, target, successCount);
 
-        Save();
+        //Save();
     }
 
     public bool ContainsInActiveQuests(Quest quest) => activeQuests.Any(x => x.CodeName == quest.CodeName);
@@ -143,7 +148,7 @@ public class QuestSystem : MonoBehaviour
 
     public bool ContainsInCompletedAchievements(Quest quest) => completedAchievements.Any(x => x.CodeName == quest.CodeName);
 
-
+    //Queue SaveQeue;
     public void Save()
     {
         var root = new JObject();
@@ -153,7 +158,10 @@ public class QuestSystem : MonoBehaviour
         root.Add(kCompletedAchievementsSavePath, CreateSaveDatas(completedAchievements));
 
 
+        //SaveQeue.Enqueue(root);
+
         PlayFabData.Instance.SetUserData(kSaveRootPath, root.ToString());
+        
         //PlayerPrefs.SetString(kSaveRootPath, root.ToString());
         //PlayerPrefs.Save();
     }
@@ -175,6 +183,16 @@ public class QuestSystem : MonoBehaviour
         else return false;
 
 
+    }
+
+    public Quest SerchQuest(Quest quest)
+    {
+        foreach (var item in ActiveQuests)
+        {
+            if (item.CodeName == quest.CodeName)
+                return item;
+        }
+        return null;
     }
 
     private JArray CreateSaveDatas(IReadOnlyList<Quest>quests)
