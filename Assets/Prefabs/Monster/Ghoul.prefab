@@ -1491,6 +1491,8 @@ MonoBehaviour:
   DestoryTime: 2
   isDeath: 0
   DamageNum: 0
+  categorykill: {fileID: 0}
+  taskTarget: {fileID: 0}
 --- !u!114 &1553789386679302114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2774,11 +2776,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8571219159257630556, guid: bbeec33c84e23b841a43de4b39c430e1, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.54
+      value: 0.14
       objectReference: {fileID: 0}
     - target: {fileID: 8571219159257630556, guid: bbeec33c84e23b841a43de4b39c430e1, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.21
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8571219159257630556, guid: bbeec33c84e23b841a43de4b39c430e1, type: 3}
       propertyPath: m_LocalScale.z
