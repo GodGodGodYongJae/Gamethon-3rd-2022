@@ -10,7 +10,7 @@ public class LoadingSceneController : MonoBehaviour
     static string nextScene;
 
     [SerializeField]
-    Image progressBar;
+    Slider progressBar;
     public static void LoadSene(string sceneName)
     {
         nextScene = sceneName;
@@ -23,17 +23,27 @@ public class LoadingSceneController : MonoBehaviour
     }
    IEnumerator LoadSceneProcess()
     {
-        yield return new WaitForSeconds(1);
+
         AsyncOperation op = SceneManager.LoadSceneAsync(nextScene);
+        op.allowSceneActivation = false;
         //op.allowSceneActivation = false;
-        //float timer = 0f;
+        float timer = 0f;
         while (!op.isDone)
         {
             yield return null;
-            if (op.progress < 1.0f)
-                progressBar.fillAmount = op.progress;
+            print(op.progress);
+            if (op.progress < 0.9)
+                progressBar.value = op.progress;
             else
-                yield break;
+            {
+                timer += Time.unscaledTime;
+                progressBar.value = Mathf.Lerp(0.9f, 1, timer);
+                if(progressBar.value >= 1f)
+                {
+                    op.allowSceneActivation = true;
+                    yield break; 
+                }
+            }
         }
 
     }
