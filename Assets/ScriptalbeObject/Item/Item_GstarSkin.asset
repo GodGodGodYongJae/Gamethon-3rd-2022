@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d08c10f995048e74384ac392bf02b88c, type: 3}
+  m_Name: Item_GstarSkin
+  m_EditorClassIdentifier: 
+  _itemCode: Skin
+  _image: {fileID: 21300000, guid: 70b7c8620f036cc4aa0bc85c93c3f6ee, type: 3}
+  _itemDisplayScription: "\uC9C0\uC2A4\uD0C0 \uC2A4\uD0A8"
+  _task: {fileID: 11400000, guid: d5193f9fbbb10db4a9c612052516214e, type: 2}
+  _isConsumables: 0
+  _isAuto: 1

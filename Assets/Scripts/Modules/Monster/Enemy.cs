@@ -24,12 +24,6 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     [HideInInspector]
     public int DamageNum;
 
-    [Header("Qeust")]
-    [SerializeField]
-    private Category categorykill;
-    [SerializeField]
-    private TaskTarget taskTarget;
-
     protected void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -86,8 +80,9 @@ public abstract class Enemy : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(DestoryTime);
         this.gameObject.SetActive(false);
 
-        if(categorykill != null && taskTarget != null)
-        QuestSystem.Instance.ReceiveReport(categorykill, taskTarget, 1);
+        //TODO
+        InGameTargetQuest tquest = GetComponent<InGameTargetQuest>();
+        if (tquest != null) InGameQuestController.Instance.OnReportQuest(tquest);
       
     }
     public int Health { get { return health; } set { health = value; } }

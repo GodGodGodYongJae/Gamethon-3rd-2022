@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39692b6f63325244ebe5e9d6083ab3b6, type: 3}
+  m_Name: Task_Clear0108
+  m_EditorClassIdentifier: 
+  category: {fileID: 11400000, guid: 35446c93ff4a5e54b98ef2cef7e5e658, type: 2}
+  codeName: Clear0108
+  description: "\uC2A4\uD14C\uC774\uC9C08 \uD074\uB9AC\uC5B4"
+  targets:
+  - {fileID: 11400000, guid: 57e13cf9b65cead4889a92794e0ce2fe, type: 2}
+  action: {fileID: 11400000, guid: 8550afa4eebebd54787a3c735066e01e, type: 2}
+  initalSuccessValue: {fileID: 0}
+  needSuccessToComplete: 1
+  canReceiveReportsDuringCompletion: 0

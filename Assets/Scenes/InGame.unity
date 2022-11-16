@@ -2246,6 +2246,7 @@ GameObject:
   - component: {fileID: 313026976}
   - component: {fileID: 313026975}
   - component: {fileID: 313026978}
+  - component: {fileID: 313026979}
   m_Layer: 5
   m_Name: LevelUpUI
   m_TagString: Untagged
@@ -2346,6 +2347,20 @@ MonoBehaviour:
   - {fileID: 662383507}
   - {fileID: 552429630}
   - {fileID: 351382182}
+--- !u!114 &313026979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313026973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db2b028bf2ab4d84cb95d7389b834feb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  category: {fileID: 11400000, guid: 62ef9b95852e7a946965d6c9f106b307, type: 2}
+  taskTarget: {fileID: 11400000, guid: d3ab6043759262240a92499f1239a630, type: 2}
 --- !u!1 &333190389
 GameObject:
   m_ObjectHideFlags: 0
@@ -15658,6 +15673,26 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5811976494949658636, guid: 2a15072fc923aa5449cc858334757c2c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2a15072fc923aa5449cc858334757c2c, type: 3}
+--- !u!1 &1351468923 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5808079159648082530, guid: 2a15072fc923aa5449cc858334757c2c, type: 3}
+  m_PrefabInstance: {fileID: 1351468922}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1351468924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351468923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ca000a9779c8634aaa9929abe527f2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  met:
+  - {fileID: 2100000, guid: d71d3940b0cec374fa8b561bb0916acc, type: 2}
+  - {fileID: 0}
 --- !u!1 &1368415240
 GameObject:
   m_ObjectHideFlags: 0
@@ -18887,6 +18922,26 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &1637261195 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5808079159648082530, guid: 2a15072fc923aa5449cc858334757c2c, type: 3}
+  m_PrefabInstance: {fileID: 1637261191}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1637261196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637261195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ca000a9779c8634aaa9929abe527f2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  met:
+  - {fileID: 2100000, guid: d71d3940b0cec374fa8b561bb0916acc, type: 2}
+  - {fileID: 0}
 --- !u!1 &1655214660
 GameObject:
   m_ObjectHideFlags: 0
@@ -19131,6 +19186,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1677842842}
   m_CullTransparentMesh: 1
+--- !u!1 &1682456159
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1682456160}
+  - component: {fileID: 1682456161}
+  m_Layer: 0
+  m_Name: '@QuestSystem'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1682456160
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682456159}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1682456161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682456159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6910d23037f0d01498c702aab41624fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDontDestroy: 0
 --- !u!1 &1720866548
 GameObject:
   m_ObjectHideFlags: 0
@@ -22824,6 +22923,26 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &1971396577 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5808079159648082530, guid: 2a15072fc923aa5449cc858334757c2c, type: 3}
+  m_PrefabInstance: {fileID: 1971396573}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1971396578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1971396577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ca000a9779c8634aaa9929abe527f2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  met:
+  - {fileID: 2100000, guid: d71d3940b0cec374fa8b561bb0916acc, type: 2}
+  - {fileID: 0}
 --- !u!1 &2026407212
 GameObject:
   m_ObjectHideFlags: 3

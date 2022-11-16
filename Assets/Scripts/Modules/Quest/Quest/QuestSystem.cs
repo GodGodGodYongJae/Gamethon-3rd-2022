@@ -136,8 +136,6 @@ public class QuestSystem : MonoBehaviour
     {
         foreach (var quest in quests.ToArray())
             quest.ReceiveReport(category, target, successCount);
-
-        //Save();
     }
 
     public bool ContainsInActiveQuests(Quest quest) => activeQuests.Any(x => x.CodeName == quest.CodeName);

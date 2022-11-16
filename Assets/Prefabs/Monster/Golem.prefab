@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: -3151007872388897128}
   - component: {fileID: 6962665574279831138}
   - component: {fileID: 79025251576931965}
+  - component: {fileID: 2113303353120032052}
   m_Layer: 0
   m_Name: Golem
   m_TagString: Enemy
@@ -204,8 +205,6 @@ MonoBehaviour:
   DestoryTime: 3
   isDeath: 0
   DamageNum: 0
-  categorykill: {fileID: 11400000, guid: 3979761e99c3c4e45a6c636f91096d3b, type: 2}
-  taskTarget: {fileID: 11400000, guid: abe489825802fe94889db66db1d5d97c, type: 2}
 --- !u!114 &243774974187367993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,6 +354,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 3, z: 2}
   m_Center: {x: 0, y: 1.5, z: 0}
+--- !u!114 &2113303353120032052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243716965394760169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db2b028bf2ab4d84cb95d7389b834feb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  category: {fileID: 11400000, guid: 3979761e99c3c4e45a6c636f91096d3b, type: 2}
+  taskTarget: {fileID: 11400000, guid: abe489825802fe94889db66db1d5d97c, type: 2}
 --- !u!1 &243738486427714411
 GameObject:
   m_ObjectHideFlags: 0
@@ -1394,6 +1407,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 699946f1884c46b4db32d448a549ded2, type: 3}
+--- !u!224 &4071784328224617145 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 490234133625864070, guid: 699946f1884c46b4db32d448a549ded2, type: 3}
+  m_PrefabInstance: {fileID: 4489045517218532671}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3865290577803324004 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 857951465941985115, guid: 699946f1884c46b4db32d448a549ded2, type: 3}
@@ -1405,11 +1423,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e97ca75dde9464e4e8cd6ac078d98631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &4071784328224617145 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 490234133625864070, guid: 699946f1884c46b4db32d448a549ded2, type: 3}
-  m_PrefabInstance: {fileID: 4489045517218532671}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6335053278921877285
 PrefabInstance:
   m_ObjectHideFlags: 0

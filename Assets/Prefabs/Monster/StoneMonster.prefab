@@ -346,6 +346,7 @@ GameObject:
   - component: {fileID: 7222902657960498987}
   - component: {fileID: 1904846981833154982}
   - component: {fileID: 6694489483422540846}
+  - component: {fileID: 6312469783184423893}
   m_Layer: 0
   m_Name: StoneMonster
   m_TagString: Enemy
@@ -589,6 +590,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &6312469783184423893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5655189471300221325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db2b028bf2ab4d84cb95d7389b834feb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  category: {fileID: 11400000, guid: 3979761e99c3c4e45a6c636f91096d3b, type: 2}
+  taskTarget: {fileID: 11400000, guid: 9bb5d2386c2d9eb4aa26f5a6fa3dd49f, type: 2}
 --- !u!1 &5655228164043972669
 GameObject:
   m_ObjectHideFlags: 0

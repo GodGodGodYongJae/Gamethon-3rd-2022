@@ -168,6 +168,25 @@ public class PlayFabData : Singleton<PlayFabData>
             });
     }
 
+    public List<ItemInstance> userInventory;
+    public bool isSkin = false;
+    public void GetUserInventory(Action t) 
+    {
+        PlayFabClientAPI.GetUserInventory(new GetUserInventoryRequest { }, result => { userInventory = result.Inventory;
+            t.Invoke();
+        }, error => { Debug.Log(error.GenerateErrorReport()); });
+    }
+
+    public void ConsumeItem(Action t,string itemCode,int Count)
+    {
+        PlayFabClientAPI.ConsumeItem(new ConsumeItemRequest
+        {
+            ConsumeCount = Count,
+            ItemInstanceId = itemCode
+        },Success=> { t.Invoke();},error=> { Debug.Log(error.GenerateErrorReport()); });
+    }
+
+
     Queue<Tuple<string,string>> SaveQueue = new Queue<Tuple<string, string>>();
     public void SetUserData(string id,string value)
     {

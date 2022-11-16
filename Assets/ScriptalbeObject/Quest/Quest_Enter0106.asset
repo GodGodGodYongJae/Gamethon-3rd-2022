@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbd3ffd1daed03b4397df31559efc4f8, type: 3}
+  m_Name: Quest_Enter0106
+  m_EditorClassIdentifier: 
+  category: {fileID: 11400000, guid: 35446c93ff4a5e54b98ef2cef7e5e658, type: 2}
+  icon: {fileID: 0}
+  codeName: Enter0106
+  displayName: Enter0106
+  description: Enter0106
+  taskGroups:
+  - tasks:
+    - {fileID: 11400000, guid: b92e739fde2a9f74daecefd18cb4cc5f, type: 2}
+  rewards:
+  - {fileID: 11400000, guid: ef0560805932e7541ab48a046890e93c, type: 2}
+  RewardMos: 120
+  RewardRuby: 0
+  useAutoComplete: 0
+  isCancelable: 0
+  isSaveable: 1
+  acceptionConditions: []
+  cancelConditions: []

@@ -14,5 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quests:
   - {fileID: 11400000, guid: c0f9a1ccacdd61b4daa3e089f3493399, type: 2}
+  - {fileID: 11400000, guid: 4ca68435710b8a649a4e880395809c8c, type: 2}
+  - {fileID: 11400000, guid: 5c2c50e99032ad149a0f5111d4cdac3f, type: 2}
+  - {fileID: 11400000, guid: 78a30c2927fd54c40a31a1f7b62dae16, type: 2}
+  - {fileID: 11400000, guid: 634bd9e520671dd41a3fdaf4e461b80f, type: 2}
+  - {fileID: 11400000, guid: 0c0dd274839cd6d4884962f861325e61, type: 2}
+  - {fileID: 11400000, guid: 0337d3d11a99e8a499af66a0ae6a1bcb, type: 2}
   - {fileID: 11400000, guid: c369fce63de9e3941b94e8f64f89faea, type: 2}
+  - {fileID: 11400000, guid: bc8827b669e7c3c4a9581d979c8873e8, type: 2}
   - {fileID: 11400000, guid: 336a036d5b342774c87091487791db8d, type: 2}
+  - {fileID: 11400000, guid: 9ead5379e96a8f246ad7901d01bb37cc, type: 2}

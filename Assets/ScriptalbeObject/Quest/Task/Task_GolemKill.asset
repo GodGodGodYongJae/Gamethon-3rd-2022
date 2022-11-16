@@ -19,5 +19,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: abe489825802fe94889db66db1d5d97c, type: 2}
   action: {fileID: 11400000, guid: 8550afa4eebebd54787a3c735066e01e, type: 2}
   initalSuccessValue: {fileID: 0}
-  needSuccessToComplete: 2
+  needSuccessToComplete: 5
   canReceiveReportsDuringCompletion: 0

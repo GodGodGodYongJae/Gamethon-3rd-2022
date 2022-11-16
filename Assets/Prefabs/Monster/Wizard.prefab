@@ -31373,6 +31373,7 @@ GameObject:
   - component: {fileID: 6701170848247494041}
   - component: {fileID: 5116661265427728257}
   - component: {fileID: 1593923956585087089}
+  - component: {fileID: 5622164566521873536}
   m_Layer: 0
   m_Name: Wizard
   m_TagString: Enemy
@@ -31643,6 +31644,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &5622164566521873536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8881896916524851434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db2b028bf2ab4d84cb95d7389b834feb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  category: {fileID: 11400000, guid: 3979761e99c3c4e45a6c636f91096d3b, type: 2}
+  taskTarget: {fileID: 11400000, guid: f8435507fdca4f14ebb60a6a8ce61b91, type: 2}
 --- !u!1 &8881896916542404336
 GameObject:
   m_ObjectHideFlags: 0

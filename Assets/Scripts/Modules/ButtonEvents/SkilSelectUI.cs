@@ -73,6 +73,10 @@ public class SkilSelectUI : MonoBehaviour
             if(item.Key == btn)
             {
                 skilManager.SelectSkil(item.Value.skilList);
+
+                InGameTargetQuest tquest = GetComponent<InGameTargetQuest>();
+                if (tquest != null) InGameQuestController.Instance.OnReportQuest(tquest);
+
             }
         }
     }

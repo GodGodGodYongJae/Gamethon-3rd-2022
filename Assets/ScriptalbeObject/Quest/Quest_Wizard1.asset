@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbd3ffd1daed03b4397df31559efc4f8, type: 3}
+  m_Name: Quest_Wizard1
+  m_EditorClassIdentifier: 
+  category: {fileID: 11400000, guid: 3979761e99c3c4e45a6c636f91096d3b, type: 2}
+  icon: {fileID: 0}
+  codeName: Wizard1
+  displayName: Wizard1
+  description: "\uC704\uC790\uB4DC1 \uCC98\uCE58"
+  taskGroups:
+  - tasks:
+    - {fileID: 11400000, guid: 6b0b3926092480842838e5d97749336b, type: 2}
+  rewards:
+  - {fileID: 11400000, guid: ef0560805932e7541ab48a046890e93c, type: 2}
+  RewardMos: 110
+  RewardRuby: 0
+  useAutoComplete: 0
+  isCancelable: 0
+  isSaveable: 1
+  acceptionConditions: []
+  cancelConditions: []

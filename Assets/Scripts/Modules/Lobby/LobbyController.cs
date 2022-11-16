@@ -5,9 +5,14 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class LobbyController : Singleton<LobbyController>
 {
+
+    
+    public GameObject book_noteObj;
+
     [SerializeField]
     GameObject[] LobbyObj;
 
@@ -16,6 +21,16 @@ public class LobbyController : Singleton<LobbyController>
     public GameObject WaitPannel;
 
 
+    private ItemDataBase itemDataBase;
+    private List<item> itemList;
+    [SerializeField]
+    private CharacterSkinGstar testGstarSkin; // 우선 막 코딩.
+    [SerializeField]
+    private GameObject GstarImageInfo;
+    [SerializeField]
+    private Image Gstar_img;
+    [SerializeField]
+    private GameObject GstartNoItemImg;
     protected override void Awake()
     {
         base.Awake();
@@ -27,6 +42,87 @@ public class LobbyController : Singleton<LobbyController>
            
         else
             LobbyObj[1].SetActive(true);
+
+        // testPromotain();
+
+
+        itemDataBase = Resources.Load<ItemDataBase>("ItemDataBase");
+        itemList = new List<item>();
+        foreach (var item in itemDataBase.Items)
+        {
+            //Debug.Log(item.ItemCode);
+            //RegisterItem(item);
+            itemList.Add(item);
+        }
+    
+        GetItemUpdate();
+    }
+  
+    public void OnCouponRegister(GameObject bg)
+    {
+        string serialCode = "";
+        for(int f = 0; f < 3; f++)
+        {
+            InputField i = bg.transform.GetChild(f).GetComponent<InputField>();
+            serialCode += i.text + "-";
+        }
+        serialCode = serialCode.TrimEnd('-');
+        PromotionCode(serialCode);
+    }
+    void PromotionCode(string serial)
+    {
+        string couponCode = serial;
+
+        var primaryCatalogName = "GStarCoupon"; // In your game, this should just be a constant matching your primary catalog
+        var request = new RedeemCouponRequest
+        {
+            CatalogVersion = primaryCatalogName,
+            CouponCode = couponCode // This comes from player input, in this case, one of the coupon codes generated above
+        };
+        PlayFabClientAPI.RedeemCoupon(request, LogSuccess => {
+            List<ItemInstance> t = LogSuccess.GrantedItems;
+            GstarImageInfo.SetActive(true);
+            foreach (var item in t)
+            {
+                foreach (var item2 in itemList)
+                {
+                    if(item2.ItemCode == item.ItemId)
+                    {
+                        Gstar_img.sprite = item2.Image;
+                    }
+                }
+            }
+            Debug.Log(request.CharacterId);
+            PlayFabData.instance.GetUserInventory(()=> { GetItemUpdate(); });
+        }, LogFailure => { GstartNoItemImg.SetActive(true); Debug.Log(LogFailure.GenerateErrorReport()); });
+
+
+    }
+
+    void GetItemUpdate()
+    {
+        PlayFabData.instance.GetUserInventory(() => {
+
+            List<ItemInstance> itemlist = PlayFabData.instance.userInventory;
+            foreach (var item in itemlist)
+            {
+
+                foreach (var item2 in itemList)
+                {
+                    if (item2.ItemCode == item.ItemId)
+                        item2.ReportItem(item.ItemInstanceId);
+                    testGstarSkin.ChangeSkin();
+                }
+
+                Debug.Log(item.ItemId);
+                //Debug.Log(item.DisplayName);
+                Debug.Log(item.ItemInstanceId);
+                //Debug.Log(item.UnitCurrency);
+                //Debug.Log(item.UsesIncrementedBy);
+            }
+
+        });
+        
     }
 
     #region daily Reward
